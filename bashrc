@@ -1,4 +1,6 @@
 #!/bin/bash
+
+# Color variables
 txtblk='\e[0;30m' # Black - Regular
 txtred='\e[0;31m' # Red
 txtgrn='\e[0;32m' # Green
@@ -25,15 +27,15 @@ bakcyn='\e[46m'   # Cyan
 bakwht='\e[47m'   # White
 txtrst='\e[0m'    # Text Reset
 
-# Modo vi no bash
+# Bash vi mode
 set -o vi
 
-# Abreviação de comandos comuns
+# Common commands abbr
 alias ls="ls -G"
 alias hist="history"
 alias so="source"
 
-# Git aliases
+# Aliases
 alias gs='git status '
 alias ga='git add '
 alias gb='git branch '
@@ -43,17 +45,15 @@ alias go='git checkout '
 alias gk='gitk --all&'
 alias gx='gitx --all'
 alias gitrm="git ls-files --deleted | xargs git rm"
-
-# Comandos para desenvolvimento
 alias php="/Applications/MAMP/bin/php5.3/bin/php"
 alias mysql="/Applications/MAMP/Library/bin/mysql -u root --password=root"
 alias mysqldump="/Applications/MAMP/Library/bin/mysqldump -u root --password=root"
 alias mysqladmin=/usr/local/mysql/bin/mysqladmin
 
-# Servidores SSH
-alias sshmixr="ssh -p 2011 root@mix.no-ip.biz"
-alias sshmix="ssh -p 2011 thiago@mix.no-ip.biz"
-alias sshsol="ssh -p 2222 thiago@solcorretora.com.br"
+# SSH servers
+alias sshmixr="ssh root@mix.no-ip.biz"
+alias sshmix="ssh thiago@mix.no-ip.biz"
+alias sshsol="ssh thiago@solcorretora.com.br"
 alias sshmixatomi="ssh root@mixatomico.com.br"
 
 alias www="cd ~/Sites"
@@ -63,15 +63,10 @@ if [ -f /opt/local/etc/bash_completion ]; then
     . /opt/local/etc/bash_completion
 fi
 
+# Git completion
+if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+    . /usr/local/etc/bash_completion.d/git-completion.bash
+fi
+
+# Term type
 export TERM="xterm-color"
-
-
-# Muda cores do ls
-# export LS_COLORS='di=01;36'
-
-# Rosa
-# export LS_COLORS='di=01;36'
-# Bold white
-# export LS_COLORS='di=01;37'
-# Bold purple
-# export LS_COLORS='di=01;35'
