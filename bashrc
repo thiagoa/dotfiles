@@ -50,12 +50,6 @@ alias mysql="/Applications/MAMP/Library/bin/mysql -u root --password=root"
 alias mysqldump="/Applications/MAMP/Library/bin/mysqldump -u root --password=root"
 alias mysqladmin=/usr/local/mysql/bin/mysqladmin
 
-# SSH servers
-alias sshmixr="ssh root@mix.no-ip.biz"
-alias sshmix="ssh thiago@mix.no-ip.biz"
-alias sshsol="ssh thiago@solcorretora.com.br"
-alias sshmixatomi="ssh root@mixatomico.com.br"
-
 alias www="cd ~/Sites"
 
 # Bash completion
@@ -70,3 +64,7 @@ fi
 
 # Term type
 export TERM="xterm-color"
+
+if [ -f ~/Dropbox/Scripts/my_aliases.sh ]; then
+    source ~/Dropbox/Scripts/my_aliases.sh 
+fi
