@@ -1,10 +1,12 @@
 #!/bin/bash
 
+CURRENT_DIR=$(pwd)
+
 for i in `ls`; do
     if [ $i != 'setup.sh' ]; then
-        if [ -f ~/.$i ]; then
-            mv ~/.$i ~/.$i"".backup
+        if [ -f "$HOME/.$i" ] || [ -h "$HOME/.$i" ]; then
+            rm $HOME/.$i
         fi
-        cp ./$i ~/.$i
+        ln -s $CURRENT_DIR/$i $HOME/.$i
     fi
 done;

@@ -1,0 +1,38 @@
+[core]
+	excludesfile = /Users/thiago/.gitignore
+	editor = vim
+	autocrlf = input
+	safecrlf = true
+[user]
+	name = Thiago A. Silva
+	email = thiago@mixinternet.com.br
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	unstage = reset HEAD --
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	type = cat-file -t
+	dump = cat-file -p
+[push]
+	default = current
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[github]
+	token = 990b2fbb1bdf056797dceda60264018f
+[difftool "Kaleidoscope"]
+	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+[diff]
+	tool = Kaleidoscope
