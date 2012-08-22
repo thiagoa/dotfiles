@@ -45,10 +45,6 @@ alias go='git checkout '
 alias gk='gitk --all&'
 alias gx='gitx --all'
 alias gitrm="git ls-files --deleted | xargs git rm"
-alias php="/Applications/MAMP/bin/php5.3/bin/php"
-alias mysql="/Applications/MAMP/Library/bin/mysql -u root --password=root"
-alias mysqldump="/Applications/MAMP/Library/bin/mysqldump -u root --password=root"
-alias mysqladmin=/usr/local/mysql/bin/mysqladmin
 alias pgstart="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
 alias pgstop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 alias www="cd ~/Sites"
@@ -68,5 +64,5 @@ fi
 export TERM="xterm-color"
 
 if [ -f ~/Dropbox/Scripts/my_aliases.sh ]; then
-    source ~/Dropbox/Scripts/my_aliases.sh 
+    source ~/Dropbox/Scripts/my_aliases.sh
 fi

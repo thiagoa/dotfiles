@@ -12,10 +12,14 @@
 	interactive = auto
 	status = auto
 [alias]
+	si = submodule init
+	su = submodule update
+	s = submodule update --init
 	co = checkout
 	br = branch
 	ci = commit
 	st = status
+	ss = submodule sync
 	unstage = reset HEAD --
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	type = cat-file -t
@@ -23,8 +27,8 @@
 [push]
 	default = current
 [difftool "sourcetree"]
-	cmd = /Applications/Kaleidoscope.app/Contents/MacOS/ksdiff -w \"$LOCAL\" \"$REMOTE\"
-	path = 
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
@@ -33,6 +37,9 @@
 #[difftool "Kaleidoscope"]
 #[difftool]
 #[diff]
+[difftool "Kaleidoscope"]
+[difftool]
+[diff]
 [difftool "Kaleidoscope"]
 	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
 [difftool]
