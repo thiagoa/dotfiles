@@ -3,7 +3,7 @@
 export PS1="\u \w\`ruby -e \"print (%x{git branch 2> /dev/null}.grep(/^\*/).first || '').gsub(/^\* (.+)$/, '(\1) ')\"\`\$ "
 
 print_before_the_prompt () {  
-    printf "\n$txtred%s: $bldgrn%s $txtpur%s\n$txtrst" "$USER" "$PWD" "$(vcprompt)"  
+    printf "\n$txtred%s $txtpur%s - $txtred$bldgrn%s $txtpur%s\n$txtrst" "$USER" "$HOSTNAME" "$PWD" "$(vcprompt)"  
 }  
       
 PROMPT_COMMAND=print_before_the_prompt  

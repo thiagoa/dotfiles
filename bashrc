@@ -63,6 +63,6 @@ fi
 # Term type
 export TERM="xterm-color"
 
-if [ -f ~/Dropbox/Scripts/my_aliases.sh ]; then
-    source ~/Dropbox/Scripts/my_aliases.sh
+if [ -f ~/Dropbox/Scripts/config/aliases ]; then
+    source ~/Dropbox/Scripts/config/aliases
 fi

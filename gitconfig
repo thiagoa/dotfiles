@@ -1,7 +1,7 @@
 [core]
 	excludesfile = /Users/thiago/.gitignore
 	editor = vim
-	autocrlf = false
+	autocrlf = input
 	safecrlf = true
 [user]
 	name = Thiago A. Silva
@@ -28,7 +28,7 @@
 	default = current
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
+	path = 
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
@@ -46,3 +46,7 @@
 	prompt = false
 [diff]
 	tool = Kaleidoscope
+[mergetool]
+	keepBackup = true
+[auto]
+	crlf = input
