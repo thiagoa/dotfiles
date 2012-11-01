@@ -3,6 +3,7 @@
 	editor = vim
 	autocrlf = input
 	safecrlf = true
+	whitespace = cr-at-eol
 [user]
 	name = Thiago A. Silva
 	email = thiago@mixinternet.com.br
