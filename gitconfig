@@ -46,8 +46,15 @@
 [difftool]
 	prompt = false
 [diff]
-	tool = Kaleidoscope
+	tool = diffmerge
 [mergetool]
 	keepBackup = true
 [auto]
 	crlf = input
+[difftool "diffmerge"]
+	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+[merge]
+	tool = diffmerge
+[mergetool "diffmerge"]
+	cmd = diffmerge --merge --result=$MERGED $LOCAL $BASE $REMOTE
+	trustExitCode = true
