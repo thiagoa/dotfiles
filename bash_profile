@@ -11,8 +11,9 @@ PS1='$ '
 export HISTSIZE=1000
 
 # Seta o environment path
-#export PATH=/usr/local/bin:/Applications/MAMP/bin/php5.3/bin:~/Scripts:/opt/local/bin:/opt/local/sbin:$PATH
 export PATH=~/Scripts/mixdev:~/Scripts:/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH
 
 # Carrega aliases e configurações personalizadas
 source ~/.bashrc
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

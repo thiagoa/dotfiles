@@ -49,6 +49,7 @@ alias pgstart="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/serv
 alias pgstop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 alias www="cd ~/Sites"
 alias mvi="mvim --remote-silent"
+alias ..="cd .."
 
 # Bash completion
 if [ -f /opt/local/etc/bash_completion ]; then
@@ -66,3 +67,5 @@ export TERM="xterm-color"
 if [ -f ~/Dropbox/Scripts/config/aliases ]; then
     source ~/Dropbox/Scripts/config/aliases
 fi
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
