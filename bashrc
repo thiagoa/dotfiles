@@ -28,7 +28,7 @@ bakwht='\e[47m'   # White
 txtrst='\e[0m'    # Text Reset
 
 # Bash vi mode
-set -o vi
+set -o emacs
 
 # Common commands abbr
 alias ls="ls -G"
