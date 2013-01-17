@@ -1,8 +1,8 @@
 [core]
 	excludesfile = /Users/thiago/.gitignore
 	editor = vim
-	autocrlf = input
-	safecrlf = true
+	;autocrlf = input
+	;safecrlf = true
 	whitespace = cr-at-eol
 [user]
 	name = Thiago A. Silva
