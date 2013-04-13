@@ -49,7 +49,7 @@ alias pgstart="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/serv
 alias pgstop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 alias www="cd ~/Sites"
 alias mvi="mvim --remote-silent"
-alias most_frequent="history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head"
+alias most_frequent="history | awk '{a[\$2]++}END{for(i in a){print a[i] \" \" i}}' | sort -rn | head"
 alias ..="cd .."
 
 # Bash completion
