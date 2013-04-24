@@ -1,6 +1,6 @@
 [core]
 	excludesfile = /Users/thiago/.gitignore
-	editor = vim
+	editor = vi
 	;autocrlf = input
 	;safecrlf = true
 	whitespace = cr-at-eol
@@ -20,11 +20,13 @@
 	br = branch
 	ci = commit
 	st = status
+	au = update-index --asume-unchanged
 	ss = submodule sync
 	unstage = reset HEAD --
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	type = cat-file -t
 	dump = cat-file -p
+    r = !git checkout $(git rev-list -n 1 HEAD -- "$1")^ -- "$1"
 [push]
 	default = current
 [difftool "sourcetree"]
