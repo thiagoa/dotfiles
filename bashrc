@@ -48,8 +48,12 @@ alias gitrm="git ls-files --deleted | xargs git rm"
 alias pgstart="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
 alias pgstop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 alias www="cd ~/Sites"
-alias mvi="mvim --remote-silent"
+alias mvim="mvim --remote-silent"
 alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias r="while [ ! -d .git ]; do cd ..; done"
 
 # Bash completion
 if [ -f /opt/local/etc/bash_completion ]; then
@@ -69,3 +73,6 @@ if [ -f ~/Dropbox/Scripts/config/aliases ]; then
 fi
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
