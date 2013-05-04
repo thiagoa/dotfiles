@@ -26,7 +26,7 @@
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	type = cat-file -t
 	dump = cat-file -p
-    r = !git checkout $(git rev-list -n 1 HEAD -- "$1")^ -- "$1"
+    restore = !git checkout $(git rev-list -n 1 HEAD -- "$1")^ -- "$1"
 [push]
 	default = current
 [difftool "sourcetree"]
