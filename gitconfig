@@ -20,7 +20,7 @@
 	br = branch
 	ci = commit
 	st = status
-	au = update-index --asume-unchanged
+	au = update-index --assume-unchanged
 	ss = submodule sync
 	unstage = reset HEAD --
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
