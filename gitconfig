@@ -27,6 +27,7 @@
 	type = cat-file -t
 	dump = cat-file -p
     restore = !git checkout $(git rev-list -n 1 HEAD -- "$1")^ -- "$1"
+    lastfiles = diff-tree --no-commit-id --name-only -r HEAD
 [push]
 	default = current
 [difftool "sourcetree"]
