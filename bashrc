@@ -56,6 +56,15 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias r="while [ ! -d .git ]; do cd ..; done"
 
+function pathfinder () {
+    if [ -z "$1" ]; then
+        DIR=$PWD
+    else
+        DIR=$1
+    fi
+    open -a "Path Finder.app" $DIR
+}
+
 # Bash completion
 if [ -f /opt/local/etc/bash_completion ]; then
     . /opt/local/etc/bash_completion
