@@ -85,3 +85,10 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# cd para a pasta aberta no Finder
+fcd() {
+    pFinder=`osascript -e 'tell application "Finder" to if (count of Finder windows) > 0 then get POSIX path of (target of front Finder window as text)'`
+    [ -n "$pFinder" ] && cd "$pFinder"
+    pwd
+}
