@@ -54,6 +54,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias r="while [ ! -d .git ]; do cd ..; done"
+alias bigfiles="tree -ah --du . | ack '\[(\d{3,}M|\d+.*G)\]'"
 
 function pathfinder () {
     if [ -z "$1" ]; then
