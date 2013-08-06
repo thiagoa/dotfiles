@@ -27,6 +27,8 @@
 	type = cat-file -t
 	dump = cat-file -p
     restore = !git checkout $(git rev-list -n 1 HEAD -- "$1")^ -- "$1"
+    reapplytag = !git tag -d $1 && git push origin :refs/tags/$1 && git tag $1 && git push origin master && git push --tags
+    applytag = !git tag $1 && git push origin master && git push --tags
     lastfiles = diff-tree --no-commit-id --name-only -r HEAD
 [push]
 	default = current
