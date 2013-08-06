@@ -1,12 +1,16 @@
 # Seta o prompt
-export PS1="\u \w\`ruby -e \"print (%x{git branch 2> /dev/null}.grep(/^\*/).first || '').gsub(/^\* (.+)$/, '(\1) ')\"\`\$ "
+export PS1="\u \w\`ruby -e \"print (%x{git branch 2> /dev/null}.grep(/^\*/).first || '').gsub(/^\* (.+)$/, '(\1) ')\"\`\⌘ "
 
 print_before_the_prompt () {  
-    printf "\n$txtred%s $txtpur%s $txtred- $bldgrn%s $txtpur%s\n$txtrst" "$USER" "$HOSTNAME" "$PWD" "$(vcprompt)"  
+    PROMPT=`vcprompt`
+    if [[ $PROMPT != "" ]]; then
+        PROMPT="($PROMPT)"
+    fi
+    printf "\n$txtred%s $txtpur%s$txtred $bldgrn%s\n$txtrst" "$USER" "$PWD" "$PROMPT"  
 }  
       
 PROMPT_COMMAND=print_before_the_prompt  
-PS1='$ '  
+PS1='⌘ '  
 
 export HISTSIZE=1000
 
