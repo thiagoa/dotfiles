@@ -54,6 +54,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias r="while [ ! -d .git ]; do cd ..; done"
+alias bigfiles="tree -ah --du . | ack '\[(\d{3,}M|\d+.*G)\]'"
 
 function pathfinder () {
     if [ -z "$1" ]; then
@@ -98,3 +99,10 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# cd para a pasta aberta no Finder
+fcd() {
+    pFinder=`osascript -e 'tell application "Finder" to if (count of Finder windows) > 0 then get POSIX path of (target of front Finder window as text)'`
+    [ -n "$pFinder" ] && cd "$pFinder"
+    pwd
+}
