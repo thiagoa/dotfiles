@@ -10,7 +10,7 @@ print_before_the_prompt () {
 }  
       
 PROMPT_COMMAND=print_before_the_prompt  
-PS1='⌘ '  
+PS1='$ '  
 
 export HISTSIZE=1000
 
