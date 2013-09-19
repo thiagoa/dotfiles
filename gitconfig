@@ -63,3 +63,5 @@
 [mergetool "diffmerge"]
 	cmd = diffmerge --merge --result=$MERGED $LOCAL $BASE $REMOTE
 	trustExitCode = true
+[init]
+	templatedir = ~/.git_template
