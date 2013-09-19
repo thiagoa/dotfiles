@@ -30,6 +30,7 @@
     reapplytag = !git tag -d $1 && git push origin :refs/tags/$1 && git tag $1 && git push origin master && git push --tags
     applytag = !git tag $1 && git push origin master && git push --tags
     lastfiles = diff-tree --no-commit-id --name-only -r HEAD
+	ctags = !.git/hooks/ctags\n
 [push]
 	default = current
 [difftool "sourcetree"]
