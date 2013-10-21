@@ -65,19 +65,6 @@ function pathfinder () {
     open -a "Path Finder.app" $DIR
 }
 
-
-# Thanks for the awesome idea batasrki
-function gemdir {
-  if [[ -z "$1" ]] ; then
-    cd $(rvm gemdir)/gems
-    pwd
-  else
-    rvm "$1"
-    cd $(rvm gemdir)/gems
-    pwd
-  fi
-}
-
 # Bash completion
 if [ -f /opt/local/etc/bash_completion ]; then
     . /opt/local/etc/bash_completion
@@ -95,7 +82,7 @@ if [ -f ~/Dropbox/Scripts/config/aliases ]; then
     source ~/Dropbox/Scripts/config/aliases
 fi
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=~/.rbenv/shims:$PATH
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"

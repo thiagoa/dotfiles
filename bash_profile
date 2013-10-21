@@ -44,5 +44,3 @@ export PATH=~/Scripts/mixdev:~/Scripts:/usr/local/bin:/opt/local/bin:/opt/local/
 # Carrega aliases e configurações personalizadas
 source ~/.bashrc
 source ~/.dotfiles/custom.aliases.bash
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
