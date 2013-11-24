@@ -46,3 +46,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export PATH=/usr/local/heroku/bin:~/.rbenv/shims:~/Scripts:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$PATH
+
+source /usr/local/Cellar/z/1.8/etc/profile.d/z.sh
+
+alias connections="lsof -P -i -n"
+alias myip="curl ifconfig.me"
+alias pg="postgres -D /usr/local/var/postgres"
