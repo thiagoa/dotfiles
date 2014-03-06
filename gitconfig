@@ -1,6 +1,6 @@
 [core]
 	excludesfile = /Users/thiago/.gitignore
-	editor = vi
+	editor = vim
 	;autocrlf = input
 	;safecrlf = true
 	whitespace = cr-at-eol
