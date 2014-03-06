@@ -44,9 +44,6 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# Load rbenv
-eval "$(rbenv init -)"
-
 # Customize to your needs...
 export PATH=/usr/local/heroku/bin:~/.rbenv/shims:~/Scripts:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$PATH
 
