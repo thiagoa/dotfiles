@@ -45,7 +45,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/local/heroku/bin:~/.rbenv/shims:~/Scripts:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$PATH
+export PATH=./bin:/usr/local/heroku/bin:~/Scripts:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$PATH
 
 source /usr/local/Cellar/z/1.8/etc/profile.d/z.sh
 
@@ -53,3 +53,43 @@ alias connections="lsof -P -i -n"
 alias myip="curl ifconfig.me"
 alias pg="postgres -D /usr/local/var/postgres"
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+alias mysql="mysql -u root --password="
+
+set -o vi
+bindkey "^R" history-incremental-search-backward
+
+# Use vim cli mode
+bindkey '^P' up-history
+bindkey '^N' down-history
+
+# backspace and ^h working even after
+# returning from command mode
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+
+# ctrl-w removed word backwards
+bindkey '^w' backward-kill-word
+
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+export KEYTIMEOUT=1
+
+. ~/.zsh/opp.zsh/opp.zsh
+. ~/.zsh/opp.zsh/opp/*
+
+export EDITOR=vim
+
+srchighlight() {
+    echo $1
+    src-hilite-lesspipe.sh $1 | less -R
+}
+alias src=srchighlight
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
