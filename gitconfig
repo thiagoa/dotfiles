@@ -36,7 +36,7 @@
     lastfiles = diff-tree --no-commit-id --name-only -r HEAD
 	ctags = !.git/hooks/ctags\n
 [push]
-	default = current
+	default = tracking
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
