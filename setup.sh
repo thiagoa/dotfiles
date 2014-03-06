@@ -10,3 +10,10 @@ for i in `ls`; do
         ln -s $CURRENT_DIR/$i $HOME/.$i
     fi
 done;
+
+if [ ! -d ~/.rvm/gemsets ]; then
+    mkdir -p ~/.rvm/gemsets
+fi
+
+rm ~/.global.gems
+ln -s $CURRENT_DIR/global.gems ~/.rvm/gemsets/global.gems
