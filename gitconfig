@@ -17,6 +17,7 @@
     ls = "log --pretty=format:\"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]\" --decorate --date=short"
     lsv = "log --pretty=format:\"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]\" --decorate --date=short --numstat"
     diffw = diff --word-diff
+    diffc = diff --cached
 	si = submodule init
 	su = submodule update
 	s = submodule update --init
