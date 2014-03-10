@@ -5,3 +5,4 @@ rake
 rvm
 gem-ctags
 awesome_print
+interactive_editor
