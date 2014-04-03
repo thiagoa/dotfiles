@@ -1,0 +1,298 @@
+# You can edit this file by hand, but it's recommended not to do that.
+
+# Bookmarks:
+'H
+	/Users/thiago/
+	../
+'a
+	/Users/thiago/Code/ruby/admix
+	admix.gemspec
+'b
+	/Users/thiago/bin/
+	../
+'h
+	/Users/thiago/
+	../
+'m
+	/Users/thiago/Code/ruby/admix
+	f.txt
+'z
+	/Users/thiago/.vifm
+	../
+
+# TUI:
+ar
+q0
+v2
+ov
+m-1
+l2
+r2
+
+# Left window history (oldest to newest):
+d/Users/thiago/Code/ruby/admix
+	../
+0
+d/Users/thiago/Code/ruby
+	admix/
+6
+d/Users/thiago/Code/ruby/admix
+	bin/
+2
+d/Users/thiago/Code/ruby/admix/bin
+	../
+0
+d/Users/thiago/Code/ruby/admix
+	bin/
+2
+d/Users/thiago/Code/ruby/admix/bin
+	../
+0
+d/Users/thiago/Code/ruby/admix
+	bin/
+2
+d/Users/thiago/Code/ruby/admix/bin
+	../
+0
+d/Users/thiago/Code/ruby/admix
+	bin/
+2
+d/Users/thiago/Code/ruby/admix/bin
+	../
+0
+d/Users/thiago/Code/ruby/admix
+	lib/
+5
+d/Users/thiago/Code/ruby/admix/lib
+	../
+0
+d/Users/thiago/Code/ruby/admix
+	db/
+4
+d/Users/thiago/Code/ruby/admix/db
+	../
+0
+d/Users/thiago/Code/ruby/admix
+	lib/
+5
+d/Users/thiago/Code/ruby/admix/lib
+	../
+0
+d/Users/thiago/Code/ruby/admix
+	lib/
+5
+d/Users/thiago/Code/ruby/admix/lib
+	../
+0
+d/Users/thiago/Code/ruby/admix
+	spec/
+6
+d/Users/thiago/Code/ruby/admix/spec
+	../
+0
+d/Users/thiago/Code/ruby/admix
+	config/
+3
+d/Users/thiago/Code/ruby/admix/config
+	../
+0
+d/Users/thiago/Code/ruby/admix
+	../
+0
+d/Users/thiago/Code/ruby
+	super_form/
+32
+d/Users/thiago/.vifm
+	colors/
+2
+d/Users/thiago/.vifm/colors
+	other
+3
+d/Users/thiago/.vifm
+	colors/
+2
+d/Users/thiago/.vifm/colors
+	other
+3
+d/Users/thiago/.vifm
+	colors/
+2
+d/Users/thiago/.vifm/colors
+	../
+0
+d/Users/thiago/.vifm
+	colors/
+2
+d/Users/thiago/.vifm/colors
+	../
+0
+d/Users/thiago/.vifm
+	../
+0
+d/Users/thiago
+	Documents/
+4
+d/Users/thiago/Code/ruby/admix
+	lib/
+5
+d/Users/thiago/Code/ruby/admix/lib
+	../
+0
+d/Users/thiago/Code/ruby/admix
+	../
+0
+d/Users/thiago/Code/ruby
+	admix/
+4
+d/Users/thiago/Code/ruby/admix
+	app/
+1
+d/Users/thiago/Code/ruby/admix/app
+	admix/
+1
+d/Users/thiago/Code/ruby/admix
+	app/
+1
+d/Users/thiago/Code/ruby/admix/app
+	admix/
+1
+d/Users/thiago/Code/ruby/admix/app/admix
+	../
+0
+d/Users/thiago/Code/ruby/admix/app
+	admix/
+1
+d
+
+# Right window history (oldest to newest):
+D/Users/thiago/Code/ruby/admix
+	lib/
+5
+D/Users/thiago/Code/ruby/admix/lib
+	admix/
+1
+D/Users/thiago/Code/ruby/admix/lib/admix
+	spec/
+1
+D/Users/thiago/Code/ruby/admix/lib/admix/spec
+	../
+0
+D/Users/thiago/Code/ruby/admix/lib/admix
+	spec/
+1
+D/Users/thiago/Code/ruby/admix/lib/admix/spec
+	../
+0
+D/Users/thiago/Code/ruby/admix/lib/admix
+	spec/
+1
+D/Users/thiago/Code/ruby/admix/lib/admix/spec
+	support/
+1
+D/Users/thiago/Code/ruby/admix/lib/admix/spec/support
+	../
+0
+D/Users/thiago/Code/ruby/admix/lib/admix/spec
+	support/
+1
+D/Users/thiago/Code/ruby/admix/lib/admix/spec/support
+	shared_examples.rb
+5
+D/Users/thiago/.vifm
+	vifmrc
+5
+D/Users/thiago
+	Applications/
+1
+D/Users/thiago/.vifm
+	colors/
+2
+D/Users/thiago/.vifm/colors
+	Marslo
+2
+D/Users/thiago/.vifm
+	colors/
+2
+D/Users/thiago/.vifm/colors
+	../
+0
+D/Users/thiago/.vifm
+	vifmrc
+5
+D
+
+# Command line history (oldest to newest):
+:help
+:!touch a.tt
+:touch f.txt
+:colorscheme Default
+:colorscheme for
+:e 
+:e vifm
+:touch arch
+:colorscheme arch
+:touch other
+:colorscheme other
+:touch even
+:color even
+:color Marslo.txt
+:cd ~/Code/ruby/admix
+:touch a.txt
+:move
+:filter MIT
+:filter Rake
+:filter ^admix
+:filter
+:filter 
+:filter *
+:filter*
+:filter \*
+:cd ~/.vifm/
+:color
+:cd ~/.
+:cd ~/.vifm
+:q
+
+# Search history (oldest to newest):
+/f.t
+/ap
+
+# Prompt history (oldest to newest):
+pRakefile
+pn
+py
+pa
+pMarslo
+
+# Local filter history (oldest to newest):
+
+# Registers:
+""/Users/thiago/.vifm/Trash/000_arch
+""/Users/thiago/.vifm/Trash/000_other
+
+# Directory stack (oldest to newest):
+
+# Trash content:
+t000_a.tt
+	/Users/thiago/Code/ruby/admix/a.tt
+t000_f.txt
+	/Users/thiago/Code/ruby/admix/f.txt
+t000_even
+	/Users/thiago/Code/ruby/admix/even
+t000_a.txt
+	/Users/thiago/Code/ruby/admix/a.txt
+t000_arch
+	/Users/thiago/.vifm/colors/arch
+t000_other
+	/Users/thiago/.vifm/colors/other
+
+# State:
+f
+i1
+[.1
+[F
+F
+I1
+].1
+]F
+s0
