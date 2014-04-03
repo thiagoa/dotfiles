@@ -96,4 +96,8 @@ fcd() {
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-export PS1="$ "
+export PS1="\w$ "
+
+alias ...="cd ../.."
+alias ....="cd ../.."
+alias .....="cd ../../.."
