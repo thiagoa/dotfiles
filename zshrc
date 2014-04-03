@@ -3,6 +3,8 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+source ~/.zlogin
+
 # Include my custom aliases
 source ~/.aliases.sh
 
@@ -29,8 +31,8 @@ srchighlight() {
 alias src=srchighlight
 
 # RVM config
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=/usr/local/bin:$HOME/.rvm/bin:$PATH
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-# Make ZSH play a bit more nicer with Emacs
+# Better ZSH compatibility with Emacs
 [[ $EMACS = t ]] && unsetopt zle
