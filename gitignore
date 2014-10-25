@@ -4,5 +4,5 @@ application/logs
 application/config/database.php
 application/config/bootstrap.php
 sistema/app/config/config.php
-tags
+/tags
 .tags
