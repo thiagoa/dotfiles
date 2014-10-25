@@ -14,7 +14,10 @@
 	interactive = auto
 	status = auto
 [alias]
-    ls = "log --pretty=format:\"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]\" --decorate --date=short"
+    compare = log --left-right --graph --cherry-pick --oneline
+    aa = add .
+    ap = add --patch
+    ls = "log --pretty=format:\"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn] %C(yellow)%ar\" --decorate --date=short"
     lsv = "log --pretty=format:\"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]\" --decorate --date=short --numstat"
     diffw = diff --word-diff
     diffc = diff --cached
@@ -23,6 +26,7 @@
 	s = submodule update --init
 	co = checkout
 	br = branch
+    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --oneline
 	ci = commit
 	st = status -sb
 	au = update-index --assume-unchanged
@@ -75,3 +79,5 @@
 [mergetool "Kaleidoscope"]
 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
+[help]
+	autocorrect = 1
