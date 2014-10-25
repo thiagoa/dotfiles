@@ -23,6 +23,9 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 # Default editor (use edit command, many other things use this var)
 export EDITOR=vim
 
+# Path to install GO packages
+export GOPATH=~/Code/go
+
 # less for source code (requires source-highlight package)
 srchighlight() {
     echo $1
@@ -30,9 +33,14 @@ srchighlight() {
 }
 alias src=srchighlight
 
+alias sudo="sudo -e"
+
 # RVM config
-PATH=/usr/local/bin:$HOME/.rvm/bin:$PATH
+PATH=~/Scripts:/usr/local/bin:$HOME/.rvm/bin:$PATH
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # Better ZSH compatibility with Emacs
 [[ $EMACS = t ]] && unsetopt zle
+
+#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
+[[ -s "/Users/thiago/.gvm/bin/gvm-init.sh" ]] && source "/Users/thiago/.gvm/bin/gvm-init.sh"
