@@ -20,3 +20,4 @@ srchighlight() {
 
 alias src=srchighlight
 alias sudo="sudo -e"
+alias gpg="gpg2"
