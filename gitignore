@@ -6,3 +6,10 @@ application/config/bootstrap.php
 sistema/app/config/config.php
 /tags
 .tags
+GPATH
+GRTAGS
+GTAGS
+.classpath
+.project
+.ropeproject
+workbench.xmi

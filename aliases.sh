@@ -9,6 +9,8 @@ alias myip="curl ifconfig.me"
 # Launch PostgreSQL
 alias pg="postgres -D /usr/local/var/postgres"
 
+alias treeless="tree -C | less -R"
+
 # Launch MySQL
 alias mysql="mysql -u root --password="
 
@@ -19,5 +21,25 @@ srchighlight() {
 }
 
 alias src=srchighlight
-alias sudo="sudo -e"
 alias gpg="gpg2"
+
+fancy-ctrl-z () {
+  if [[ $#BUFFER -eq 0 ]]; then
+    BUFFER="fg"
+    zle accept-line
+  else
+    zle push-input
+    zle clear-screen
+  fi
+}
+
+zle -N fancy-ctrl-z
+bindkey '^Z' fancy-ctrl-z
+
+alias -s rb=vim
+alias -s erb=vim
+alias -s php=vim
+
+alias ec='exec /usr/bin/env emacsclient -c -a "" $*'
+
+alias gc="open -a \"/Applications/Google Chrome.app\" --args --force-renderer-accessibility"

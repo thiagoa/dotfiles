@@ -5,6 +5,7 @@
 	;safecrlf = true
 	whitespace = cr-at-eol
     filemode = false
+	autocrlf = input
 [user]
 	name = Thiago A. Silva
 	email = thiagoaraujos@gmail.com
@@ -13,7 +14,9 @@
 	diff = auto
 	interactive = auto
 	status = auto
+	ui = true
 [alias]
+    home = rev-parse --show-toplevel
     compare = log --left-right --graph --cherry-pick --oneline
     aa = add .
     ap = add --patch
@@ -41,10 +44,10 @@
     lastfiles = diff-tree --no-commit-id --name-only -r HEAD
 	ctags = !.git/hooks/ctags\n
 [push]
-	default = tracking
+	default = simple
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
@@ -81,3 +84,5 @@
 	trustExitCode = true
 [help]
 	autocorrect = 1
+[pull]
+	rebase = true

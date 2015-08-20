@@ -1,24 +1,26 @@
 # You can edit this file by hand, but it's recommended not to do that.
 
 # Bookmarks:
-'H
-	/Users/thiago/
-	../
-'a
-	/Users/thiago/Code/ruby/admix
-	admix.gemspec
 'b
 	/Users/thiago/bin/
 	../
+1422725418
 'h
 	/Users/thiago/
 	../
+1422725418
+'H
+	/Users/thiago/
+	../
+-1
+'a
+	/Users/thiago/Code/ruby/admix
+	admix.gemspec
+-1
 'm
 	/Users/thiago/Code/ruby/admix
 	f.txt
-'z
-	/Users/thiago/.vifm
-	../
+-1
 
 # TUI:
 ar
@@ -217,8 +219,8 @@ D/Users/thiago/.vifm/colors
 	../
 0
 D/Users/thiago/.vifm
-	vifmrc
-5
+	vifm-help.txt
+3
 D
 
 # Command line history (oldest to newest):
@@ -273,17 +275,17 @@ pMarslo
 # Directory stack (oldest to newest):
 
 # Trash content:
-t000_a.tt
+t/Users/thiago/.vifm/Trash/000_a.tt
 	/Users/thiago/Code/ruby/admix/a.tt
-t000_f.txt
+t/Users/thiago/.vifm/Trash/000_f.txt
 	/Users/thiago/Code/ruby/admix/f.txt
-t000_even
+t/Users/thiago/.vifm/Trash/000_even
 	/Users/thiago/Code/ruby/admix/even
-t000_a.txt
+t/Users/thiago/.vifm/Trash/000_a.txt
 	/Users/thiago/Code/ruby/admix/a.txt
-t000_arch
+t/Users/thiago/.vifm/Trash/000_arch
 	/Users/thiago/.vifm/colors/arch
-t000_other
+t/Users/thiago/.vifm/Trash/000_other
 	/Users/thiago/.vifm/colors/other
 
 # State:
