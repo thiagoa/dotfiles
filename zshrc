@@ -51,3 +51,5 @@ zstyle ':completion:history-words:*' menu yes
 zstyle ':completion:history-words:*' remove-all-dups yes
 bindkey "\e/" _history-complete-older
 bindkey "\e," _history-complete-newer
+
+eval "$(rbenv init -)"

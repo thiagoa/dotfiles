@@ -1,5 +1,3 @@
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
 if [ -n "$INSIDE_EMACS" ]; then
    export TERM=xterm-256color
 fi
