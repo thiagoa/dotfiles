@@ -15,3 +15,7 @@ export JAVA_OPTS="-server -XX:MaxPermSize=512m"
 export GRAILS_OPTS="-XX:MaxPermSize=1024m -Xmx1024M -server"
 
 source /usr/local/bin/virtualenvwrapper.sh
+
+if [ -f ~/.secrets ]; then
+    source ~/.secrets
+fi
