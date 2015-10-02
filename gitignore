@@ -14,3 +14,4 @@ GTAGS
 .ropeproject
 workbench.xmi
 dump.rdb
+config/initializers/custom_logger.rb
