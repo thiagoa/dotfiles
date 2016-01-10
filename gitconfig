@@ -1,8 +1,6 @@
 [core]
-	excludesfile = /Users/thiago/.gitignore
+	excludesfile = ~/.gitignore
 	editor = vim
-	;autocrlf = input
-	;safecrlf = true
 	whitespace = cr-at-eol
     filemode = false
 	autocrlf = input
@@ -16,35 +14,40 @@
 	status = auto
 	ui = true
 [alias]
-    home = rev-parse --show-toplevel
-    compare = log --left-right --graph --cherry-pick --oneline
     aa = add .
     ap = add --patch
-    ls = "log --pretty=format:\"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn] %C(yellow)%ar\" --decorate --date=short"
-    lsv = "log --pretty=format:\"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]\" --decorate --date=short --numstat"
-    diffw = diff --word-diff
-    diffc = diff --cached
-	si = submodule init
-	su = submodule update
-	s = submodule update --init
 	co = checkout
 	br = branch
-    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --oneline
 	ci = commit
 	st = status -sb
 	au = update-index --assume-unchanged
+	s = submodule update --init
 	ss = submodule sync
+	ciane = commit --amend --no-edit
+    diffc = diff --cached
+    diffw = diff --word-diff
 	unstage = reset HEAD --
-	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-	type = cat-file -t
-	dump = cat-file -p
+    la = log --oneline --graph --decorate --all
+    l = log --oneline --graph --decorate
+    ls = "log --pretty=format:\"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn] %C(yellow)%ar\" --decorate --date=short"
+    lsv = "log --pretty=format:\"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]\" --decorate --date=short --numstat"
+    home = rev-parse --show-toplevel
     restore = !git checkout $(git rev-list -n 1 HEAD -- "$1")^ -- "$1"
     reapplytag = !git tag -d $1 && git push origin :refs/tags/$1 && git tag $1 && git push origin master && git push --tags
     applytag = !git tag $1 && git push origin master && git push --tags
-    lastfiles = diff-tree --no-commit-id --name-only -r HEAD
+    list-files = diff-tree --no-commit-id --diff-filter=ACMRTUXB --name-only -r
+    last-files = !git list-files HEAD
 	ctags = !.git/hooks/ctags\n
+	glog = log -E -i --grep
+    mup = !git checkout master && git pull && git checkout -
+	first-commit = !git log master..HEAD --oneline | tail -1 | cut -d' ' -f 1
+    branch-files = !git list-files $(git first-commit)..HEAD
+	type = cat-file -t
+	dump = cat-file -p
 [push]
-	default = simple
+	default = upstream
+[fetch]
+    prune = true
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =
@@ -53,12 +56,6 @@
 	trustExitCode = true
 [github]
 	token = 990b2fbb1bdf056797dceda60264018f
-#[difftool "Kaleidoscope"]
-#[difftool]
-#[diff]
-[difftool "Kaleidoscope"]
-[difftool]
-[diff]
 [difftool "Kaleidoscope"]
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool]
