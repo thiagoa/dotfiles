@@ -15,12 +15,10 @@ setopt NO_BEEP
 # Mantain a jumplist (use the z command)
 source /usr/local/Cellar/z/1.8/etc/profile.d/z.sh
 
-# Search history with the string from beginning up to cursor position
-bindkey '^xp' history-beginning-search-backward
-bindkey '^xn' history-beginning-search-forward
+# Kill region shortcut (just like Emacs)
 bindkey '^x^k' kill-region
 
-# Move to where the arguments belong.
+# Move to beginning of arguments
 after-first-word() {
   zle beginning-of-line
   zle forward-word
@@ -45,6 +43,16 @@ stt_both  () { setTerminalText 0 $@; }
 stt_tab   () { setTerminalText 1 $@; }
 stt_title () { setTerminalText 2 $@; }
 
+g() {
+    if [[ $# > 0 ]]; then
+        git $@
+    else
+        git status
+    fi
+}
+
+compdef g=git
+
 # Complete in history with M-/, M-,
 zstyle ':completion:history-words:*' list no 
 zstyle ':completion:history-words:*' menu yes
@@ -52,4 +60,5 @@ zstyle ':completion:history-words:*' remove-all-dups yes
 bindkey "\e/" _history-complete-older
 bindkey "\e," _history-complete-newer
 
+# Start rbenv
 eval "$(rbenv init -)"
