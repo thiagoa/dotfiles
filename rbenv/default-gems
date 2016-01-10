@@ -3,3 +3,5 @@ gem-ctags
 ripper-tags
 interactive_editor
 awesome_print
+tmuxinator
+reek
