@@ -3,6 +3,9 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+autoload bashcompinit
+bashcompinit
+
 # Do not expand history abbreviations by default (unless you use tab)
 setopt no_hist_verify
 
