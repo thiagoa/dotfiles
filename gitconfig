@@ -20,10 +20,16 @@
 	br = branch
 	ci = commit
 	st = status -sb
+    p = push
 	au = update-index --assume-unchanged
 	s = submodule update --init
 	ss = submodule sync
+    f = fetch
+    reb = rebase
+    rebc = rebase --continue
+    cia = commit --amend
 	ciane = commit --amend --no-edit
+	cianec = !git commit --amend --no-edit && git rebase --continue
     diffc = diff --cached
     diffw = diff --word-diff
 	unstage = reset HEAD --
