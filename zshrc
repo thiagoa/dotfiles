@@ -13,7 +13,9 @@ setopt NO_BEEP
 [[ $EMACS = t ]] && unsetopt zle
 
 # Mantain a jumplist (use the z command)
-source /usr/local/Cellar/z/1.8/etc/profile.d/z.sh
+if [ -f /usr/local/Cellar/z/1.8/etc/profile.d/z.sh ]; then
+    source /usr/local/Cellar/z/1.8/etc/profile.d/z.sh
+fi
 
 # Kill region shortcut (just like Emacs)
 bindkey '^x^k' kill-region

@@ -12,7 +12,9 @@ export WORKON_HOME=~/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 export PGDATA=/usr/local/var/postgres
 
-source /usr/local/bin/virtualenvwrapper.sh
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
 
 if [ -f ~/.secrets ]; then
     source ~/.secrets
