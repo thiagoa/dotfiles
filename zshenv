@@ -11,8 +11,6 @@ export PATH=./bin:/usr/local/bin:$PATH:$HOME/bin:~/.composer/vendor/bin:/usr/loc
 export WORKON_HOME=~/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 export PGDATA=/usr/local/var/postgres
-export JAVA_OPTS="-server -XX:MaxPermSize=512m"
-export GRAILS_OPTS="-XX:MaxPermSize=1024m -Xmx1024M -server"
 
 source /usr/local/bin/virtualenvwrapper.sh
 
