@@ -1,69 +1,26 @@
-# Load zprezto (lightweight SSH repo)
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-autoload bashcompinit
-bashcompinit
+source ~/.shellfunctions.sh
+source ~/.aliases.sh
+source ~/.zshlocal.sh
+source ~/.zshbindkeys.sh
+source ~/.zshsetopts.sh
 
-# Do not expand history abbreviations by default (unless you use tab)
-setopt no_hist_verify
+if [ -f ~/.secrets ]; then
+    source ~/.secrets
+fi
 
-# No beeps, please
-setopt NO_BEEP
-
-# Better ZSH compatibility with Emacs
-[[ $EMACS = t ]] && unsetopt zle
-
-# Mantain a jumplist (use the z command)
 if [ -f /usr/local/Cellar/z/1.8/etc/profile.d/z.sh ]; then
     source /usr/local/Cellar/z/1.8/etc/profile.d/z.sh
 fi
 
-# Kill region shortcut (just like Emacs)
-bindkey '^x^k' kill-region
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
 
-# Move to beginning of arguments
-after-first-word() {
-  zle beginning-of-line
-  zle forward-word
-}
-zle -N after-first-word
-bindkey "^X1" after-first-word
+BASE16_SHELL="$HOME/.config/base16-shell/base16-eighties.light.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
-# Include my custom aliases
-source ~/.aliases.sh
-
-# Nice prompt
-prompt nicoulaj
-
-# $1 = type; 0 - both, 1 - tab, 2 - title
-# rest = text
-setTerminalText () {
-    # echo works in bash & zsh
-    local mode=$1 ; shift
-    echo -ne "\033]$mode;$@\007"
-}
-stt_both  () { setTerminalText 0 $@; }
-stt_tab   () { setTerminalText 1 $@; }
-stt_title () { setTerminalText 2 $@; }
-
-g() {
-    if [[ $# > 0 ]]; then
-        git $@
-    else
-        git status
-    fi
-}
-
-compdef g=git
-
-# Complete in history with M-/, M-,
-zstyle ':completion:history-words:*' list no 
-zstyle ':completion:history-words:*' menu yes
-zstyle ':completion:history-words:*' remove-all-dups yes
-bindkey "\e/" _history-complete-older
-bindkey "\e," _history-complete-newer
-
-# Start rbenv
 eval "$(rbenv init -)"

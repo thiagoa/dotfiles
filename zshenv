@@ -11,15 +11,3 @@ export PATH=./bin:/usr/local/bin:$PATH:$HOME/bin:~/.composer/vendor/bin:/usr/loc
 export WORKON_HOME=~/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 export PGDATA=/usr/local/var/postgres
-
-if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
-    source /usr/local/bin/virtualenvwrapper.sh
-fi
-
-if [ -f ~/.secrets ]; then
-    source ~/.secrets
-fi
-
-# Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/base16-atelierlakeside.light.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
