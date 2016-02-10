@@ -2,6 +2,27 @@
 
 FILES_PATTERN='\.(rb)(\..+)?$'
 FORBIDDEN='binding.pry'
-git diff --cached --name-only | \
-    grep -E $FILES_PATTERN | \
-    GREP_COLOR='4;5;37;41' xargs grep --color --with-filename -n $FORBIDDEN && echo 'COMMIT REJECTED Found "$FORBIDDEN" references. Please remove them before commiting' && exit 1
+
+function find_files {
+    git diff --cached --name-only | grep -E $FILES_PATTERN
+}
+
+function find_forbidden_references {
+    local files=$(find_files)
+
+    if [ -z "$files" ]; then
+        exit 0
+    else
+        GREP_COLOR='4;5;37;41' grep --color --with-filename -n $FORBIDDEN $files
+    fi
+}
+
+find_forbidden_references
+
+if [ $? -eq 1 ]; then
+    exit 0
+else
+    echo ''
+    echo COMMIT REJECTED due to "$FORBIDDEN" references.
+    exit 1
+fi
