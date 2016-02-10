@@ -12,15 +12,15 @@ if [ -f ~/.secrets ]; then
     source ~/.secrets
 fi
 
-if [ -f /usr/local/Cellar/z/1.8/etc/profile.d/z.sh ]; then
-    source /usr/local/Cellar/z/1.8/etc/profile.d/z.sh
+if [ -f /usr/local/Cellar/z/1.9/etc/profile.d/z.sh ]; then
+    source /usr/local/Cellar/z/1.9/etc/profile.d/z.sh
 fi
 
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     source /usr/local/bin/virtualenvwrapper.sh
 fi
 
-BASE16_SHELL="$HOME/.config/base16-shell/base16-eighties.light.sh"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-ocean.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 eval "$(rbenv init -)"
