@@ -8,6 +8,7 @@ export BUNDLER_EDITOR=vim
 export EDITOR=vim
 export GOPATH=$HOME/Code/go
 export WORKON_HOME=$HOME/.virtualenvs
+export ELASTIC_PORT=9200
 
 if [ "$(uname)" = "Darwin" ]; then
     export HOMEBREW_CASK_OPTS="--appdir=/Applications"
