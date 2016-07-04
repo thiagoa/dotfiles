@@ -79,7 +79,7 @@ function install_dotfiles {
     echo "Installing dotfiles..."
 
     for file in `ls $CURDIR`; do
-        if [ $file != 'setup.sh' ] && [ $file != 'first_install.sh' ] && [ $file != 'rbenv' ]; then
+        if [ $file != 'setup.sh' ] && [ $file != 'rbenv' ]; then
             if [ -f "$HOME/.$file" ] || [ -h "$HOME/.$file" ]; then
                 rm $HOME/.$file
             fi
