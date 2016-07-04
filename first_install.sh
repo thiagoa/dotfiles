@@ -108,7 +108,7 @@ function install_vimfiles {
 function ask_install_linux_packages {
     echo ""
 
-    if [ -x /bin/uname ] && uname | grep "Linux" > /dev/null; then
+    if [ "$(uname)" = "Linux" ]; then
         while true; do
             read answer\?"Install Ubuntu packages? (Y/n) "
 
