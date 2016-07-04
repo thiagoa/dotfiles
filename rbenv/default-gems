@@ -1,4 +1,5 @@
 bundler
+rbenv-ctags
 gem-ctags
 ripper-tags
 interactive_editor
