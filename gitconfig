@@ -12,80 +12,99 @@
 	diff = auto
 	interactive = auto
 	status = auto
-	ui = true
+	ui = always
+[color "diff"]
+    commit = green
+    meta = yellow
+    frag = cyan
+    old = red
+    new = green
+    whitespace = red reverse
+[color "diff-highlight"]
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green bold
+    newHighlight = green bold 22
 [alias]
-    aa = add .
-    ap = add --patch
-	co = checkout
-	br = branch
-	ci = commit
-	st = status -sb
-    p = push
-	au = update-index --assume-unchanged
-	s = submodule update --init
-	ss = submodule sync
-    f = fetch
-    reb = rebase
-    rebc = rebase --continue
-    cia = commit --amend
-	ciane = commit --amend --no-edit
-	cianec = !git commit --amend --no-edit && git rebase --continue
-    diffc = diff --cached
-    diffw = diff --word-diff
-	unstage = reset HEAD --
-    la = log --oneline --graph --decorate --all
-    l = log --oneline --graph --decorate
-    ls = "log --pretty=format:\"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn] %C(yellow)%ar\" --decorate --date=short"
-    lsv = "log --pretty=format:\"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]\" --decorate --date=short --numstat"
-    home = rev-parse --show-toplevel
-    restore = !git checkout $(git rev-list -n 1 HEAD -- "$1")^ -- "$1"
-    reapplytag = !git tag -d $1 && git push origin :refs/tags/$1 && git tag $1 && git push origin master && git push --tags
-    applytag = !git tag $1 && git push origin master && git push --tags
-    list-files = diff-tree --no-commit-id --diff-filter=ACMRTUXB --name-only -r
-    last-files = !git list-files HEAD
-	ctags = !.git/hooks/ctags\n
-	glog = log -E -i --grep
-    mup = !git checkout master && git pull && git checkout -
-	first-commit = !git log master..HEAD --oneline | tail -1 | cut -d' ' -f 1
-    branch-files = !git list-files $(git first-commit)..HEAD
-	type = cat-file -t
-	dump = cat-file -p
+  aa = add .
+  ap = add --patch
+  co = checkout
+  br = branch
+  abr = !git for-each-ref --sort=-committerdate refs/heads/     --format='%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:magenta)%(authorname)%(color:reset)'     | column -ts'|'
+  ci = commit
+  st = status -sb
+  p = push
+  au = update-index --assume-unchanged
+  s = submodule update --init
+  ss = submodule sync
+  f = fetch
+  reb = rebase
+  rebc = rebase --continue
+  cia = commit --amend
+  ciane = commit --amend --no-edit
+  cianec = !git commit --amend --no-edit && git rebase --continue
+  d = diff
+  dc = diff --cached
+  diffc = diff --cached
+  diffw = diff --word-diff
+  unstage = reset HEAD --
+  mff = merge --no-ff
+  la = log --oneline --graph --decorate --all
+  l = log --oneline --graph --decorate
+  ls = "log --pretty=format:\"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn] %C(yellow)%ar\" --decorate --date=short"
+  lsv = "log --pretty=format:\"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]\" --decorate --date=short --numstat"
+  rmstalled = !git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d
+  home = rev-parse --show-toplevel
+  restore = !git checkout $(git rev-list -n 1 HEAD -- "$1")^ -- "$1"
+  reapplytag = !git tag -d $1 && git push origin :refs/tags/$1 && git tag $1 && git push origin master && git push --tags
+  applytag = !git tag $1 && git push origin master && git push --tags
+  list-files = diff-tree --no-commit-id --diff-filter=ACMRTUXB --name-only -r
+  last-files = !git list-files HEAD
+  ctags = !.git/hooks/ctags\n
+  glog = log -E -i --grep
+  mup = !git checkout master && git pull && git checkout -
+  first-commit = !git log master..HEAD --oneline | tail -1 | cut -d' ' -f 1
+  branch-files = !git list-files $(git first-commit)..HEAD
+  type = cat-file -t
+  dump = cat-file -p
 [push]
-	default = upstream
+  default = upstream
 [fetch]
-    prune = true
+  prune = true
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path =
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
 [github]
-	token = 990b2fbb1bdf056797dceda60264018f
+  token = 990b2fbb1bdf056797dceda60264018f
 [difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool]
-	prompt = false
+  prompt = false
 [diff]
-	tool = Kaleidoscope
+  compactionHeuristic = true
+  tool = Kaleidoscope
 [mergetool]
-	keepBackup = true
-	prompt = false
+  keepBackup = true
+  prompt = false
 [auto]
-	crlf = input
+  crlf = input
 [difftool "diffmerge"]
-	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+  cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
 [merge]
-	tool = Kaleidoscope
+  tool = Kaleidoscope
+	ff = false
 [mergetool "diffmerge"]
-	cmd = diffmerge --merge --result=$MERGED $LOCAL $BASE $REMOTE
-	trustExitCode = true
+  cmd = diffmerge --merge --result=$MERGED $LOCAL $BASE $REMOTE
+  trustExitCode = true
 [init]
-	templatedir = ~/.git_template
+  templatedir = ~/.git_template
 [mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
+  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  trustExitCode = true
 [help]
-	autocorrect = 1
+  autocorrect = 1
 [pull]
-	rebase = true
+  rebase = true
