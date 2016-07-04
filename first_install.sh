@@ -1,4 +1,19 @@
 #!/usr/bin/env zsh
+#
+# Thiago's Dotfiles setup
+#
+# Idempotent setup tool: It configures this repository, my vim and bin
+# repositories, installs rbenv, installs basic Linux packages if you want them
+# (and if you are running Linux!), among other personal utilities.
+#
+# Note: Skips directories if they exist
+
+which git > /dev/null 2> /dev/null
+
+if [ $? -eq 1 ]; then
+    echo "ERROR: Yow, I need git... gimme git!"
+    exit 1
+fi
 
 CURDIR=$(pwd)
 
@@ -6,7 +21,14 @@ CURDIR=$(pwd)
 function create_directories {
     echo "Creating $HOME/Code directory...\n"
 
-    mkdir $HOME/Code 2> /dev/null
+    mkdir -p $HOME/Code/go 2> /dev/null
+}
+
+
+function install_binfiles  {
+    echo "Installing bin directory...\n"
+
+    git clone --quiet https://github.com/thiagoa/bin $HOME/bin
 }
 
 
@@ -37,8 +59,6 @@ function generate_ssh_key {
 
     echo "\nYour key has been generated and copied to the clipboard."
     echo "Now go to GitHub.\n"
-
-    echo ""
 }
 
 
@@ -56,8 +76,24 @@ function install_zprezto {
 
 
 function install_dotfiles {
-    echo "Installing dotfiles...\n"
-    $CURDIR/setup.sh
+    echo "Installing dotfiles..."
+
+    for file in `ls $CURDIR`; do
+        if [ $file != 'setup.sh' ] && [ $file != 'first_install.sh' ] && [ $file != 'rbenv' ]; then
+            if [ -f "$HOME/.$file" ] || [ -h "$HOME/.$file" ]; then
+                rm $HOME/.$file
+            fi
+            ln -s $CURDIR/$file $HOME/.$file
+        fi
+    done
+
+    for file in `ls $CURDIR/rbenv`; do
+        if [ -f "$HOME/.rbenv/$file" ]; then
+            rm $HOME/.rbenv/$file
+        fi
+
+        ln -s $CURDIR/rbenv/$file $HOME/.rbenv/$file
+    done
 }
 
 
@@ -68,12 +104,13 @@ function install_vimfiles {
     $HOME/.vim/setup.sh
 }
 
+
 function ask_install_linux_packages {
     echo ""
 
     if [ -x /bin/uname ] && uname | grep "Linux" > /dev/null; then
         while true; do
-            read answer\?"Install Linux packages? (Y/n) "
+            read answer\?"Install Ubuntu packages? (Y/n) "
 
             case $answer in
                 [Yy]*|"") install_linux_packages; break;;
@@ -84,18 +121,11 @@ function ask_install_linux_packages {
     fi
 }
 
-function install_linux_packages {
-    echo ""
-    echo "Let's check if your user is in sudoers...\n"
-    sudo -l 2> /dev/null
 
-    if [ $? -eq 1 ]; then
-        echo "\nERROR: Please add your user to sudoers and run this script again"
-        exit 1
-    fi
+function add_apt_custom_sources {
+    echo ""
 
     while true; do
-        echo ""
         read answer\?"Add official git repository? (Y/n) "
         case $answer in
             [Yy]*|"") sudo apt-add-repository ppa:git-core/ppa 2> /dev/null; break;;
@@ -117,10 +147,28 @@ function install_linux_packages {
     if [ ! -f /etc/apt/sources.list.d/dropbox.list ]; then
         sudo sh -c 'echo "deb https://packagecloud.io/slacktechnologies/slack/debian/ jessie main" > /etc/apt/sources.list.d/slack.list'
     fi
+}
+
+
+function check_sudoers {
+    echo "\nLet's check if your user is in sudoers...\n"
+    sudo -l 2> /dev/null
+
+    if [ $? -eq 1 ]; then
+        echo "\nERROR: Please add your user to sudoers and run this script again"
+        exit 1
+    fi
+}
+
+
+function install_linux_packages {
+    check_sudoers
+
+    add_apt_custom_sources
 
     sudo apt-get update
-    sudo apt-get remove vim > /dev/null 2> /dev/null
 
+    sudo apt-get remove vim > /dev/null 2> /dev/null
     sudo apt-get install \
         vim-nox \
         tmux \
@@ -144,10 +192,15 @@ function install_linux_packages {
 
 
 function set_defaults {
-    echo "\nSetting ZSH as default shell..."
+    cat /etc/passwd | grep $USER | grep zsh > /dev/null
 
-    chsh -s $(which zsh)
+    if [ $? -eq 1 ]; then
+        echo "\nSetting ZSH as default shell..."
+
+        chsh -s $(which zsh)
+    fi
 }
+
 
 function set_git_remotes_as_authenticated {
     cd ~/.vim
@@ -155,10 +208,18 @@ function set_git_remotes_as_authenticated {
 
     cd ~/.dotfiles
     git remote set-url origin git@github.com:thiagoa/dotfiles.git
+
+    cd ~/bin
+    git remote set-url origin git@github.com:thiagoa/bin.git
 }
 
 
 create_directories
+
+rmdir /bin 2> /dev/null
+if [ ! -d $HOME/bin ]; then
+    install_binfiles
+fi
 
 if [ ! -d $HOME/.rbenv ]; then
     install_rbenv
@@ -184,4 +245,8 @@ set_defaults
 
 set_git_remotes_as_authenticated
 
-echo "\nAll done. You can now start ZSH."
+echo "\nAll done. You can now start ZSH.\n"
+echo "Things to do manually next:\n"
+echo "- Install rubies with 'rbenv install version'"
+echo "- Manually download elasticsearch if needed"
+echo "- Check daemons configuration'"
