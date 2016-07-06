@@ -187,7 +187,8 @@ function install_linux_packages {
         heroku-toolbelt \
         slack \
         dropbox \
-        silversearcher-ag
+        silversearcher-ag \
+        exuberant-ctags
 }
 
 
