@@ -1,5 +1,7 @@
 # Source this file in bash, ZSH or any sh compatible shell
 
+alias cogl="git checkout -- Gemfile.lock"
+
 # See currently opened network connections
 alias connections="lsof -P -i -n"
 
