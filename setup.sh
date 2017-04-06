@@ -105,15 +105,24 @@ function install_vimfiles {
 }
 
 
-function ask_install_linux_packages {
+function install_base16 {
+    echo "Installing base16 themes...\n"
+    git clone --quiet https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+
+    BASE16_SHELL=$HOME/.config/base16-shell/
+    eval "$($BASE16_SHELL/profile_helper.sh)"
+}
+
+
+function ask_install_ubuntu_packages {
     echo ""
 
-    if [ "$(uname)" = "Linux" ]; then
+    if [[ -f /etc/lsb-release ]]; then
         while true; do
             read answer\?"Install Ubuntu packages? (Y/n) "
 
             case $answer in
-                [Yy]*|"") install_linux_packages; break;;
+                [Yy]*|"") install_ubuntu_packages; break;;
                 [Nn]*) break;;
                 *) echo "Please answer y or n.";;
             esac
@@ -161,7 +170,7 @@ function check_sudoers {
 }
 
 
-function install_linux_packages {
+function install_ubuntu_packages {
     check_sudoers
 
     add_apt_custom_sources
@@ -240,7 +249,11 @@ if [ ! -d $HOME/.vim ]; then
     install_vimfiles
 fi
 
-ask_install_linux_packages
+if [ ! -d $HOME/.config/base16-shell ]; then
+    install_base16
+fi
+
+ask_install_ubuntu_packages
 
 set_defaults
 
@@ -251,3 +264,4 @@ echo "Things to do manually next:\n"
 echo "- Install rubies with 'rbenv install version'"
 echo "- Manually download elasticsearch if needed"
 echo "- Check daemons configuration'"
+echo "- Choose a base16 theme by typing 'base16<TAB>'. Don't forget to use a matching theme in vim."
