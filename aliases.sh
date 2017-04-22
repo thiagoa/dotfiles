@@ -1,5 +1,6 @@
 # Source this file in bash, ZSH or any sh compatible shell
 
+alias vim="nvim"
 alias cogl="git checkout -- Gemfile.lock"
 
 # See currently opened network connections
@@ -45,3 +46,5 @@ alias -s php=vim
 alias ec='exec /usr/bin/env emacsclient -c -a "" $*'
 
 alias gc="open -a \"/Applications/Google Chrome.app\" --args --force-renderer-accessibility"
+
+alias b="bundle exec"

@@ -1,6 +1,6 @@
 [core]
 	excludesfile = ~/.gitignore
-	editor = vim
+	editor = nvim
 	whitespace = cr-at-eol
     filemode = false
 	autocrlf = input

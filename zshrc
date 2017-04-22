@@ -24,7 +24,16 @@ fi
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
-# Unfortunately PATH has to be here instead of in zshenv
-export PATH="$HOME/.rbenv/bin:$PATH:$HOME/Code/go/bin"
+source $HOME/.asdf/asdf.sh
+source $HOME/.asdf/completions/asdf.bash
 
-eval "$(rbenv init -)"
+export PATH=$PATH:~/Code/go/bin:~/bin
+
+fpath=(~/bin/completions $fpath)
+
+# compsys initialization
+autoload -U compinit
+compinit
+
+# show completion menu when number of options is at least 2
+zstyle ':completion:*' menu select=2
