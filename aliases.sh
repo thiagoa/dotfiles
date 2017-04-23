@@ -1,21 +1,10 @@
 # Source this file in bash, ZSH or any sh compatible shell
 
+alias vi="nvim"
 alias vim="nvim"
-alias cogl="git checkout -- Gemfile.lock"
-
-# See currently opened network connections
-alias connections="lsof -P -i -n"
-
-# See external IP
-alias myip="curl ifconfig.me"
-
-# Launch PostgreSQL
+alias myip="curl eth0.me"
 alias pg="postgres -D /usr/local/var/postgres"
-
 alias treeless="tree -C | less -R"
-
-# Launch MySQL
-alias mysql="mysql -u root --password="
 
 # less for source code (requires source-highlight package)
 srchighlight() {
