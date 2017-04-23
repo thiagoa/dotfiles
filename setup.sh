@@ -2,11 +2,8 @@
 #
 # Thiago's Dotfiles setup
 #
-# Idempotent setup tool: It configures this repository, my vim and bin
-# repositories, installs rbenv, installs basic Linux packages if you want them
-# (and if you are running Linux!), among other personal utilities.
-#
-# Note: Skips directories if they exist
+# Idempotent, smart setup tool: Install dotfiles, vim, bin files, asdf, etc.
+# Run as many times as you want.
 
 which git > /dev/null 2> /dev/null
 
@@ -32,20 +29,11 @@ function install_binfiles  {
 }
 
 
-function install_rbenv {
-    echo "Installing rbenv...\n"
+function install_asdf {
+    echo "Installing asdf...\n"
 
-    RBENV_ROOT="$HOME/.rbenv"
-    git clone --quiet https://github.com/rbenv/rbenv.git $RBENV_ROOT
-    cd $RBENV_ROOT && src/configure && make -C src
-
-    echo "\nInstalling rbenv plugins...\n"
-
-    git clone --quiet https://github.com/carsomyr/rbenv-bundler.git $RBENV_ROOT/plugins/bundler
-    git clone --quiet https://github.com/rbenv/rbenv-default-gems.git $RBENV_ROOT/plugins/rbenv-default-gems
-    git clone --quiet https://github.com/rkh/rbenv-whatis.git $RBENV_ROOT/plugins/rbenv-whatis
-    git clone --quiet https://github.com/rkh/rbenv-use.git $RBENV_ROOT/plugins/rbenv-use
-    git clone --quiet https://github.com/rbenv/ruby-build.git $RBENV_ROOT/plugins/ruby-build
+    # Still need to figure out how to get the most up-to-date version...
+    git clone --quiet https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.3.0
 }
 
 
@@ -79,20 +67,12 @@ function install_dotfiles {
     echo "Installing dotfiles..."
 
     for file in `ls $CURDIR`; do
-        if [ $file != 'setup.sh' ] && [ $file != 'rbenv' ]; then
+        if [ $file != 'setup.sh' ]; then
             if [ -f "$HOME/.$file" ] || [ -h "$HOME/.$file" ]; then
                 rm $HOME/.$file
             fi
             ln -s $CURDIR/$file $HOME/.$file
         fi
-    done
-
-    for file in `ls $CURDIR/rbenv`; do
-        if [ -f "$HOME/.rbenv/$file" ]; then
-            rm $HOME/.rbenv/$file
-        fi
-
-        ln -s $CURDIR/rbenv/$file $HOME/.rbenv/$file
     done
 }
 
@@ -231,8 +211,8 @@ if [ ! -d $HOME/bin ]; then
     install_binfiles
 fi
 
-if [ ! -d $HOME/.rbenv ]; then
-    install_rbenv
+if [ ! -d $HOME/.asdf ]; then
+    install_asdf
 fi
 
 if [ ! -f $HOME/.ssh/id_rsa.pub ]; then
@@ -254,14 +234,12 @@ if [ ! -d $HOME/.config/base16-shell ]; then
 fi
 
 ask_install_ubuntu_packages
-
 set_defaults
-
 set_git_remotes_as_authenticated
 
 echo "\nAll done. You can now start ZSH.\n"
 echo "Things to do manually next:\n"
-echo "- Install rubies with 'rbenv install version'"
+echo "- Install rubies with 'asdf install ruby'"
 echo "- Manually download elasticsearch if needed"
 echo "- Check daemons configuration'"
 echo "- Choose a base16 theme by typing 'base16<TAB>'. Don't forget to use a matching theme in vim."

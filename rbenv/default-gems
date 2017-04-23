@@ -1,9 +1,0 @@
-bundler
-rbenv-ctags
-gem-ctags
-ripper-tags
-interactive_editor
-awesome_print
-reek
-spring
-spring-commands-rspec
