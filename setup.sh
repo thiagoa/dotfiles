@@ -35,12 +35,10 @@ function install_asdf {
     echo "Installing asdf...\n"
 
     # Still need to figure out how to get the most up-to-date version...
-    git clone --quiet https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.3.0
+    git clone --quiet https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.3.0 > /dev/null
 }
 
 function generate_ssh_key {
-    local clipboard_cmd
-
     if [[ -f $HOME/.ssh/id_rsa.pub ]]; then return; fi
 
     echo "Generating SSH key...\n"
@@ -53,9 +51,9 @@ function generate_ssh_key {
 function install_zprezto {
     if [[ -d $HOME/.zprezto ]]; then return; fi
 
-    echo "Installing zprezto...\n"
+    echo "Installing zprezto..."
 
-    git clone --quiet --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+    git clone --quiet --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto" > /dev/null 2>&1
 
     setopt EXTENDED_GLOB
 
@@ -68,7 +66,7 @@ function install_dotfiles {
     echo "Installing dotfiles..."
 
     for file in `ls $CURDIR`; do
-        if [ $file != 'setup.sh' ]; then
+        if [[ $file != 'setup.sh' ]] && [[ $file != 'setup_arch.sh' ]]; then
             if [ -f "$HOME/.$file" ] || [ -h "$HOME/.$file" ]; then
                 rm $HOME/.$file
             fi
@@ -92,9 +90,9 @@ function install_vimfiles {
 function install_base16 {
     if [[ -d $HOME/.config/base16-shell ]]; then return; fi
 
-    echo "Installing base16 themes...\n"
+    echo "\nInstalling base16 themes..."
 
-    git clone --quiet https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+    git clone --quiet https://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell
 
     BASE16_SHELL=$HOME/.config/base16-shell/
     eval "$($BASE16_SHELL/profile_helper.sh)"
@@ -112,9 +110,7 @@ function check_sudoers {
 }
 
 function set_defaults {
-    cat /etc/passwd | grep $USER | grep zsh > /dev/null
-
-    if [ $? -eq 1 ]; then
+    if ! $(cat /etc/passwd | grep $USER | grep zsh > /dev/null); then
         echo "\nSetting ZSH as default shell..."
 
         chsh -s $(which zsh)
@@ -122,9 +118,9 @@ function set_defaults {
 }
 
 function set_git_remotes_as_authenticated {
-    cd ~/.vim && git remote set-url origin git@github.com:thiagoa/dotvim.git
-    cd ~/.dotfiles && git remote set-url origin git@github.com:thiagoa/dotfiles.git
-    cd ~/bin && git remote set-url origin git@github.com:thiagoa/bin.git
+    cd $HOME/.vim && git remote set-url origin git@github.com:thiagoa/dotvim.git
+    cd $HOME/.dotfiles && git remote set-url origin git@github.com:thiagoa/dotfiles.git
+    cd $HOME/bin && git remote set-url origin git@github.com:thiagoa/bin.git
 }
 
 create_directories
