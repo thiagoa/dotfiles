@@ -14,14 +14,12 @@ fi
 
 CURDIR=$(pwd)
 
-
 function create_directories {
     echo "Creating $HOME/Code directory...\n"
 
     if [[ ! -d /bin ]]; then rmdir /bin; fi
-    if [[ ! -d $HOME/Code/go ]]; then mkdir $HOME/Code/go; fi
+    if [[ ! -d $HOME/Code/go ]]; then mkdir -p $HOME/Code/go; fi
 }
-
 
 function install_binfiles  {
     if [[ -d $HOME/bin ]]; then return; fi
@@ -31,7 +29,6 @@ function install_binfiles  {
     git clone --quiet https://github.com/thiagoa/bin $HOME/bin
 }
 
-
 function install_asdf {
     if [[ -d $HOME/.asdf ]]; then return; fi
 
@@ -40,7 +37,6 @@ function install_asdf {
     # Still need to figure out how to get the most up-to-date version...
     git clone --quiet https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.3.0
 }
-
 
 function generate_ssh_key {
     local clipboard_cmd
@@ -53,7 +49,6 @@ function generate_ssh_key {
 
     echo "\nYour key has been generated. Now go to Github."
 }
-
 
 function install_zprezto {
     if [[ -d $HOME/.zprezto ]]; then return; fi
@@ -69,7 +64,6 @@ function install_zprezto {
     done
 }
 
-
 function install_dotfiles {
     echo "Installing dotfiles..."
 
@@ -83,7 +77,6 @@ function install_dotfiles {
         fi
     done
 }
-
 
 function install_vimfiles {
     if [[ -d $HOME/.vim ]]; then return; fi
@@ -118,7 +111,6 @@ function check_sudoers {
     fi
 }
 
-
 function set_defaults {
     cat /etc/passwd | grep $USER | grep zsh > /dev/null
 
@@ -129,13 +121,11 @@ function set_defaults {
     fi
 }
 
-
 function set_git_remotes_as_authenticated {
     cd ~/.vim && git remote set-url origin git@github.com:thiagoa/dotvim.git
     cd ~/.dotfiles && git remote set-url origin git@github.com:thiagoa/dotfiles.git
     cd ~/bin && git remote set-url origin git@github.com:thiagoa/bin.git
 }
-
 
 create_directories
 install_binfiles
