@@ -6,13 +6,18 @@
 # Run as many times as you want, it won't mess up anything.
 
 set -eu
+setopt EXTENDED_GLOB
+
+INSTALL_DIR="${HOME}/.dotfiles"
 
 if ! $(which git > /dev/null 2>&1); then
     echo "ERROR: Yow, I need git... gimme git!"
     exit 1
 fi
 
-CURDIR=$(pwd)
+if [[ ! -d $INSTALL_DIR ]]; then
+    echo "ERROR: Please clone this repository in ~/.dotfiles"
+fi
 
 function create_directories {
     echo "Creating $HOME/Code directory...\n"
@@ -55,8 +60,6 @@ function install_zprezto {
 
     git clone --quiet --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto" > /dev/null 2>&1
 
-    setopt EXTENDED_GLOB
-
     for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
         ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
     done
@@ -65,14 +68,12 @@ function install_zprezto {
 function install_dotfiles {
     echo "Installing dotfiles..."
 
-    for file in `ls $CURDIR`; do
-        if [[ $file != 'setup.sh' ]]; then
-            if [ -f "$HOME/.$file" ] || [ -h "$HOME/.$file" ]; then
-                rm $HOME/.$file
-            fi
-
-            ln -s $CURDIR/$file $HOME/.$file
+    for file in ${INSTALL_DIR}/^(setup.sh|README.md)(.N:t); do
+        if [ -f "$HOME/.$file" ] || [ -h "$HOME/.$file" ]; then
+            rm $HOME/.$file
         fi
+
+        ln -s $INSTALL_DIR/$file $HOME/.$file
     done
 }
 
@@ -119,7 +120,7 @@ function set_defaults {
 
 function set_git_remotes_as_authenticated {
     cd $HOME/.vim && git remote set-url origin git@github.com:thiagoa/dotvim.git
-    cd $HOME/.dotfiles && git remote set-url origin git@github.com:thiagoa/dotfiles.git
+    cd $INSTALL_DIR && git remote set-url origin git@github.com:thiagoa/dotfiles.git
     cd $HOME/bin && git remote set-url origin git@github.com:thiagoa/bin.git
 }
 
