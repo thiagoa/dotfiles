@@ -32,5 +32,7 @@ fi
 
 # This configuration needs to be always available,
 # even in non-interactive shells (e.g., vim's "bang" command)
+
+source $HOME/.asdf/asdf.sh
 source $HOME/.dotfiles/config/functions.sh
 source $HOME/.dotfiles/config/aliases.sh
