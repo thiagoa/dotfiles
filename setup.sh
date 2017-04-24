@@ -124,6 +124,10 @@ function set_git_remotes_as_authenticated {
     cd $HOME/bin && git remote set-url origin git@github.com:thiagoa/bin.git
 }
 
+function install_tmux_tpm {
+    git clone -q https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+}
+
 create_directories
 install_binfiles
 install_asdf
@@ -132,6 +136,7 @@ install_zprezto
 install_dotfiles
 install_vimfiles
 install_base16
+install_tmux_tpm
 set_defaults
 set_git_remotes_as_authenticated
 
