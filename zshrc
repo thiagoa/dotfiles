@@ -1,12 +1,10 @@
-# This file is sourced when in interactive shells
+# This file is sourced in interactive shells
 
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
 source $HOME/bin/z.sh
-source $HOME/.dotfiles/config/functions.sh
-source $HOME/.dotfiles/config/aliases.sh
 source $HOME/.dotfiles/config/zshlocal.sh
 source $HOME/.dotfiles/config/zshbindkeys.sh
 source $HOME/.dotfiles/config/zshsetopts.sh

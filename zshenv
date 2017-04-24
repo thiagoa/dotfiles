@@ -1,3 +1,5 @@
+# This file is always sourced
+
 if [ -n "$INSIDE_EMACS" ]; then
    export TERM=xterm-256color
 fi
@@ -27,3 +29,8 @@ if [[ "$OSTYPE" == darwin* ]]; then
     export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python3"
     export PGDATA="/usr/local/var/postgres"
 fi
+
+# This configuration needs to be always available,
+# even in non-interactive shells (e.g., vim's "bang" command)
+source $HOME/.dotfiles/config/functions.sh
+source $HOME/.dotfiles/config/aliases.sh
