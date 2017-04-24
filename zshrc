@@ -1,22 +1,18 @@
-# This file is sourced in interactive shells
+# This file is sourced when in interactive shells
 
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
 source $HOME/bin/z.sh
-source $HOME/.functions.sh
-source $HOME/.aliases.sh
-source $HOME/.zshlocal.sh
-source $HOME/.zshbindkeys.sh
-source $HOME/.zshsetopts.sh
+source $HOME/.dotfiles/config/functions.sh
+source $HOME/.dotfiles/config/aliases.sh
+source $HOME/.dotfiles/config/zshlocal.sh
+source $HOME/.dotfiles/config/zshbindkeys.sh
+source $HOME/.dotfiles/config/zshsetopts.sh
 
 if [[ -f $HOME/.secrets ]]; then
     source $HOME/.secrets
-fi
-
-if [[ -f /usr/local/Cellar/z/1.9/etc/profile.d/z.sh ]]; then
-    source /usr/local/Cellar/z/1.9/etc/profile.d/z.sh
 fi
 
 if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]; then

@@ -66,7 +66,7 @@ function install_dotfiles {
     echo "Installing dotfiles..."
 
     for file in `ls $CURDIR`; do
-        if [[ $file != 'setup.sh' ]] && [[ $file != 'setup_arch.sh' ]]; then
+        if [[ $file != 'setup.sh' ]]; then
             if [ -f "$HOME/.$file" ] || [ -h "$HOME/.$file" ]; then
                 rm $HOME/.$file
             fi

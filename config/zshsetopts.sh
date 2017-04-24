@@ -4,7 +4,7 @@ bashcompinit
 autoload -U compinit
 compinit
 
-fpath=(~/.dotfiles/custom_completions $fpath)
+fpath=(~/.dotfiles/completions $fpath)
 
 zstyle ':completion:*' menu select=2
 zstyle ':completion:history-words:*' list no 

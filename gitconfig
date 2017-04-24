@@ -1,36 +1,53 @@
 [core]
-	excludesfile = ~/.gitignore
-	editor = nvim
-	whitespace = cr-at-eol
-    filemode = false
-	autocrlf = input
+  excludesfile = ~/.gitignore
+  editor = nvim
+  whitespace = cr-at-eol
+  filemode = false
+  autocrlf = input
 [user]
-	name = Thiago A. Silva
-	email = thiagoaraujos@gmail.com
+  name = Thiago A. Silva
+  email = thiagoaraujos@gmail.com
 [color]
-	branch = auto
-	diff = auto
-	interactive = auto
-	status = auto
-	ui = always
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+  ui = always
 [color "diff"]
-    commit = green
-    meta = yellow
-    frag = cyan
-    old = red
-    new = green
-    whitespace = red reverse
+  commit = green
+  meta = yellow
+  frag = cyan
+  old = red
+  new = green
+  whitespace = red reverse
 [color "diff-highlight"]
-    oldNormal = red bold
-    oldHighlight = red bold 52
-    newNormal = green bold
-    newHighlight = green bold 22
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+[push]
+  default = upstream
+[fetch]
+  prune = true
+[difftool]
+  prompt = false
+[mergetool]
+  keepBackup = true
+  prompt = false
+[auto]
+  crlf = input
+[init]
+  templatedir = ~/.git_template
+[help]
+  autocorrect = 1
+[pull]
+  rebase = true
 [alias]
   aa = add .
   ap = add --patch
   co = checkout
   br = branch
-  abr = !git for-each-ref --sort=-committerdate refs/heads/     --format='%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:magenta)%(authorname)%(color:reset)'     | column -ts'|'
+  abr = !git for-each-ref --sort=-committerdate refs/heads/ --format='%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:magenta)%(authorname)%(color:reset)'     | column -ts'|'
   ci = commit
   st = status -sb
   p = push
@@ -67,44 +84,3 @@
   branch-files = !git list-files $(git first-commit)..HEAD
   type = cat-file -t
   dump = cat-file -p
-[push]
-  default = upstream
-[fetch]
-  prune = true
-[difftool "sourcetree"]
-  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-  path =
-[mergetool "sourcetree"]
-  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-  trustExitCode = true
-[github]
-  token = 990b2fbb1bdf056797dceda60264018f
-[difftool "Kaleidoscope"]
-  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[difftool]
-  prompt = false
-[diff]
-  compactionHeuristic = true
-  tool = Kaleidoscope
-[mergetool]
-  keepBackup = true
-  prompt = false
-[auto]
-  crlf = input
-[difftool "diffmerge"]
-  cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
-[merge]
-  tool = Kaleidoscope
-	ff = false
-[mergetool "diffmerge"]
-  cmd = diffmerge --merge --result=$MERGED $LOCAL $BASE $REMOTE
-  trustExitCode = true
-[init]
-  templatedir = ~/.git_template
-[mergetool "Kaleidoscope"]
-  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-  trustExitCode = true
-[help]
-  autocorrect = 1
-[pull]
-  rebase = true
