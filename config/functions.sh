@@ -30,9 +30,24 @@ function resize-pane {
     tmux resize-pane -${1:u} $2
 }
 
-# Custom command to place cursor after first word
+srchighlight() {
+    echo $1
+    src-hilite-lesspipe.sh $1 | less -R
+}
+
 function after-first-word {
     zle beginning-of-line
     zle forward-word
 }
 zle -N after-first-word
+
+fancy-ctrl-z () {
+  if [[ $#BUFFER -eq 0 ]]; then
+    BUFFER="fg"
+    zle accept-line
+  else
+    zle push-input
+    zle clear-screen
+  fi
+}
+zle -N fancy-ctrl-z
