@@ -35,4 +35,3 @@ fi
 
 source $HOME/.asdf/asdf.sh
 source $HOME/.dotfiles/config/functions.sh
-source $HOME/.dotfiles/config/aliases.sh

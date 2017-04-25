@@ -10,6 +10,11 @@ source $HOME/.dotfiles/config/zshlocal.sh
 source $HOME/.dotfiles/config/zshbindkeys.sh
 source $HOME/.dotfiles/config/zshsetopts.sh
 
+# Source aliases again, even though they are already sourced by zshenv for
+# non-interactive shells. I want my aliases to prevail over zprezto's utility
+# module.
+source $HOME/.dotfiles/config/aliases.sh
+
 if [[ -f $HOME/.secrets ]]; then
     source $HOME/.secrets
 fi
