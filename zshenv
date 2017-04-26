@@ -4,6 +4,8 @@ if [ -n "$INSIDE_EMACS" ]; then
    export TERM=xterm-256color
 fi
 
+export PATH=$PATH:~/Code/go/bin:~/bin
+
 export BUNDLER_EDITOR=nvim
 export EDITOR=nvim
 export VISUAL=nvim
@@ -32,6 +34,5 @@ fi
 
 # This configuration needs to be always available,
 # even in non-interactive shells (e.g., vim's "bang" command)
-
 source $HOME/.asdf/asdf.sh
 source $HOME/.dotfiles/config/functions.sh
