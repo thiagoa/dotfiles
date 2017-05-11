@@ -26,7 +26,7 @@
   newNormal = green bold
   newHighlight = green bold 22
 [push]
-  default = upstream
+  default = current
 [fetch]
   prune = true
 [difftool]
