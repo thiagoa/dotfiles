@@ -1,6 +1,6 @@
 # This file is sourced in interactive shells
-
 source $HOME/.dotfiles/utilities/detect_path_overwrite.sh
+source $HOME/.dotfiles/config/zpreztomodules.sh
 
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
