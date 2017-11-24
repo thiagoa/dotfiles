@@ -4,15 +4,21 @@ if [ -n "$INSIDE_EMACS" ]; then
    export TERM=xterm-256color
 fi
 
-export PATH=$PATH:~/Code/go/bin:~/bin
+export PATH=$PATH:~/bin:~/Library/Python/3.6/bin
 
-export BUNDLER_EDITOR=nvim
-export EDITOR=nvim
-export VISUAL=nvim
+if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
+    export VISUAL="nvr --remote-wait"
+else
+    export VISUAL=nvim
+fi
+
+export BUNDLER_EDITOR=$VISUAL
+export EDITOR=$VISUAL
 export WORKON_HOME=$HOME/.virtualenvs
 export ELASTIC_PORT=9200
 export STACK_PATH=$HOME/Code/stack
 export LESS='-F -g -i -M -R -S -w -X -z-4'
+export DIRENV_LOG_FORMAT=
 
 if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
@@ -27,12 +33,14 @@ TMPPREFIX="${TMPDIR%/}/zsh"
 
 if [[ "$OSTYPE" == darwin* ]]; then
     export BROWSER='open'
-    export HOMEBREW_CASK_OPTS="--appdir=/Applications"
     export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python3"
     export PGDATA="/usr/local/var/postgres"
 fi
 
+if [[ ! -o interactive ]]; then
+    source $HOME/.asdf/asdf.sh
+fi
+
 # This configuration needs to be always available,
 # even in non-interactive shells (e.g., vim's "bang" command)
-source $HOME/.asdf/asdf.sh
 source $HOME/.dotfiles/config/functions.sh

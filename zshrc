@@ -30,9 +30,17 @@ if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]; then
     source /usr/local/bin/virtualenvwrapper.sh
 fi
 
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+#BASE16_SHELL=$HOME/.config/base16-shell/
+#[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # This same line is also available in .zshenv for non-interactive shells, but
 # is also needed here because otherwise asdf doesn't get PATH priority.
 source $HOME/.asdf/asdf.sh
+
+# fzf configuration
+if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
+    #source /usr/local/opt/fzf/shell/key-bindings.zsh
+    source /usr/local/opt/fzf/shell/completion.zsh
+fi
+
+eval "$(direnv hook zsh)"
