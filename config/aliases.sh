@@ -1,5 +1,6 @@
 # Source this file in bash, ZSH or any sh compatible shell
 
+alias ls="ls -F -G"
 alias b="bundle exec"
 alias vi="nvim"
 alias vim="nvim"
