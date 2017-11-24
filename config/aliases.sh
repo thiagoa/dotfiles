@@ -10,3 +10,15 @@ alias treeless="tree -C | less -R"
 alias src=srchighlight
 alias gpg="gpg2"
 alias ec='exec /usr/bin/env emacsclient -c -a "" $*'
+
+if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
+    if [ -x "$(command -v nvr)" ]; then
+        alias nvim="nvr"
+        alias vim="nvr"
+        alias vi="nvr"
+    else
+        alias vim="echo You can not nest vim sessions. Use nvr [-l|-o|-O|-p]"
+        alias nvim="vim"
+        alias vi="vim"
+    fi
+fi
