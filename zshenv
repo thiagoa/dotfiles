@@ -7,7 +7,7 @@ fi
 export PATH=$PATH:~/bin:~/Library/Python/3.6/bin
 
 if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
-    export VISUAL="nvr --remote-wait -p"
+    export VISUAL="nvr --remote-wait -o"
 else
     export VISUAL=nvim
 fi
