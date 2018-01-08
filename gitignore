@@ -11,3 +11,8 @@ workbench.xmi
 dump.rdb
 config/initializers/custom_logger.rb
 personal_notes.md
+.rspec_status
+docker-compose.override.yml
+rails-server
+bench1.rb
+bench2.rb

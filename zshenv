@@ -6,12 +6,7 @@ fi
 
 export PATH=$PATH:~/bin:~/Library/Python/3.6/bin
 
-if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
-    export VISUAL="nvr --remote-wait -o"
-else
-    export VISUAL=nvim
-fi
-
+export VISUAL=${VISUAL:-nvim}
 export BUNDLER_EDITOR=$VISUAL
 export EDITOR=$VISUAL
 export WORKON_HOME=$HOME/.virtualenvs
