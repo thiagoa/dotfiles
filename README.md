@@ -1,4 +1,4 @@
-# Thiago's dotfiles
+# Thiago's minimal dotfiles
 
 ## Installation
 

@@ -87,7 +87,6 @@ function install_vimfiles {
     $HOME/.vim/setup.sh
 }
 
-
 function install_base16 {
     if [[ -d $HOME/.config/base16-shell ]]; then return; fi
 
@@ -98,7 +97,6 @@ function install_base16 {
     BASE16_SHELL=$HOME/.config/base16-shell/
     eval "$($BASE16_SHELL/profile_helper.sh)"
 }
-
 
 function check_sudoers {
     echo "\nLet's check if your user is in sudoers...\n"
@@ -111,10 +109,19 @@ function check_sudoers {
 }
 
 function set_defaults {
-    if ! $(cat /etc/passwd | grep $USER | grep zsh > /dev/null); then
+    local shell_is_already_zsh=$(cat /etc/passwd | grep -q $USER | grep -q zsh)
+
+    if ! $shell_is_already_zsh; then
+        local zshpath=$(which zsh)
+        local shellspath=/etc/shells
+
         echo "\nSetting ZSH as default shell..."
 
-        chsh -s $(which zsh)
+        if [[ -f $shellspath ]] && ! grep -q $zshpath $shellspath; then
+            echo $zshpath | sudo tee -a $shellspath > /dev/null
+        fi
+
+        chsh -s $zshpath
     fi
 }
 
@@ -122,10 +129,6 @@ function set_git_remotes_as_authenticated {
     cd $HOME/.vim && git remote set-url origin git@github.com:thiagoa/dotvim.git
     cd $INSTALL_DIR && git remote set-url origin git@github.com:thiagoa/dotfiles.git
     cd $HOME/bin && git remote set-url origin git@github.com:thiagoa/bin.git
-}
-
-function install_tmux_tpm {
-    git clone -q https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 }
 
 create_directories
@@ -136,7 +139,6 @@ install_zprezto
 install_dotfiles
 install_vimfiles
 install_base16
-install_tmux_tpm
 set_defaults
 set_git_remotes_as_authenticated
 
@@ -146,5 +148,5 @@ echo ""
 echo "Things to do manually next:"
 echo ""
 echo "- Install programming language stuff with 'asdf install my_language'"
+echo "- Install neovim-remote with pip3"
 echo "- Choose a base16 theme by typing 'base16<TAB>'. Don't forget to use a matching theme in vim"
-echo "- Install 'gem install invoker'. Run 'invoker setup'. Put 'nameserver 127.0.0.1' on /etc/resolv.conf"

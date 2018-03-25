@@ -1,24 +1,36 @@
-# Source this file in bash, ZSH or any sh compatible shell
-
-alias ls="ls -F -G"
 alias b="bundle exec"
-alias vi="nvim"
-alias vim="nvim"
-alias myip="curl eth0.me"
-alias pg="postgres -D /usr/local/var/postgres"
-alias treeless="tree -C | less -R"
-alias src=srchighlight
-alias gpg="gpg2"
 alias ec='exec /usr/bin/env emacsclient -c -a "" $*'
 
+function g {
+    if [[ $# > 0 ]]; then
+        git $@
+    else
+        git status
+    fi
+}
+
+if command -v compdef > /dev/null; then
+    compdef g=git
+fi
+
+alias myip="curl eth0.me"
+
+function src {
+    echo $1
+    src-hilite-lesspipe.sh $1 | less -R
+}
+
+alias treeless="tree -C | less -R"
+alias vim="command nvim"
+
 if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
-    if [ -x "$(command -v nvr)" ]; then
-        alias nvim="nvr"
+    if command -v nvr > /dev/null; then
         alias vim="nvr"
-        alias vi="nvr"
     else
         alias vim="echo You can not nest vim sessions. Use nvr [-l|-o|-O|-p]"
-        alias nvim="vim"
-        alias vi="vim"
     fi
 fi
+
+alias vi="vim"
+alias nvim="vim"
+alias z="fasd_cd -d"

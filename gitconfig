@@ -74,6 +74,7 @@
   restore = !git checkout $(git rev-list -n 1 HEAD -- "$1")^ -- "$1"
   reapplytag = !git tag -d $1 && git push origin :refs/tags/$1 && git tag $1 && git push origin master && git push --tags
   applytag = !git tag $1 && git push origin master && git push --tags
+  set-upstream = git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
   list-files = diff-tree --no-commit-id --diff-filter=ACMRTUXB --name-only -r
   last-files = !git list-files HEAD
   ctags = !.git/hooks/ctags\n

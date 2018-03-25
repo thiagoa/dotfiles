@@ -1,8 +1,0 @@
-#compdef stack
-
-_stack() {
-    compadd $(cd $STACK_PATH/stack_foundation && git branch | cut -c 3-)
-    compadd $(cd $STACK_PATH/stacksocial && git branch | cut -c 3-)
-    compadd $(cd $STACK_PATH/stacksocial-admin && git branch | cut -c 3-)
-    compadd $(cd $STACK_PATH/stackcommerce && git branch | cut -c 3-)
-}
