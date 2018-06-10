@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 ##################################################################
 # This file is sourced in interactive and non-interactive shells #
 ##################################################################
@@ -27,8 +29,4 @@ fi
 
 if [[ ! -o interactive ]]; then
     source $HOME/.asdf/asdf.sh
-fi
-
-if [ -n "$INSIDE_EMACS" ]; then
-   export TERM=xterm-256color
 fi

@@ -13,8 +13,8 @@ zstyle ':prezto:load' pmodule \
   'fasd' \
   'completion' \
   'syntax-highlighting' \
-  'autosuggestions' \
   'history-substring-search' \
-  'prompt'
+  'prompt' \
+  $([[ -z "$EMACS" ]] && echo 'autosuggestions')
 
 source $HOME/.zprezto/init.zsh

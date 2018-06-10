@@ -1,5 +1,5 @@
 alias b="bundle exec"
-alias ec='exec /usr/bin/env emacsclient -c -a "" $*'
+alias ec='/usr/bin/env emacsclient -n -a "nvim" $*'
 
 function g {
     if [[ $# > 0 ]]; then
@@ -12,6 +12,10 @@ function g {
 if command -v compdef > /dev/null; then
     compdef g=git
 fi
+
+function r {
+    cd `git rev-parse --show-toplevel`
+}
 
 alias myip="curl eth0.me"
 
