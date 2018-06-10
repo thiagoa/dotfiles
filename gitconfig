@@ -4,8 +4,8 @@
   filemode = false
   autocrlf = input
 [user]
-  name = Thiago A. Silva
-  email = thiagoaraujos@gmail.com
+	name = Thiago A. Silva
+	email = thiagoaraujos@gmail.com
 [color]
   branch = auto
   diff = auto
@@ -89,3 +89,8 @@
 [difftool "ksdiff"]
   trustExitCode = true
   cmd = `/usr/local/bin/ksdiff $LOCAL $REMOTE`
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f

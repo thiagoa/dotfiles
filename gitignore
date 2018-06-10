@@ -16,3 +16,4 @@ docker-compose.override.yml
 rails-server
 bench1.rb
 bench2.rb
+.tool-versions
