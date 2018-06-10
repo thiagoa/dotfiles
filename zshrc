@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 ##############################################
 # This file is sourced in interactive shells #
 ##############################################
@@ -10,5 +12,5 @@ source $HOME/.dotfiles/config/zshaliases.sh
 source $HOME/.asdf/asdf.sh
 source $HOME/.asdf/completions/asdf.bash
 
+[[ -f $HOME/bin/functions.sh  ]] && source $HOME/bin/functions.sh
 [[ -f $HOME/.secrets  ]] && source $HOME/.secrets
-[[ -x $(which direnv) ]] && eval "$(direnv hook zsh)"
