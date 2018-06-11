@@ -30,3 +30,5 @@ fi
 if [[ ! -o interactive ]]; then
     source $HOME/.asdf/asdf.sh
 fi
+
+[[ -f $HOME/.secrets ]] && source $HOME/.secrets

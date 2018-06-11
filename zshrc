@@ -13,4 +13,3 @@ source $HOME/.asdf/asdf.sh
 source $HOME/.asdf/completions/asdf.bash
 
 [[ -f $HOME/bin/functions.sh  ]] && source $HOME/bin/functions.sh
-[[ -f $HOME/.secrets  ]] && source $HOME/.secrets
