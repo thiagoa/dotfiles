@@ -100,7 +100,7 @@ function install_base16 {
 
 function check_sudoers {
     echo "\nLet's check if your user is in sudoers...\n"
-    
+
 
     if ! $(sudo -l 2> /dev/null); then
         echo "\nERROR: Please add your user to sudoers and run this script again"
@@ -131,6 +131,11 @@ function set_git_remotes_as_authenticated {
     cd $HOME/bin && git remote set-url origin git@github.com:thiagoa/bin.git
 }
 
+function setup_karabiner {
+    rm -rf ~/.config/karabiner
+    ln -s $INSTALL_DIR/karabiner ~/.config/karabiner
+}
+
 create_directories
 install_binfiles
 install_asdf
@@ -141,6 +146,7 @@ install_vimfiles
 install_base16
 set_defaults
 set_git_remotes_as_authenticated
+setup_karabiner
 
 echo ""
 echo "All done. You can now start ZSH."
