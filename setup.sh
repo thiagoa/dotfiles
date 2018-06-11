@@ -87,6 +87,14 @@ function install_vimfiles {
     $HOME/.vim/setup.sh
 }
 
+function install_emacsfiles {
+    if [[ -d $HOME/.emacs.d ]]; then return; fi
+
+    echo "Installing Emacs files...\n"
+
+    git clone -q https://github.com/thiagoa/dotemacs $HOME/.emacs.d
+}
+
 function install_base16 {
     if [[ -d $HOME/.config/base16-shell ]]; then return; fi
 
@@ -143,6 +151,7 @@ generate_ssh_key
 install_zprezto
 install_dotfiles
 install_vimfiles
+install_emacsfiles
 install_base16
 set_defaults
 set_git_remotes_as_authenticated
