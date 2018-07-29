@@ -20,9 +20,14 @@ function r {
 
 alias myip="curl eth0.me"
 
-function src {
+function srcl {
     echo $1
     src-hilite-lesspipe.sh $1 | less -R
+}
+
+function src {
+    echo $1
+    src-hilite-lesspipe.sh $1
 }
 
 alias treeless="tree -C | less -R"
