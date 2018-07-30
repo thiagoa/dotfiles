@@ -1,5 +1,10 @@
 require 'pathname'
 
+if ENV['INSIDE_EMACS']
+  Pry.config.correct_indent = false
+  Pry.config.pager = false
+end
+
 Pry.config.editor = ENV['VISUAL']
 
 def emacs_open_in_dired(source_location)
@@ -47,6 +52,11 @@ end
 
 Pry::Commands.create_command 'ggem' do
   description 'Open a gem dir in Emacs dired'
+  banner <<-'BANNER'
+  Usage: ggem PRY_TERM
+
+  Example: ggem Propono (places the cursor in dired where the file is)
+  BANNER
 
   def process
     gem_name = args.join('')
@@ -57,10 +67,14 @@ Pry::Commands.create_command 'ggem' do
 end
 
 Pry::Commands.create_command 'fgem' do
-  description "Find within a gem dir with ag"
+  description "Find with ag inside a gem's dir"
+  banner <<-'BANNER'
+  Usage: fgem GEM_NAME SEARCH_TERM
+  BANNER
 
   def process
-    emacs_find_with_ag args[1], gem_dir(args[0])
+    gem_name, search_term = args
+    emacs_find_with_ag search_term, gem_dir(gem_name)
   rescue Gem::MissingSpecError
     # do nothing
   end
