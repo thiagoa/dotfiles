@@ -15,6 +15,10 @@ zstyle ':prezto:load' pmodule \
   'syntax-highlighting' \
   'history-substring-search' \
   'prompt' \
+  'git' \
   $([[ -z "$EMACS" ]] && echo 'autosuggestions')
 
 source $HOME/.zprezto/init.zsh
+
+unalias g
+
