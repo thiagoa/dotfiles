@@ -17,6 +17,11 @@ function maybe_add_pip_dir {
 
 maybe_add_pip_dir
 
+
+if [[ $(uname) == 'Darwin' ]]; then
+    export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+fi
+
 export VISUAL=${VISUAL:-nvim}
 export BUNDLER_EDITOR=$VISUAL
 export EDITOR=$VISUAL
