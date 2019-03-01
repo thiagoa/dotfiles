@@ -40,3 +40,4 @@ fi
 alias vi="vim"
 alias nvim="vim"
 alias z="fasd_cd -d"
+alias ag="ag --path-to-ignore ~/.agignore"
