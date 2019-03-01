@@ -4,19 +4,34 @@
 # This file is sourced in interactive and non-interactive shells #
 ##################################################################
 
-export PATH=$PATH:~/bin
+function add_to_path {
+    export PATH=$PATH:"${1}"
+}
 
-function maybe_add_pip_dir {
-    local dir=$HOME/Library/Python
-    local dir=$(find $dir -maxdepth 2 -mindepth 2 -name bin 2> /dev/null | tail -1)
+add_to_path ~/bin
+
+function maybe_add_to_path {
+    local base=$1
+    local dirname=$2
+    local mindepth=${3:-1}
+    local dir=$(find "${base}" \
+                     -maxdepth 2 \
+                     -mindepth $mindepth \
+                     -name "${dirname}" 2> /dev/null \
+                    | tail -1)
 
     if [[ -d $dir ]]; then
-        export PATH=$PATH:$dir
+        add_to_path "${dir}"
     fi
 }
 
-maybe_add_pip_dir
-
+maybe_add_to_path $HOME/Library/Python bin 2
+maybe_add_to_path "$(find /Applications \
+                          -maxdepth 1 \
+                          -name '*Racket v*' \
+                          | sort \
+                          | tail -1)" \
+                  bin \
 
 if [[ $(uname) == 'Darwin' ]]; then
     export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
