@@ -1,6 +1,8 @@
 autoload -U compinit && compinit
 autoload bashcompinit && bashcompinit
 
+compdef g=git
+
 zstyle ':completion:*' menu select=2
 zstyle ':completion:history-words:*' list no
 zstyle ':completion:history-words:*' menu yes
