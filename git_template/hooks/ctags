@@ -1,6 +1,9 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 set -e
-PATH="/usr/local/bin:$PATH"
-trap "rm -f .git/tags.$$" EXIT
-ctags --tag-relative -Rf.git/tags.$$ --exclude=.git --languages=-javascript,sql
-mv .git/tags.$$ .git/tags
+
+if [[ -f Gemfile ]]; then
+    source ~/.zshenv
+    trap "rm -f TAGS.$$" EXIT
+    ripper-tags --extra=q --tag-relative -Ref TAGS.$$ --exclude=.git
+    mv TAGS.$$ TAGS
+fi
