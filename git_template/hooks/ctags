@@ -1,9 +1,25 @@
 #!/usr/bin/env zsh
 set -e
 
+function ripper {
+    ripper-tags --extra=q --recursive --emacs \
+                --tag-file --exclude=.git $@ > /dev/null 2>&1
+}
+
 if [[ -f Gemfile ]]; then
     source ~/.zshenv
-    trap "rm -f TAGS.$$" EXIT
-    ripper-tags --extra=q --tag-relative -Ref TAGS.$$ --exclude=.git
+    trap "/bin/rm -f TAGS.$$" EXIT
+    ripper --tag-file TAGS.$$ $(pwd)
     mv TAGS.$$ TAGS
+
+    for GEM_DIR in $(bundle list --paths 2> /dev/null); do
+        TAGS_PATH=$GEM_DIR/TAGS
+        if [[ ! -f $TAGS_PATH ]]; then
+            ripper --tag-file $TAGS_PATH $GEM_DIR
+            cat $TAGS_PATH >> TAGS
+            rm -f $TAGS_PATH
+        else
+            cat $TAGS_PATH >> TAGS
+        fi
+    done
 fi
