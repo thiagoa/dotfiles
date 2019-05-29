@@ -3,7 +3,7 @@ set -e
 
 function ripper {
     ripper-tags --extra=q --recursive --emacs \
-                --tag-file --exclude=.git $@ > /dev/null 2>&1
+                --exclude=.git $@ > /dev/null 2>&1
 }
 
 if [[ -f Gemfile ]]; then

@@ -1,3 +1,8 @@
 #!/bin/bash
 
-$(dirname $BASH_SOURCE)/ctags >/dev/null 2>&1 &
+if [[ ! -z "$INSIDE_EMACS" ]]; then
+    unset GIT_LITERAL_PATHSPECS
+    $(dirname $BASH_SOURCE)/ctags >/dev/null
+else
+    $(dirname $BASH_SOURCE)/ctags >/dev/null 2>&1 &
+fi
