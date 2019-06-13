@@ -13,6 +13,10 @@ if [[ -f Gemfile ]]; then
     mv TAGS.$$ TAGS
 
     for GEM_DIR in $(bundle list --paths 2> /dev/null); do
+        if [[ "$?" -ne "0" ]]; then
+            echo "Gem command failed. Tags generation not complete."
+            exit 1
+        fi
         TAGS_PATH=$GEM_DIR/TAGS
         if [[ ! -f $TAGS_PATH ]]; then
             ripper --tag-file $TAGS_PATH $GEM_DIR
@@ -23,3 +27,5 @@ if [[ -f Gemfile ]]; then
         fi
     done
 fi
+
+echo "Tags generation complete!"
