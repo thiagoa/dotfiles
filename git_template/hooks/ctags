@@ -6,8 +6,6 @@ DIR=${1:-.}
 
 cd $DIR
 
-echo $DIR
-
 function ripper {
     ripper-tags --extra=q --recursive --emacs \
                 --exclude=.git $@ > /dev/null 2>&1
