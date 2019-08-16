@@ -37,6 +37,7 @@ if [[ $(uname) == 'Darwin' ]]; then
     export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 fi
 
+export WEB_TIMEOUT=66666666666666666
 export VISUAL=${VISUAL:-nvim}
 export BUNDLER_EDITOR=$VISUAL
 export EDITOR=$VISUAL
