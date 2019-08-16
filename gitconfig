@@ -4,8 +4,8 @@
   filemode = false
   autocrlf = input
 [user]
-	name = Thiago A. Silva
-	email = thiagoaraujos@gmail.com
+  name = Thiago A. Silva
+  email = thiagoaraujos@gmail.com
 [color]
   branch = auto
   diff = auto
@@ -75,11 +75,9 @@
   reapplytag = !git tag -d $1 && git push origin :refs/tags/$1 && git tag $1 && git push origin master && git push --tags
   applytag = !git tag $1 && git push origin master && git push --tags
   set-upstream = git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
-  list-files = diff-tree --no-commit-id --diff-filter=ACMRTUXB --name-only -r
   last-files = !git list-files HEAD
   ctags = !.git/hooks/ctags\n
   glog = log -E -i --grep
-  mup = !git checkout master && git pull && git checkout -
   first-commit = !git log master..HEAD --oneline | tail -1 | cut -d' ' -f 1
   branch-files = !git list-files $(git first-commit)..HEAD
   type = cat-file -t
@@ -90,7 +88,7 @@
   trustExitCode = true
   cmd = `/usr/local/bin/ksdiff $LOCAL $REMOTE`
 [filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
