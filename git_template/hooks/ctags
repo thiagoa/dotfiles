@@ -1,5 +1,12 @@
 #!/usr/bin/env zsh
+# FIXME: Ugly script
 set -e
+
+DIR=${1:-.}
+
+cd $DIR
+
+echo $DIR
 
 function ripper {
     ripper-tags --extra=q --recursive --emacs \
@@ -9,23 +16,44 @@ function ripper {
 if [[ -f Gemfile ]]; then
     source ~/.zshenv
     trap "/bin/rm -f TAGS.$$" EXIT
+
+    echo "Indexing main project..."
+
     ripper --tag-file TAGS.$$ $(pwd)
     mv TAGS.$$ TAGS
 
     for GEM_DIR in $(bundle list --paths 2> /dev/null); do
         if [[ "$?" -ne "0" ]]; then
-            echo "Gem command failed. Tags generation not complete."
+            echo "Command to list gems failed. Tags generation not complete." > /dev/stderr
             exit 1
         fi
-        TAGS_PATH=$GEM_DIR/TAGS
-        if [[ ! -f $TAGS_PATH ]]; then
-            ripper --tag-file $TAGS_PATH $GEM_DIR
-            cat $TAGS_PATH >> TAGS
-            rm -f $TAGS_PATH
-        else
-            cat $TAGS_PATH >> TAGS
-        fi
-    done
-fi
 
-echo "Tags generation complete!"
+        TAGS_PATH=$GEM_DIR/TAGS
+        GEM_NAME=$(basename $GEM_DIR)
+
+        GEM_VERSION=$(echo $GEM_NAME | gsed 's/\(.\+\)-\([0-9]\+\.[0-9]\+\.[0-9]\+\)/\2/g')
+        LAST_GEM_VERSION_FILE="${GEM_DIR}/__last_version__"
+        LAST_GEM_VERSION=''
+
+        if [[ -f "${LAST_GEM_VERSION_FILE}" ]]; then
+            LAST_GEM_VERSION=$(cat $LAST_GEM_VERSION_FILE 2> /dev/null)
+        fi
+
+        if [[ "${LAST_GEM_VERSION}" != "${GEM_VERSION}" ]]; then
+            echo "Indexing ${GEM_NAME}..."
+
+            rm -f $TAGS_PATH
+            ripper --tag-file $TAGS_PATH $GEM_DIR
+            rm -f $GEM_DIR/__last_version__
+            echo $GEM_VERSION > $GEM_DIR/__last_version__
+        else
+            echo "${GEM_NAME} already indexed"
+        fi
+        cat $TAGS_PATH >> TAGS
+    done
+
+    echo "Tags generation complete!"
+else
+    echo "Could not generate tags. Are you in the project's directory?" > /dev/stderr
+    exit 1
+fi

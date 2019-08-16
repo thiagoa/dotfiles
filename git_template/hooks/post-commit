@@ -1,8 +1,12 @@
 #!/bin/bash
 
+DIR=$(pwd)
+SOURCE_DIR=$(dirname $BASH_SOURCE)
+
 if [[ ! -z "$INSIDE_EMACS" ]]; then
     unset GIT_LITERAL_PATHSPECS
-    $(dirname $BASH_SOURCE)/ctags >/dev/null
+    APP=$(basename $SOURCE_DIR)
+    emacsclient -e "(tags \"${DIR}/\")"
 else
-    $(dirname $BASH_SOURCE)/ctags >/dev/null 2>&1 &
+    $SOURCE_DIR/ctags >/dev/null 2>&1 &
 fi
