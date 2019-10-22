@@ -4,6 +4,7 @@
 GPATH
 GRTAGS
 GTAGS
+TAGS.*
 .classpath
 .project
 .ropeproject
@@ -17,3 +18,5 @@ rails-server
 bench1.rb
 bench2.rb
 .tool-versions
+.ruby_tags_commit_hash
+__last_version__
