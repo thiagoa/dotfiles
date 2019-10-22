@@ -1,12 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-DIR="$(pwd)/"
-SOURCE_DIR=$(dirname $BASH_SOURCE)
+source_dir=$(dirname $BASH_SOURCE)
 
 if [[ ! -z "$INSIDE_EMACS" ]]; then
-    unset GIT_LITERAL_PATHSPECS
-    APP=$(basename $SOURCE_DIR)
-    emacsclient -e "(tags \"${DIR}/\" \"${APP}\")"
+    emacsclient -e "(rbtagger-generate-tags \"$(basename $source_dir)\" \"${pwd}/\")"
 else
-    $SOURCE_DIR/ctags >/dev/null 2>&1 &
+    $source_dir/ctags >/dev/null 2>&1 &
 fi
