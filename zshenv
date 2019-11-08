@@ -45,6 +45,7 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 export DIRENV_LOG_FORMAT=
 export RIPPER_TAGS_EMACS=true
 export RIPPER_TAGS_EXTRA_FLAGS=q
+export HISTFILE # Make shell history available from within Emacs
 
 if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
