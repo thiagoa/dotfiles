@@ -13,4 +13,6 @@ source $HOME/.dotfiles/config/zshaliases.sh
 source $HOME/.asdf/asdf.sh
 source $HOME/.asdf/completions/asdf.bash
 
+[[ -f ~/bin/z.sh ]] && source ~/bin/z.sh
+
 [[ -f $HOME/bin/functions.sh  ]] && source $HOME/bin/functions.sh

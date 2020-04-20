@@ -19,6 +19,3 @@ zstyle ':prezto:load' pmodule \
   $([[ -z "$EMACS" ]] && echo 'autosuggestions')
 
 source $HOME/.zprezto/init.zsh
-
-unalias g
-

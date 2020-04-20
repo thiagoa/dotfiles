@@ -26,12 +26,15 @@ function maybe_add_to_path {
 }
 
 maybe_add_to_path $HOME/Library/Python bin 2
-maybe_add_to_path "$(find /Applications \
-                          -maxdepth 1 \
-                          -name '*Racket v*' \
-                          | sort \
-                          | tail -1)" \
-                  bin \
+
+if [[ -d /Applications ]]; then
+  maybe_add_to_path "$(find /Applications \
+                            -maxdepth 1 \
+                            -name '*Racket v*' \
+                            | sort \
+                            | tail -1)" \
+                    bin
+fi
 
 if [[ $(uname) == 'Darwin' ]]; then
     export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
