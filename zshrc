@@ -18,3 +18,7 @@ source $HOME/.asdf/completions/asdf.bash
 if [[ -f $HOME/bin/functions.sh  ]]; then
   source $HOME/bin/functions.sh
 fi
+
+if [[ -f $HOME/.dir_colors/dircolors ]]; then
+  eval `dircolors /home/thiago/.dir_colors/dircolors`
+fi

@@ -1,6 +1,6 @@
 alias b="bundle exec"
 alias ec='/usr/bin/env emacsclient -n -a "nvim" $*'
-alias ls="ls -GF"
+alias ls="ls -GF --color"
 
 function g {
     if [[ $# > 0 ]]; then
