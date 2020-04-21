@@ -15,4 +15,6 @@ source $HOME/.asdf/completions/asdf.bash
 
 [[ -f ~/bin/z.sh ]] && source ~/bin/z.sh
 
-[[ -f $HOME/bin/functions.sh  ]] && source $HOME/bin/functions.sh
+if [[ -f $HOME/bin/functions.sh  ]]; then
+  source $HOME/bin/functions.sh
+fi
