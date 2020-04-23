@@ -32,6 +32,7 @@ function install_binfiles  {
     echo "Installing bin directory...\n"
 
     git clone -q https://github.com/thiagoa/bin $HOME/bin
+    $HOME/bin/setup.sh
 }
 
 function install_asdf {
