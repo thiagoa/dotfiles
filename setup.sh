@@ -27,12 +27,13 @@ function create_directories {
 }
 
 function install_binfiles  {
-    if [[ -d $HOME/bin ]]; then return; fi
+    if [[ -d $HOME/bin ]]; then
+        echo "Installing bin directory...\n"
 
-    echo "Installing bin directory...\n"
+        git clone -q https://github.com/thiagoa/bin $HOME/bin
+    fi
 
-    git clone -q https://github.com/thiagoa/bin $HOME/bin
-    $HOME/bin/setup.sh
+    $HOME/bin/udev/setup.sh
 }
 
 function install_asdf {
@@ -134,6 +135,10 @@ function set_defaults {
     fi
 }
 
+function setup_gnome {
+    $INSTALL_DIR/gnome/autostart/setup.sh
+}
+
 function set_git_remotes_as_authenticated {
     cd $HOME/.vim && git remote set-url origin git@github.com:thiagoa/dotvim.git
     cd $INSTALL_DIR && git remote set-url origin git@github.com:thiagoa/dotfiles.git
@@ -155,6 +160,7 @@ install_vimfiles
 install_emacsfiles
 install_base16
 set_defaults
+setup_gnome
 set_git_remotes_as_authenticated
 setup_karabiner
 
