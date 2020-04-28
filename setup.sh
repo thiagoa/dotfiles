@@ -34,6 +34,7 @@ function install_binfiles  {
     fi
 
     $HOME/bin/udev/setup.sh
+    $HOME/.dotfiles/gnome-shortcuts/setup.sh
 }
 
 function install_asdf {
