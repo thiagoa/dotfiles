@@ -27,14 +27,15 @@ function create_directories {
 }
 
 function install_binfiles  {
-    if [[ -d $HOME/bin ]]; then
+    if [[ ! -d $HOME/bin ]]; then
         echo "Installing bin directory...\n"
 
         git clone -q https://github.com/thiagoa/bin $HOME/bin
     fi
 
     $HOME/bin/udev/setup.sh
-    $HOME/.dotfiles/gnome-shortcuts/setup.sh
+    $INSTALL_DIR/gnome-shortcuts/setup.sh
+    $INSTALL_DIR/autokey/setup.sh
 }
 
 function install_asdf {
