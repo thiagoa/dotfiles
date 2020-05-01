@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=systemctl --user start onedrive
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=OneDrive
+Name=OneDrive
+Comment[en_US]=OneDrive
+Comment=OneDrive
