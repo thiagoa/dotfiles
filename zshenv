@@ -41,6 +41,7 @@ if [[ $(uname) == 'Darwin' ]]; then
 fi
 
 export WEB_TIMEOUT=66666666666666666
+export UNICORN_TIMEOUT=$WEB_TIMEOUT
 export VISUAL=${VISUAL:-nvim}
 export BUNDLER_EDITOR=$VISUAL
 export EDITOR=$VISUAL
