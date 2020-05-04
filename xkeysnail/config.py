@@ -53,6 +53,7 @@ define_keymap(re.compile("Firefox|Google-chrome"), {
     K("M-r"): K("f5"),
     K("M-LEFT_BRACE"): K("M-left"),
     K("M-RIGHT_BRACE"): K("M-right"),
+    K("C-M-w"): K("C-w"),
     # very naive "Edit in editor" feature (just an example)
     K("C-o"): [K("C-a"), K("C-c"), launch(["gedit"]), sleep(0.5), K("C-v")]
 }, "Firefox and Chrome")
@@ -67,7 +68,12 @@ define_keymap(re.compile("Gnome-terminal"), {
     K("C-j"): K("C-f6"),
     # very naive "Edit in editor" feature (just an example)
     K("C-o"): [K("C-a"), K("C-c"), launch(["gedit"]), sleep(0.5), K("C-v")]
-}, "Firefox and Chrome")
+}, "Gnome terminal")
+
+define_keymap(re.compile("discord|Slack"), {
+    # Ctrl+Alt+j/k to switch next/previous tab
+    K("C-Win-k"): K("C-k")
+}, "Discord and Slack")
 
 define_keymap(re.compile("gedit"), {
     # Ctrl+Alt+j/k to switch next/previous tab
