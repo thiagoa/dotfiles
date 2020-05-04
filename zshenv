@@ -51,8 +51,10 @@ export RIPPER_TAGS_EMACS=true
 export RIPPER_TAGS_EXTRA_FLAGS=q
 export HISTFILE # Make shell history available from within Emacs
 
-if (( $#commands[(i)lesspipe(|.sh)] )); then
-  export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
+if [[ $0 = *zsh ]]; then
+  if (( $#commands[(i)lesspipe(|.sh)] )); then
+    export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
+  fi
 fi
 
 if [[ ! -o interactive ]]; then
