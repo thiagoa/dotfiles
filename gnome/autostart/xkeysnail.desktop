@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/thiago/bin/xkeysnail -q
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=xkeysnail
+Name=xkeysnail
+Comment[en_US]=xkeysnail to remap the keyboard
+Comment=xkeysnail to remap the keyboard
