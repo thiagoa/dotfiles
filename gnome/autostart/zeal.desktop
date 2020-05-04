@@ -1,10 +1,10 @@
 [Desktop Entry]
 Type=Application
-Exec=/usr/bin/zeal
+Exec=gtk-launch org.zealdocs.Zeal
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true
-Name[en_US]=Zeal
+Name[en_US]=z1 - Zeal
 Name=Zeal
 Comment[en_US]=Zeal
 Comment=Zeal

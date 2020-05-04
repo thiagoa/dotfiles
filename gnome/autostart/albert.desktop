@@ -3,7 +3,7 @@
 [Desktop Entry]
 Categories=Utility;
 Comment=A desktop agnostic launcher
-Exec=albert
+Exec=gtk-launch albert
 GenericName=Launcher
 Icon=albert
 Name=Albert
@@ -11,3 +11,4 @@ StartupNotify=false
 Type=Application
 Version=1.0
 Comment[en_US]=A desktop agnostic launcher
+Name[en_US]=z2 - Albert
