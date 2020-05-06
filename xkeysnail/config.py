@@ -13,8 +13,7 @@ define_modmap({
 
 # [Conditional modmap] Change modifier keys in certain applications
 define_conditional_modmap(re.compile(r'Emacs'), {
-    Key.CAPSLOCK: Key.LEFT_CTRL,
-    Key.RIGHT_CTRL: Key.ESC,
+    Key.CAPSLOCK: Key.LEFT_CTRL
 })
 
 # [Multipurpose modmap] Give a key two meanings. A normal key when pressed and
@@ -44,6 +43,7 @@ define_conditional_multipurpose_modmap(lambda wm_class, device_name: device_name
 # Keybindings for Firefox/Chrome
 define_keymap(re.compile("Firefox|Google-chrome"), {
     # Ctrl+Alt+j/k to switch next/previous tab
+    K("C-M-n"): K("C-n"),
     K("M-Shift-RIGHT_BRACE"): K("C-TAB"),
     K("M-Shift-LEFT_BRACE"): K("C-Shift-TAB"),
     K("C-M-j"): K("C-TAB"),
@@ -51,9 +51,11 @@ define_keymap(re.compile("Firefox|Google-chrome"), {
     # Type C-j to focus to the content
     K("C-j"): K("C-f6"),
     K("M-r"): K("f5"),
+    K("M-l"): K("C-l"),
     K("M-LEFT_BRACE"): K("M-left"),
     K("M-RIGHT_BRACE"): K("M-right"),
     K("C-M-w"): K("C-w"),
+    K("C-M-d"): K("C-d"),
     # very naive "Edit in editor" feature (just an example)
     K("C-o"): [K("C-a"), K("C-c"), launch(["gedit"]), sleep(0.5), K("C-v")]
 }, "Firefox and Chrome")
@@ -70,9 +72,23 @@ define_keymap(re.compile("Gnome-terminal"), {
     K("C-o"): [K("C-a"), K("C-c"), launch(["gedit"]), sleep(0.5), K("C-v")]
 }, "Gnome terminal")
 
-define_keymap(re.compile("discord|Slack"), {
+define_keymap(re.compile("Geary"), {
+    K("C-M-n"): K("C-n"),
+}, "Geary")
+
+define_keymap(re.compile("discord"), {
     # Ctrl+Alt+j/k to switch next/previous tab
-    K("C-Win-k"): K("C-k")
+    K("C-M-k"): K("C-k")
+}, "Discord and Slack")
+
+define_keymap(re.compile("Slack"), {
+    # Ctrl+Alt+j/k to switch next/previous tab
+    K("C-Win-k"): K("C-k"),
+    K("C-w"): [K("C-backspace")],
+    K("C-Win-b"): with_mark(K("C-left")),
+    K("C-Win-f"): with_mark(K("C-right")),
+    K("C-Win-w"): [K("C-c"), set_mark(False)],
+    K("C-Win-d"): [K("C-delete"), set_mark(False)]
 }, "Discord and Slack")
 
 define_keymap(re.compile("gedit"), {
@@ -85,6 +101,10 @@ define_keymap(re.compile("Zeal"), {
     # Ctrl+s to focus search area
     K("C-s"): K("C-k"),
 }, "Zeal")
+
+# define_keymap(re.compile(".*"), {
+    # K("M-GRAVE"): [K("M-Shift-TAB"), K("Shift-k")]
+# }, "All apps")
 
 # Emacs-like keybindings in non-Emacs applications
 define_keymap(lambda wm_class: wm_class not in ("Emacs", "Gnome-terminal", "DropDownTerminalWindow"), {
