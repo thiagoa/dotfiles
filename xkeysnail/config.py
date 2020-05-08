@@ -44,11 +44,14 @@ define_conditional_multipurpose_modmap(lambda wm_class, device_name: device_name
 define_keymap(re.compile("Firefox|Google-chrome"), {
     # Ctrl+Alt+j/k to switch next/previous tab
     K("C-M-n"): K("C-n"),
+    K("C-n"): K("down"),
+    K("C-p"): K("up"),
+    K("C-a"): with_mark(K("home")),
+    K("C-e"): with_mark(K("end")),
+    K("M-Shift-comma"): with_mark(K("C-home")),
+    K("M-Shift-dot"): with_mark(K("C-end")),
     K("M-Shift-RIGHT_BRACE"): K("C-TAB"),
     K("M-Shift-LEFT_BRACE"): K("C-Shift-TAB"),
-    K("C-M-j"): K("C-TAB"),
-    K("C-M-k"): K("C-Shift-TAB"),
-    # Type C-j to focus to the content
     K("C-j"): K("C-f6"),
     K("M-r"): K("f5"),
     K("M-l"): K("C-l"),
@@ -56,9 +59,15 @@ define_keymap(re.compile("Firefox|Google-chrome"), {
     K("M-RIGHT_BRACE"): K("M-right"),
     K("C-M-w"): K("C-w"),
     K("C-M-d"): K("C-d"),
+    K("M-enter"): K("C-enter"),
     # very naive "Edit in editor" feature (just an example)
     K("C-o"): [K("C-a"), K("C-c"), launch(["gedit"]), sleep(0.5), K("C-v")]
 }, "Firefox and Chrome")
+
+# Keybindings for Firefox/Chrome
+define_keymap(re.compile("Google-chrome"), {
+    K("C-M-j"): K("C-j"),
+}, "Chrome")
 
 define_keymap(re.compile("Gnome-terminal"), {
     # Ctrl+Alt+j/k to switch next/previous tab
@@ -138,7 +147,7 @@ define_keymap(lambda wm_class: wm_class not in ("Emacs", "Gnome-terminal", "Drop
     K("M-d"): [K("C-delete"), set_mark(False)],
     K("M-backspace"): K("C-backspace"),
     # Kill line
-    K("C-k"): [K("Shift-end"), K("C-x"), set_mark(False)],
+    K("C-k"): [K("Shift-end"), K("C-c"), K("delete"), set_mark(False)],
     # Undo
     K("C-slash"): [K("C-z"), set_mark(False)],
     K("C-Shift-ro"): K("C-z"),
