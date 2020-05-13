@@ -64,10 +64,13 @@ define_keymap(re.compile("Firefox|Google-chrome"), {
     K("C-o"): [K("C-a"), K("C-c"), launch(["gedit"]), sleep(0.5), K("C-v")]
 }, "Firefox and Chrome")
 
-# Keybindings for Firefox/Chrome
 define_keymap(re.compile("Google-chrome"), {
     K("C-M-j"): K("C-j"),
 }, "Chrome")
+
+define_keymap(re.compile("Firefox"), {
+    K("C-M-k"): K("C-k"),
+}, "Firefox")
 
 define_keymap(re.compile("Gnome-terminal"), {
     # Ctrl+Alt+j/k to switch next/previous tab
@@ -85,25 +88,17 @@ define_keymap(re.compile("Geary"), {
     K("C-M-n"): K("C-n"),
 }, "Geary")
 
-define_keymap(re.compile("discord"), {
+define_keymap(re.compile("discord|Slack"), {
     # Ctrl+Alt+j/k to switch next/previous tab
     K("C-M-k"): K("C-k")
 }, "Discord and Slack")
 
-define_keymap(re.compile("Slack"), {
+define_keymap(re.compile("Gedit"), {
     # Ctrl+Alt+j/k to switch next/previous tab
-    K("C-Win-k"): K("C-k"),
-    K("C-w"): [K("C-backspace")],
-    K("C-Win-b"): with_mark(K("C-left")),
-    K("C-Win-f"): with_mark(K("C-right")),
-    K("C-Win-w"): [K("C-c"), set_mark(False)],
-    K("C-Win-d"): [K("C-delete"), set_mark(False)]
-}, "Discord and Slack")
-
-define_keymap(re.compile("gedit"), {
-    # Ctrl+Alt+j/k to switch next/previous tab
-    K("C-s"): K("C-f")
-}, "Firefox and Chrome")
+    K("C-s"): K("C-f"),
+    K("C-M-w"): K("C-w"),
+    K("C-M-f"): K("C-Shift-KEY_5"),
+}, "gedit")
 
 # Keybindings for Zeal https://github.com/zealdocs/zeal/
 define_keymap(re.compile("Zeal"), {
@@ -111,9 +106,20 @@ define_keymap(re.compile("Zeal"), {
     K("C-s"): K("C-k"),
 }, "Zeal")
 
+define_keymap(re.compile("WhatsApp"), {
+    K("M-Shift-LEFT_BRACE"): [K("Shift-TAB"), K("Shift-TAB"), K("up"), K("enter")],
+    K("M-Shift-RIGHT_BRACE"): [K("Shift-TAB"), K("Shift-TAB"), K("down"), K("enter")]
+}, "Whatsapp")
+
 # define_keymap(re.compile(".*"), {
     # K("M-GRAVE"): [K("M-Shift-TAB"), K("Shift-k")]
 # }, "All apps")
+
+define_keymap(lambda wm_class: wm_class not in ("Emacs"), {
+    # Activities overview should be M-space everywhere, but this key
+    # is already reserved in my Emacs.
+    K("M-space"): K("Win-space"),
+}, "All apps except Emacs")
 
 # Emacs-like keybindings in non-Emacs applications
 define_keymap(lambda wm_class: wm_class not in ("Emacs", "Gnome-terminal", "DropDownTerminalWindow"), {
@@ -147,12 +153,13 @@ define_keymap(lambda wm_class: wm_class not in ("Emacs", "Gnome-terminal", "Drop
     K("M-d"): [K("C-delete"), set_mark(False)],
     K("M-backspace"): K("C-backspace"),
     # Kill line
-    K("C-k"): [K("Shift-end"), K("C-c"), K("delete"), set_mark(False)],
+    # K("C-k"): [K("Shift-end"), K("C-c"), K("delete"), set_mark(False)],
+    K("C-k"): [K("Shift-end"), K("delete"), set_mark(False)],
     # Undo
     K("C-slash"): [K("C-z"), set_mark(False)],
     K("C-Shift-ro"): K("C-z"),
     # Mark
-    K("C-space"): set_mark(True),
+    K("C-space"): toggle_mark(),
     K("C-M-space"): with_or_set_mark(K("C-right")),
     # Search
     K("C-s"): K("F3"),
