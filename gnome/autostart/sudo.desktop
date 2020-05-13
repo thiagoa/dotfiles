@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=sudo /home/thiago/bin/fix_keychron_keyboard.sh
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=Keychron Keyboard
+Name=Keychron Keyboard
+Comment[en_US]=Fix Keychron Keyboard
+Comment=Fix Keychron Keyboard

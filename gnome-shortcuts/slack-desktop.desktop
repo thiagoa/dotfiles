@@ -1,0 +1,15 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Slack
+GenericName=Slack
+Comment=Slack Chrome Wrapper
+Exec=/opt/google/chrome/google-chrome --app=https://app.slack.com/client --class="Slack" --user-data-dir=/home/thiago/.config/slack
+Terminal=false
+Type=Application
+StartupNotify=true
+MimeType=text/plain;
+Icon=/home/thiago/.dotfiles/gnome-shortcuts/slack.png
+Categories=Network;Application;
+Keywords=Slack;webapp;
+X-Ubuntu-Gettext-Domain=Slack
+StartupWMClass=app.slack.com
