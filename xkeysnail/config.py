@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from pathlib import Path
+import sys
 import re
 from xkeysnail.transform import *
 
@@ -14,14 +16,16 @@ define_multipurpose_modmap({
     Key.ENTER: [Key.ENTER, Key.RIGHT_CTRL]
 })
 
-define_keymap(re.compile("Firefox|Google-chrome"), {
+define_keymap(re.compile("Firefox|Google-chrome|Slack"), {
     K("C-M-n"): K("C-n"),
     K("C-n"): K("down"),
     K("C-p"): K("up"),
-    K("C-a"): with_mark(K("home")),
-    K("C-e"): with_mark(K("end")),
-    K("M-Shift-comma"): with_mark(K("C-home")),
-    K("M-Shift-dot"): with_mark(K("C-end")),
+    K("M-p"): K("up"),
+    K("M-n"): K("down"),
+    K("C-a"): K("home"),
+    K("C-e"): K("end"),
+    K("M-Shift-comma"): K("C-home"),
+    K("M-Shift-dot"): K("C-end"),
     K("M-Shift-RIGHT_BRACE"): K("C-TAB"),
     K("M-Shift-LEFT_BRACE"): K("C-Shift-TAB"),
     K("C-j"): K("C-f6"),
@@ -51,7 +55,9 @@ define_keymap(re.compile("Geary"), {
 }, "Geary")
 
 define_keymap(re.compile("discord|Slack"), {
-    K("C-M-k"): K("C-k")
+    K("C-M-k"): K("C-k"),
+    K("M-Shift-n"): K("M-Shift-down"),
+    K("M-Shift-p"): K("M-Shift-up")
 }, "Discord and Slack")
 
 define_keymap(re.compile("Gedit"), {
@@ -73,7 +79,15 @@ define_keymap(re.compile(".*"), {
     K("C-LEFT_BRACE"): K("esc")
 }, "All apps")
 
-define_keymap(lambda wm_class: wm_class not in ("Emacs", "Gnome-terminal", "DropDownTerminalWindow"), {
+define_keymap(re.compile("albert"), {
+    K("M-p"): K("M-up"),
+    K("M-n"): K("M-down")
+}, "All apps")
+
+this_config_file = sys.argv[-1] # __file__ doesn't work for this...
+ignored_apps_on_default_mappings = (Path(this_config_file).parent / 'ignored_apps_on_default_mappings').read_text()
+
+define_keymap(lambda wm_class: wm_class not in ignored_apps_on_default_mappings.split('|'), {
     K("C-b"): with_mark(K("left")),
     K("C-f"): with_mark(K("right")),
     K("C-p"): with_mark(K("up")),
