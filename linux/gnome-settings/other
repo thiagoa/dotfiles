@@ -1,0 +1,33 @@
+#!/bin/bash
+
+dir="$(cd "$(dirname "$0")" && pwd)"
+settings_pattern="^\(M\|??\) linux/gnome-settings/settings"
+
+$dir/dump_all
+
+cd $dir/../..
+
+if [[ -f ./lock ]]; then
+  echo 'Lock found, bailing out...'
+  exit
+fi
+
+all_files="$(git status --porcelain | sed 's/^ *//;s/ *$//')"
+non_setting_files=$(echo "$all_files" | grep -v "$settings_pattern")
+setting_files=$(echo "$all_files" | grep "$settings_pattern")
+
+if [[ ! -z "$setting_files" ]]; then
+  files_to_stash=$(echo "$non_setting_files" | grep -v '^??' | awk '{print $2}')
+
+  if [[ ! -z "$files_to_stash" ]]; then
+    git stash -- $(echo $files_to_stash | xargs -0)
+  fi
+
+  git add linux/gnome-settings
+  git commit -m '[Automated commit] Update gnome settings'
+  git push origin master
+
+  if [[ ! -z "$files_to_stash" ]]; then
+    git stash pop
+  fi
+fi

@@ -1,5 +1,5 @@
 [/]
-custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/']
 rotate-video-lock-static=@as []
 
 [custom-keybindings/custom0]
@@ -21,3 +21,8 @@ name='Quit application'
 binding='<Alt>space'
 command='/home/thiago/bin/gnome_activities_overview'
 name='Gnome Activities Overview'
+
+[custom-keybindings/custom4]
+binding='<Primary><Alt>9'
+command='/home/thiago/teste'
+name='Outro'
