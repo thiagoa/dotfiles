@@ -1,7 +1,6 @@
 #!/bin/bash
 
 dir="$(cd "$(dirname "$0")" && pwd)"
-
 source $dir/helpers.sh
 
 for file in $(find $dir/settings -type f); do

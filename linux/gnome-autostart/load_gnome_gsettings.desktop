@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/thiago/.dotfiles/linux/gnome-settings/sync
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=Load Gnome Settings
+Name=Gnome Settings
+Comment[en_US]=Load Gnome Settings from text files
+Comment=Load Gnome Settings from text files

@@ -1,0 +1,1 @@
+KERNEL=="hidraw5", SUBSYSTEM=="hidraw", ACTION=="add", RUN+="/home/thiago/bin/fix_keychron_keyboard.sh %p"

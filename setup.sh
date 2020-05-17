@@ -32,10 +32,6 @@ function install_binfiles  {
 
         git clone -q https://github.com/thiagoa/bin $HOME/bin
     fi
-
-    $HOME/bin/udev/setup.sh
-    $INSTALL_DIR/gnome-shortcuts/setup.sh
-    $INSTALL_DIR/autokey/setup.sh
 }
 
 function install_asdf {
@@ -137,19 +133,29 @@ function set_defaults {
     fi
 }
 
-function setup_gnome {
-    $INSTALL_DIR/gnome/autostart/setup.sh
+function install_linux_config {
+    if [[ "$(uname)" == "Linux" ]]; then
+        echo "Installing Linux-specific config..."
+
+        $INSTALL_DIR/linux/udev/setup.sh
+        $INSTALL_DIR/linux/autokey/setup.sh
+        $INSTALL_DIR/linux/gnome-shortcuts/setup.sh
+        $INSTALL_DIR/linux/gnome-settings/install_crontab
+        $INSTALL_DIR/linux/gnome-autostart/setup.sh
+    fi
+}
+
+function install_mac_config {
+    if [[ "$(uname)" == "Darwin" ]]; then
+        rm -rf ~/.config/karabiner
+        ln -s $INSTALL_DIR/mac/karabiner ~/.config/karabiner
+    fi
 }
 
 function set_git_remotes_as_authenticated {
     cd $HOME/.vim && git remote set-url origin git@github.com:thiagoa/dotvim.git
     cd $INSTALL_DIR && git remote set-url origin git@github.com:thiagoa/dotfiles.git
     cd $HOME/bin && git remote set-url origin git@github.com:thiagoa/bin.git
-}
-
-function setup_karabiner {
-    rm -rf ~/.config/karabiner
-    ln -s $INSTALL_DIR/karabiner ~/.config/karabiner
 }
 
 create_directories
@@ -162,9 +168,9 @@ install_vimfiles
 install_emacsfiles
 install_base16
 set_defaults
-setup_gnome
+install_linux_config
+install_mac_config
 set_git_remotes_as_authenticated
-setup_karabiner
 
 echo ""
 echo "All done. You can now start ZSH."

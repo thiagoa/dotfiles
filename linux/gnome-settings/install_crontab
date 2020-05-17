@@ -1,0 +1,18 @@
+#!/bin/bash
+
+dir="$(cd "$(dirname "$0")" && pwd)"
+source $dir/helpers.sh
+cron_dir="/etc/cron.d"
+cron_file="${cron_dir}/gnome-settings"
+
+echo "Installing gnome-settings crontab..."
+
+[[ ! -d $cron_dir ]] && abort "No ${cron_dir} was found... is there a cron daemon?"
+
+echo "# /etc/cron.d/gnome-settings: crontab entries for syncing gnome settings with text files
+
+*/5 * * * * thiago $dir/dump_all" | sudo tee $cron_file > /dev/null
+
+sudo chown root:root $cron_file
+sudo chmod 644 $cron_file
+sudo /etc/init.d/cron restart
