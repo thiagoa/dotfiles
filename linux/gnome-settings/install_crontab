@@ -11,7 +11,7 @@ echo "Installing gnome-settings crontab..."
 
 echo "# /etc/cron.d/gnome-settings: crontab entries for syncing gnome settings with text files
 
-*/5 * * * * thiago $dir/dump_all" | sudo tee $cron_file > /dev/null
+*/5 * * * * thiago $dir/dump_all_commit" | sudo tee $cron_file > /dev/null
 
 sudo chown root:root $cron_file
 sudo chmod 644 $cron_file
