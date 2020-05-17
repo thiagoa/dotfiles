@@ -1,0 +1,10 @@
+[/]
+dynamic-workspaces=false
+experimental-features=['x11-randr-fractional-scaling']
+overlay-key=''
+workspaces-only-on-primary=false
+
+[keybindings]
+switch-monitor=['<Super>e', 'XF86Display']
+toggle-tiled-left=['<Super>bracketleft']
+toggle-tiled-right=['<Super>bracketright']

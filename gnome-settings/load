@@ -1,0 +1,10 @@
+#!/bin/bash
+
+dir="$(cd "$(dirname "$0")" && pwd)"
+
+source $dir/helpers.sh
+
+for file in $(find $dir/settings -type f); do
+  setting=$(setting_for $(basename $file))
+  dconf load $setting < $file
+done

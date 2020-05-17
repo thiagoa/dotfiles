@@ -1,0 +1,15 @@
+#!/bin/bash
+
+dir="$(cd "$(dirname "$0")" && pwd)"
+source $dir/helpers.sh
+
+setting_id=$1
+
+[[ -z "$setting_id" ]] && abort "Please specify a dot-separated gsetting"
+
+setting=$(setting_for $setting_id)
+contents=$(dconf list $setting 2> /dev/null)
+
+[[ -z "$contents" ]] && abort 'ERROR: Empty key!'
+
+dconf dump $setting > $dir/settings/$setting_id

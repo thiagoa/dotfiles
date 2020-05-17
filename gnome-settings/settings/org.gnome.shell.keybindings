@@ -1,0 +1,3 @@
+[/]
+focus-active-notification=['<Super>y', 'XF86Display']
+toggle-overview=@as []

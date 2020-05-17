@@ -1,0 +1,4 @@
+[/]
+switch-monitor=['<Super>e', 'XF86Display']
+toggle-tiled-left=['<Super>bracketleft']
+toggle-tiled-right=['<Super>bracketright']
