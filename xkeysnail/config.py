@@ -5,9 +5,18 @@ import sys
 import re
 from xkeysnail.transform import *
 
-define_modmap({
+mappings_for_all_keyboards = {
     Key.CAPSLOCK: Key.LEFT_CTRL,
     Key.RIGHT_CTRL: Key.RIGHT_META
+}
+
+define_modmap(mappings_for_all_keyboards)
+
+define_conditional_modmap(lambda wm_class, device_name: re.match(".*Keychron", device_name), {
+    **mappings_for_all_keyboards,
+    Key.LEFT_META: Key.LEFT_ALT,
+    Key.LEFT_ALT: Key.LEFT_META,
+    Key.RIGHT_META: Key.RIGHT_ALT
 })
 
 define_timeout(1)
