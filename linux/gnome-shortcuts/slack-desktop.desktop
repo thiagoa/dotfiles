@@ -4,7 +4,7 @@ StartupWMClass=Slack
 Comment=Slack Desktop
 GenericName=Slack Client for Linux
 Exec=/opt/google/chrome/google-chrome --app=https://app.slack.com/client --class="Slack" --user-data-dir=/home/thiago/.config/slack
-Icon=/usr/share/pixmaps/slack.png
+Icon=/home/thiago/.dotfiles/linux/gnome-shortcuts/slack.png
 Type=Application
 StartupNotify=true
 Categories=GNOME;GTK;Network;InstantMessaging;

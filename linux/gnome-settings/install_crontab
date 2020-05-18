@@ -1,4 +1,6 @@
 #!/bin/bash
+#
+# Get a service log with "service cron status"
 
 dir="$(cd "$(dirname "$0")" && pwd)"
 source $dir/helpers.sh
