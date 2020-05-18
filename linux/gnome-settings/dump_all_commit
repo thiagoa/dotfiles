@@ -9,8 +9,11 @@ cd $dir/../..
 
 if [[ -f ./lock ]]; then
   echo 'Lock found, bailing out...'
+  $HOME/bin/notify "Custom gnome-settings daemon" "Lock file found. Should you remove it?"
   exit
 fi
+
+touch ./lock
 
 all_files="$(git status --porcelain | sed 's/^ *//;s/ *$//')"
 non_setting_files=$(echo "$all_files" | grep -v "$settings_pattern")
@@ -31,3 +34,5 @@ if [[ ! -z "$setting_files" ]]; then
     git stash pop
   fi
 fi
+
+rm -f ./lock
