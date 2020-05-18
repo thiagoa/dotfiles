@@ -1,23 +1,28 @@
 [/]
-custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/']
 rotate-video-lock-static=@as []
 
 [custom-keybindings/custom0]
 binding='<Alt><Super>apostrophe'
-command='/home/thiago/bin/albert-clipboard'
+command="bash -c '$HOME/bin/albert-clipboard'"
 name='Clipboard'
 
 [custom-keybindings/custom1]
 binding='<Super>t'
-command='/home/thiago/bin/toggle_crow_translate.sh'
+command="bash -c '$HOME/bin/toggle_crow_translate.sh'"
 name='Crow Translate'
 
 [custom-keybindings/custom2]
 binding='<Super>q'
-command='/home/thiago/bin/stop_active.py'
+command="bash -c '$HOME/bin/linux_quit_x_app'"
 name='Quit application'
 
 [custom-keybindings/custom3]
 binding='<Alt>space'
-command='/home/thiago/bin/gnome_activities_overview'
+command="bash -c '$HOME/bin/gnome_activities_overview'"
 name='Gnome Activities Overview'
+
+[custom-keybindings/custom4]
+binding='<Alt>F2'
+command="bash -c '$HOME/bin/gnome_run_dialog'"
+name='Gnome Run Dialog'
