@@ -25,7 +25,7 @@ define_multipurpose_modmap({
     Key.ENTER: [Key.ENTER, Key.RIGHT_CTRL]
 })
 
-define_keymap(re.compile("Firefox|Google-chrome|Slack"), {
+define_keymap(re.compile("Firefox|Google-chrome|Slack|WhatsApp"), {
     K("C-M-n"): K("C-n"),
     K("C-n"): K("down"),
     K("C-p"): K("up"),
@@ -45,6 +45,7 @@ define_keymap(re.compile("Firefox|Google-chrome|Slack"), {
     K("C-M-w"): K("C-w"),
     K("C-M-d"): K("C-d"),
     K("M-enter"): K("C-enter"),
+    K("M-Shift-enter"): [K("esc"), K("C-Shift-enter")],
 }, "Firefox and Chrome")
 
 define_keymap(re.compile("Google-chrome"), {
