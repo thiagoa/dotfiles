@@ -1,6 +1,5 @@
 [/]
 dynamic-workspaces=false
-experimental-features=['x11-randr-fractional-scaling']
 overlay-key=''
 workspaces-only-on-primary=false
 
