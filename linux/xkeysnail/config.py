@@ -35,14 +35,10 @@ define_keymap(re.compile("discord|Slack"), {
     K("C-Shift-p"): K("M-up")
 }, "Discord and Slack")
 
-define_keymap(re.compile("Firefox|Google-chrome|Slack"), {
+define_keymap(re.compile("Firefox|Google-chrome|Slack|Thunderbird"), {
     K("C-M-n"): K("C-n"),
-    K("C-n"): K("down"),
-    K("C-p"): K("up"),
     K("M-p"): K("up"),
     K("M-n"): K("down"),
-    K("C-a"): K("home"),
-    K("C-e"): K("end"),
     K("M-Shift-comma"): K("C-home"),
     K("M-Shift-dot"): K("C-end"),
     K("M-Shift-RIGHT_BRACE"): K("C-TAB"),
