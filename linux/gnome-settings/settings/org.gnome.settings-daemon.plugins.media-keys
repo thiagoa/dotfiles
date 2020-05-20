@@ -34,6 +34,6 @@ command='bash -c "$HOME/bin/gnome_applications_overview"'
 name='Gnome Applications Overview'
 
 [custom-keybindings/custom6]
-binding=''
+binding='<Shift><Alt>bar'
 command="bash -c '$HOME/bin/toggle_keychron_media_keys 0'"
 name='Toggle media keys'
