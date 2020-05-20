@@ -1,6 +1,6 @@
 [/]
 area-screenshot-clip=['<Primary><Shift><Alt>dollar']
-custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/']
 rotate-video-lock-static=@as []
 
 [custom-keybindings/custom0]
@@ -32,3 +32,8 @@ name='Gnome Run Dialog'
 binding='<Super>a'
 command='bash -c "$HOME/bin/gnome_applications_overview"'
 name='Gnome Applications Overview'
+
+[custom-keybindings/custom6]
+binding=''
+command="bash -c '$HOME/bin/toggle_keychron_media_keys 0'"
+name='Toggle media keys'
