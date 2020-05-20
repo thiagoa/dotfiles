@@ -27,7 +27,7 @@ define_multipurpose_modmap({
 
 # Must be before Firefox|Google-chrome|Slack|etc for some keybindings
 # to take precedence over the ones in there.
-define_keymap(re.compile("discord|Slack"), {
+define_keymap(re.compile("Discord|Slack"), {
     K("C-M-k"): K("C-k"),
     K("M-Shift-n"): K("M-Shift-down"),
     K("M-Shift-p"): K("M-Shift-up"),
@@ -35,7 +35,7 @@ define_keymap(re.compile("discord|Slack"), {
     K("C-Shift-p"): K("M-up")
 }, "Discord and Slack")
 
-define_keymap(re.compile("Firefox|Google-chrome|Slack|Thunderbird"), {
+define_keymap(re.compile("Firefox|Google-chrome|Slack|Discord|Thunderbird"), {
     K("C-M-n"): K("C-n"),
     K("M-p"): K("up"),
     K("M-n"): K("down"),
@@ -70,7 +70,7 @@ define_keymap(re.compile("Geary"), {
     K("C-M-n"): K("C-n"),
 }, "Geary")
 
-define_keymap(re.compile("discord|Slack"), {
+define_keymap(re.compile("Discord|Slack"), {
     K("C-M-k"): K("C-k"),
     K("M-Shift-n"): K("M-Shift-down"),
     K("M-Shift-p"): K("M-Shift-up"),
