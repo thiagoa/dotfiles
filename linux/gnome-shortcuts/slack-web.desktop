@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Slack Web
+StartupWMClass=Webslack
+Comment=Slack Web
+GenericName=Slack Chrome Client for Linux
+Exec=/opt/google/chrome/google-chrome --app=https://app.slack.com/client --class="Webslack" --user-data-dir=/home/thiago/.config/webslack
+Icon=/home/thiago/.dotfiles/linux/gnome-shortcuts/slack.png
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Network;InstantMessaging;
+MimeType=x-scheme-handler/slack;

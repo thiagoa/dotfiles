@@ -25,9 +25,9 @@ define_multipurpose_modmap({
     Key.ENTER: [Key.ENTER, Key.RIGHT_CTRL]
 })
 
-# Must be before Firefox|Google-chrome|Slack|etc for some keybindings
+# Must be before Firefox|Google-chrome|Webslack|etc for some keybindings
 # to take precedence over the ones in there.
-define_keymap(re.compile("Discord|Slack"), {
+define_keymap(re.compile("Webdiscord|Webslack"), {
     K("C-M-k"): K("C-k"),
     K("M-Shift-n"): K("M-Shift-down"),
     K("M-Shift-p"): K("M-Shift-up"),
@@ -35,7 +35,7 @@ define_keymap(re.compile("Discord|Slack"), {
     K("C-Shift-p"): K("M-up")
 }, "Discord and Slack")
 
-define_keymap(re.compile("Firefox|Google-chrome|Slack|Discord|Thunderbird"), {
+define_keymap(re.compile("Firefox|Google-chrome|Webslack|Webdiscord|Thunderbird"), {
     K("C-M-n"): K("C-n"),
     K("M-p"): K("up"),
     K("M-n"): K("down"),
@@ -70,14 +70,6 @@ define_keymap(re.compile("Geary"), {
     K("C-M-n"): K("C-n"),
 }, "Geary")
 
-define_keymap(re.compile("Discord|Slack"), {
-    K("C-M-k"): K("C-k"),
-    K("M-Shift-n"): K("M-Shift-down"),
-    K("M-Shift-p"): K("M-Shift-up"),
-    K("C-Shift-n"): K("M-down"),
-    K("C-Shift-p"): K("M-up")
-}, "Discord and Slack")
-
 define_keymap(re.compile("Gedit"), {
     K("C-s"): K("C-f"),
     K("C-M-w"): K("C-w"),
@@ -94,13 +86,14 @@ define_keymap(re.compile("WhatsApp"), {
 }, "Whatsapp")
 
 define_keymap(re.compile(".*"), {
-    K("C-LEFT_BRACE"): K("esc")
+    K("C-LEFT_BRACE"): K("esc"),
+    K("C-M-LEFT_BRACE"): K("esc")
 }, "All apps")
 
 define_keymap(re.compile("albert"), {
     K("M-p"): K("M-up"),
     K("M-n"): K("M-down")
-}, "All apps")
+}, "Albert")
 
 this_config_file = sys.argv[-1] # __file__ doesn't work for this...
 ignored_apps_on_default_mappings = (Path(this_config_file).parent / 'ignored_apps_on_default_mappings').read_text()
