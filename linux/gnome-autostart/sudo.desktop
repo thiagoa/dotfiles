@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=bash -c "sudo $HOME/bin/fix_keychron_keyboard.sh"
+Exec=bash -c "sudo $HOME/bin/toggle_keychron_media_keys off"
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true
