@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Discord
+StartupWMClass=Discord
+Comment=Discord
+GenericName=Dis
+cord Chrome App
+Exec=/opt/google/chrome/google-chrome --app=https://discord.com/app --class="Discord" --user-data-dir=/home/thiago/.config/discord
+Icon=/home/thiago/.dotfiles/linux/gnome-shortcuts/discord.png
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Network;InstantMessaging;
