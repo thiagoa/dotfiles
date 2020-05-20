@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Slack
 StartupWMClass=Slack
-Comment=Slack Desktop
+Comment=Slack
 GenericName=Slack Client for Linux
 Exec=/opt/google/chrome/google-chrome --app=https://app.slack.com/client --class="Slack" --user-data-dir=/home/thiago/.config/slack
 Icon=/home/thiago/.dotfiles/linux/gnome-shortcuts/slack.png
