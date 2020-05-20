@@ -25,9 +25,9 @@ define_multipurpose_modmap({
     Key.ENTER: [Key.ENTER, Key.RIGHT_CTRL]
 })
 
-# Must be before Firefox|Google-chrome|Webslack|etc for some keybindings
+# Must be before Firefox|Google-chrome|Slack|etc for some keybindings
 # to take precedence over the ones in there.
-define_keymap(re.compile("Webdiscord|Webslack"), {
+define_keymap(re.compile("Webdiscord|Slack"), {
     K("C-M-k"): K("C-k"),
     K("M-Shift-n"): K("M-Shift-down"),
     K("M-Shift-p"): K("M-Shift-up"),
@@ -35,7 +35,7 @@ define_keymap(re.compile("Webdiscord|Webslack"), {
     K("C-Shift-p"): K("M-up")
 }, "Discord and Slack")
 
-define_keymap(re.compile("Firefox|Google-chrome|Webslack|Webdiscord|Thunderbird"), {
+define_keymap(re.compile("Firefox|Google-chrome|Slack|Webdiscord|Thunderbird"), {
     K("C-M-n"): K("C-n"),
     K("M-p"): K("up"),
     K("M-n"): K("down"),
