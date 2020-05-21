@@ -58,6 +58,19 @@ define_keymap(re.compile("Google-chrome"), {
     K("C-M-j"): K("C-j"),
 }, "Chrome")
 
+define_keymap(re.compile("Org.gnome.Nautilus"), {
+    K("M-LEFT_BRACE"): K("M-left"),
+    K("M-RIGHT_BRACE"): K("M-right"),
+    K("C-M-h"): K("M-home"),
+    K("C-M-p"): K("M-up"),
+    K("C-M-n"): K("M-down")
+}, "Chrome")
+
+define_keymap(re.compile("Gnome-terminal|DropDownTerminalWindow"), {
+    K("Win-Shift-n"): K("Shift-page_down"),
+    K("Win-Shift-p"): K("Shift-page_up")
+}, "Terminal apps")
+
 define_keymap(re.compile("Gnome-terminal"), {
     K("M-Shift-RIGHT_BRACE"): K("C-page_down"),
     K("M-Shift-LEFT_BRACE"): K("C-page_up"),
