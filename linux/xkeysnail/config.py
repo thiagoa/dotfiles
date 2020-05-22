@@ -63,7 +63,8 @@ define_keymap(re.compile("Org.gnome.Nautilus"), {
     K("M-RIGHT_BRACE"): K("M-right"),
     K("C-M-h"): K("M-home"),
     K("C-M-p"): K("M-up"),
-    K("C-M-n"): K("M-down")
+    K("C-M-n"): K("M-down"),
+    K("C-M-l"): K("C-M-Win-l")
 }, "Chrome")
 
 define_keymap(re.compile("Gnome-terminal|DropDownTerminalWindow"), {
