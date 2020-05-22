@@ -9,7 +9,10 @@ cd $dir/../..
 
 if [[ -f ./lock ]]; then
   echo 'Lock found, bailing out...'
-  $HOME/bin/notify "Custom gnome-settings daemon" "Lock file found. Should you remove it?"
+
+  if [[ "$(cat ~/.dotfiles/lock)" != "no_notify" ]]; then
+    $HOME/bin/notify "Custom gnome-settings daemon" "Lock file found. Should you remove it?"
+  fi
   exit
 fi
 
