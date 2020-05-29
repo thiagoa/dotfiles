@@ -51,7 +51,13 @@ define_keymap(re.compile("Firefox|Google-chrome|Webslack|Webdiscord|Thunderbird"
     K("C-M-w"): K("C-w"),
     K("C-M-d"): K("C-d"),
     K("M-enter"): K("C-enter"),
+    K("M-u"): K("C-k"),
     K("M-Shift-enter"): [K("esc"), K("C-Shift-enter")],
+
+    # Thunderbird specific, but might serve for other apps
+    K("C-M-r"): K("C-r"),
+    K("C-M-Shift-r"): K("C-Shift-r"),
+    K("C-M-k"): K("C-k")
 }, "Firefox and Chrome")
 
 define_keymap(re.compile("Google-chrome"), {
@@ -115,8 +121,12 @@ ignored_apps_on_default_mappings = (Path(this_config_file).parent / 'ignored_app
 define_keymap(lambda wm_class: wm_class not in ignored_apps_on_default_mappings.split('|'), {
     K("C-b"): with_mark(K("left")),
     K("C-f"): with_mark(K("right")),
+    K("C-Shift-b"): [K("left"), K("left"), K("left"), K("left"), K("left")],
+    K("C-Shift-f"): [K("right"), K("right"), K("right"), K("right"), K("right")],
     K("C-p"): with_mark(K("up")),
     K("C-n"): with_mark(K("down")),
+    K("C-Shift-n"): [K("down"), K("down"), K("down"), K("down"), K("down")],
+    K("C-Shift-p"): [K("up"), K("up"), K("up"), K("up"), K("up")],
     K("M-b"): with_mark(K("C-left")),
     K("M-f"): with_mark(K("C-right")),
     K("C-a"): with_mark(K("home")),
@@ -136,6 +146,7 @@ define_keymap(lambda wm_class: wm_class not in ignored_apps_on_default_mappings.
     K("M-backspace"): K("C-backspace"),
     K("C-k"): [K("Shift-end"), K("delete"), set_mark(False)],
     K("C-slash"): [K("C-z"), set_mark(False)],
+    K("C-Shift-slash"): [K("C-Shift-z"), set_mark(False)],
     K("C-Shift-ro"): K("C-z"),
     K("C-space"): toggle_mark(),
     K("C-M-space"): with_or_set_mark(K("C-right")),
