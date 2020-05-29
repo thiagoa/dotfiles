@@ -5,5 +5,5 @@ workspaces-only-on-primary=false
 
 [keybindings]
 switch-monitor=['<Super>e', 'XF86Display']
-toggle-tiled-left=['<Super>bracketleft']
-toggle-tiled-right=['<Super>bracketright']
+toggle-tiled-left=['<Primary><Super>bracketleft']
+toggle-tiled-right=['<Primary><Super>bracketright']
