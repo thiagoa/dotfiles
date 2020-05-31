@@ -11,152 +11,152 @@ setopt EXTENDED_GLOB
 INSTALL_DIR="${HOME}/.dotfiles"
 
 if ! $(which git > /dev/null 2>&1); then
-    echo "ERROR: Yow, I need git... gimme git!"
-    exit 1
+  echo "ERROR: Yow, I need git... gimme git!"
+  exit 1
 fi
 
 if [[ ! -d $INSTALL_DIR ]]; then
-    echo "ERROR: Please clone this repository in ~/.dotfiles"
+  echo "ERROR: Please clone this repository in ~/.dotfiles"
 fi
 
 function create_directories {
-    echo "Creating $HOME/Code directory...\n"
+  echo "Creating $HOME/Code directory...\n"
 
-    if [[ ! -d /bin ]]; then rmdir /bin; fi
-    if [[ ! -d $HOME/Code/go ]]; then mkdir -p $HOME/Code/go; fi
+  if [[ ! -d /bin ]]; then rmdir /bin; fi
+  if [[ ! -d $HOME/Code/go ]]; then mkdir -p $HOME/Code/go; fi
 }
 
 function install_binfiles  {
-    if [[ ! -d $HOME/bin ]]; then
-        echo "Installing bin directory...\n"
+  if [[ ! -d $HOME/bin ]]; then
+    echo "Installing bin directory...\n"
 
-        git clone -q https://github.com/thiagoa/bin $HOME/bin
-    fi
+    git clone -q https://github.com/thiagoa/bin $HOME/bin
+  fi
 }
 
 function install_asdf {
-    if [[ -d $HOME/.asdf ]]; then return; fi
+  if [[ -d $HOME/.asdf ]]; then return; fi
 
-    echo "Installing asdf...\n"
+  echo "Installing asdf...\n"
 
-    # Still need to figure out how to get the most up-to-date version...
-    git clone -q https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.3.0 > /dev/null
+  # Still need to figure out how to get the most up-to-date version...
+  git clone -q https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.3.0 > /dev/null
 }
 
 function generate_ssh_key {
-    if [[ -f $HOME/.ssh/id_rsa.pub ]]; then return; fi
+  if [[ -f $HOME/.ssh/id_rsa.pub ]]; then return; fi
 
-    echo "Generating SSH key...\n"
+  echo "Generating SSH key...\n"
 
-    ssh-keygen -t rsa
+  ssh-keygen -t rsa
 
-    echo "\nYour key has been generated. Now go to Github."
+  echo "\nYour key has been generated. Now go to Github."
 }
 
 function install_zprezto {
-    if [[ -d $HOME/.zprezto ]]; then return; fi
+  if [[ -d $HOME/.zprezto ]]; then return; fi
 
-    echo "Installing zprezto..."
+  echo "Installing zprezto..."
 
-    git clone -q --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto" > /dev/null 2>&1
+  git clone -q --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto" > /dev/null 2>&1
 
-    for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-        ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-    done
+  for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+    ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+  done
 }
 
 function install_dotfiles {
-    echo "Installing dotfiles..."
+  echo "Installing dotfiles..."
 
-    for file in ${INSTALL_DIR}/^(setup.sh|README.md)(.N:t); do
-        if [ -f "$HOME/.$file" ] || [ -h "$HOME/.$file" ]; then
-            rm $HOME/.$file
-        fi
+  for file in ${INSTALL_DIR}/^(setup.sh|README.md)(.N:t); do
+    if [ -f "$HOME/.$file" ] || [ -h "$HOME/.$file" ]; then
+      rm $HOME/.$file
+    fi
 
-        ln -s $INSTALL_DIR/$file $HOME/.$file
-    done
+    ln -s $INSTALL_DIR/$file $HOME/.$file
+  done
 }
 
 function install_vimfiles {
-    if [[ -d $HOME/.vim ]]; then return; fi
+  if [[ -d $HOME/.vim ]]; then return; fi
 
-    echo "Installing vimfiles...\n"
+  echo "Installing vimfiles...\n"
 
-    git clone -q https://github.com/thiagoa/dotvim $HOME/.vim
+  git clone -q https://github.com/thiagoa/dotvim $HOME/.vim
 
-    $HOME/.vim/setup.sh
+  $HOME/.vim/setup.sh
 }
 
 function install_emacsfiles {
-    if [[ -d $HOME/.emacs.d ]]; then return; fi
+  if [[ -d $HOME/.emacs.d ]]; then return; fi
 
-    echo "Installing Emacs files...\n"
+  echo "Installing Emacs files...\n"
 
-    git clone -q https://github.com/thiagoa/dotemacs $HOME/.emacs.d
+  git clone -q https://github.com/thiagoa/dotemacs $HOME/.emacs.d
 }
 
 function install_base16 {
-    if [[ -d $HOME/.config/base16-shell ]]; then return; fi
+  if [[ -d $HOME/.config/base16-shell ]]; then return; fi
 
-    echo "\nInstalling base16 themes..."
+  echo "\nInstalling base16 themes..."
 
-    git clone -q https://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell
+  git clone -q https://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell
 
-    BASE16_SHELL=$HOME/.config/base16-shell/
-    eval "$($BASE16_SHELL/profile_helper.sh)"
+  BASE16_SHELL=$HOME/.config/base16-shell/
+  eval "$($BASE16_SHELL/profile_helper.sh)"
 }
 
 function check_sudoers {
-    echo "\nLet's check if your user is in sudoers...\n"
+  echo "\nLet's check if your user is in sudoers...\n"
 
 
-    if ! $(sudo -l 2> /dev/null); then
-        echo "\nERROR: Please add your user to sudoers and run this script again"
-        exit 1
-    fi
+  if ! $(sudo -l 2> /dev/null); then
+    echo "\nERROR: Please add your user to sudoers and run this script again"
+    exit 1
+  fi
 }
 
 function set_defaults {
-    local shell_is_already_zsh=$(cat /etc/passwd | grep -q $USER | grep -q zsh)
+  local shell_is_already_zsh=$(cat /etc/passwd | grep -q $USER | grep -q zsh)
 
-    if ! $shell_is_already_zsh; then
-        local zshpath=$(which zsh)
-        local shellspath=/etc/shells
+  if ! $shell_is_already_zsh; then
+    local zshpath=$(which zsh)
+    local shellspath=/etc/shells
 
-        echo "\nSetting ZSH as default shell..."
+    echo "\nSetting ZSH as default shell..."
 
-        if [[ -f $shellspath ]] && ! grep -q $zshpath $shellspath; then
-            echo $zshpath | sudo tee -a $shellspath > /dev/null
-        fi
-
-        chsh -s $zshpath
+    if [[ -f $shellspath ]] && ! grep -q $zshpath $shellspath; then
+      echo $zshpath | sudo tee -a $shellspath > /dev/null
     fi
+
+    chsh -s $zshpath
+  fi
 }
 
 function install_linux_config {
-    if [[ "$(uname)" == "Linux" ]]; then
-        echo "Installing Linux-specific config..."
+  if [[ "$(uname)" == "Linux" ]]; then
+    echo "Installing Linux-specific config..."
 
-        $INSTALL_DIR/linux/udev/setup.sh
-        $INSTALL_DIR/linux/autokey/setup.sh
-        $INSTALL_DIR/linux/gnome-shortcuts/setup.sh
-        $INSTALL_DIR/linux/gnome-settings/install_crontab
-        $INSTALL_DIR/linux/gnome-autostart/setup.sh
-        $INSTALL_DIR/linux/veracrypt/setup.sh
-    fi
+    $INSTALL_DIR/linux/udev/setup.sh
+    $INSTALL_DIR/linux/autokey/setup.sh
+    $INSTALL_DIR/linux/gnome-shortcuts/setup.sh
+    $INSTALL_DIR/linux/gnome-settings/install_crontab
+    $INSTALL_DIR/linux/gnome-autostart/setup.sh
+    $INSTALL_DIR/linux/veracrypt/setup.sh
+  fi
 }
 
 function install_mac_config {
-    if [[ "$(uname)" == "Darwin" ]]; then
-        rm -rf ~/.config/karabiner
-        ln -s $INSTALL_DIR/mac/karabiner ~/.config/karabiner
-    fi
+  if [[ "$(uname)" == "Darwin" ]]; then
+    rm -rf ~/.config/karabiner
+    ln -s $INSTALL_DIR/mac/karabiner ~/.config/karabiner
+  fi
 }
 
 function set_git_remotes_as_authenticated {
-    cd $HOME/.vim && git remote set-url origin git@github.com:thiagoa/dotvim.git
-    cd $INSTALL_DIR && git remote set-url origin git@github.com:thiagoa/dotfiles.git
-    cd $HOME/bin && git remote set-url origin git@github.com:thiagoa/bin.git
+  cd $HOME/.vim && git remote set-url origin git@github.com:thiagoa/dotvim.git
+  cd $INSTALL_DIR && git remote set-url origin git@github.com:thiagoa/dotfiles.git
+  cd $HOME/bin && git remote set-url origin git@github.com:thiagoa/bin.git
 }
 
 create_directories
