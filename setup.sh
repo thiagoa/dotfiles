@@ -142,6 +142,7 @@ function install_linux_config {
         $INSTALL_DIR/linux/gnome-shortcuts/setup.sh
         $INSTALL_DIR/linux/gnome-settings/install_crontab
         $INSTALL_DIR/linux/gnome-autostart/setup.sh
+        $INSTALL_DIR/linux/veracrypt/setup.sh
     fi
 }
 
