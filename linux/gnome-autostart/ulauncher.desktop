@@ -1,0 +1,14 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Categories=Utility;
+Comment=Application launcher for Linux
+Exec=gtk-launch ulauncher
+GenericName=Launcher
+Icon=ulauncher
+Name=Ulauncher
+StartupNotify=false
+Type=Application
+Version=1.0
+Comment[en_US]=Application launcher for Linux
+Name[en_US]=Ulauncher
