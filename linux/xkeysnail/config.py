@@ -64,6 +64,14 @@ define_keymap(re.compile("Google-chrome"), {
     K("C-M-j"): K("C-j"),
 }, "Chrome")
 
+define_keymap(re.compile("jetbrains-datagrip"), {
+    K("C-M-b"): K("C-b"),
+    K("C-EQUAL"): K("C-w"),
+    K("C-M-w"): K("C-f4"),
+    K("M-Shift-RIGHT_BRACE"): K("M-right"),
+    K("M-Shift-LEFT_BRACE"): K("M-left")
+}, "Datagrip")
+
 define_keymap(re.compile("Org.gnome.Nautilus"), {
     K("C-M-h"): K("M-home"),
     K("C-M-p"): K("M-up"),
