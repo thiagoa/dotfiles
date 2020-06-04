@@ -38,6 +38,8 @@ kill-line-to-xclip() {
 }
 
 zle -N copy-to-xclip
+zle -N kill-region-to-xclip
+
 bindkey "^[w" copy-to-xclip
 bindkey "^w" kill-region-to-xclip
 
