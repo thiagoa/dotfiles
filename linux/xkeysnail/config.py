@@ -41,8 +41,8 @@ define_keymap(re.compile("Firefox|Google-chrome|Webslack|Webdiscord|Thunderbird"
     K("M-n"): K("down"),
     K("M-Shift-comma"): K("C-home"),
     K("M-Shift-dot"): K("C-end"),
-    K("M-Shift-RIGHT_BRACE"): K("C-TAB"),
-    K("M-Shift-LEFT_BRACE"): K("C-Shift-TAB"),
+    K("C-M-RIGHT_BRACE"): K("C-TAB"),
+    K("C-M-LEFT_BRACE"): K("C-Shift-TAB"),
     K("C-j"): K("C-f6"),
     K("M-r"): K("f5"),
     K("M-l"): K("C-l"),
@@ -68,8 +68,8 @@ define_keymap(re.compile("jetbrains-datagrip"), {
     K("C-M-b"): K("C-b"),
     K("C-EQUAL"): K("C-w"),
     K("C-M-w"): K("C-f4"),
-    K("M-Shift-RIGHT_BRACE"): K("M-right"),
-    K("M-Shift-LEFT_BRACE"): K("M-left")
+    K("C-M-RIGHT_BRACE"): K("M-right"),
+    K("C-M-LEFT_BRACE"): K("M-left")
 }, "Datagrip")
 
 define_keymap(re.compile("Org.gnome.Nautilus"), {
@@ -78,8 +78,8 @@ define_keymap(re.compile("Org.gnome.Nautilus"), {
     K("C-M-n"): K("M-down"),
     K("C-M-l"): K("C-M-Win-l"),
     K("M-Shift-n"): K("C-Shift-n"),
-    K("M-Shift-LEFT_BRACE"): K("C-page_up"),
-    K("M-Shift-RIGHT_BRACE"): K("C-page_down")
+    K("C-M-LEFT_BRACE"): K("C-page_up"),
+    K("C-M-RIGHT_BRACE"): K("C-page_down")
 }, "Chrome")
 
 define_keymap(re.compile("Gnome-terminal|DropDownTerminalWindow"), {
@@ -88,8 +88,8 @@ define_keymap(re.compile("Gnome-terminal|DropDownTerminalWindow"), {
 }, "Terminal apps")
 
 define_keymap(re.compile("Gnome-terminal"), {
-    K("M-Shift-RIGHT_BRACE"): K("C-page_down"),
-    K("M-Shift-LEFT_BRACE"): K("C-page_up"),
+    K("C-M-RIGHT_BRACE"): K("C-page_down"),
+    K("C-M-LEFT_BRACE"): K("C-page_up"),
     K("C-M-j"): K("C-TAB"),
     K("C-M-k"): K("C-Shift-TAB"),
     K("C-j"): K("C-f6"),
@@ -110,8 +110,8 @@ define_keymap(re.compile("Zeal"), {
 }, "Zeal")
 
 define_keymap(re.compile("WhatsApp"), {
-    K("M-Shift-LEFT_BRACE"): [K("Shift-TAB"), K("Shift-TAB"), K("up"), K("enter")],
-    K("M-Shift-RIGHT_BRACE"): [K("Shift-TAB"), K("Shift-TAB"), K("down"), K("enter")]
+    K("C-M-LEFT_BRACE"): [K("Shift-TAB"), K("Shift-TAB"), K("up"), K("enter")],
+    K("C-M-RIGHT_BRACE"): [K("Shift-TAB"), K("Shift-TAB"), K("down"), K("enter")]
 }, "Whatsapp")
 
 define_keymap(re.compile(".*"), {
