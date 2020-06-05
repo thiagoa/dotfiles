@@ -124,6 +124,12 @@ define_keymap(re.compile("albert"), {
     K("M-n"): K("M-down")
 }, "Albert")
 
+define_keymap(re.compile("Cawbird"), {
+    K("M-RIGHT_BRACE"): K("M-right"),
+    K("M-LEFT_BRACE"): K("M-left"),
+    K("M-n"): K("M-down")
+}, "Cawbird")
+
 this_config_file = sys.argv[-1] # __file__ doesn't work for this...
 ignored_apps_on_default_mappings = (Path(this_config_file).parent / 'ignored_apps_on_default_mappings').read_text()
 
