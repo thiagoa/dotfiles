@@ -35,7 +35,12 @@ define_keymap(re.compile("Webdiscord|Webslack"), {
     K("C-Shift-p"): K("M-up")
 }, "Discord and Slack")
 
-define_keymap(re.compile("Firefox|Google-chrome|Webslack|Webdiscord|Thunderbird"), {
+define_keymap(re.compile("WhatsApp"), {
+    K("C-M-LEFT_BRACE"): [K("Shift-TAB"), K("Shift-TAB"), K("up"), K("enter")],
+    K("C-M-RIGHT_BRACE"): [K("Shift-TAB"), K("Shift-TAB"), K("down"), K("enter")]
+}, "Whatsapp")
+
+define_keymap(re.compile("Firefox|Google-chrome|Webslack|Webdiscord|Thunderbird|WhatsApp"), {
     K("C-M-n"): K("C-n"),
     K("M-p"): K("up"),
     K("M-n"): K("down"),
@@ -108,11 +113,6 @@ define_keymap(re.compile("Gedit"), {
 define_keymap(re.compile("Zeal"), {
     K("C-s"): K("C-k"),
 }, "Zeal")
-
-define_keymap(re.compile("WhatsApp"), {
-    K("C-M-LEFT_BRACE"): [K("Shift-TAB"), K("Shift-TAB"), K("up"), K("enter")],
-    K("C-M-RIGHT_BRACE"): [K("Shift-TAB"), K("Shift-TAB"), K("down"), K("enter")]
-}, "Whatsapp")
 
 define_keymap(re.compile(".*"), {
     K("C-LEFT_BRACE"): K("esc"),
