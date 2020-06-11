@@ -1,0 +1,14 @@
+[/]
+background-color='rgb(118,118,118)'
+custom-command='/usr/bin/tmux'
+enable-animation=false
+enable-toggle-on-scroll=false
+first-start=false
+foreground-color='rgb(238,238,236)'
+other-shortcut=['<Super>bracketleft']
+real-shortcut=['<Super>bracketleft']
+run-custom-command=true
+scrollbar-visible=true
+shortcut-type='other'
+terminal-size='700px'
+transparency-level=uint32 75
