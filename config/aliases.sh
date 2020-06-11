@@ -1,6 +1,7 @@
 alias b="bundle exec"
 alias ec='/usr/bin/env emacsclient -n -a "nvim" $*'
 alias ls="ls -GF --color"
+alias apt-purge="sudo apt purge `dpkg --list | grep '^rc' | awk '{ print $2; }'`"
 
 function g {
     if [[ $# > 0 ]]; then
