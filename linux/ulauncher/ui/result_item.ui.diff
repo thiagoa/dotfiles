@@ -1,0 +1,20 @@
+49c49
+<                     <property name="width_request">810</property>
+---
+>                     <property name="width_request">410</property>
+52c52
+<                     <property name="ellipsize">end</property>
+---
+>                     <property name="ellipsize">middle</property>
+61c61
+<                     <property name="y">0</property>
+---
+>                     <property name="y">5</property>
+66c66
+<                     <property name="width_request">810</property>
+---
+>                     <property name="width_request">410</property>
+78c78
+<                     <property name="y">34</property>
+---
+>                     <property name="y">28</property>
