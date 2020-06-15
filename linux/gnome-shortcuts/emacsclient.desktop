@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+# Register with xdg-mime default emacsclient.desktop text/plain
+[Desktop Entry]
+Name=Emacs Client
+GenericName=Emacs Client
+Comment=Emacs Client
+Exec=/usr/bin/emacsclient -a '' -c %F
+Terminal=false
+Type=Application
+StartupNotify=true
+MimeType=text/plain;
+Icon=emacs
