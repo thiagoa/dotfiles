@@ -119,6 +119,10 @@ define_keymap(re.compile(".*"), {
     K("C-M-LEFT_BRACE"): K("esc")
 }, "All apps")
 
+define_keymap(re.compile("Evince"), {
+    K("C-s"): K("C-f")
+}, "Evince")
+
 define_keymap(re.compile("Cawbird"), {
     K("M-RIGHT_BRACE"): K("M-right"),
     K("M-LEFT_BRACE"): K("M-left"),
