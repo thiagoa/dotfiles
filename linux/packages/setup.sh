@@ -20,4 +20,11 @@ for path in "${packages[@]}"; do
   rm -f $file
 done
 
+# Configure redis and make it work on Ubuntu 20.04 (upgraded from
+# 19.10)
+sudo mkdir -p /var/log/redis
+sudo chown -R redis:redis /var/log/redis
+sudo chmod -R u+rwX,g+rwX,u+rx /var/log/redis
+sudo chmod +r /etc/redis/redis.conf
+
 echo 'Reminder: Have you installed warsaw yet?'
