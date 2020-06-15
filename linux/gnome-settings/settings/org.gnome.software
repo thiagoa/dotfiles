@@ -1,3 +1,4 @@
 [/]
 check-timestamp=int64 1591878812
+download-updates=false
 online-updates-timestamp=int64 1591455836
