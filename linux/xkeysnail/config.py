@@ -119,11 +119,6 @@ define_keymap(re.compile(".*"), {
     K("C-M-LEFT_BRACE"): K("esc")
 }, "All apps")
 
-define_keymap(re.compile("albert"), {
-    K("M-p"): K("M-up"),
-    K("M-n"): K("M-down")
-}, "Albert")
-
 define_keymap(re.compile("Cawbird"), {
     K("M-RIGHT_BRACE"): K("M-right"),
     K("M-LEFT_BRACE"): K("M-left"),
