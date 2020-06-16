@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-source_dir=$(dirname $BASH_SOURCE)
-
-if [[ ! -z "$INSIDE_EMACS" ]]; then
-    emacsclient -e "(rbtagger-generate-tags \"$(basename $source_dir)\" \"${pwd}/\")"
-else
-    $source_dir/ctags >/dev/null 2>&1 &
-fi
