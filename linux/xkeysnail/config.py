@@ -62,7 +62,8 @@ define_keymap(re.compile("Firefox|Google-chrome|Webslack|Webdiscord|Thunderbird|
     # Thunderbird specific, but might serve for other apps
     K("C-M-r"): K("C-r"),
     K("C-M-Shift-r"): K("C-Shift-r"),
-    K("C-M-k"): K("C-k")
+    K("C-M-k"): K("C-k"),
+    K("C-M-s"): K("C-f")
 }, "Firefox and Chrome")
 
 define_keymap(re.compile("Google-chrome"), {
@@ -158,6 +159,8 @@ define_keymap(lambda wm_class: wm_class not in ignored_apps_on_default_mappings.
     K("C-d"): [K("delete"), set_mark(False)],
     K("M-d"): [K("C-delete"), set_mark(False)],
     K("M-backspace"): K("C-backspace"),
+    K("C-backspace"): [K("Shift-home"), K("delete"), set_mark(False)],
+    K("C-Shift-backspace"): [K("end"), K("Shift-home"), K("delete"), set_mark(False)],
     K("C-k"): [K("Shift-end"), K("delete"), set_mark(False)],
     K("C-slash"): [K("C-z"), set_mark(False)],
     K("C-Shift-slash"): [K("C-Shift-z"), set_mark(False)],
