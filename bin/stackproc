@@ -1,0 +1,67 @@
+#!/usr/bin/env ruby
+
+LENGTH = ARGV.map(&:length).max
+RESET = "\033[0m"
+CLOSE = "\e[0m"
+RED_COLOR = "\e[31m"
+MAGENTA = "\e[35m"
+GREEN = "\e[32m"
+BROWN = "\e[33m"
+BLUE = "\e[34m"
+COLORS = [MAGENTA, GREEN, BROWN, BLUE].cycle
+
+io_pipes = []
+wait = proc do
+  Process.waitall
+  io_pipes.each(&:close)
+end
+
+def cmd(docker_app, cmd)
+  "docker exec -e TERM=xterm-256color -it #{docker_app} #{cmd}"
+end
+
+def killall
+  ARGV.each do |docker_app|
+    system cmd(docker_app, 'pkill -f script/stackup')
+  end
+end
+
+trap 'INT' do
+  killall
+  wait.()
+  system 'reset'
+  exit
+end
+
+system "docker-compose up -d #{ARGV.join(' ')}"
+abort if $?.exitstatus.nonzero?
+puts
+killall
+
+ARGV.each do |docker_app|
+  read_end, write_end = IO.pipe
+  io_pipes << write_end
+  color = COLORS.next
+
+  fork do
+    trap('INT') do
+      throw :stop
+    end
+
+    write_end.close
+
+    catch :stop do
+      while output = read_end.gets
+        title = docker_app.ljust(LENGTH)
+        puts "#{RESET}#{color}#{title}#{CLOSE} | #{output}"
+      end
+    end
+
+    read_end.close
+  end
+
+  read_end.close
+  Process.spawn cmd(docker_app, 'script/stackup'), out: write_end
+end
+
+wait.()

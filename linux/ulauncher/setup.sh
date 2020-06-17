@@ -22,10 +22,10 @@ done
 
 echo "Ulauncher files copied successfully"
 
-if pgrep ulauncher > /dev/null; then
-  echo 'Restarting Ulauncher...'
-  killall ulauncher
-  sleep 2
-  ulauncher > /dev/null &
-  disown %1
-fi
+# if pgrep ulauncher > /dev/null; then
+#   echo 'Restarting Ulauncher...'
+#   killall ulauncher
+#   sleep 2
+#   ulauncher > /dev/null &
+#   disown %1
+# fi

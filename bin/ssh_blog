@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+ssh miner@165.227.90.38

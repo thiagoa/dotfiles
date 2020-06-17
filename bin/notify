@@ -1,0 +1,4 @@
+#!/bin/bash
+
+eval "export $(pgrep -u $LOGNAME gnome-session | head -n 1 | xargs -I{} cat /proc/{}/environ | egrep -z DBUS_SESSION_BUS_ADDRESS | tr -d '\0')";
+notify-send "$@"

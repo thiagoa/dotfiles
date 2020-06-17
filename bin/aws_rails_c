@@ -1,0 +1,22 @@
+#!/usr/local/bin/sbcl --script
+
+(load "aws-lib.lisp")
+
+(ql:quickload "cl-ppcre" :silent t)
+
+(let* ((instance-name (cadr sb-ext:*posix-argv*))
+       (app-env (ppcre:register-groups-bind (env)
+                    ("^[^-]+-[^-]+-([^-]+)-[^-]+$"
+                     instance-name
+                     :sharedp t)
+                  env))
+       (initial-cmd (concatenate 'string
+                                 "'docker exec -it "
+                                 "$(docker container ls | tail -1 | cut -f1 -d\" \")"
+                                 " /bin/bash -c "
+                                 "\"source .env.vault; APP_ENV="
+                                 app-env
+                                 " bundle exec rails c\"'")))
+  (handler-case (run-ssh instance-name initial-cmd)
+    (error (c)
+      (abort-program c))))

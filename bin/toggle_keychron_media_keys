@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+action=${1:-toggle}
+user_to_notify=$2
+sys_file="/sys/module/hid_apple/parameters/fnmode"
+
+# This condition means that it was run by udev (keyboard plugged via Bluetooth)
+if [[ ! -z "$RUN" ]]; then 
+  LOGFILE=/tmp/keychron.log
+  echo "RUN: at `date` by `whoami` act $ACTION \$1 $1 DEVPATH $DEVPATH DEVNAME $DEVNAME" >> ${LOGFILE}
+fi
+
+case "$action" in
+    on)
+        param=1
+        ;;
+    off)
+        param=0
+        ;;
+    toggle)
+        current_state="$(cat $sys_file)"
+        param="$([[ "$current_state" == "1" ]] && echo '0' || echo '1')"  
+        action="$([[ "$current_state" == "1" ]] && echo 'off' || echo 'on')"  
+esac
+
+notification="Media keys ${action}"
+echo $notification
+
+if [[ ! -z "$user_to_notify" ]]; then
+  su - $user_to_notify -c "\$HOME/bin/notify \"Keychron Keyboard\" \"$notification\""
+fi
+
+echo $param | sudo tee $sys_file > /dev/null

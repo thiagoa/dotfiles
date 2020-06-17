@@ -1,0 +1,32 @@
+#!/bin/bash
+
+function new_session {
+    local id=$1
+    local dir=$2
+    local cmd="vim"
+
+    if [[ "$3" != "" ]]; then
+        cmd="$3"
+    fi
+
+    tmux switch-client -t $id 2> /dev/null
+
+    if [[ "$?" != "0" ]]; then
+        tmux new-session -d -s $id
+        tmux send-keys -t "$id:1.1" "cd $dir && $cmd" Enter
+        tmux split-window -t "$id:1.1" -h
+        tmux send-keys -t "$id:1.2" "cd $dir && clear" Enter
+        tmux attach-session -t $id 2> /dev/null
+        tmux switch-client -t $id
+    fi
+}
+
+case $1 in
+    ss) new_session stacksocial $STACK_PATH/stacksocial ;;
+    sf) new_session stack_foundation $STACK_PATH/stack_foundation ;;
+    sa) new_session stacksocial-admin $STACK_PATH/stacksocial-admin ;;
+    sc) new_session stackcommerce $STACK_PATH/stackcommerce ;;
+    gg) new_session gorgias $STACK_PATH/gorgias ;;
+    notes) new_session notes $HOME/Dropbox/Notas "vim temp.txt" ;;
+    *) new_session notes $HOME/Dropbox/Notas "vim temp.txt" ;;
+esac

@@ -1,0 +1,6 @@
+#!/bin/sh
+albert toggle && sleep 0.1 && xte "str cq "
+
+if [ $? -ne 0 ]; then
+  albert && sleep 0.1 && xte "str cq"
+fi

@@ -1,0 +1,86 @@
+#!/usr/bin/env ruby
+#
+# Author: Thiago A. Silva
+#
+# List all configured git alias. Integrates with the git command.
+#
+# usage: git alias
+#        git-alias
+
+DEFAULT_PADDING = 5
+
+GitAlias = Struct.new(:name, :command)
+
+class GitAliases
+  include Enumerable
+
+  def initialize(aliases)
+    @aliases = aliases
+  end
+
+  def each
+    @aliases.each { |item| yield item }
+  end
+
+  def longest
+    @longest ||= @aliases.map { |a| a.name.length }.max
+  end
+
+  def print
+    GitAliasesPrinter.new(self, DEFAULT_PADDING).print
+  end
+end
+
+class GitAliasesParser
+  def initialize(git_config)
+    @git_config = git_config
+  end
+
+  def parse
+    GitAliases.new(
+      filter_aliases.map do |option|
+        GitAlias.new(*option.scan(/^(.*?)=(.*)$/)[0])
+      end
+    )
+  end
+
+  private
+
+  def filter_aliases
+    @git_config
+      .split("\n")
+      .select { |option| option =~ /^alias\./ }
+      .map { |option| option.gsub!(/^alias\./, '') }
+  end
+end
+
+class GitAliasesPrinter
+  def initialize(collection, padding)
+    @collection = collection
+    @padding = padding
+  end
+
+  def print
+    @collection.each { |a| print_alias(a) }
+  end
+
+  private
+
+  def print_alias(a)
+    puts "%-#{left_padding}s = %s" % [a.name, command(a)]
+  end
+
+  def command(a)
+    padding_str + a.command
+  end
+  
+  def left_padding
+    @collection.longest + @padding
+  end
+
+  def padding_str
+    ' ' * @padding
+  end
+end
+
+GitAliasesParser.new(`git config --list`).parse.print

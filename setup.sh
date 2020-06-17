@@ -27,11 +27,17 @@ function create_directories {
 }
 
 function install_binfiles  {
-  if [[ ! -d $HOME/bin ]]; then
-    echo "Installing bin directory...\n"
+  echo "Installing bin directory...\n"
 
-    git clone -q https://github.com/thiagoa/bin $HOME/bin
+  if [[ ! -L ~/bin ]] && [[ -d ~/bin ]]; then
+    dest="$HOME/.bin_backup"
+    mv $HOME/bin $dest
+    echo "Moved current bin directory to $dest"
+  else
+    rm -f ~/bin
   fi
+
+  ln -s $INSTALL_DIR/bin $HOME/bin
 }
 
 function install_asdf {
@@ -50,7 +56,7 @@ function generate_ssh_key {
 
   ssh-keygen -t rsa
 
-  echo "\nYour key has been generated. Now go to Github."
+  echo "\nYour key has been generated. Now go to GitHub."
 }
 
 function install_zprezto {
@@ -181,5 +187,4 @@ echo ""
 echo "Things to do manually next:"
 echo ""
 echo "- Install programming language stuff with 'asdf install my_language'"
-echo "- Install neovim-remote with pip3"
 echo "- Choose a base16 theme by typing 'base16<TAB>'. Don't forget to use a matching theme in vim"

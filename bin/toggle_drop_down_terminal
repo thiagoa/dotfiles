@@ -1,0 +1,10 @@
+#!/bin/bash
+
+is_open=$(wmctrl -l | grep "Drop Down Terminal")
+wm_id=$(xdotool getactivewindow)
+wm_class=$(xprop -id "$wm_id" | grep WM_CLASS)
+is_focused=$(echo $wm_class | grep DropDownTerminal)
+
+if [[ ! -z "$is_open" ]] && [[ -z "$is_focused" ]]; then
+  wmctrl -a "Drop Down Terminal"
+fi

@@ -1,0 +1,9 @@
+#!/usr/bin/sbcl --script
+
+(load "/home/thiago/bin/aws-lib.lisp")
+
+(let ((instance-name (cadr sb-ext:*posix-argv*))
+      (initial-cmd (caddr sb-ext:*posix-argv*)))
+  (handler-case (run-ssh instance-name initial-cmd)
+    (error (c)
+      (abort-program c))))

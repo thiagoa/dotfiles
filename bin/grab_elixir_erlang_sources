@@ -1,0 +1,43 @@
+#!/bin/bash
+
+set -eu
+
+SOURCE_DIR="${HOME}/Code/elixir/src"
+ERLANG_VERSION=$(erl -eval 'erlang:display(erlang:system_info(otp_release)), halt().' -noshell | tr -d "[:space:]\"")
+ELIXIR_VERSION=$(elixir --version | tail -1 | cut -d" " -f2)
+ELIXIR_FILE="v${ELIXIR_VERSION}.tar.gz"
+ELIXIR_URL="https://github.com/elixir-lang/elixir/archive/${ELIXIR_FILE}"
+ERLANG_FILE="OTP-${ERLANG_VERSION}.0.tar.gz"
+ERLANG_URL="https://github.com/erlang/otp/archive/${ERLANG_FILE}"
+
+function grab {
+    local file=$1
+    local url=$2
+    local symlink=$3
+
+    if [[ ! -f $file ]]; then
+        echo "Downloading ${symlink}..."
+        wget --quiet $url
+    fi
+
+    dir=$(tar --list -f $file | head -1)
+
+    if [[ ! -d $dir ]]; then
+        echo "Unpacking ${symlink}..."
+        tar zfx $file
+    fi
+
+    echo "Symlinking ${symlink}..."
+
+    rm -f $symlink
+    ln -s $(tar --list -f $file | head -1) $symlink
+}
+
+if [[ ! -d $SOURCE_DIR ]]; then
+    mkdir -p $SOURCE_DIR
+fi
+
+cd $SOURCE_DIR
+
+grab $ELIXIR_FILE $ELIXIR_URL elixir
+grab $ERLANG_FILE $ERLANG_URL otp

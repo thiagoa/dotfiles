@@ -1,0 +1,3 @@
+#!/bin/sh
+echo "Setting terminal title to '$1'..."
+echo "\033]0;$1\007"

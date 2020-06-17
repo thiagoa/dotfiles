@@ -1,0 +1,3 @@
+#!/bin/bash
+
+IS_CHILD_VIM=1 nvim $@

@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# Author: Thiago A. Silva
+#
+# Simple script to recursively find and edit all matches of a file.
+#
+# usage: edit <filename_part>
+#
+# Edits every Ruby file that has students in its name:
+# 
+# edit 'students*rb'
+
+$EDITOR `find . -name "*$1*" | xargs echo`

@@ -1,0 +1,26 @@
+#!/bin/bash
+
+program_path="/usr/local/bin/xkeysnail"
+
+function xkeysnail_proc() {
+  proc=$(pgrep -f /usr/local/bin/xkeysnail)
+  echo "$(echo $proc | sed 's/ *$//g')"
+}
+
+if [[ $1 == "kill" ]]; then
+  shift
+
+  proc=$(xkeysnail_proc)
+
+  if [[ ! -z "$proc" ]]; then
+    echo 'Killing xkeysnail...'
+    sudo kill -9 $proc
+  fi
+fi
+
+if [[ -z "$(xkeysnail_proc)" ]]; then
+  xhost +SI:localuser:root
+  sudo $program_path $@ /home/thiago/.dotfiles/linux/xkeysnail/config.py
+else
+  echo 'xkeysnail already running!'
+fi

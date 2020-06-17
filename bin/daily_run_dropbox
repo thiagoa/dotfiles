@@ -1,0 +1,7 @@
+#!/bin/bash
+
+/usr/local/bin/terminal-notifier -message "Opening Dropbox temporarily..."
+open /Applications/Dropbox.app
+sleep 90
+pkill -HUP Dropbox
+pkill -HUP garcon

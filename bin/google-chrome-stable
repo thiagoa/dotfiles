@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/bin/google-chrome-stable --force-device-scale-factor=$(gsettings get org.gnome.desktop.interface text-scaling-factor) $@
