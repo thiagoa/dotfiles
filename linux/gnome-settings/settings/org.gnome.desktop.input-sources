@@ -1,4 +1,4 @@
 [/]
 mru-sources=[('xkb', 'us'), ('xkb', 'us+alt-intl')]
 sources=[('xkb', 'us'), ('xkb', 'us+alt-intl')]
-xkb-options=['lv3:ralt_alt']
+xkb-options=['lv3:ralt_alt', 'caps:ctrl_modifier']

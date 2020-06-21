@@ -7,3 +7,6 @@ workspaces-only-on-primary=false
 switch-monitor=['<Super>e', 'XF86Display']
 toggle-tiled-left=['<Primary><Super>bracketleft']
 toggle-tiled-right=['<Primary><Super>bracketright']
+
+[wayland/keybindings]
+restore-shortcuts=@as []

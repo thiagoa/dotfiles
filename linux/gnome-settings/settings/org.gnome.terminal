@@ -3,19 +3,38 @@ mnemonics-enabled=false
 shortcuts-enabled=true
 
 [legacy/keybindings]
-move-tab-left='<Primary><Super>braceleft'
-move-tab-right='<Primary><Super>braceright'
+move-tab-left='disabled'
+move-tab-right='disabled'
 next-tab='<Primary>Page_Down'
 prev-tab='<Primary>Page_Up'
 
+[legacy/profiles:]
+list=['b1dcc9dd-5262-4d8d-a863-c897e6d979b9', 'b544f4d5-b4ad-4bda-bcd7-2fc30e69cb28']
+
 [legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
-background-color='#282A36'
+background-color='rgb(0,43,54)'
 bold-color='#6E46A4'
 bold-color-same-as-fg=false
 custom-command='/usr/bin/tmux'
 font='Monospace 11'
-foreground-color='#F8F8F2'
+foreground-color='rgb(131,148,150)'
 palette=['#262626', '#E356A7', '#42E66C', '#E4F34A', '#9B6BDF', '#E64747', '#75D7EC', '#EFA554', '#7A7A7A', '#FF79C6', '#50FA7B', '#F1FA8C', '#BD93F9', '#FF5555', '#8BE9FD', '#FFB86C']
+preserve-working-directory='always'
 use-custom-command=true
 use-system-font=false
 use-theme-colors=false
+visible-name='Tmux'
+
+[legacy/profiles:/:b544f4d5-b4ad-4bda-bcd7-2fc30e69cb28]
+background-color='#282A36'
+bold-color='#6E46A4'
+bold-color-same-as-fg=false
+custom-command='/usr/bin/zsh'
+font='Monospace 11'
+foreground-color='#F8F8F2'
+palette=['#262626', '#E356A7', '#42E66C', '#E4F34A', '#9B6BDF', '#E64747', '#75D7EC', '#EFA554', '#7A7A7A', '#FF79C6', '#50FA7B', '#F1FA8C', '#BD93F9', '#FF5555', '#8BE9FD', '#FFB86C']
+preserve-working-directory='always'
+use-custom-command=true
+use-system-font=false
+use-theme-colors=false
+visible-name='Zsh'

@@ -1,4 +1,6 @@
 [/]
 focus-active-notification=['<Super>y', 'XF86Display']
+open-application-menu=@as []
 toggle-application-view=@as []
+toggle-message-tray=['<Super>v']
 toggle-overview=@as []
