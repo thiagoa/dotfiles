@@ -15,19 +15,15 @@
 #   ignored (example: Emacs and terminal apps).
 
 # - If the current window matches the list, open a bogus application
-#   (I'm using Solaar here) wherein xkeysnail's default keymappings
-#   apply. This will change the WM_CLASS of the current window, which
-#   will trick xkeysnail into applying the default keybindings to
-#   Activities Overview.
+#   (I'm using a dummy GTK program here) wherein xkeysnail's default
+#   keymappings apply. This will change the WM_CLASS of the current
+#   window, which will trick xkeysnail into applying the default
+#   keybindings to Activities Overview.
 #
 # - Trigger Activies Overview
 #
 # - Sleep while the Overview is active. When hidden, hide the bogus
 #   application as well.
-#
-# NOTE: Instead of Solaar, an invisible GTK application with
-# open/close commands that can be triggered via the command line would
-# be ideal.
 #
 # TIP: For things you can run look into main.js:
 # https://github.com/GNOME/gnome-shell/blob/master/js/ui/main.js
@@ -71,9 +67,9 @@ if [[ "$(is_active)" == "false" ]]; then
   # The lock is meant to correctly handle recursive activations. For
   # example, we might activate the activities overview and then
   # activate the run dialog before closing the former. If we close the
-  # run dialog, it shouldn't close Solaar; it should only close Solaar
-  # when the last activation is closed, in this case, the activities
-  # overview.
+  # run dialog, it shouldn't close the dummy app; it should only close
+  # the dummy app when the last activation is closed, in this case,
+  # the activities overview.
   lock_dir="$HOME/.xkeysnail"
   lock_file="$lock_dir/${active_command}${show_command}${hide_command}"
   has_locks="$(ls -A $lock_dir)"
@@ -92,9 +88,7 @@ if [[ "$(is_active)" == "false" ]]; then
   is_ignored_app=$(echo $wm_class | egrep "$ignored_apps")
 
   if [[ ! -z "$is_ignored_app" ]] && [ ! "$has_locks" ]; then
-    /usr/bin/solaar
-    sleep 0.1
-    wmctrl -a Solaar
+    dummy &
   fi
 
   send_command "$show_command"
@@ -104,7 +98,7 @@ if [[ "$(is_active)" == "false" ]]; then
       sleep 0.01
     done
 
-    wmctrl -c Solaar
+    killall dummy
   fi
 
   rm -f $lock_file

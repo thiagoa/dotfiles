@@ -6,3 +6,4 @@ application/config/bootstrap.php
 sistema/app/config/config.php
 bin/datagrip
 lock
+linux/packages/.*_cache
