@@ -1,7 +1,5 @@
 #!/bin/bash
 
-exit
-
 declare -a packages
 packages=(crow-translate/crow-translate kamranahmedse/pennywise)
 
