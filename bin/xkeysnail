@@ -18,9 +18,19 @@ if [[ $1 == "kill" ]]; then
   fi
 fi
 
+additional_args=''
+
+device=$(cat /proc/bus/input/devices | awk '/MX Keys/{for(a=0;a>=0;a++){getline;{if(/kbd/==1){ print
+$NF;exit 0;}}}}' | grep -o 'event[0-9]\+')
+device=''
+
+if [[ ! -z "$device" ]]; then
+  additional_args="--devices /dev/input/${device}"
+fi
+
 if [[ -z "$(xkeysnail_proc)" ]]; then
   xhost +SI:localuser:root
-  sudo $program_path $@ /home/thiago/.dotfiles/linux/xkeysnail/config.py
+  sudo $program_path $additional_args $@ /home/thiago/.dotfiles/linux/xkeysnail/config.py
 else
   echo 'xkeysnail already running!'
 fi
