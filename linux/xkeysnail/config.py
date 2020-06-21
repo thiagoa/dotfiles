@@ -173,6 +173,7 @@ define_keymap(lambda wm_class: wm_class not in ignored_apps_on_default_mappings.
     K("C-g"): [K("esc"), set_mark(False), K("C")],
     K("C-q"): escape_next_key,
     K("C-M-v"): set_mark(False),
+    K("C-M-s"): K("C-f"),
     K("C-x"): {
         K("h"): [K("C-home"), K("C-a"), set_mark(True)],
         K("C-f"): K("C-o"),
