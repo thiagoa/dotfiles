@@ -4,7 +4,6 @@ custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybin
 rotate-video-lock-static=@as []
 screencast=['<Primary><Shift><Super>r']
 screensaver=['<Super>Escape']
-www=['<Super>b']
 
 [custom-keybindings/custom1]
 binding='<Super>t'
