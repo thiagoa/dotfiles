@@ -19,6 +19,12 @@ define_conditional_modmap(lambda wm_class, device_name: re.match(".*Keychron", d
     Key.RIGHT_META: Key.RIGHT_ALT
 })
 
+define_conditional_modmap(lambda wm_class, device_name: re.match(".*Logitech Wireless", device_name), {
+    **mappings_for_all_keyboards,
+    Key.CAPSLOCK: Key.LEFT_CTRL,
+    Key.RIGHT_META: Key.RIGHT_CTRL
+})
+
 define_timeout(1)
 define_multipurpose_modmap({
     Key.APOSTROPHE: [Key.APOSTROPHE, Key.RIGHT_CTRL],
@@ -115,11 +121,6 @@ define_keymap(re.compile("Zeal"), {
     K("C-s"): K("C-k"),
 }, "Zeal")
 
-define_keymap(re.compile(".*"), {
-    K("C-LEFT_BRACE"): K("esc"),
-    K("C-M-LEFT_BRACE"): K("esc")
-}, "All apps")
-
 define_keymap(re.compile("Evince"), {
     K("C-s"): K("C-f")
 }, "Evince")
@@ -130,8 +131,21 @@ define_keymap(re.compile("Cawbird"), {
     K("M-n"): K("M-down")
 }, "Cawbird")
 
+define_keymap(re.compile("Crow Translate"), {
+    K("C-M-s"): K("C-s")
+}, "Crow Translate")
+
+define_keymap(re.compile("Spotify"), {
+    K("C-s"): K("C-l")
+}, "Spotify")
+
 this_config_file = sys.argv[-1] # __file__ doesn't work for this...
 ignored_apps_on_default_mappings = (Path(this_config_file).parent / 'ignored_apps_on_default_mappings').read_text()
+
+define_keymap(re.compile(".*"), {
+    K("C-LEFT_BRACE"): K("esc"),
+    K("C-M-LEFT_BRACE"): K("esc")
+}, "All apps")
 
 define_keymap(lambda wm_class: wm_class not in ignored_apps_on_default_mappings.split('|'), {
     K("C-b"): with_mark(K("left")),
