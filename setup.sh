@@ -151,6 +151,7 @@ function install_linux_config {
     $INSTALL_DIR/linux/veracrypt/setup.sh
     $INSTALL_DIR/linux/ulauncher/setup.sh
     $INSTALL_DIR/linux/packages/setup.sh
+    $INSTALL_DIR/linux/xkeysnail/setup.sh
   fi
 }
 
