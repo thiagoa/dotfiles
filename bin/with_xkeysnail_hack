@@ -15,7 +15,7 @@
 #   ignored (example: Emacs and terminal apps).
 
 # - If the current window matches the list, open a bogus application
-#   (I'm using Ulauncher here) wherein xkeysnail's default keymappings
+#   (I'm using Solaar here) wherein xkeysnail's default keymappings
 #   apply. This will change the WM_CLASS of the current window, which
 #   will trick xkeysnail into applying the default keybindings to
 #   Activities Overview.
@@ -25,7 +25,7 @@
 # - Sleep while the Overview is active. When hidden, hide the bogus
 #   application as well.
 #
-# NOTE: Instead of Ulauncher, an invisible GTK application with
+# NOTE: Instead of Solaar, an invisible GTK application with
 # open/close commands that can be triggered via the command line would
 # be ideal.
 #
@@ -71,7 +71,7 @@ if [[ "$(is_active)" == "false" ]]; then
   # The lock is meant to correctly handle recursive activations. For
   # example, we might activate the activities overview and then
   # activate the run dialog before closing the former. If we close the
-  # run dialog, it shouldn't close Ulaunchr; it should only close Ulauncher
+  # run dialog, it shouldn't close Solaar; it should only close Solaar
   # when the last activation is closed, in this case, the activities
   # overview.
   lock_dir="$HOME/.xkeysnail"
@@ -89,11 +89,12 @@ if [[ "$(is_active)" == "false" ]]; then
   # file that is also available to my xkeysnail config, to make it
   # DRY.
   ignored_apps=$(cat ~/.dotfiles/linux/xkeysnail/ignored_apps_on_default_mappings)
-  is_ignored_app=$(echo $wm_class | egrep $ignored_apps)
+  is_ignored_app=$(echo $wm_class | egrep "$ignored_apps")
 
   if [[ ! -z "$is_ignored_app" ]] && [ ! "$has_locks" ]; then
-    ulauncher-toggle # I'm using Ulauncher here, but this can be replaced by
-                     # something else.
+    /usr/bin/solaar
+    sleep 0.1
+    wmctrl -a Solaar
   fi
 
   send_command "$show_command"
@@ -103,8 +104,7 @@ if [[ "$(is_active)" == "false" ]]; then
       sleep 0.01
     done
 
-    ulauncher-toggle
-                # something else.
+    wmctrl -c Solaar
   fi
 
   rm -f $lock_file
