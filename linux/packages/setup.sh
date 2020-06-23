@@ -8,7 +8,7 @@ declare -a packages
 packages=(crow-translate/crow-translate kamranahmedse/pennywise)
 
 for path in "${packages[@]}"; do
-  name=`basename $path`
+  name=$(basename $path)
 
   echo "Installing or updating $name..."
 
@@ -18,34 +18,52 @@ for path in "${packages[@]}"; do
   | cut -d : -f 2,3 \
   | tr -d \"`
 
-  file=$(basename $url)
-  cache_path="$dir/.${name}_cache"
-  cache_contents=$(cat $cache_path 2> /dev/null)
-  is_installed=$(dpkg-query -W $name 2> /dev/null)
+  if [[ ! -z "$url" ]]; then
+    file=$(basename $url)
+    cache_path="$dir/.${name}_cache"
+    cache_contents=$(cat $cache_path 2> /dev/null)
+    is_installed=$(dpkg-query -W $name 2> /dev/null)
 
-  trap "/bin/rm -f $dir/$file" EXIT
+    trap "/bin/rm -f $dir/$file" EXIT
 
-  if [[ -z "$is_installed" ]] || [[ "$cache_contents" != "$file" ]]; then
-    echo $url | wget -qi -
-    sudo dpkg -i "./$file" > /dev/null
-    echo $file > $cache_path
-    rm -f $file
+    if [[ -z "$is_installed" ]] || [[ "$cache_contents" != "$file" ]]; then
+      echo $url | wget -qi -
+      sudo dpkg -i "./$file" > /dev/null
+      echo $file > $cache_path
+      rm -f $file
+    fi
+  else
+    echo "ERROR: Failed to download info for ${name}! Rate limit error?" 1>&2
   fi
 done
 
 echo 'Installing xkeysnail hack...'
 
 cd $dir/dummy
+
 make > /dev/null
 make install > /dev/null
 
-if [[ ! -d $HOME/bin/datagrip ]]; then
-  file="datagrip-2020.1.4.tar.gz"
+cd - > /dev/null
+
+datagrip_dest=$HOME/bin/datagrip
+
+if [[ ! -d $datagrip_dest ]]; then
   echo "Installing datagrip..."
 
+  file="datagrip-2020.1.4.tar.gz"
   wget -q https://download.jetbrains.com/datagrip/$file
-  mkdir $HOME/bin/datagrip
-  tar zvfx ./$file -C $HOME/bin/datagrip > /dev/null 2>&1
+  tmp_folder=$(tar ztvf $file | head -1 | awk '{ print $6 }' | grep -o 'DataGrip-[0-9]\{4\}.[0-9].[0-9]')
+
+  if [[ ! -z "$tmp_folder" ]]; then
+    mkdir $datagrip_dest
+    tar zvfx ./$file -C $datagrip_dest > /dev/null 2>&1
+    mv $datagrip_dest/$tmp_folder/* $datagrip_dest
+    rmdir $datagrip_dest/$tmp_folder
+  else
+    echo 'ERROR: Failed to install datagrip!' 1>&2
+  fi
+
   rm -rf ./$file
 fi
 
