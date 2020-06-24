@@ -83,6 +83,14 @@ function install_dotfiles {
   done
 }
 
+function install_fzf {
+  echo "Installing fzf..."
+
+  if [[ ! -d ~/.fzf ]]; then
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
+  fi
+}
+
 function install_vimfiles {
   if [[ -d $HOME/.vim ]]; then return; fi
 
@@ -174,6 +182,7 @@ install_asdf
 generate_ssh_key
 install_zprezto
 install_dotfiles
+install_fzf
 install_vimfiles
 install_emacsfiles
 install_base16

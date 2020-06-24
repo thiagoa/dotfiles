@@ -23,3 +23,8 @@ fi
 if [[ -f $HOME/.dir_colors/dircolors ]]; then
   eval `dircolors /home/thiago/.dir_colors/dircolors`
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+bindkey '^X^T' fzf-file-widget
+bindkey '^T' transpose-chars
