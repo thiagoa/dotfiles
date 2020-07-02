@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/devilspie2
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=devilspie2
+Name=devilspie2
+Comment[en_US]=Auto move windows
+Comment=Auto move windows
