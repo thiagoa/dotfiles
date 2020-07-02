@@ -81,7 +81,8 @@ define_keymap(re.compile("jetbrains-datagrip"), {
     K("C-EQUAL"): K("C-w"),
     K("C-M-w"): K("C-f4"),
     K("C-M-RIGHT_BRACE"): K("M-right"),
-    K("C-M-LEFT_BRACE"): K("M-left")
+    K("C-M-LEFT_BRACE"): K("M-left"),
+    K("C-M-d"): K("C-d")
 }, "Datagrip")
 
 define_keymap(re.compile("Org.gnome.Nautilus"), {
