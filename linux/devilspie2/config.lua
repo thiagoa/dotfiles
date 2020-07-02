@@ -16,6 +16,13 @@ if (get_application_name() == "discord.com_/app") then
    set_window_workspace(1)
 end
 
+if (get_application_name() == "Thunderbird") then
+   set_window_workspace(2)
+   -- x,y, xsize, ysize
+   set_window_geometry(3890,300,1700,1000);
+   maximize()
+end
+
 if (string.match(get_application_name(), "Google Chrome")) then
    local f = io.popen("wmctrl -l -x | awk '{ print $3 }' | grep google-chrome.Google-chrome | wc -l")
 
