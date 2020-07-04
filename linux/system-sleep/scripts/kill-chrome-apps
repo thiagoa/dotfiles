@@ -12,8 +12,8 @@
 # launching. If has drawbacks, of course: losing form data, for
 # example, but this is not a problem for me.
 
-OPEN_APPS_CACHE="/home/thiago/.chrome_apps_disabled"
-ENABLED_OPEN_APPS_CACHE="/home/thiago/.chrome_apps_enabled"
+OPEN_APPS_CACHE="/home/thiago/.open_apps_disabled"
+ENABLED_OPEN_APPS_CACHE="/home/thiago/.open_apps_enabled"
 
 function register {
   echo $1 >> $OPEN_APPS_CACHE

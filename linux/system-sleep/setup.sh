@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo 'Linking system-sleep scripts...'
+echo 'Installing system-sleep scripts...'
 
 dir="$(cd "$(dirname "$0")" && pwd)"
 system_sleep_dir="/usr/lib/systemd/system-sleep"
