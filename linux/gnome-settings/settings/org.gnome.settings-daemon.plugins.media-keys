@@ -3,7 +3,10 @@ area-screenshot-clip=['<Primary><Shift><Alt>dollar']
 custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom9/']
 rotate-video-lock-static=@as []
 screencast=['<Primary><Shift><Super>r']
+screenreader=@as []
 screensaver=['<Super>Escape']
+terminal=@as []
+www=['<Super>b']
 
 [custom-keybindings/custom1]
 binding='<Super>t'

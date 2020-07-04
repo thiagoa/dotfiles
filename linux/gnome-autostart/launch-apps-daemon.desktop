@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=bash -c "$HOME/bin/launch-apps-daemon"
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=Launch apps daemon (after suspend)
+Name=Launch apps daemon (after suspend)
+Comment[en_US]=Launch apps daemon
+Comment=Launch apps daemon
