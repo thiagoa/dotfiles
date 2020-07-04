@@ -1,0 +1,4 @@
+#!/bin/bash
+
+filename=$(cd && fzf)
+/usr/bin/xdg-open "`dirname \"$filename\"`"

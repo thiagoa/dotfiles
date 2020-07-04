@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+eval "/usr/bin/xdg-open \"`cd && fzf`\""
