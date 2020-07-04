@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+#
+# This script is a hack to kill Chrome processes before suspend, for
+# two reasons:
+#
+# - Freshen up memory
+#
+# - Avoid a bug with the proprietary NVidia driver where it would
+#   crash X after quitting Chrome, after some suspends take place.
+#
+# This hack works well if Chrome is set to restore tabs when
+# launching. If has drawbacks, of course: losing form data, for
+# example, but this is not a problem for me.
+
+OPEN_APPS_CACHE="/home/thiago/.chrome_apps_disabled"
+ENABLED_OPEN_APPS_CACHE="/home/thiago/.chrome_apps_enabled"
+
+function register {
+  echo $1 >> $OPEN_APPS_CACHE
+}
+
+function register_and_kill {
+  local ps_pattern=$1
+  local desktop_shortcut_name=$2
+
+  pids="$(ps ax | grep $ps_pattern | awk "{ print \$1 }")"
+  number_of_processes="$(echo "$pids" | wc -l | perl -pe 'chomp')"
+
+  if [[ "$number_of_processes" -gt "1" ]]; then
+    register $desktop_shortcut_name
+    kill $(echo $pids | xargs)
+  fi
+}
+
+case $1 in
+  pre)
+    rm -f $OPEN_APPS_CACHE
+
+    register_and_kill webslack slack-web
+    register_and_kill webdiscord discord-web
+    register_and_kill whatsapp whatsapp-webapp
+
+    if ps ax | grep chrome; then
+      register google-chrome
+
+      killall chrome
+      killall bt_mediator
+    fi
+    ;;
+  post)
+    mv $OPEN_APPS_CACHE $ENABLED_OPEN_APPS_CACHE
+    ;;
+esac

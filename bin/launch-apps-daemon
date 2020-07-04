@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-OPEN_APPS_CACHE="/home/thiago/.chrome_apps_enabled"
+OPEN_APPS_CACHE="$HOME/.chrome_apps_enabled"
 
 while true; do
   sleep 5
