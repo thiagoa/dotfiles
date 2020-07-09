@@ -1,7 +1,6 @@
 alias b="bundle exec"
 alias ec='/usr/bin/env emacsclient -n -a "nvim" $*'
 alias ls="ls -GF --color"
-alias apt-purge="sudo apt purge `dpkg --list | grep '^rc' | awk '{ print $2; }'`"
 
 unalias o
 
@@ -44,3 +43,12 @@ alias vi="vim"
 alias nvim="vim"
 alias z="fasd_cd -d"
 alias ag="ag --path-to-ignore ~/.agignore"
+
+if [[ "$(uname -s)" == "Linux" ]]; then
+  alias activate-connection="nmcli con up id"
+  alias deactivate-connection="nmcli con down"
+  alias kill-vpn="sudo pkill openvpn"
+  alias xclip="xclip -selection c"
+  alias open="xdg-open"
+  alias apt-purge="sudo apt purge `dpkg --list | grep '^rc' | awk '{ print $2; }'`"
+fi
