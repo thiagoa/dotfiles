@@ -224,7 +224,10 @@ define_keymap(lambda wm_class: wm_class not in ignored_apps_on_default_mappings.
 
 define_keymap(re.compile(".*"), {
     K("C-LEFT_BRACE"): K("esc"),
-    K("C-M-LEFT_BRACE"): K("esc")
+    K("C-M-LEFT_BRACE"): K("esc"),
+
+    # Dismiss current Gnome notification
+    K("Win-k"): [K("Win-y"), K("esc")],
 }, "All apps")
 
 #### END GLOBAL
