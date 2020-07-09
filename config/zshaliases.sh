@@ -1,5 +1,5 @@
-alias activate-vpn="nmcli con up id"
-alias deactivate-vpn="nmcli con down id"
+alias activate-connection="nmcli con up id"
+alias deactivate-connection="nmcli con down id"
 alias kill-vpn="sudo pkill openvpn"
 
 if [[ "$(uname -s)" == "Linux" ]]; then
