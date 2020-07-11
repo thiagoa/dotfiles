@@ -1,9 +1,0 @@
-#!/bin/bash
-#
-# This command was refactored to also make default xkeysnail keybindings work with
-# Gnome's Run a Command dialog.
-#
-# Refer to the "with-xkeysnail-hack" binary, in this same folder.
-# "gnome_run_dialog" can be found in this same folder as well.
-
-with-xkeysnail-hack 'Main.overview.visible' 'Main.overview.show()' 'Main.overview.hide()'
