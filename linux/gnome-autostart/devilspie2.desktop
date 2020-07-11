@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=/usr/bin/devilspie2
+Exec=devilspie2
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true

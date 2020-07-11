@@ -3,4 +3,4 @@
 DIR="$HOME/.config/autostart"
 
 rm -rf $DIR
-ln -s ~/.dotfiles/linux/gnome-autostart $DIR
+ln -s $HOME/.dotfiles/linux/gnome-autostart $DIR
