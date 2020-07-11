@@ -14,7 +14,8 @@ command='toggle-crow-translate'
 name='Crow Translate'
 
 [custom-keybindings/custom2]
-command="bash -c '$HOME/bin/linux_quit_x_app'"
+binding='<Primary><Super>q'
+command='linux-quit-x-application'
 name='Quit application'
 
 [custom-keybindings/custom3]
