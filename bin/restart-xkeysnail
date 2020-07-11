@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo $HOME/bin/xkeysnail kill --quiet --watch
