@@ -7,4 +7,4 @@ dbus-send \
     /org/gnome/Shell \
     org.gnome.Shell.Eval string:"if (Main.runDialog == null) { Main.runDialog = new imports.ui.runDialog.RunDialog() }"
 
-with_xkeysnail_hack 'Main.runDialog.visible' 'Main.runDialog.open()' 'null'
+with-xkeysnail-hack 'Main.runDialog.visible' 'Main.runDialog.open()' 'null'

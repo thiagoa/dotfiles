@@ -41,7 +41,7 @@ if [[ -z "$active_command" ]] || [[ -z "$show_command" ]] || [[ -z "$hide_comman
   echo
   echo "Example:"
   echo
-  echo "$ with_xkeysnail_hack \"Main.overview.visible\" \"Main.overview.show()\" \"Main.overview.hide()\""
+  echo "$ with-xkeysnail-hack \"Main.overview.visible\" \"Main.overview.show()\" \"Main.overview.hide()\""
   exit 1
 fi
 
