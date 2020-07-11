@@ -176,7 +176,6 @@ function install_mac_config {
 function set_git_remotes_as_authenticated {
   cd $HOME/.vim && git remote set-url origin git@github.com:thiagoa/dotvim.git
   cd $INSTALL_DIR && git remote set-url origin git@github.com:thiagoa/dotfiles.git
-  cd $HOME/bin && git remote set-url origin git@github.com:thiagoa/bin.git
 }
 
 create_directories
