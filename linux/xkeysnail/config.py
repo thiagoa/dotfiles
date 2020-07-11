@@ -196,7 +196,6 @@ define_keymap(lambda wm_class: wm_class not in ignored_apps_on_default_mappings.
     K("C-s"): K("F3"),
     K("C-M-s"): K("C-s"),
     K("C-r"): K("Shift-F3"),
-    K("C-r"): K("C-M-r"),
     K("M-Shift-key_5"): K("C-h"),
     K("C-g"): [K("esc"), set_mark(False), K("C")],
     K("C-M-g"): K("C-g"),
