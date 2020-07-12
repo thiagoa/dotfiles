@@ -2,8 +2,8 @@
 Version=1.0
 Type=Application
 Name=DataGrip
-Icon=/home/thiago/.dotfiles/bin/datagrip/bin/datagrip.png
-Exec=datagrip.sh %f
+Icon=/home/thiago/.dotfiles/bin/vendor/datagrip/bin/datagrip.png
+Exec=datagrip %f
 Comment=IDE for Databases and SQL
 Categories=Development;IDE;
 Terminal=false

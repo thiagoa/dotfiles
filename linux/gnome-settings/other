@@ -3,7 +3,7 @@
 dir="$(cd "$(dirname "$0")" && pwd)"
 settings_pattern="^\(M\|??\) linux/gnome-settings/settings"
 
-$dir/dump_all
+$dir/dump-all
 
 cd $dir/../..
 

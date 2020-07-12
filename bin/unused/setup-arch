@@ -34,7 +34,7 @@ yaourt -S --needed $(gist -r $PACMANITY_AUR_GIST_ID)
 
 echo "Configuring system services..."
 if [[ ! -f /etc/systemd/system/mysql.service ]]; then
-  sudo cp $HOME/bin/rare/.arch_files/mysql.service /etc/systemd/system/
+  sudo cp $HOME/bin/rare/.arch-files/mysql.service /etc/systemd/system/
 fi
 sudo systemctl enable postgresql mysql redis elasticsearch dnsmasq
 

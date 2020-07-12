@@ -3,7 +3,7 @@
 dir="$(cd "$(dirname "$0")" && pwd)"
 settings_pattern="^\(M\|??\) linux/gnome-settings/settings"
 
-$dir/dump_all
+$dir/dump-all
 
 cd $dir/../..
 
@@ -11,7 +11,7 @@ if [[ -f ./lock ]]; then
   echo 'Lock found, bailing out...'
 
   if [[ "$(cat ~/.dotfiles/lock)" != "no_notify" ]]; then
-    $HOME/bin/notify "Custom gnome-settings daemon" "Lock file found. Should you remove it?"
+    $HOME/bin/notify-desktop "Custom gnome-settings daemon" "Lock file found. Should you remove it?"
   fi
   exit
 fi

@@ -4,7 +4,10 @@ application/logs
 application/config/database.php
 application/config/bootstrap.php
 sistema/app/config/config.php
-bin/datagrip
+bin/vendor/datagrip
+bin/vendor/elasticsearch*
+bin/vendor/PathPicker
+bin/experiments/*
 lock
 linux/packages/.*_cache
 bin/dummy

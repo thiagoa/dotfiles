@@ -46,7 +46,7 @@ make install > /dev/null
 
 cd - > /dev/null
 
-datagrip_dest=$HOME/bin/datagrip
+datagrip_dest=$HOME/bin/vendor/datagrip
 
 if [[ ! -d $datagrip_dest ]]; then
   echo "Installing datagrip..."

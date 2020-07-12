@@ -1,8 +1,9 @@
 #!/bin/bash
 
-DIR=$(pwd)
-SEMAPHORE_BRANCH="$(git symbolic-ref --short HEAD 2>/dev/null)"
-SEMAPHORE_PROJECT="${SEMAPHORE_PROJECT:-$(basename $DIR)}"
-SEMAPHORE_ORG="${SEMAPHORE_ORG:-stackcommerce}"
+dir=$(pwd)
+semaphore_branch="$(git symbolic-ref --short HEAD 2>/dev/null)"
+semaphore_project="${semaphore_project:-$(basename $dir)}"
+semaphore_org="${semaphore_org:-stackcommerce}"
+command=$([[ $(uname) == "Linux" ]] && echo 'xdg-open' || echo 'open')
 
-open https://semaphoreci.com/$SEMAPHORE_ORG/$SEMAPHORE_PROJECT/branches/$SEMAPHORE_BRANCH
+$command https://semaphoreci.com/$semaphore_org/$semaphore_project/branches/$semaphore_branch

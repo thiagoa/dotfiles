@@ -1,1 +1,0 @@
-/home/thiago/bin/datagrip/bin/datagrip.sh

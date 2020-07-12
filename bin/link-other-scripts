@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+# Link vendored and private scripts in main bin folder
+
+cd $HOME/.dotfiles/bin && find vendor -maxdepth 1 -type f -exec ln -s '{}' \; 2> /dev/null
+
+for file in `find $HOME/OneDrive/Scripts -maxdepth 1 -type f -not -path '*/\.*'`; do
+  ln -s $file $HOME/bin/$(basename $file) 2> /dev/null
+done
+
+echo 'Done'
