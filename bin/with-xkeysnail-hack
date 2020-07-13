@@ -64,10 +64,16 @@ function is_active() {
 }
 
 dropdown_terminal_is_open=$(wmctrl -l -x | grep 'Drop Down Terminal.DropDownTerminalWindow')
+wm_id=$(xdotool getactivewindow)
+wm_class=$(xprop -id "$wm_id" | grep WM_CLASS)
+dropdown_terminal_is_focused=$(echo $wm_class | grep DropDownTerminal)
 
 function toggle_dropdown_terminal {
   if [[ ! -z "$dropdown_terminal_is_open" ]]; then
-    dbus-send --type=method_call --dest=org.zzrough.GsExtensions.DropDownTerminal /org/zzrough/GsExtensions/DropDownTerminal 'org.zzrough.GsExtensions.DropDownTerminal.Toggle'
+    dbus-send --type=method_call \
+              --dest=org.zzrough.GsExtensions.DropDownTerminal \
+              /org/zzrough/GsExtensions/DropDownTerminal \
+              'org.zzrough.GsExtensions.DropDownTerminal.Toggle'
   fi
 }
 
@@ -116,4 +122,6 @@ else
   send_command "$hide_command"
 fi
 
-toggle_dropdown_terminal
+if [[ ! -z "$dropdown_terminal_is_open" ]] && [[ ! -z "$dropdown_terminal_is_focused" ]]; then
+  toggle_dropdown_terminal
+fi
