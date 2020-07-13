@@ -49,6 +49,6 @@ command='gnome-activities-overview'
 name='Gnome Activities #2'
 
 [custom-keybindings/custom9]
-binding='<Super>0'
+binding='<Super>bracketleft'
 command='toggle-dropdown-terminal'
 name='Toggle dropdown terminal'

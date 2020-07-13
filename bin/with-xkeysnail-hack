@@ -63,7 +63,7 @@ function is_active() {
     awk '{print $2}'
 }
 
-dropdown_terminal_is_open=$(wmctrl -l | grep "Drop Down Terminal")
+dropdown_terminal_is_open=$(wmctrl -l -x | grep 'Drop Down Terminal.DropDownTerminalWindow')
 
 function toggle_dropdown_terminal {
   if [[ ! -z "$dropdown_terminal_is_open" ]]; then
