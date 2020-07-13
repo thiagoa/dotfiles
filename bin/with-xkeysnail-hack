@@ -63,6 +63,16 @@ function is_active() {
     awk '{print $2}'
 }
 
+dropdown_terminal_is_open=$(wmctrl -l | grep "Drop Down Terminal")
+
+function toggle_dropdown_terminal {
+  if [[ ! -z "$dropdown_terminal_is_open" ]]; then
+    dbus-send --type=method_call --dest=org.zzrough.GsExtensions.DropDownTerminal /org/zzrough/GsExtensions/DropDownTerminal 'org.zzrough.GsExtensions.DropDownTerminal.Toggle'
+  fi
+}
+
+toggle_dropdown_terminal
+
 if [[ "$(is_active)" == "false" ]]; then
   # The lock is meant to correctly handle recursive activations. For
   # example, we might activate the activities overview and then
@@ -105,3 +115,5 @@ if [[ "$(is_active)" == "false" ]]; then
 else
   send_command "$hide_command"
 fi
+
+toggle_dropdown_terminal
