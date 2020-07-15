@@ -56,4 +56,5 @@ if [[ "$(uname -s)" == "Linux" ]]; then
   alias kill-vpn="sudo pkill openvpn"
   alias xclip="xclip -selection c"
   alias open="xdg-open"
+  alias start-dev-services="sudo systemctl start mysql redis-server nginx"
 fi
