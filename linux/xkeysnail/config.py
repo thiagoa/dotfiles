@@ -27,7 +27,10 @@ define_conditional_modmap(lambda wm_class, device_name: re.match(".*Logitech Wir
 
 define_timeout(1)
 define_multipurpose_modmap({
-    Key.APOSTROPHE: [Key.APOSTROPHE, Key.RIGHT_CTRL],
+    # I previously set apostrophe as dual-function control
+    #
+    # Key.APOSTROPHE: [Key.APOSTROPHE, Key.RIGHT_CTRL],
+
     Key.ENTER: [Key.ENTER, Key.RIGHT_CTRL]
 })
 
