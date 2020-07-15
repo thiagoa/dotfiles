@@ -2,7 +2,7 @@ alias b="bundle exec"
 alias ec='/usr/bin/env emacsclient -n -a "nvim" $*'
 alias ls="ls -GF --color"
 
-if alias o; then
+if alias o > /dev/null; then
   unalias o
 fi
 
