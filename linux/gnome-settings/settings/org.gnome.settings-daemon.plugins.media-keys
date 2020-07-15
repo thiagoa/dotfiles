@@ -1,6 +1,6 @@
 [/]
 area-screenshot-clip=['<Primary><Shift><Alt>dollar']
-custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom9/']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom9/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom10/']
 rotate-video-lock-static=@as []
 screencast=['<Primary><Shift><Super>r']
 screenreader=@as []
@@ -8,10 +8,20 @@ screensaver=['<Super>Escape']
 terminal=@as []
 www=['<Super>b']
 
+[custom-keybindings/custom0]
+binding='<Alt><Super>r'
+command="bash -c \"dconf write /org/gnome/nautilus/preferences/recursive-search \\\"'always'\\\" && notify-desktop 'Nautilus' 'Switched to recursive search'\""
+name='Nautilus set recursive search'
+
 [custom-keybindings/custom1]
 binding='<Super>t'
 command='toggle-crow-translate'
 name='Crow Translate'
+
+[custom-keybindings/custom10]
+binding='<Alt><Super>l'
+command="bash -c \"dconf write /org/gnome/nautilus/preferences/recursive-search \\\"'never'\\\" && notify-desktop 'Nautilus' 'Switched to non-recursive search'\""
+name='Nautilus set non-recursive search'
 
 [custom-keybindings/custom2]
 binding='<Primary><Super>q'
