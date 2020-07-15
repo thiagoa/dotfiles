@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+sudo systemctl stop warsaw
+sudo killall /usr/local/bin/warsaw/core 2> /dev/null
+sudo killall /usr/local/bin/warsaw/wsatspi 2> /dev/null
+
+exit 0
