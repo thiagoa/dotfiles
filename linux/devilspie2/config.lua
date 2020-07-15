@@ -20,7 +20,7 @@ if (get_application_name() == "discord.com_/app") then
 end
 
 if (get_application_name() == "Thunderbird") then
-   # Rule should not apply to prompts, which have WM_CLASS = Prompt.Thunderbird
+   -- Rule should not apply to prompts, which have WM_CLASS = Prompt.Thunderbird
    if (number_of_windows("Thunderbird") == 1) then
       set_window_workspace(2)
       -- x,y, xsize, ysize
