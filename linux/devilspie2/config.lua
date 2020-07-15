@@ -1,5 +1,3 @@
-local os = require "os"
-
 debug_print("Application: " .. get_application_name())
 debug_print("Window: " .. get_window_name());
 
@@ -24,9 +22,9 @@ if (get_application_name() == "Thunderbird") then
 end
 
 if (string.match(get_application_name(), "Google Chrome")) then
-   local f = io.popen("wmctrl -l -x | awk '{ print $3 }' | grep google-chrome.Google-chrome | wc -l")
+   local number_of_windows = io.popen("wmctrl -l -x | awk '{ print $3 }' | grep google-chrome.Google-chrome | wc -l")
 
-   if (tonumber(f:read("*a")) == 1) then
+   if (tonumber(number_of_windows:read("*a")) == 1) then
       set_window_workspace(2)
    end
 end
