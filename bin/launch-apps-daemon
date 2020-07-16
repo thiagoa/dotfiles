@@ -7,7 +7,7 @@ while true; do
 
   if [[ -f $OPEN_APPS_CACHE ]]; then
     for app in $(cat $OPEN_APPS_CACHE); do
-      DISPLAY=:1 gtk-launch $app
+      gtk-launch $app
     done
 
     rm -f $OPEN_APPS_CACHE
