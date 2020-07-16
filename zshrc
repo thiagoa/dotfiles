@@ -13,7 +13,7 @@ source $HOME/.dotfiles/config/zshbindkeys.sh
 source $HOME/.asdf/asdf.sh
 source $HOME/.asdf/completions/asdf.bash
 
-[[ -f ~/bin/vendor/z/z.sh ]] && source ~/bin/vendor/z/z.sh
+[[ -f $HOME/bin/vendor/z/z.sh ]] && source $HOME/bin/vendor/z/z.sh
 
 if [[ -f $HOME/bin/functions.sh  ]]; then
   source $HOME/bin/functions.sh
