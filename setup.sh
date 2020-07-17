@@ -49,14 +49,18 @@ function install_asdf {
   git clone -q https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.3.0 > /dev/null
 }
 
-function generate_ssh_key {
-  if [[ -f $HOME/.ssh/id_rsa.pub ]]; then return; fi
+function setup_ssh {
+  if [[ ! -f $HOME/.ssh/id_rsa.pub ]]; then
+    echo "Generating SSH key...\n"
 
-  echo "Generating SSH key...\n"
+    ssh-keygen -t rsa
 
-  ssh-keygen -t rsa
+    echo "\nYour key has been generated. Now go to GitHub."
+  fi
 
-  echo "\nYour key has been generated. Now go to GitHub."
+  if [[ -f $HOME/OneDrive/Config/ssh_config ]]; then
+    ln -sf $HOME/OneDrive/Config/ssh_config ~/.ssh/config
+  fi
 }
 
 function install_zprezto {
@@ -181,7 +185,7 @@ function set_git_remotes_as_authenticated {
 create_directories
 install_binfiles
 install_asdf
-generate_ssh_key
+setup_ssh
 install_zprezto
 install_dotfiles
 install_fzf
