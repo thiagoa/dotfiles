@@ -23,3 +23,4 @@ bench2.rb
 .ruby_tags_commit_hash
 __last_version__
 linux/aptik/logs/*
+.dir-locals.el
