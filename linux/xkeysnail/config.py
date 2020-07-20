@@ -19,10 +19,12 @@ define_conditional_modmap(lambda wm_class, device_name: re.match(".*Keychron", d
     Key.RIGHT_META: Key.RIGHT_ALT
 })
 
-define_conditional_modmap(lambda wm_class, device_name: re.match(".*Logitech Wireless", device_name), {
+define_conditional_modmap(lambda wm_class, device_name: re.match(".*Logitech MX Keys", device_name), {
     **mappings_for_all_keyboards,
     Key.CAPSLOCK: Key.LEFT_CTRL,
-    Key.RIGHT_META: Key.RIGHT_CTRL
+    Key.RIGHT_META: Key.RIGHT_ALT,
+    Key.LEFT_META: Key.LEFT_ALT,
+    Key.LEFT_ALT: Key.LEFT_META
 })
 
 define_timeout(1)
