@@ -42,6 +42,7 @@
 [pull]
   rebase = true
 [alias]
+  pr = pull-request
   aa = add .
   ap = add --patch
   co = checkout
@@ -93,4 +94,4 @@
   required = true
   clean = git-lfs clean -- %f
 [github]
-	user = Thiago Araújo Silva
+        user = Thiago Araújo Silva
