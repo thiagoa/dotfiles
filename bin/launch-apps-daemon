@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-OPEN_APPS_CACHE="$HOME/.open_apps_enabled"
+OPEN_APPS_CACHE="$HOME/.open-apps-enabled"
 
 while true; do
   sleep 5
