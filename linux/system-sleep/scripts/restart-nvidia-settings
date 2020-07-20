@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sleep 4
+
+DISPLAY=":1" /home/thiago/bin/initialize-nvidia-settings
