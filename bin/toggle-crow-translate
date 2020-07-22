@@ -21,7 +21,7 @@ function hide {
 }
 
 function launch {
-  env -i QT_STYLE_OVERRIDE=$QT_STYLE_OVERRIDE XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR DISPLAY=$DISPLAY crow
+  crow &
 
   until pidof $command; do
     sleep 0.1
