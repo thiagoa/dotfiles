@@ -150,11 +150,12 @@ define_keymap(re.compile("Crow Translate"), {
 
 #### BEGIN GLOBAL EMACS
 #
-# For every global keybinding with a Control, map another global
+# For every global keybinding with a Control, do map another global
 # keybinding that adds a Meta key to the former global keybinding. For
-# example, C-b is taken by the Emacs-like keybinding but we also map
+# example, C-b is taken by an Emacs-like keybinding but we also map
 # C-M-b to C-b so that any potential shortcuts are are always
-# available throughout apps. No need to worry about Alt (Meta).
+# available to whatever app. No need to worry about Alt
+# (Meta).
 
 define_keymap(lambda wm_class: wm_class not in ignored_apps_on_default_mappings.split('|'), {
     K("C-b"): with_mark(K("left")),
