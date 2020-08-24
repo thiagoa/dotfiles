@@ -51,10 +51,16 @@ if [[ "$(uname -s)" == "Linux" ]]; then
     sudo apt purge `dpkg --list | grep '^rc' | awk '{ print $2; }'`
   }
 
+  services="mysql redis-server nginx"
+
   alias activate-connection="nmcli con up id"
   alias deactivate-connection="nmcli con down"
   alias kill-vpn="sudo pkill openvpn"
   alias xclip="xclip -selection c"
   alias open="xdg-open"
-  alias start-dev-services="sudo systemctl start mysql redis-server nginx"
+  alias start-dev-services="sudo systemctl start ${services}"
+  alias stop-dev-services="sudo systemctl stop ${services}"
+  alias restart-dev-services="sudo systemctl restart ${services}"
+  alias odf="open-desktop-file"
+  alias odd="open-desktop-directory"
 fi
