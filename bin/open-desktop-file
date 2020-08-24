@@ -1,3 +1,9 @@
 #!/usr/bin/env zsh
 
-cd && /usr/bin/xdg-open "`fzf`"
+filename=$(cd && fzf)
+
+[[ $? -ne 0 ]] && exit 1
+
+cd && /usr/bin/xdg-open "$filename"
+
+toggle-dropdown-terminal

@@ -1,4 +1,9 @@
 #!/bin/bash
 
 filename=$(cd && fzf)
-cd && /usr/bin/xdg-open "`dirname \"$filename\"`"
+
+[[ $? -ne 0 ]] && exit 1
+
+cd && nautilus "$filename" &
+
+toggle-dropdown-terminal
