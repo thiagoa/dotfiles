@@ -23,8 +23,12 @@ define_conditional_modmap(lambda wm_class, device_name: re.match(".*Logitech MX 
     **mappings_for_all_keyboards,
     Key.CAPSLOCK: Key.LEFT_CTRL,
     Key.RIGHT_META: Key.RIGHT_ALT,
-    Key.LEFT_META: Key.LEFT_ALT,
-    Key.LEFT_ALT: Key.LEFT_META
+
+    # Commented out until Ubuntu decides to change these keys this out
+    # of the blue again...
+    #
+    #Key.LEFT_META: Key.LEFT_ALT,
+    #Key.LEFT_ALT: Key.LEFT_META
 })
 
 define_timeout(1)
@@ -41,13 +45,15 @@ ignored_apps_on_default_mappings = (Path(this_config_file).parent / 'ignored_app
 
 define_keymap(re.compile("Org.gnome.Nautilus"), {
     K("C-M-h"): K("M-home"),
-    K("C-M-p"): K("M-up"),
-    K("C-M-n"): K("M-down"),
+    K("M-p"): K("M-up"),
+    K("M-n"): K("M-down"),
     K("C-M-l"): K("C-M-Win-l"),
+    K("M-LEFT_BRACE"): K("M-left"),
+    K("M-RIGHT_BRACE"): K("M-right"),
     K("M-Shift-n"): K("C-Shift-n"),
     K("C-M-LEFT_BRACE"): K("C-page_up"),
     K("C-M-RIGHT_BRACE"): K("C-page_down")
-}, "Chrome")
+}, "Nautilus")
 
 #### BEGIN CHROME APPS
 #
@@ -236,7 +242,7 @@ define_keymap(re.compile(".*"), {
     K("C-M-LEFT_BRACE"): K("esc"),
 
     # Dismiss current Gnome notification
-    K("Win-k"): [K("Win-y"), K("esc")],
+    K("Win-k"): [K("Win-r"), K("esc")],
 }, "All apps")
 
 #### END GLOBAL
