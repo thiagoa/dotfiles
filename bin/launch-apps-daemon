@@ -3,7 +3,7 @@
 OPEN_APPS_CACHE="$HOME/.open-apps-enabled"
 
 while true; do
-  sleep 5
+  sleep 10
 
   if [[ -f $OPEN_APPS_CACHE ]]; then
     for app in $(cat $OPEN_APPS_CACHE); do
