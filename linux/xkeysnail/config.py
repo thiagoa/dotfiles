@@ -76,7 +76,7 @@ define_keymap(re.compile("Google-chrome"), {
     K("C-M-j"): K("C-j"),
 }, "Chrome")
 
-define_keymap(re.compile("Firefox|Google-chrome|Webslack|Webdiscord|Thunderbird|WhatsApp"), {
+define_keymap(re.compile("Firefox|Google-chrome|Webslack|Webdiscord|WhatsApp"), {
     K("M-p"): K("up"),
     K("M-n"): K("down"),
     K("M-Shift-comma"): K("C-home"),
