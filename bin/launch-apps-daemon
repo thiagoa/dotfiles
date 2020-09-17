@@ -3,13 +3,15 @@
 OPEN_APPS_CACHE="$HOME/.open-apps-enabled"
 
 while true; do
-  sleep 10
-
   if [[ -f $OPEN_APPS_CACHE ]]; then
+    sleep 15
+
     for app in $(cat $OPEN_APPS_CACHE); do
       gtk-launch $app
     done
 
     rm -f $OPEN_APPS_CACHE
+  else
+    sleep 1
   fi
 done
