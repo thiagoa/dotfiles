@@ -29,7 +29,7 @@ command='linux-quit-x-application'
 name='Quit application'
 
 [custom-keybindings/custom4]
-binding='<Alt>F2'
+binding='<Shift><Alt>r'
 command='gnome-run-dialog'
 name='Gnome Run Dialog'
 
