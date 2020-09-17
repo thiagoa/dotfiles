@@ -24,3 +24,4 @@ bench2.rb
 __last_version__
 linux/aptik/logs/*
 .dir-locals.el
+bin/experiments
