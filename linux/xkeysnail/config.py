@@ -21,14 +21,24 @@ define_conditional_modmap(lambda wm_class, device_name: re.match(".*Keychron", d
 
 define_conditional_modmap(lambda wm_class, device_name: re.match(".*Logitech MX Keys", device_name), {
     **mappings_for_all_keyboards,
-    Key.CAPSLOCK: Key.LEFT_CTRL,
     Key.RIGHT_META: Key.RIGHT_ALT,
 
     # Commented out until Ubuntu decides to change these keys this out
     # of the blue again...
     #
-    #Key.LEFT_META: Key.LEFT_ALT,
-    #Key.LEFT_ALT: Key.LEFT_META
+    # Key.LEFT_META: Key.LEFT_ALT,
+    # Key.LEFT_ALT: Key.LEFT_META
+})
+
+define_conditional_modmap(lambda wm_class, device_name: re.match(".*Logitech K380 Keyboard", device_name), {
+    **mappings_for_all_keyboards,
+    Key.RIGHT_META: Key.RIGHT_ALT,
+
+    # Commented out until Ubuntu decides to change these keys this out
+    # of the blue again...
+    #
+    # Key.LEFT_META: Key.LEFT_ALT,
+    # Key.LEFT_ALT: Key.LEFT_META
 })
 
 define_timeout(1)
