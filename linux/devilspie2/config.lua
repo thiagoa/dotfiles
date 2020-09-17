@@ -28,7 +28,6 @@ if (get_application_name() == "Thunderbird") then
       set_window_workspace(2)
       -- x,y, xsize, ysize
       set_window_geometry(3890,300,1700,1000);
-      maximize()
       focus()
    end
 end
@@ -44,7 +43,6 @@ if (get_application_name() == "web.whatsapp.com_/") then
    set_window_workspace(1)
    -- x,y, xsize, ysize
    set_window_geometry(3890,300,1700,1000);
-   maximize()
    focus()
 end
 
