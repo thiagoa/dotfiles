@@ -219,6 +219,11 @@ function setup_mac {
       echo "Installing rg..."
       brew install rg
   fi
+
+  if ! $(brew list ag > /dev/null 2>&1); then
+      echo "Installing ag..."
+      brew install ag
+  fi
 }
 
 if [[ "$(uname -s)" == "Darwin" ]]; then
