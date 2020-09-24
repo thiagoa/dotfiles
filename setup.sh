@@ -106,7 +106,14 @@ function install_vimfiles {
 }
 
 function install_emacsfiles {
-  if [[ -d $HOME/.emacs.d ]]; then return; fi
+  if [[ -f $HOME/.emacs.d/init.el ]]; then
+      return
+  else
+      echo "Backing up current .emacs.d to ~/.emacs.d.backup..."
+
+      rm -rf ~/.emacs.d.backup
+      mv ~/.emacs.d ~/.emacs.d.backup
+  fi
 
   echo "Installing Emacs files...\n"
 
