@@ -182,6 +182,42 @@ function set_git_remotes_as_authenticated {
   cd $INSTALL_DIR && git remote set-url origin git@github.com:thiagoa/dotfiles.git
 }
 
+# TODO: Refactor later
+function setup_mac {
+  if [[ ! -x "$(which brew)" ]]; then
+      echo "Installing homebrew..."
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  fi
+
+  if [[ ! -x "$(which pip3)" ]]; then
+      echo "Installing Python..."
+      brew install python
+  fi
+
+  if ! $(brew list zsh > /dev/null 2>&1); then
+      echo "Installing zsh..."
+      brew install zsh
+      set_defaults
+
+      echo "Please restart your shell and run setup again"
+      exit 0
+  fi
+
+  if ! $(brew list neovim > /dev/null 2>&1); then
+      echo "Installing neovim..."
+      brew install neovim
+  fi
+
+  if ! $(brew list rg > /dev/null 2>&1); then
+      echo "Installing rg..."
+      brew install rg
+  fi
+}
+
+if [[ "$(uname -s)" == "Darwin" ]]; then
+    setup_mac
+fi
+
 create_directories
 install_binfiles
 install_asdf
