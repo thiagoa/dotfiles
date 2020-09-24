@@ -1,6 +1,5 @@
 alias b="bundle exec"
 alias ec='/usr/bin/env emacsclient -n -a "nvim" $*'
-alias ls="ls -GF --color"
 
 if alias o > /dev/null; then
   unalias o
@@ -53,6 +52,7 @@ if [[ "$(uname -s)" == "Linux" ]]; then
 
   services="mysql redis-server nginx"
 
+  alias ls="ls -GF --color"
   alias activate-connection="nmcli con up id"
   alias deactivate-connection="nmcli con down"
   alias kill-vpn="sudo pkill openvpn"
