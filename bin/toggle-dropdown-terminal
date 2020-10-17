@@ -12,6 +12,11 @@ function send_command {
             org.zzrough.GsExtensions.DropDownTerminal.$1
 }
 
+if [[ -n "$1" ]]; then
+  send_command $1
+  exit
+fi
+
 if [[ ! -z "$is_open" ]] && [[ -z "$is_focused" ]]; then
   send_command Focus
 else

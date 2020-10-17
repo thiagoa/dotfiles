@@ -70,10 +70,7 @@ dropdown_terminal_is_focused=$(echo $wm_class | grep DropDownTerminal)
 
 function toggle_dropdown_terminal {
   if [[ ! -z "$dropdown_terminal_is_open" ]]; then
-    dbus-send --type=method_call \
-              --dest=org.zzrough.GsExtensions.DropDownTerminal \
-              /org/zzrough/GsExtensions/DropDownTerminal \
-              'org.zzrough.GsExtensions.DropDownTerminal.Toggle'
+    $HOME/bin/dummy &
   fi
 }
 
@@ -123,5 +120,7 @@ else
 fi
 
 if [[ ! -z "$dropdown_terminal_is_open" ]] && [[ ! -z "$dropdown_terminal_is_focused" ]]; then
-  toggle_dropdown_terminal
+  killall dummy
+
+  $HOME/bin/toggle-dropdown-terminal Focus
 fi
