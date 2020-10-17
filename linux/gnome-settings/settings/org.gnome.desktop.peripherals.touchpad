@@ -1,3 +1,5 @@
 [/]
 click-method='fingers'
+natural-scroll=true
+send-events='enabled'
 two-finger-scrolling-enabled=true

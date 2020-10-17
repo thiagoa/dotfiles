@@ -1,4 +1,4 @@
 [/]
-accel-profile='default'
+accel-profile='adaptive'
 natural-scroll=true
-speed=-0.1221804511278195
+speed=-0.125
