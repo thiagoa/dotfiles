@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=systemctl --user start onedrive
+Exec=sh -c "rclone --allow-non-empty --vfs-cache-mode writes mount "OneDrive":  ~/OneDrive"
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true

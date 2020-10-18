@@ -1,5 +1,32 @@
 #!/bin/bash
 
+echo "Installing deb packages"
+
+sudo add-apt-repository ppa:agornostal/ulauncher -y > /dev/null 2> /dev/null
+sudo apt update > /dev/null 2> /dev/null
+
+sudo apt install \
+     xdotool \
+     geary \
+     silversearcher-ag \
+     timeshift \
+     deja-dup \
+     redis \
+     nginx \
+     grub2-common \
+     grub-efi \
+     grub-customizer \
+     neovim \
+     zsh \
+     ulauncher \
+     rclone \
+     autokey-gtk > /dev/null 2> /dev/null
+
+echo "Reminder: Install Emacs from source"
+echo "Reminder: Download and install Google Chrome"
+echo "Reminder: Download and install Dropbox"
+echo "Reminder: Configure rclone for OneDrive"
+
 dir="$(cd "$(dirname "$0")" && pwd)"
 
 cd $dir

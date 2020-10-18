@@ -144,18 +144,16 @@ function check_sudoers {
 function set_defaults {
   local shell_is_already_zsh=$(cat /etc/passwd | grep -q $USER | grep -q zsh)
 
-  if ! $shell_is_already_zsh; then
-    local zshpath=$(which zsh)
-    local shellspath=/etc/shells
+  local zshpath=$(which zsh)
+  local shellspath=/etc/shells
 
-    echo "\nSetting ZSH as default shell..."
+  echo "\nSetting ZSH as default shell..."
 
-    if [[ -f $shellspath ]] && ! grep -q $zshpath $shellspath; then
-      echo $zshpath | sudo tee -a $shellspath > /dev/null
-    fi
-
-    chsh -s $zshpath
+  if [[ -f $shellspath ]] && ! grep -q $zshpath $shellspath; then
+    echo $zshpath | sudo tee -a $shellspath > /dev/null
   fi
+
+  chsh -s $zshpath
 }
 
 function install_linux_config {
@@ -251,4 +249,3 @@ echo ""
 echo "Things to do manually next:"
 echo ""
 echo "- Install programming language stuff with 'asdf install my_language'"
-echo "- Choose a base16 theme by typing 'base16<TAB>'. Don't forget to use a matching theme in vim"
