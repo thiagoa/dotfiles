@@ -41,8 +41,8 @@ echo 'Installing xkeysnail hack...'
 
 cd $dir/dummy
 
-make > /dev/null
-make install > /dev/null
+make > /dev/null 2> /dev/null
+make install > /dev/null 2> /dev/null
 
 cd - > /dev/null
 
