@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/thiago/bin/gnome-fix-keyboard
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=Fix keyboard
+Name=Fix keyboard
+Comment[en_US]=Keyboard delay and repeat-interval settings not being applied
+Comment=Keyboard delay and repeat-interval settings not being applied

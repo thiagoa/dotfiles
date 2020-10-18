@@ -8,3 +8,4 @@ Terminal=false
 Icon=nvidia-settings
 Categories=System;Settings;
 Name[en_US]=NVIDIA X Server Settings
+X-GNOME-Autostart-enabled=true

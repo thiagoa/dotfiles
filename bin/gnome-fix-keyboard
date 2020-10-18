@@ -1,0 +1,29 @@
+#!/bin/bash
+# 
+# Avoid a bug on Gnome 3.36.3 (at least on Ubuntu/Pop OS) where it won't apply
+# keyboard accessibility settings on startup. 
+#
+# Custom user settings are correctly recorded in gsettings but due to the
+# bug Gnome applies the default values.  This script simulates dragging the
+# sliders manually in the GUI to any position and then dragging them back to
+# their previous position. The bug also happens when logging out / logging in.
+#
+# Register this script on Startup Application Preferences.
+
+# Avoid timing issues with a sleep. Without this, the settings
+# won't get applied correctly.
+sleep 2
+
+delay_key="org.gnome.desktop.peripherals.keyboard delay"
+repeat_interval_key="org.gnome.desktop.peripherals.keyboard repeat-interval"
+
+delay_value="$(gsettings get $delay_key)"
+repeat_interval_value="$(gsettings get $repeat_interval_key)"
+
+# Set the preferences to anything to "expire the preferences cache"
+gsettings set $delay_key "uint32 1"
+gsettings set $repeat_interval_key "uint32 1"
+
+# Set them back to the original values 
+gsettings set $delay_key "$delay_value"
+gsettings set $repeat_interval_key "$repeat_interval_value"

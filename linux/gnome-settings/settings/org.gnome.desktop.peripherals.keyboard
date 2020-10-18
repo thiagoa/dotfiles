@@ -1,4 +1,4 @@
 [/]
-delay=uint32 248
+delay=uint32 304
 numlock-state=true
-repeat-interval=uint32 23
+repeat-interval=uint32 20
