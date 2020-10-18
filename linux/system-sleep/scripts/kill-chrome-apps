@@ -12,6 +12,9 @@
 # launching. If has drawbacks, of course: losing form data, for
 # example, but this is not a problem for me.
 
+# Temporarily disabled until the bug is confirmed to not happen on Pop OS
+exit
+
 OPEN_APPS_CACHE="/home/thiago/.open-apps-disabled"
 ENABLED_OPEN_APPS_CACHE="/home/thiago/.open-apps-enabled"
 
