@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Emacs
+Icon=/home/thiago/.dotfiles/linux/gnome-shortcuts/emacs.png
+Exec=/usr/local/bin/emacs %f
+Comment=Emacs
+Categories=Development;IDE;
+Terminal=false
