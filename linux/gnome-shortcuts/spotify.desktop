@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Spotify 4k
+Icon=/home/thiago/.dotfiles/linux/gnome-shortcuts/spotify.png
+Exec=spotify %f
+Comment=Music
+Categories=Music;
+Terminal=false
