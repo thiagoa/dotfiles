@@ -19,13 +19,12 @@ sudo apt install \
      neovim \
      zsh \
      ulauncher \
-     rclone \
      autokey-gtk > /dev/null 2> /dev/null
 
 echo "Reminder: Install Emacs from source"
 echo "Reminder: Download and install Google Chrome"
 echo "Reminder: Download and install Dropbox"
-echo "Reminder: Configure rclone for OneDrive"
+echo "Reminder: Download and install Insync"
 
 dir="$(cd "$(dirname "$0")" && pwd)"
 
