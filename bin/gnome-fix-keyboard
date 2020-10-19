@@ -12,18 +12,26 @@
 
 # Avoid timing issues with a sleep. Without this, the settings
 # won't get applied correctly.
-sleep 2
+sleep 3
 
 delay_key="org.gnome.desktop.peripherals.keyboard delay"
 repeat_interval_key="org.gnome.desktop.peripherals.keyboard repeat-interval"
+mru_sources_key="org.gnome.desktop.input-sources mru-sources"
+sources_key="org.gnome.desktop.input-sources sources"
 
 delay_value="$(gsettings get $delay_key)"
 repeat_interval_value="$(gsettings get $repeat_interval_key)"
+mru_sources_value="$(gsettings get $mru_sources_key)"
+sources_value="$(gsettings get $sources_key)"
 
 # Set the preferences to anything to "expire the preferences cache"
 gsettings set $delay_key "uint32 1"
 gsettings set $repeat_interval_key "uint32 1"
+gsettings set $mru_sources_key "[]"
+gsettings set $sources_key "[]"
 
 # Set them back to the original values 
 gsettings set $delay_key "$delay_value"
 gsettings set $repeat_interval_key "$repeat_interval_value"
+gsettings set $mru_sources_key "$mru_sources_value"
+gsettings set $sources_key "$sources_value"
