@@ -5,6 +5,8 @@ echo "Installing deb packages"
 sudo add-apt-repository ppa:agornostal/ulauncher -y > /dev/null 2> /dev/null
 sudo apt update > /dev/null 2> /dev/null
 
+# libnotify-bin -> notify-send command
+# libwxbase3.0-0v5 and libwxgtk3.0-gtk3-0v5 -> Veracrypt deps
 sudo apt install \
      xdotool \
      geary \
@@ -26,12 +28,16 @@ sudo apt install \
      flameshot \
      network-manager-openvpn \
      network-manager-openvpn-gnome \
+     libnotify-bin \
+     libwxbase3.0-0v5 \
+     libwxgtk3.0-gtk3-0v5 \
      autokey-gtk
 
 echo "Reminder: Install Emacs from source"
 echo "Reminder: Download and install Google Chrome"
 echo "Reminder: Download and install Dropbox"
 echo "Reminder: Download and install Insync"
+echo "Reminder: Download and install Veracrypt"
 
 dir="$(cd "$(dirname "$0")" && pwd)"
 
