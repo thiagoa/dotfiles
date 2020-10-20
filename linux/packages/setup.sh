@@ -19,6 +19,8 @@ sudo apt install \
      neovim \
      zsh \
      ulauncher \
+     qt5-style-plugins \
+     zeal \
      autokey-gtk > /dev/null 2> /dev/null
 
 echo "Reminder: Install Emacs from source"
