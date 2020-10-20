@@ -18,9 +18,12 @@ sudo apt install \
      grub-customizer \
      neovim \
      zsh \
+     gnome-tweaks \
      ulauncher \
      qt5-style-plugins \
      zeal \
+     tmux \
+     flameshot \
      autokey-gtk > /dev/null 2> /dev/null
 
 echo "Reminder: Install Emacs from source"
