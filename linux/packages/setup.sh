@@ -24,7 +24,9 @@ sudo apt install \
      zeal \
      tmux \
      flameshot \
-     autokey-gtk > /dev/null 2> /dev/null
+     network-manager-openvpn \
+     network-manager-openvpn-gnome \
+     autokey-gtk
 
 echo "Reminder: Install Emacs from source"
 echo "Reminder: Download and install Google Chrome"
