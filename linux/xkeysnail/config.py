@@ -159,6 +159,7 @@ define_keymap(re.compile("jetbrains-datagrip"), {
 
 define_keymap(re.compile("Crow Translate"), {
     K("Win-t"): [K("C-a"), K("backspace"), K("Win-t")],
+    K("C-M-r"): K("C-r")
 }, "Crow translate")
 
 #### END ALL OTHER APPS
