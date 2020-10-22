@@ -31,6 +31,8 @@ sudo apt install \
      libnotify-bin \
      libwxbase3.0-0v5 \
      libwxgtk3.0-gtk3-0v5 \
+     awscli \
+     bt-device \
      autokey-gtk
 
 echo "Reminder: Install Emacs from source"

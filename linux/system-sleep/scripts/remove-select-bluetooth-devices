@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+input="/home/thiago/.remove_select_bluetooth_devices"
+
+if [[ ! -f "$input" ]]; then
+  exit 0
+fi
+
+$HOME/bin/notify-desktop "Please wait..." "Removing Bluetooth devices..."
+
+case $1 in
+  pre)
+    while IFS= read -r device
+    do
+      bt-device -r "$device"
+    done < "$input"
+    ;;
+  post)
+    # Do nothing
+    ;;
+esac
