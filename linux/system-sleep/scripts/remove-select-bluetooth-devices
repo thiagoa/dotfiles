@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-input="/home/thiago/.remove_select_bluetooth_devices"
+input="/home/thiago/.remove-select-bluetooth-devices"
 
 if [[ ! -f "$input" ]]; then
   exit 0

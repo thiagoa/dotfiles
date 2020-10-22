@@ -1,0 +1,4 @@
+#!/bin/bash
+
+DISPLAY=":1" xrandr  --output eDP-1-1 --pos 0x0 --output HDMI-0 --auto --primary --pos 600x340 --right-of eDP-1-1
+DISPLAY=":1" xrandr --output eDP-1-1 --pos 0x550
