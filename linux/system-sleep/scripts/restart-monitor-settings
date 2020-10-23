@@ -1,22 +1,13 @@
 #!/bin/bash
 
-sleep 4
+sleep 2
 
 case $1 in
   pre)
     # Do nothing
     ;;
   post)
-    home="/home/thiago"
-    connected_outputs=$(xrandr | grep " connected" | sed -e "s/\([A-Z0-9]\+\) connected.*/\1/")
-    custom_script="$home/.restart-monitor-settings"
 
-    DISPLAY=":1" $home/bin/initialize-nvidia-settings
-
-    if [[ "$(echo "$connected_outputs" | wc -l)" -gt "1" ]]; then
-      if [[ -x "$custom_script" ]]; then
-        $custom_script
-      fi
-    fi
+    /home/thiago/bin/restart-monitor-settings
     ;;
 esac

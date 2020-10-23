@@ -1,0 +1,16 @@
+#!/bin/bash
+
+dir="$(dirname "$0")"
+connected_outputs=$(xrandr | grep " connected" | sed -e "s/\([A-Z0-9]\+\) connected.*/\1/")
+custom_script="$dir/../../.restart-monitor-settings"
+
+export DISPLAY=":1"
+
+$dir/initialize-nvidia-settings
+
+if [[ "$(echo "$connected_outputs" | wc -l)" -gt "1" ]]; then
+    if [[ -x "$custom_script" ]]; then
+        $custom_script
+    fi
+fi
+
