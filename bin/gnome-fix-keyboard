@@ -12,7 +12,6 @@
 
 # Avoid timing issues with a sleep. Without this, the settings
 # won't get applied correctly.
-sleep 4
 
 delay_key="org.gnome.desktop.peripherals.keyboard delay"
 repeat_interval_key="org.gnome.desktop.peripherals.keyboard repeat-interval"
