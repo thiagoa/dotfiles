@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=bash -c "$HOME/bin/xkeysnail --quiet --watch"
+Exec=bash -c "sleep2; $HOME/bin/start-xkeysnail"
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true

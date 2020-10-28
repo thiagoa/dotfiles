@@ -1,7 +1,0 @@
-#!/bin/bash
-
-if [[ $1 == "--noquiet" ]]; then
-  sudo $HOME/bin/xkeysnail kill --watch
-else
-  sudo $HOME/bin/xkeysnail kill --quiet --watch
-fi

@@ -1,36 +1,38 @@
 #!/bin/bash
 
 if [[ ! -x "$(which gsettings)" ]]; then
-  exit
+  echo 'ERROR: Not Linux or no Gnome installed!'
+  exit 1
 fi
 
-normal_scale=1.25
 fourk_scale=1.5
-current_scale=$(gsettings get org.gnome.desktop.interface text-scaling-factor)
 
-if [[ "$1" = "echo" ]]; then
-  echo $current_scale
-  exit
-fi
-
-if [ "$1" ]; then
-  scale_to_set=$1
-elif [[ "$current_scale" == "$fourk_scale" ]]; then
+if [[ -z "$1" ]]; then
   echo "Changing to normal scale..."
+
   gsettings set org.gnome.desktop.interface font-name 'Ubuntu 11'
   gsettings set org.gnome.desktop.interface document-font-name 'Sans 11'
   gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Ubuntu Bold 11'
   gsettings set org.gnome.desktop.interface monospace-font-name 'DejaVu Sans Mono 11'
 
-  scale_to_set=$normal_scale
-else
+  $HOME/.dotfiles/linux/ulauncher/setup.sh --restore > /dev/null 2> /dev/null
+
+  if [[ $? -eq 0 ]]; then
+    echo 'Ulauncher restored successfully'
+  else
+    echo 'WARNING: Failed to restore ulauncher'
+  fi
+
+  gsettings reset org.gnome.desktop.interface text-scaling-factor
+elif [[ "$1" = "4k" ]]; then
   echo "Changing to 4k scale..."
+
   gsettings set org.gnome.desktop.interface font-name 'Ubuntu 10'
   gsettings set org.gnome.desktop.interface document-font-name 'Sans 10'
   gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Ubuntu Bold 10'
   gsettings set org.gnome.desktop.interface monospace-font-name 'DejaVu Sans Mono 11'
 
-  scale_to_set=$fourk_scale
-fi
+  $HOME/.dotfiles/linux/ulauncher/setup.sh
 
-gsettings set org.gnome.desktop.interface text-scaling-factor $scale_to_set
+  gsettings set org.gnome.desktop.interface text-scaling-factor $fourk_scale
+fi

@@ -1,17 +1,21 @@
 #!/bin/bash
-# 
-# Avoid a bug on Gnome 3.36.3 (at least on Ubuntu/Pop OS) where it won't apply
-# keyboard accessibility settings on startup. 
+
+if [[ $1 == "--noquiet" ]]; then
+  sudo $HOME/bin/xkeysnail kill --watch &
+else
+  sudo $HOME/bin/xkeysnail kill --quiet --watch &
+fi
+
+pid=$!
+
+sleep 2
+
+# After Gnome 3.36.3, xkeysnail is messing up with keyboard settings. 
 #
 # Custom user settings are correctly recorded in gsettings but due to the
-# bug Gnome applies the default values.  This script simulates dragging the
-# sliders manually in the GUI to any position and then dragging them back to
-# their previous position. The bug also happens when logging out / logging in.
-#
-# Register this script on Startup Application Preferences.
-
-# Avoid timing issues with a sleep. Without this, the settings
-# won't get applied correctly.
+# bug, xkeysnail resets to the default values.  This script simulates dragging
+# the sliders manually in the GUI to any position and then dragging them back
+# to their previous position.
 
 delay_key="org.gnome.desktop.peripherals.keyboard delay"
 repeat_interval_key="org.gnome.desktop.peripherals.keyboard repeat-interval"
@@ -34,3 +38,7 @@ gsettings set $delay_key "$delay_value"
 gsettings set $repeat_interval_key "$repeat_interval_value"
 gsettings set $mru_sources_key "$mru_sources_value"
 gsettings set $sources_key "$sources_value"
+
+echo "Gnome keyboard settings have been fixed"
+
+wait "$pid"
