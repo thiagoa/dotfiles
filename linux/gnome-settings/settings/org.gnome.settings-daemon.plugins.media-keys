@@ -1,12 +1,15 @@
 [/]
 area-screenshot-clip=['<Primary><Shift><Alt>dollar']
 custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom9/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom10/']
+email=@as []
+help=@as []
+home=@as []
 rotate-video-lock-static=@as []
 screencast=['<Primary><Shift><Super>r']
 screenreader=@as []
 screensaver=['<Super>Escape']
 terminal=@as []
-www=['<Super>b']
+www=@as []
 
 [custom-keybindings/custom0]
 binding='<Alt><Super>r'
@@ -54,6 +57,5 @@ command='gnome-activities-overview'
 name='Gnome Activities #2'
 
 [custom-keybindings/custom9]
-binding='<Super>bracketleft'
 command='toggle-dropdown-terminal'
 name='Toggle dropdown terminal'

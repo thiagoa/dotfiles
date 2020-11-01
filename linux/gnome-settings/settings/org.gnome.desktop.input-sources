@@ -1,5 +1,6 @@
 [/]
-mru-sources=[('xkb', 'us+alt-intl'), ('xkb', 'us')]
+current=uint32 0
+mru-sources=[('xkb', 'us'), ('xkb', 'us+alt-intl')]
 per-window=false
 sources=[('xkb', 'us'), ('xkb', 'us+alt-intl')]
-xkb-options=['grp_led:scroll', 'lv3:ralt_alt']
+xkb-options=['lv3:ralt_alt']
