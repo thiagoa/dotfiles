@@ -35,11 +35,57 @@ sudo apt install \
      bt-device \
      autokey-gtk
 
+# Docker
+
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+# TODO improve this mess
+default_release="$(lsb_release -cs)"
+
+echo ''
+echo ''
+print "What Ubuntu codename to use for Docker's repo (default: ${default_release})? "
+read -r release
+echo ''
+
+# WARNING: If this fails for some reason, the docker repo is not available for
+# the current Ubuntu version so replace lsb_release -cs with Ubuntu version's
+# codename
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   ${release:-$default_release} \
+   stable"
+
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+sudo usermod -aG docker ${USER}
+
+echo "You need to log in again for Docker to work"
 echo "Reminder: Install Emacs from source"
 echo "Reminder: Download and install Google Chrome"
 echo "Reminder: Download and install Dropbox"
 echo "Reminder: Download and install Insync"
 echo "Reminder: Download and install Veracrypt"
+
+if [[ -x "$(which pip3)" ]]; then
+  # TODO: Decide whether to install brotab from pip or from source
+  # See https://github.com/thiagoa/brotab/blob/master/DEVELOPMENT.md
+  for package in nativemessaging pygithub brotab; do
+    if ! pip3 show "$package" > /dev/null 2>&1; then
+      echo "Installing $package python package"
+      pip3 install $package
+    fi
+  done
+else
+  echo "WARNING: pip3 not installed! Install it and run setup again" 1>&2
+fi
 
 dir="$(cd "$(dirname "$0")" && pwd)"
 
