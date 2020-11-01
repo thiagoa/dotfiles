@@ -1,7 +1,9 @@
-// Patched version of clipboard-indicator 34 to support xkeysnail
+// Patched version of clipboard-indicator 37 to support xkeysnail
 // hacks. I still need to patch it properly.
 
+const GLib       = imports.gi.GLib // patch
 const Clutter    = imports.gi.Clutter;
+const Config     = imports.misc.config;
 const Gio        = imports.gi.Gio;
 const Lang       = imports.lang;
 const Mainloop   = imports.mainloop;
@@ -11,7 +13,6 @@ const St         = imports.gi.St;
 const PolicyType = imports.gi.Gtk.PolicyType;
 const Util       = imports.misc.util;
 const MessageTray = imports.ui.messageTray;
-const GLib        = imports.gi.GLib
 
 const Main      = imports.ui.main;
 const PanelMenu = imports.ui.panelMenu;
@@ -33,6 +34,7 @@ const INDICATOR_ICON = 'edit-paste-symbolic';
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 const Utils = Me.imports.utils;
+const ConfirmDialog = Me.imports.confirmDialog;
 const Prefs = Me.imports.prefs;
 const prettyPrint = Utils.prettyPrint;
 const writeRegistry = Utils.writeRegistry;
@@ -49,6 +51,7 @@ let PRIVATEMODE          = false;
 let NOTIFY_ON_COPY       = true;
 let MAX_TOPBAR_LENGTH    = 15;
 let TOPBAR_DISPLAY_MODE  = 1; //0 - only icon, 1 - only clipbord content, 2 - both
+let DISABLE_DOWN_ARROW   = false;
 let STRIP_TEXT           = false;
 
 const ClipboardIndicator = Lang.Class({
@@ -60,7 +63,8 @@ const ClipboardIndicator = Lang.Class({
     _selectionOwnerChangedId: null,
     _historyLabelTimeoutId: null,
     _historyLabel: null,
-    _buttonText:null,
+    _buttonText: null,
+    _disableDownArrow: null,
 
     destroy: function () {
         this._disconnectSettings();
@@ -88,7 +92,8 @@ const ClipboardIndicator = Lang.Class({
             y_align: Clutter.ActorAlign.CENTER
         });
         hbox.add_child(this._buttonText);
-        hbox.add(PopupMenu.arrowIcon(St.Side.BOTTOM));
+        this._downArrow = PopupMenu.arrowIcon(St.Side.BOTTOM);
+        hbox.add(this._downArrow);
         this.actor.add_child(hbox);
 
         this._createHistoryLabel();
@@ -126,7 +131,9 @@ const ClipboardIndicator = Lang.Class({
                 style_class: 'search-entry',
                 can_focus: true,
                 hint_text: _('Type here to search...'),
-                track_hover: true
+                track_hover: true,
+                x_expand: true,
+                y_expand: true
             });
 
             that.searchEntry.get_clutter_text().connect(
@@ -134,7 +141,7 @@ const ClipboardIndicator = Lang.Class({
                 Lang.bind(that, that._onSearchTextChanged)
             );
 
-            that._entryItem.actor.add(that.searchEntry, { expand: true });
+            that._entryItem.add(that.searchEntry);
 
             that.menu.addMenuItem(that._entryItem);
 
@@ -144,6 +151,10 @@ const ClipboardIndicator = Lang.Class({
                         that.searchEntry.set_text('');
                         global.stage.set_key_focus(that.searchEntry);
                     }
+                    else { // patch
+                        GLib.spawn_command_line_sync('killall dummy'); // patch
+                    } // patch
+
                     Mainloop.source_remove(a);
                 }));
             }));
@@ -272,14 +283,12 @@ const ClipboardIndicator = Lang.Class({
 
         let icofavBtn = new St.Button({
             style_class: 'ci-action-btn',
-            x_fill: true,
             can_focus: true,
-            child: iconfav
+            child: iconfav,
+            x_align: Clutter.ActorAlign.END,
+            x_expand: true,
+            y_expand: true
         });
-
-        icofavBtn.set_x_align(Clutter.ActorAlign.END);
-        icofavBtn.set_x_expand(true);
-        icofavBtn.set_y_expand(true);
 
         menuItem.actor.add_child(icofavBtn);
         menuItem.icofavBtn = icofavBtn;
@@ -297,14 +306,12 @@ const ClipboardIndicator = Lang.Class({
 
         let icoBtn = new St.Button({
             style_class: 'ci-action-btn',
-            x_fill: true,
             can_focus: true,
-            child: icon
+            child: icon,
+            x_align: Clutter.ActorAlign.END,
+            x_expand: false,
+            y_expand: true
         });
-
-        icoBtn.set_x_align(Clutter.ActorAlign.END);
-        icoBtn.set_x_expand(false);
-        icoBtn.set_y_expand(true);
 
         menuItem.actor.add_child(icoBtn);
         menuItem.icoBtn = icoBtn;
@@ -336,22 +343,27 @@ const ClipboardIndicator = Lang.Class({
 
         this._updateCache();
     },
-
     _removeAll: function () {
-        let that = this;
-        // We can't actually remove all items, because the clipboard still
-        // has data that will be re-captured on next refresh, so we remove
-        // all except the currently selected item
-        // Don't remove favorites here
-        that.historySection._getMenuItems().forEach(function (mItem) {
-            if (!mItem.currentlySelected) {
-                let idx = that.clipItemsRadioGroup.indexOf(mItem);
-                mItem.destroy();
-                that.clipItemsRadioGroup.splice(idx,1);
-            }
+        const title = _("Clear all?");
+        const message = _("Are you sure you want to delete all clipboard items?");
+        const sub_message = _("This operation cannot be undone.");
+
+        ConfirmDialog.openConfirmDialog(title, message, sub_message, _("Clear"), _("Cancel"), () => {;
+            let that = this;
+            // We can't actually remove all items, because the clipboard still
+            // has data that will be re-captured on next refresh, so we remove
+            // all except the currently selected item
+            // Don't remove favorites here
+            that.historySection._getMenuItems().forEach(function (mItem) {
+                if (!mItem.currentlySelected) {
+                    let idx = that.clipItemsRadioGroup.indexOf(mItem);
+                    mItem.destroy();
+                    that.clipItemsRadioGroup.splice(idx,1);
+                }
+            });
+            that._updateCache();
+            that._showNotification(_("Clipboard history cleared"));
         });
-        that._updateCache();
-        that._showNotification(_("Clipboard history cleared"));
     },
 
     _removeEntry: function (menuItem, event) {
@@ -385,8 +397,6 @@ const ClipboardIndicator = Lang.Class({
     },
 
     _onMenuItemSelected: function (autoSet) {
-        GLib.spawn_command_line_sync('killall dummy');
-
         var that = this;
         that.radioGroup.forEach(function (menuItem) {
             let clipContents = that.clipContents;
@@ -613,7 +623,10 @@ const ClipboardIndicator = Lang.Class({
         }
 
         notification.setTransient(true);
-        this._notifSource.notify(notification);
+        if (Config.PACKAGE_VERSION < '3.38')
+            this._notifSource.notify(notification);
+        else
+            this._notifSource.showNotification(notification);
     },
 
     _createHistoryLabel: function () {
@@ -675,6 +688,7 @@ const ClipboardIndicator = Lang.Class({
         ENABLE_KEYBINDING    = this._settings.get_boolean(Prefs.Fields.ENABLE_KEYBINDING);
         MAX_TOPBAR_LENGTH    = this._settings.get_int(Prefs.Fields.TOPBAR_PREVIEW_SIZE);
         TOPBAR_DISPLAY_MODE  = this._settings.get_int(Prefs.Fields.TOPBAR_DISPLAY_MODE_ID);
+        DISABLE_DOWN_ARROW   = this._settings.get_boolean(Prefs.Fields.DISABLE_DOWN_ARROW);
         STRIP_TEXT           = this._settings.get_boolean(Prefs.Fields.STRIP_TEXT);
     },
 
@@ -750,6 +764,11 @@ const ClipboardIndicator = Lang.Class({
         if(TOPBAR_DISPLAY_MODE === 2){
             this.icon.visible = true;
             this._buttonText.visible = true;
+        }
+        if(!DISABLE_DOWN_ARROW) {
+            this._downArrow.visible = true;
+        } else {
+            this._downArrow.visible = false;
         }
     },
 
@@ -851,25 +870,22 @@ const ClipboardIndicator = Lang.Class({
     },
 
     _toggleMenu: function(){
-        global.log(this.menu.toggle);
+        if (!this.menu.isOpen) { // patch
+            let [, winId] = GLib.spawn_command_line_sync('xdotool getactivewindow'); // patch
+            let [, wmClass] = GLib.spawn_command_line_sync('xprop -id ' + winId + ' | grep WM_CLASS'); // patch
+            let [, ignoredApps] = GLib.spawn_command_line_sync('cat /home/thiago/.dotfiles/linux/xkeysnail/ignored_apps_on_default_mappings'); // patch
 
-        if (!this.menu.isOpen) {
-            let [, winId] = GLib.spawn_command_line_sync('xdotool getactivewindow');
-            let [, wmClass] = GLib.spawn_command_line_sync('xprop -id ' + winId + ' | grep WM_CLASS');
-            let [, ignoredApps] = GLib.spawn_command_line_sync('cat /home/thiago/.dotfiles/linux/xkeysnail/ignored_apps_on_default_mappings');
-
-            if (wmClass.toString().match(ignoredApps)) {
-                GLib.spawn_async('/', ['/home/thiago/bin/dummy'], null, GLib.SpawnFlags.SEARCH_PATH, null)
-            }
-        }
-        else {
-            GLib.spawn_command_line_sync('killall dummy');
-        }
+            if (wmClass.toString().match(ignoredApps)) { // patch
+                GLib.spawn_async('/', ['/home/thiago/bin/dummy'], null, GLib.SpawnFlags.SEARCH_PATH, null) // patch
+            } // patch
+        } // patch
+        else { // patch
+            GLib.spawn_command_line_sync('killall dummy'); // patch
+        } // patch
 
         this.menu.toggle();
     }
 });
-
 
 function init () {
     let localeDir = Me.dir.get_child('locale');
