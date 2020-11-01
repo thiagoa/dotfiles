@@ -1,0 +1,5 @@
+[/]
+move-tab-left='disabled'
+move-tab-right='disabled'
+next-tab='<Primary>Page_Down'
+prev-tab='<Primary>Page_Up'

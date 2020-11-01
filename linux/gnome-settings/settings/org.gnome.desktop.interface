@@ -1,0 +1,9 @@
+[/]
+cursor-size=48
+document-font-name='Sans 10'
+font-name='Ubuntu 10'
+gtk-im-module='gtk-im-context-simple'
+locate-pointer=false
+monospace-font-name='DejaVu Sans Mono 11'
+text-scaling-factor=1.5
+toolkit-accessibility=true
