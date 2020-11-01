@@ -3,7 +3,7 @@ Name=Discord Web
 StartupWMClass=Webdiscord
 Comment=Discord
 GenericName=Discord Chrome App
-Exec=/opt/google/chrome/google-chrome --app=https://discord.com/app --class="Webdiscord" --user-data-dir=/home/thiago/.config/webdiscord
+Exec=/opt/google/chrome/google-chrome --app=https://discord.com/app --class="Webdiscord" --user-data-dir=/home/thiago/.config/webdiscord --use-cmd-decoder=validating --use-gl=desktop
 Icon=/home/thiago/.dotfiles/linux/gnome-shortcuts/discord.png
 Type=Application
 StartupNotify=true

@@ -4,7 +4,7 @@ Name=WhatsApp
 GenericName=WhatsApp
 Comment=WhatsApp
 #Exec=webapp-container --store-session-cookies --webappUrlPatterns=https?://*.whatsapp.com/* --user-agent-string='Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36' https://web.whatsapp.com %u
-Exec=/opt/google/chrome/google-chrome --app=https://web.whatsapp.com --class="WhatsApp" --user-data-dir=/home/thiago/.config/whatsapp
+Exec=/opt/google/chrome/google-chrome --app=https://web.whatsapp.com --class="WhatsApp" --user-data-dir=/home/thiago/.config/whatsapp --use-cmd-decoder=validating --use-gl=desktop
 Terminal=false
 Type=Application
 StartupNotify=true
