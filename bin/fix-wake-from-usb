@@ -1,0 +1,5 @@
+#!/bin/bash
+
+for file in `grep -l . /sys/bus/usb/devices/*/power/wakeup`; do
+  echo enabled > $file
+done
