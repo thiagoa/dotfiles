@@ -9,7 +9,6 @@ sudo apt update > /dev/null 2> /dev/null
 # libwxbase3.0-0v5 and libwxgtk3.0-gtk3-0v5 -> Veracrypt deps
 sudo apt install \
      xdotool \
-     geary \
      silversearcher-ag \
      timeshift \
      deja-dup \
@@ -32,7 +31,7 @@ sudo apt install \
      libwxbase3.0-0v5 \
      libwxgtk3.0-gtk3-0v5 \
      awscli \
-     bt-device \
+     bluez-tools \
      autokey-gtk
 
 # Docker
@@ -48,19 +47,16 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
 # TODO improve this mess
 default_release="$(lsb_release -cs)"
+default_release=focal
 
-echo ''
-echo ''
-print "What Ubuntu codename to use for Docker's repo (default: ${default_release})? "
-read -r release
-echo ''
+echo "WARNING! Using older focal repository for docker!"
 
 # WARNING: If this fails for some reason, the docker repo is not available for
 # the current Ubuntu version so replace lsb_release -cs with Ubuntu version's
 # codename
 sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   ${release:-$default_release} \
+   $default_release \
    stable"
 
 sudo apt-get update
@@ -73,6 +69,7 @@ echo "Reminder: Download and install Google Chrome"
 echo "Reminder: Download and install Dropbox"
 echo "Reminder: Download and install Insync"
 echo "Reminder: Download and install Veracrypt"
+echo "Reminder: Download and install Mailspring"
 
 if [[ -x "$(which pip3)" ]]; then
   # TODO: Decide whether to install brotab from pip or from source
