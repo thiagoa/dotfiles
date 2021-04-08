@@ -32,7 +32,8 @@ sudo apt install \
      libwxgtk3.0-gtk3-0v5 \
      awscli \
      bluez-tools \
-     autokey-gtk
+     autokey-gtk \
+     xbindkeys
 
 # Docker
 
