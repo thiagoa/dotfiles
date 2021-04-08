@@ -5,12 +5,10 @@ if [[ ! -x "$(which gsettings)" ]]; then
   exit 1
 fi
 
-fourk_scale=1.5
-
 if [[ -z "$1" ]]; then
   echo "Changing to normal scale..."
 
-  gsettings set org.gnome.desktop.interface font-name 'Ubuntu 11'
+  gsettings set org.gnome.desktop.interface font-name 'Ubuntu 12'
   gsettings set org.gnome.desktop.interface document-font-name 'Sans 11'
   gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Ubuntu Bold 11'
   gsettings set org.gnome.desktop.interface monospace-font-name 'DejaVu Sans Mono 11'
@@ -34,5 +32,18 @@ elif [[ "$1" = "4k" ]]; then
 
   $HOME/.dotfiles/linux/ulauncher/setup.sh
 
+  fourk_scale=1.5
+  gsettings set org.gnome.desktop.interface text-scaling-factor $fourk_scale
+elif [[ "$1" = "4kbig" ]]; then
+  echo "Changing to 4k BIG scale..."
+
+  gsettings set org.gnome.desktop.interface font-name 'Ubuntu 10'
+  gsettings set org.gnome.desktop.interface document-font-name 'Sans 10'
+  gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Ubuntu Bold 10'
+  gsettings set org.gnome.desktop.interface monospace-font-name 'DejaVu Sans Mono 10'
+
+  $HOME/.dotfiles/linux/ulauncher/setup.sh
+
+  fourk_scale=1.8
   gsettings set org.gnome.desktop.interface text-scaling-factor $fourk_scale
 fi
