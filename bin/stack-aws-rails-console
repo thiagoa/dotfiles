@@ -1,0 +1,4 @@
+#!/bin/bash
+
+nmcli con up id StackCommerce > /dev/null 2>&1
+aws-rails-console $@
