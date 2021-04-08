@@ -1,4 +1,3 @@
-# Button 6 closes a tab
 "xvkbd -xsendevent -text "\C\[Prior]""
 Mod4 + b:9
 
@@ -6,4 +5,4 @@ Mod4 + b:9
 Mod4 + b:8
 
 "xvkbd -xsendevent -text "\C\w""
-Mod4 + b:3
+Mod4 + b:2
