@@ -1,0 +1,4 @@
+#!/bin/sh
+
+xinput set-prop $(xinput list --id-only 'pointer:Logitech MX Ergo') "libinput Button Scrolling Button" 3
+xinput set-prop $(xinput list --id-only 'pointer:Logitech MX Ergo') "libinput Scroll Method Enabled" 0, 0, 1

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/thiago/bin/setup-trackball
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=Setup MX Ergo Trackball
+Name=Setup MX Ergo Trackball
+Comment[en_US]=
+Comment=
