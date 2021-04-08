@@ -1,0 +1,3 @@
+#!/bin/bash
+
+bt-device --connect="5C:C6:E9:22:1B:96"
