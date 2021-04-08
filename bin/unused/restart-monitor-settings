@@ -4,6 +4,8 @@ dir="$(dirname "$0")"
 connected_outputs=$(xrandr | grep " connected" | sed -e "s/\([A-Z0-9]\+\) connected.*/\1/")
 custom_script="$dir/../../.restart-monitor-settings"
 
+echo $custom_script
+
 export DISPLAY=":1"
 
 $dir/initialize-nvidia-settings
