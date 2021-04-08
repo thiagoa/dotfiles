@@ -1,6 +1,6 @@
 [/]
 area-screenshot-clip=['<Primary><Shift><Alt>dollar']
-custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom9/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom10/']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom9/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom10/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom11/']
 email=@as []
 help=@as []
 home=@as []
@@ -26,10 +26,20 @@ binding='<Alt><Super>l'
 command="bash -c \"dconf write /org/gnome/nautilus/preferences/recursive-search \\\"'never'\\\" && notify-desktop 'Nautilus' 'Switched to non-recursive search'\""
 name='Nautilus set non-recursive search'
 
+[custom-keybindings/custom11]
+binding='<Primary><Alt><Super>v'
+command='/bin/sh "/home/thiago/.screenlayout/Vertical.sh"'
+name='Setup for dual monitor with vertical monitor'
+
 [custom-keybindings/custom2]
 binding='<Primary><Super>q'
 command='linux-quit-x-application'
 name='Quit application'
+
+[custom-keybindings/custom3]
+binding='<Primary><Alt><Super>s'
+command='bash -c "nautilus $HOME/Pictures" '
+name='Pictures folder'
 
 [custom-keybindings/custom4]
 binding='<Shift><Alt>r'
