@@ -12,4 +12,13 @@ contents=$(dconf list $setting 2> /dev/null)
 
 [[ -z "$contents" ]] && abort 'ERROR: Empty key!'
 
-dconf dump $setting > $dir/settings/$setting_id
+file="$dir/settings/$setting_id"
+
+dconf dump $setting > $file
+
+unwanted_patterns='mru-sources='
+
+if grep "$unwanted_patterns" "$file" > /dev/null; then
+  grep -v mru-sources "$file" > "$file.tmp"
+  mv "$file.tmp" "$file"
+fi
