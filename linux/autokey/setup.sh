@@ -8,7 +8,7 @@ if [[ -f "$package_autokey_model" ]]; then
   old_code="return bool(r.match(window_info.wm_title)) or bool(r.match(window_info.wm_class))"
   new_code="return bool(r.match(window_info.wm_class))"
 
-  sed -i "s/$old_code/$new_code/g" $package_autokey_model
+  sudo sed -i "s/$old_code/$new_code/g" $package_autokey_model
 
   echo 'Autokey has been patched'
 else
