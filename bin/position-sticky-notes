@@ -5,7 +5,7 @@ windows=$(wmctrl -l -x | grep 'indicator-stickynotes' | awk '{print $1}')
 x_count=0
 y_count=0
 
-x_offset=140
+x_offset=135
 y_offset=200
 x_spacing=800
 y_spacing=700
