@@ -1,0 +1,26 @@
+#!/bin/bash
+
+windows=$(wmctrl -l -x | grep 'indicator-stickynotes' | awk '{print $1}')
+
+x_count=0
+y_count=0
+
+x_offset=140
+y_offset=200
+x_spacing=800
+y_spacing=700
+
+for win_id in $(echo $windows); do
+  x="$(($x_offset + $x_count * $x_spacing))"
+  y="$(($y_offset + $y_count * $y_spacing))"
+
+  wmctrl -i -r "$win_id" -e 0,$x,$y,-1,-1
+  wmctrl -i -r "$win_id" -b add,sticky
+
+  x_count="$(($x_count + 1))"
+
+  if [[ "$(($x_count % 2))" -eq "0" ]]; then
+    x_count=0
+    y_count="$(($y_count + 1))"
+  fi
+done
