@@ -56,6 +56,13 @@ function setup_ssh {
     ssh-keygen -t rsa
 
     echo "\nYour key has been generated. Now go to GitHub."
+    echo "Press any key to continue"
+    while [ true ] ; do
+      read -t 3 -n 1
+      if [ $? = 0 ] ; then
+        break
+      fi
+    done
   fi
 
   if [[ -f $HOME/OneDrive/Config/ssh_config ]]; then
