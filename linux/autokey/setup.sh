@@ -17,7 +17,17 @@ else
   fi
 fi
 
-if [[ "$(uname)" = "Linux" ]]; then
-   mkdir -p $autokey_config_dir 2> /dev/null
-   ln -fs $HOME/.dotfiles/autokey/snippets/* $autokey_config_dir
+source_config_dir="$HOME/OneDrive/Linux/autokey-data"
+dest_config_dir="$HOME/.config/autokey/data"
+
+if [[ -d $source_config_dir ]]; then
+   mkdir -p $dest_dir 2> /dev/null
+
+   if [[ -d $dest_config_dir ]]; then
+     rm -rf $dest_config_dir
+   fi
+
+   ln -sfn $source_config_dir $dest_config_dir
+else
+   echo "Autokey OneDrive dir not found! Skipping data linking..."
 fi
