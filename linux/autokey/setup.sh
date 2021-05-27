@@ -1,6 +1,5 @@
 #!/bin/bash
 
-autokey_config_dir="$HOME/.config/autokey/data"
 pip_autokey_model="/home/thiago/.local/lib/python3.7/site-packages/autokey/model.py"
 package_autokey_model="/usr/lib/python3/dist-packages/autokey/model.py"
 
