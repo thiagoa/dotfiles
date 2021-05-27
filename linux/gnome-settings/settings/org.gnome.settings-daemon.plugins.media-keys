@@ -28,7 +28,7 @@ name='Nautilus set non-recursive search'
 
 [custom-keybindings/custom11]
 binding='<Primary><Alt><Super>v'
-command='/bin/sh "/home/thiago/.screenlayout/Vertical.sh"'
+command='/bin/sh "/home/thiago/bin/set-screens-layout"'
 name='Setup for dual monitor with vertical monitor'
 
 [custom-keybindings/custom2]
