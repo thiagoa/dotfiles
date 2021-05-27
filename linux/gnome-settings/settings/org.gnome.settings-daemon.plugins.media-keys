@@ -63,7 +63,7 @@ name='Downloads folder'
 
 [custom-keybindings/custom8]
 binding='<Super>Tab'
-command='gnome-activities-overview'
+command='bash -c "nautilus $HOME/Downloads" '
 name='Gnome Activities #2'
 
 [custom-keybindings/custom9]
