@@ -17,6 +17,7 @@ sudo apt install \
      grub2-common \
      grub-efi \
      grub-customizer \
+     guake \
      neovim \
      zsh \
      gnome-tweaks \
