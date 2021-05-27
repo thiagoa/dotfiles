@@ -1,2 +1,6 @@
 [/]
+document-font-name='Sans 10'
+font-name='Ubuntu 10'
 gtk-im-module='gtk-im-context-simple'
+monospace-font-name='DejaVu Sans Mono 10'
+text-scaling-factor=1.8
