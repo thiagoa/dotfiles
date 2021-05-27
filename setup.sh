@@ -116,10 +116,12 @@ function install_emacsfiles {
   if [[ -f $HOME/.emacs.d/init.el ]]; then
       return
   else
-      echo "Backing up current .emacs.d to ~/.emacs.d.backup..."
+      if [[ -d ~/.emacs.d ]]; then
+        echo "Backing up current .emacs.d to ~/.emacs.d.backup..."
 
-      rm -rf ~/.emacs.d.backup
-      mv ~/.emacs.d ~/.emacs.d.backup
+        rm -rf ~/.emacs.d.backup
+        mv ~/.emacs.d ~/.emacs.d.backup
+      fi
   fi
 
   echo "Installing Emacs files...\n"
