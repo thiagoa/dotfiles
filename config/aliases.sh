@@ -5,6 +5,10 @@ if alias o > /dev/null; then
   unalias o
 fi
 
+if alias g > /dev/null; then
+  unalias g
+fi
+
 function g {
   if [[ $# > 0 ]]; then
     git $@
