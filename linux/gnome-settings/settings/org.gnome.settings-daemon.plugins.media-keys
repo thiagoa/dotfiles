@@ -63,7 +63,7 @@ name='Downloads folder'
 
 [custom-keybindings/custom8]
 binding='<Super>Tab'
-command='bash -c "$HOME/bin/gnome-activities-overview" '
+command='gnome-activities-overview'
 name='Gnome Activities #2'
 
 [custom-keybindings/custom9]
