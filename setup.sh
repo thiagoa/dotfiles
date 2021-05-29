@@ -147,14 +147,20 @@ function install_vimfiles {
 }
 
 function install_emacsfiles {
+  local emacs_custom_file="$HOME/OneDrive/Config/emacs.custom.el"
+
+  if [[ -f $emacs_custom_file ]]; then
+    ln -sfn $emacs_custom_file $HOME/.emacs.custom.el
+  fi
+
   if [[ -f $HOME/.emacs.d/init.el ]]; then
       return
   else
       if [[ -d ~/.emacs.d ]]; then
         echo "Backing up current .emacs.d to ~/.emacs.d.backup..."
 
-        rm -rf ~/.emacs.d.backup
-        mv ~/.emacs.d ~/.emacs.d.backup
+        rm -rf $HOME/.emacs.d.backup
+        mv $HOME~/.emacs.d $HOME~/.emacs.d.backup
       fi
   fi
 
