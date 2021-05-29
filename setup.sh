@@ -49,6 +49,39 @@ function install_asdf {
   git clone -q https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.3.0 > /dev/null
 }
 
+function has_asdf_plugin {
+  local plugin=$1
+
+  if asdf plugin-list | grep $1 > /dev/null; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+function add_plugin {
+  local plugin=$1
+  local repo=$2
+
+  if ! has_asdf_plugin $1; then
+    asdf plugin-add $1 https://github.com/$repo
+  fi
+}
+
+function install_asdf_plugins {
+  if [[ ! -x "$(which asdf)" ]]; then
+    echo "ASDF is not installed, but it should at this point!"
+    exit 1
+  fi
+
+  echo "Installing asdf plugins...\n"
+
+  add_plugin nodejs asdf-vm/asdf-nodejs.git
+  add_plugin ruby asdf-vm/asdf-ruby.git
+  add_plugin java halcyon/asdf-java.git
+  add_plugin lein miorimmax/asdf-lein.git
+}
+
 function setup_ssh {
   if [[ ! -f $HOME/.ssh/id_rsa.pub ]]; then
     echo "Generating SSH key...\n"
@@ -241,6 +274,7 @@ fi
 create_directories
 install_binfiles
 install_asdf
+install_asdf_plugins
 setup_ssh
 install_zprezto
 install_dotfiles
