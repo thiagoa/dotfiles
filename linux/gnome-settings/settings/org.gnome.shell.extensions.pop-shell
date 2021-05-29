@@ -1,0 +1,8 @@
+[/]
+active-hint=false
+focus-down=['<Super>Down', '<Super>n']
+focus-left=['<Super>Left', '<Super>b']
+focus-right=['<Super>Right', '<Super>f']
+focus-up=['<Super>Up', '<Super>p']
+gap-inner=uint32 3
+tile-by-default=false
