@@ -23,7 +23,7 @@ function display_prerequisites {
   echo "Before running this script, make sure that:"
   echo
   echo "- OneDrive is installed and synced"
-  echo
+  echo "- You act on the GitHub ssh instructions that will be displayed"
 
   if read -q "choice?Do you wish to continue (y/n): "; then
     echo "\n"
