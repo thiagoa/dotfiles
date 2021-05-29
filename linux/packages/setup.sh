@@ -44,7 +44,8 @@ sudo apt install \
      libjansson-dev \
      git \
      texinfo \
-     dconf-editor
+     dconf-editor \
+     xvkbd
 
 # Standalone app dependencies (Crow translate, etc)
 
@@ -107,14 +108,6 @@ sudo add-apt-repository \
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io
 sudo usermod -aG docker ${USER}
-
-echo "You need to log in again for Docker to work"
-echo "Reminder: Install Emacs from source"
-echo "Reminder: Download and install Google Chrome"
-echo "Reminder: Download and install Dropbox"
-echo "Reminder: Download and install Insync"
-echo "Reminder: Download and install Veracrypt"
-echo "Reminder: Download and install Mailspring"
 
 if [[ -x "$(which pip3)" ]]; then
   # TODO: Decide whether to install brotab from pip or from source
