@@ -18,7 +18,10 @@ sudo apt install \
      grub-efi \
      grub-customizer \
      guake \
+     cheese \
      neovim \
+     rlwrap \
+     lm-sensors \
      zsh \
      gnome-tweaks \
      ulauncher \
