@@ -216,6 +216,7 @@ function install_linux_config {
     $INSTALL_DIR/linux/devilspie2/setup.sh
     $INSTALL_DIR/linux/system-sleep/setup.sh
     $INSTALL_DIR/linux/clipboard-indicator/setup.sh
+    $INSTALL_DIR/linux/fix-cedilla/setup.sh
   fi
 }
 
@@ -295,3 +296,4 @@ echo "Things to do manually next:"
 echo ""
 echo "- Install programming language stuff with 'asdf install my_language'"
 echo "- Install veracrypt GUI and console: https://www.veracrypt.fr/en/Downloads.html"
+echo "- If this is a new install, log out and re-login to effect changes"
