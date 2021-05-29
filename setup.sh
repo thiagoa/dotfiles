@@ -203,6 +203,7 @@ function install_linux_config {
   if [[ "$(uname)" == "Linux" ]]; then
     echo "Installing Linux-specific config..."
 
+    $INSTALL_DIR/linux/packages/setup.sh
     $INSTALL_DIR/linux/udev/setup.sh
     $INSTALL_DIR/linux/autokey/setup.sh
     $INSTALL_DIR/linux/gnome-shortcuts/setup.sh
@@ -210,7 +211,6 @@ function install_linux_config {
     $INSTALL_DIR/linux/gnome-autostart/setup.sh
     $INSTALL_DIR/linux/veracrypt/setup.sh
     $INSTALL_DIR/linux/ulauncher/setup.sh
-    $INSTALL_DIR/linux/packages/setup.sh
     $INSTALL_DIR/linux/xkeysnail/setup.sh
     $INSTALL_DIR/linux/devilspie2/setup.sh
     $INSTALL_DIR/linux/system-sleep/setup.sh
@@ -293,3 +293,4 @@ echo ""
 echo "Things to do manually next:"
 echo ""
 echo "- Install programming language stuff with 'asdf install my_language'"
+echo "- Install veracrypt GUI and console: https://www.veracrypt.fr/en/Downloads.html"
