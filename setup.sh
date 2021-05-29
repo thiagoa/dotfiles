@@ -19,6 +19,21 @@ if [[ ! -d $INSTALL_DIR ]]; then
   echo "ERROR: Please clone this repository in ~/.dotfiles"
 fi
 
+function display_prerequisites {
+  echo "Before running this script, make sure that:"
+  echo
+  echo "- OneDrive is installed and synced"
+  echo
+
+  if read -q "choice?Do you wish to continue (y/n): "; then
+    echo "\n"
+    return 0
+  else
+    echo "\n\nBye!"
+    exit 0
+  fi
+}
+
 function create_directories {
   echo "Creating $HOME/Code directory...\n"
 
@@ -280,6 +295,7 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
     setup_mac
 fi
 
+display_prerequisites
 create_directories
 install_binfiles
 install_asdf
