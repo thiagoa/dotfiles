@@ -66,6 +66,18 @@ sudo apt-get install \
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
+# Indicator sticky notes
+
+sudo add-apt-repository ppa:umang/indicator-stickynotes -y && sudo apt-get update && sudo apt-get install indicator-stickynotes -y
+
+# Dependencies to compile emacs
+
+sudo add-apt-repository ppa:ubuntu-toolchain-r/ppa \
+        && sudo apt-get update -y \
+        && sudo apt-get install -y gcc-10 libgccjit0 libgccjit-10-dev
+
+sudo apt-get build-dep -y emacs
+
 # TODO improve this mess
 default_release="$(lsb_release -cs)"
 default_release=focal
