@@ -61,6 +61,21 @@ sudo apt install \
      libqt5multimedia5 \
      libtesseract4
 
+# Gnome sushi dependencies
+
+sudo apt install \
+     meson \
+     libevince-dev \
+     gir1.2-gstreamer-1.0 \
+     librust-gstreamer-audio-sys-dev \
+     librust-gstreamer-audio-sys-dev \
+     libgtksourceview-4-dev \
+     libmusicbrainz5-dev \
+     libwebkit2gtk-4.0-dev \
+     libgirepository1.0-dev \
+     ninja-build
+
+
 # Ruby dependencies
 
 sudo apt install \
