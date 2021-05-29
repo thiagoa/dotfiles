@@ -309,3 +309,4 @@ echo "- Install veracrypt GUI and console: https://www.veracrypt.fr/en/Downloads
 echo "- Sync JetBrains appse (if any) settings"
 echo "- Download and install Google Chrome, Dropbox, Insync, Veracrypt, Mailspring"
 echo "- Sync Gnome Shell extensions through Google Chrome (enable syncing and it will find the backup)"
+echo "- Sync VS Code settings (first install Settings sync extension)"
