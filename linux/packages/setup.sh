@@ -37,7 +37,23 @@ sudo apt install \
      awscli \
      bluez-tools \
      autokey-gtk \
-     xbindkeys
+     xbindkeys \
+     python3-pip \
+     solaar
+
+# Standalone app dependencies (Crow translate, etc)
+
+sudo apt install \
+     gconf-service \
+     gconf-service-backend \
+     gconf2 \
+     gconf2-common \
+     libappindicator1 \
+     libdbusmenu-gtk4 \
+     libgconf-2-4 \
+     liblept5 \
+     libqt5multimedia5 \
+     libtesseract4 \
 
 # Docker
 
