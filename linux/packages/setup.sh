@@ -39,7 +39,12 @@ sudo apt install \
      autokey-gtk \
      xbindkeys \
      python3-pip \
-     solaar
+     solaar \
+     libjansson4 \
+     libjansson-dev \
+     git \
+     texinfo \
+     dconf-editor
 
 # Standalone app dependencies (Crow translate, etc)
 
@@ -53,7 +58,14 @@ sudo apt install \
      libgconf-2-4 \
      liblept5 \
      libqt5multimedia5 \
-     libtesseract4 \
+     libtesseract4
+
+# Ruby dependencies
+
+sudo apt install \
+     libsecret-1-dev \
+     libssl-dev \
+     libreadline-dev
 
 # Docker
 
