@@ -107,6 +107,9 @@ if [[ "$(is_active)" == "false" ]]; then
   send_command "$show_command"
 
   if [[ ! -z "$is_ignored_app" ]] && [ ! "$has_locks" ]; then
+    sleep 0.1
+    wmctrl -a Dummy
+
     until [[ "$(is_active)" == "false" ]]; do
       sleep 0.01
     done
