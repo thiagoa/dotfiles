@@ -101,7 +101,7 @@ if [[ "$(is_active)" == "false" ]]; then
   is_ignored_app=$(echo $wm_class | egrep "$ignored_apps")
 
   if [[ ! -z "$is_ignored_app" ]] && [ ! "$has_locks" ]; then
-    dummy &
+    echo $(sleep 0.1; dummy) &
   fi
 
   send_command "$show_command"
