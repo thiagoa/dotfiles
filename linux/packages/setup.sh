@@ -50,7 +50,8 @@ sudo apt install \
      pm-utils \
      autorandr \
      pavucontrol \
-     inotify-tools
+     inotify-tools \
+     gnome-clocks
 
 # Standalone app dependencies (Crow translate, etc)
 
