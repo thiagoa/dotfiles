@@ -1,0 +1,3 @@
+#!/bin/bash
+
+inotifywatch -e modify,create,delete -r $1
