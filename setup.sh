@@ -25,6 +25,7 @@ function display_prerequisites {
   echo "- Google Chrome is installed (preferrably with sync)"
   echo "- OneDrive is installed and synced"
   echo "- You act on the GitHub ssh instructions that will be displayed"
+  echo
 
   if read -q "choice?Do you wish to continue (y/n): "; then
     echo "\n"
@@ -229,6 +230,7 @@ function install_linux_config {
     $INSTALL_DIR/linux/packages/setup_emacs.sh
     $INSTALL_DIR/linux/packages/setup_gnome_sushi.sh
     $INSTALL_DIR/linux/packages/setup_brotab.sh
+    $INSTALL_DIR/linux/amdgpu/setup.sh
     $INSTALL_DIR/linux/sudoers/setup.sh
     $INSTALL_DIR/linux/udev/setup.sh
     $INSTALL_DIR/linux/autokey/setup.sh
