@@ -1,14 +1,10 @@
 #!/bin/bash
 
-sleep 2
-
 case $1 in
   pre)
     # Do nothing
     ;;
   post)
-    exit
-
-    /home/thiago/bin/restart-monitor-settings
+    /usr/bin/autorandr --batch --change --default default
     ;;
 esac

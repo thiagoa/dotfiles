@@ -1,0 +1,17 @@
+output DisplayPort-0
+off
+output DisplayPort-1
+off
+output DisplayPort-2
+crtc 1
+mode 1920x1080
+pos 3840x0
+rate 60.00
+rotate left
+transform 1.599991,0.000000,0.000000,0.000000,1.599991,0.000000,0.000000,0.000000,1.000000
+output HDMI-A-0
+crtc 0
+mode 3840x2160
+pos 0x124
+primary
+rate 60.00

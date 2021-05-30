@@ -22,6 +22,7 @@ fi
 function display_prerequisites {
   echo "Before running this script, make sure that:"
   echo
+  echo "- Google Chrome is installed (preferrably with sync)"
   echo "- OneDrive is installed and synced"
   echo "- You act on the GitHub ssh instructions that will be displayed"
 
@@ -227,6 +228,7 @@ function install_linux_config {
     $INSTALL_DIR/linux/packages/setup.sh
     $INSTALL_DIR/linux/packages/setup_emacs.sh
     $INSTALL_DIR/linux/packages/setup_gnome_sushi.sh
+    $INSTALL_DIR/linux/packages/setup_brotab.sh
     $INSTALL_DIR/linux/sudoers/setup.sh
     $INSTALL_DIR/linux/udev/setup.sh
     $INSTALL_DIR/linux/autokey/setup.sh
@@ -328,3 +330,4 @@ echo "- Download and install Google Chrome, Dropbox, Insync, Veracrypt, Mailspri
 echo "- Sync Gnome Shell extensions through Google Chrome (enable syncing and it will find the backup)"
 echo "- Sync VS Code settings (first install Settings sync extension)"
 echo "- Install warsaw, clockify, JetBrains Mono"
+echo "- Restart Chrome for brotab (and others) to work"

@@ -45,7 +45,10 @@ sudo apt install \
      git \
      texinfo \
      dconf-editor \
-     xvkbd
+     xvkbd \
+     seahorse-nautilus \
+     pm-utils \
+     autorandr
 
 # Standalone app dependencies (Crow translate, etc)
 
