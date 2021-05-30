@@ -48,7 +48,8 @@ sudo apt install \
      xvkbd \
      seahorse-nautilus \
      pm-utils \
-     autorandr
+     autorandr \
+     pavucontrol
 
 # Standalone app dependencies (Crow translate, etc)
 
