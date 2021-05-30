@@ -49,7 +49,8 @@ sudo apt install \
      seahorse-nautilus \
      pm-utils \
      autorandr \
-     pavucontrol
+     pavucontrol \
+     inotify-tools
 
 # Standalone app dependencies (Crow translate, etc)
 
