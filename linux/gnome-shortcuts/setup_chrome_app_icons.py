@@ -15,11 +15,12 @@ def copy_icons(app_id, icon_name):
 
     for size in ['16x16', '32x32', '48x48', '128x128', '256x256']:
         dest = dest_tmpl.format(size)
+        dest_dir = os.path.dirname(dest)
 
-        if os.path.exists(os.path.dirname(dest)):
+        if os.path.exists(dest_dir):
             copyfile(source, dest)
         else:
-            print(f'Path {dest} does not exist!')
+            print(f'Path {dest_dir} does not exist!')
 
 if __name__ == '__main__':
     copy_icons('Slack', 'slack.png')

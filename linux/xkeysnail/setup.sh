@@ -17,11 +17,11 @@ if [[ ! -d "$dest" ]] || [[ -n "$FORCE" ]]; then
   sudo pip3 -q install --upgrade .
 fi
 
-dest_dir="$HOME/.xkeysnail"
 source="$HOME/.dotfiles/linux/xkeysnail/custom_win_ids.py"
+dest_dir="$HOME/.xkeysnail"
 dest="$dest_dir/custom_win_ids.py"
 
 if [[ ! -f "$dest" ]]; then
-  mkdir -p "$dir"
+  mkdir -p "$dest_dir"
   cp "$source" "$dest"
 fi
