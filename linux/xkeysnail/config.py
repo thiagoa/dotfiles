@@ -19,7 +19,10 @@ this_config_file = sys.argv[-1] # __file__ doesn't work for this...
 ignored_apps_on_default_mappings = (Path(this_config_file).parent / 'ignored_apps_on_default_mappings').read_text()
 
 def get_custom_win_id(name):
-    return custom_win_ids.get(name) or 'UNMATCHABLE'
+    if custom_win_ids.get(name):
+        return 'crx_' + custom_win_ids.get(name)
+    else:
+        return 'UNMATCHABLE'
 
 def app(app_id, win_id='.+'):
     return '^' + win_id + '---' + app_id + '$'
