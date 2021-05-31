@@ -51,7 +51,8 @@ sudo apt install \
      autorandr \
      pavucontrol \
      inotify-tools \
-     gnome-clocks
+     gnome-clocks \
+     pdfarranger
 
 # Standalone app dependencies (Crow translate, etc)
 
