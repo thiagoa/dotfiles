@@ -83,7 +83,7 @@ if [[ "$(is_active)" == "false" ]]; then
   # run dialog, it shouldn't close the dummy app; it should only close
   # the dummy app when the last activation is closed, in this case,
   # the activities overview.
-  lock_dir="$HOME/.xkeysnail"
+  lock_dir="$HOME/.xkeysnail-locks"
   lock_file="$lock_dir/${active_command}${show_command}${hide_command}"
   has_locks="$(ls -A $lock_dir)"
 
