@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=bash -c "$HOME/bin/position-sticky-notes"
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=Position sticky notes
+Name=Position sticky notes
+Comment[en_US]=
+Comment=
