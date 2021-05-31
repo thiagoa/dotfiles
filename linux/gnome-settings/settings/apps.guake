@@ -2,7 +2,7 @@
 abbreviate-tab-names=false
 compat-delete='delete-sequence'
 default-shell='/usr/bin/tmux'
-display-n=0
+display-n=1
 gtk-prefer-dark-theme=true
 gtk-theme-name='Pop-dark'
 history-size=1000
