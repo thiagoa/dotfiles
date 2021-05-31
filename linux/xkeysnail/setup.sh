@@ -10,6 +10,10 @@ if [[ ! -d "$dest" ]] || [[ -n "$FORCE" ]]; then
     exit 1
   fi
 
+  if [[ -d "$dest" ]]; then
+    rm -rf $dest
+  fi
+
   git clone -q git@github.com:thiagoa/xkeysnail $dest
   cd $dest
   git fetch -q &> /dev/null
