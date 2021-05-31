@@ -112,6 +112,12 @@ sudo add-apt-repository ppa:ubuntu-toolchain-r/ppa \
 
 sudo apt-get build-dep -y emacs
 
+# Install flatpaks
+
+flatpak install flathub com.spotify.Client
+flatpak install flathub org.gabmus.hydrapaper
+flatpak install flathub uk.co.ibboard.cawbird
+
 # TODO improve this mess
 default_release="$(lsb_release -cs)"
 default_release=focal
