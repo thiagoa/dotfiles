@@ -23,7 +23,7 @@ function display_prerequisites {
   echo "Before running this script, make sure that:"
   echo
   echo "- Google Chrome is installed (preferrably with sync)"
-  echo "- OneDrive is installed and synced"
+  echo "- Dropbox is installed and synced"
   echo "- You act on the GitHub ssh instructions that will be displayed"
   echo
 
@@ -115,8 +115,8 @@ function setup_ssh {
     done
   fi
 
-  if [[ -f $HOME/OneDrive/Config/ssh_config ]]; then
-    ln -sf $HOME/OneDrive/Config/ssh_config ~/.ssh/config
+  if [[ -f $HOME/Dropbox/Config/ssh_config ]]; then
+    ln -sfn $HOME/Dropbox/Config/ssh_config ~/.ssh/config
   fi
 }
 
@@ -164,7 +164,7 @@ function install_vimfiles {
 }
 
 function install_emacsfiles {
-  local emacs_custom_file="$HOME/OneDrive/Config/emacs.custom.el"
+  local emacs_custom_file="$HOME/Dropbox/Config/emacs.custom.el"
 
   if [[ -f $emacs_custom_file ]]; then
     ln -sfn $emacs_custom_file $HOME/.emacs.custom.el
@@ -328,7 +328,7 @@ echo "- Add Mailspring accounts and signatures"
 echo "- Install programming language stuff with 'asdf install my_language'"
 echo "- Install veracrypt GUI and console: https://www.veracrypt.fr/en/Downloads.html"
 echo "- Sync JetBrains appse (if any) settings"
-echo "- Download and install Google Chrome, Dropbox, Insync, Veracrypt, Mailspring, VS Code, warsaw, clockify, JetBrains Mono"
+echo "- Download and install Google Chrome, Dropbox, Veracrypt, Mailspring, VS Code, warsaw, clockify, JetBrains Mono"
 echo "- Sync Gnome Shell extensions through Google Chrome (enable syncing and it will find the backup)"
 echo "- Sync VS Code settings (first install Settings sync extension)"
 echo "- Restart Chrome for brotab (and others) to work"

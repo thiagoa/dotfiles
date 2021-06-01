@@ -16,7 +16,7 @@ else
   fi
 fi
 
-source_config_dir="$HOME/OneDrive/Linux/autokey-data"
+source_config_dir="$HOME/Dropbox/Linux/autokey-data"
 dest_config_dir="$HOME/.config/autokey/data"
 
 if [[ -d $source_config_dir ]]; then
@@ -28,5 +28,5 @@ if [[ -d $source_config_dir ]]; then
 
    ln -sfn $source_config_dir $dest_config_dir
 else
-   echo "Autokey OneDrive dir not found! Skipping data linking..."
+   echo "Autokey Dropbox dir not found! Skipping data linking..."
 fi

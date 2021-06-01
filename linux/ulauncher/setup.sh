@@ -4,8 +4,8 @@ dir="$(cd "$(dirname "$0")" && pwd)"
 backup_ui_dir="$dir/ui"
 ulauncher_ui_dir="/usr/share/ulauncher/ui"
 
-if [[ -d "$HOME/OneDrive/Linux/ulauncher-config" ]]; then
-  ln -sfn $HOME/OneDrive/Linux/ulauncher-config $HOME/.config/ulauncher
+if [[ -d "$HOME/Dropbox/Linux/ulauncher-config" ]]; then
+  ln -sfn $HOME/Dropbox/Linux/ulauncher-config $HOME/.config/ulauncher
 fi
 
 if [[ ! -d "$ulauncher_ui_dir" ]]; then
