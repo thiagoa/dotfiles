@@ -127,15 +127,6 @@ define_keymap(app_re("Gedit"), {
     K("C-M-f"): K("C-Shift-KEY_5"),
 }, "gedit")
 
-define_keymap(app_re("Geary"), {
-    K("C-comma"): K("C-dot"),
-    K("C-dot"): K("C-comma"),
-    K("M-comma"): K("C-dot"),
-    K("M-dot"): K("C-comma"),
-    K("M-Win-f"): K("M-right"),
-    K("M-Win-b"): K("M-left")
-}, "geary")
-
 define_keymap(app_re("Spotify"), {
     K("C-s"): K("C-l")
 }, "Spotify")
