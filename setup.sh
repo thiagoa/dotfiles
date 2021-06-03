@@ -118,9 +118,11 @@ function setup_ssh {
   if [[ -f $HOME/Dropbox/Config/ssh_config ]]; then
     ln -sfn $HOME/Dropbox/Config/ssh_config $HOME/.ssh/config
   fi
+}
 
+function setup_secrets {
   if [[ -f $HOME/Dropbox/Config/secrets ]]; then
-    ln -sfn $HOME/Dropbox/Config/.secrets $HOME/.ssh/.secrets
+    ln -sfn $HOME/Dropbox/Config/secrets $HOME/.secrets
   fi
 }
 
@@ -310,6 +312,7 @@ install_binfiles
 install_asdf
 install_asdf_plugins
 setup_ssh
+setup_secrets
 install_zprezto
 install_dotfiles
 install_fzf
