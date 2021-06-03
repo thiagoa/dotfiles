@@ -116,7 +116,11 @@ function setup_ssh {
   fi
 
   if [[ -f $HOME/Dropbox/Config/ssh_config ]]; then
-    ln -sfn $HOME/Dropbox/Config/ssh_config ~/.ssh/config
+    ln -sfn $HOME/Dropbox/Config/ssh_config $HOME/.ssh/config
+  fi
+
+  if [[ -f $HOME/Dropbox/Config/secrets ]]; then
+    ln -sfn $HOME/Dropbox/Config/.secrets $HOME/.ssh/.secrets
   fi
 }
 
