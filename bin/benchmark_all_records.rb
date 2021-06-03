@@ -1,0 +1,1 @@
+/home/thiago/Dropbox/Scripts/benchmark_all_records.rb

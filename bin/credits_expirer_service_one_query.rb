@@ -1,0 +1,1 @@
+/home/thiago/Dropbox/Scripts/credits_expirer_service_one_query.rb

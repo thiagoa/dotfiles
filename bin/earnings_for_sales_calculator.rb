@@ -1,0 +1,1 @@
+/home/thiago/Dropbox/Scripts/earnings_for_sales_calculator.rb
