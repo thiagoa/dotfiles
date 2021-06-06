@@ -47,7 +47,6 @@ command='gnome-run-dialog'
 name='Gnome Run Dialog'
 
 [custom-keybindings/custom5]
-binding='<Super>a'
 command='gnome-applications-overview'
 name='Gnome Applications Overview'
 
