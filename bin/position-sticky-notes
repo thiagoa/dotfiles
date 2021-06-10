@@ -1,7 +1,5 @@
 #!/bin/bash
 
-windows=$(wmctrl -l -x | grep 'indicator-stickynotes' | awk '{print $1}')
-
 x_count=0
 y_count=0
 
@@ -9,6 +7,12 @@ x_offset=4060
 y_offset=200
 x_spacing=800
 y_spacing=700
+
+if [[ "$1" = "--delay" ]]; then
+  sleep 3
+fi
+
+windows=$(wmctrl -l -x | grep 'indicator-stickynotes' | awk '{print $1}')
 
 for win_id in $(echo $windows); do
   x="$(($x_offset + $x_count * $x_spacing))"
