@@ -250,6 +250,7 @@ function install_linux_config {
     $INSTALL_DIR/linux/system-sleep/setup.sh
     $INSTALL_DIR/linux/clipboard-indicator/setup.sh
     $INSTALL_DIR/linux/fix-cedilla/setup.sh
+    $INSTALL_DIR/linux/sysctl/setup.sh
   fi
 }
 
