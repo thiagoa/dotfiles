@@ -1,0 +1,3 @@
+#!/bin/bash
+
+DISPLAY=:1 /home/thiago/bin/position-sticky-notes --delay
