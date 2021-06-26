@@ -12,7 +12,8 @@ case $1 in
   pre)
     while IFS= read -r device
     do
-      bt-device -r "$device"
+      logger "system-sleep script disconnecting $device"
+      bt-device -d "$device"
     done < "$input"
     ;;
   post)
