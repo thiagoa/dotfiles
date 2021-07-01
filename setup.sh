@@ -149,6 +149,8 @@ function install_dotfiles {
 
     ln -s $INSTALL_DIR/$file $HOME/.$file
   done
+
+  $INSTALL_DIR/other/setup.sh
 }
 
 function install_fzf {

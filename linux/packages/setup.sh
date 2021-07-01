@@ -52,7 +52,8 @@ sudo apt install \
      pavucontrol \
      inotify-tools \
      gnome-clocks \
-     pdfarranger
+     pdfarranger \
+     zathura
 
 # Standalone app dependencies (Crow translate, etc)
 
