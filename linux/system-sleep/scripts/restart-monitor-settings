@@ -5,6 +5,7 @@ case $1 in
     # Do nothing
     ;;
   post)
+    sleep 4
     /usr/bin/autorandr --batch --change --default default
     ;;
 esac
