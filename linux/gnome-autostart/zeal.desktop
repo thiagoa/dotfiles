@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=zeal
+Exec=bash -c "sleep 5; zeal"
 Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true
