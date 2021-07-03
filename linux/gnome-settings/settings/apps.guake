@@ -15,6 +15,7 @@ restore-tabs-notify=true
 restore-tabs-startup=true
 save-tabs-when-changed=true
 scroll-keystroke=true
+tab-ontop=true
 use-default-font=false
 use-popup=false
 use-scrollbar=true

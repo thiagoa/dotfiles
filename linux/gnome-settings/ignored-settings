@@ -3,3 +3,7 @@ org.gnome.desktop.interface.document-font-name
 org.gnome.desktop.interface.font-name
 org.gnome.desktop.interface.monospace-font-name
 org.gnome.desktop.interface.text-scaling-factor
+org.gnome.desktop.peripherals.mouse.accel-profile
+org.gnome.desktop.peripherals.mouse.speed
+org.gnome.desktop.peripherals.keyboard.numlock-state
+settings/org.gnome.desktop.input-sources.sources
