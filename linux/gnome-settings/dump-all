@@ -5,3 +5,5 @@ dir="$(cd "$(dirname "$0")" && pwd)"
 for setting_id in $(find $dir/settings -type f); do
   $dir/dump $(basename $setting_id)
 done
+
+$dir/remove-ignored-settings

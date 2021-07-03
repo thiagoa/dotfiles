@@ -1,11 +1,6 @@
 [/]
-cursor-size=48
-document-font-name='Sans 10'
-font-name='Ubuntu 10'
 gtk-im-module='gtk-im-context-simple'
 gtk-theme='Pop-dark'
 locate-pointer=false
-monospace-font-name='DejaVu Sans Mono 10'
 show-battery-percentage=true
-text-scaling-factor=1.8
 toolkit-accessibility=true

@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+regex="^(.+)\.([^.]+)$"
+
+for line in `cat $HOME/.dotfiles/linux/gnome-settings/ignored-settings`; do
+	if [[ $line =~ $regex ]]; then
+		namespace=${BASH_REMATCH[1]}
+		setting=${BASH_REMATCH[2]}
+		file="$HOME/.dotfiles/linux/gnome-settings/settings/$namespace"
+		contents="$(cat $file | grep -v "^${setting}=")"
+
+		if [[ -n "$contents" ]]; then
+			echo "$contents" > $file
+		else
+			echo "Invalid setting ${setting}!" >&2
+		fi
+	fi
+done
