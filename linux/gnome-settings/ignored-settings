@@ -6,4 +6,4 @@ org.gnome.desktop.interface.text-scaling-factor
 org.gnome.desktop.peripherals.mouse.accel-profile
 org.gnome.desktop.peripherals.mouse.speed
 org.gnome.desktop.peripherals.keyboard.numlock-state
-settings/org.gnome.desktop.input-sources.sources
+org.gnome.desktop.input-sources.sources
