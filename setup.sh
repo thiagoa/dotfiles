@@ -23,7 +23,7 @@ function display_prerequisites {
   echo "Before running this script, make sure that:"
   echo
   echo "- Google Chrome is installed (preferrably with sync)"
-  echo "- Dropbox is installed and synced"
+  echo "- Dropbox and insync are installed and synced"
   echo "- You act on the GitHub ssh instructions that will be displayed"
   echo
 
@@ -63,7 +63,7 @@ function install_asdf {
   echo "Installing asdf...\n"
 
   # Still need to figure out how to get the most up-to-date version...
-  git clone -q https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.3.0 > /dev/null
+  git clone -q https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.8.1 > /dev/null
 }
 
 function has_asdf_plugin {
@@ -86,11 +86,6 @@ function add_plugin {
 }
 
 function install_asdf_plugins {
-  if [[ ! -x "$(which asdf)" ]]; then
-    echo "ASDF is not installed, but it should at this point!"
-    exit 1
-  fi
-
   echo "Installing asdf plugins...\n"
 
   add_plugin nodejs asdf-vm/asdf-nodejs.git
@@ -137,6 +132,9 @@ function install_zprezto {
   for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
     ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
   done
+
+  echo 'Please, log in with zsh and run this script again'
+  exit
 }
 
 function install_dotfiles {
@@ -191,7 +189,7 @@ function install_emacsfiles {
 
   echo "Installing Emacs files...\n"
 
-  git clone -q https://github.com/thiagoa/dotemacs $HOME/.emacs.d
+  git clone -q git@github.com:thiagoa/dotemacs $HOME/.emacs.d
 }
 
 function install_base16 {
@@ -311,18 +309,18 @@ fi
 
 display_prerequisites
 create_directories
+set_defaults
+install_zprezto
 install_binfiles
 install_asdf
 install_asdf_plugins
 setup_ssh
 setup_secrets
-install_zprezto
 install_dotfiles
 install_fzf
 install_vimfiles
 install_emacsfiles
 install_base16
-set_defaults
 install_linux_config
 install_mac_config
 set_git_remotes_as_authenticated
