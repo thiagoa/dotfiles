@@ -2,4 +2,5 @@
 click-method='fingers'
 natural-scroll=true
 send-events='enabled'
+speed=0.27205882352941169
 two-finger-scrolling-enabled=true
