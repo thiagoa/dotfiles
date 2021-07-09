@@ -17,7 +17,8 @@ else
 fi
 
 source_config_dir="$HOME/Dropbox/Linux/autokey-data"
-dest_config_dir="$HOME/.config/autokey/data"
+root_dest_config_dir="$HOME/.config/autokey"
+dest_config_dir="${root_dest_config_dir}/data"
 
 if [[ -d $source_config_dir ]]; then
    mkdir -p $dest_dir 2> /dev/null
@@ -25,6 +26,8 @@ if [[ -d $source_config_dir ]]; then
    if [[ -d $dest_config_dir ]]; then
      rm -rf $dest_config_dir
    fi
+
+   mkdir -p $root_dest_config_dir 2> /dev/null
 
    ln -sfn $source_config_dir $dest_config_dir
 else
