@@ -24,6 +24,25 @@ if [[ -z "$1" ]]; then
   #gsettings reset org.gnome.desktop.interface text-scaling-factor
   normal_scale=1.0
   gsettings set org.gnome.desktop.interface text-scaling-factor $normal_scale
+elif [[ "$1" = "laptop4k" ]]; then
+  echo "Changing to laptop 4k scale..."
+
+  gsettings set org.gnome.desktop.interface font-name 'Fira Sans Book 10'
+  gsettings set org.gnome.desktop.interface document-font-name 'Roboto Slab Regular 11'
+  gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Fira Sans SemiBold 10'
+  gsettings set org.gnome.desktop.interface monospace-font-name 'Fira Mono Regular 11'
+
+  $HOME/.dotfiles/linux/ulauncher/setup.sh --restore > /dev/null 2> /dev/null
+
+  if [[ $? -eq 0 ]]; then
+    echo 'Ulauncher restored successfully'
+  else
+    echo 'WARNING: Failed to restore ulauncher'
+  fi
+
+  #gsettings reset org.gnome.desktop.interface text-scaling-factor
+  normal_scale=1.0
+  gsettings set org.gnome.desktop.interface text-scaling-factor 1.2
 elif [[ "$1" = "4k" ]]; then
   echo "Changing to 4k scale..."
 
