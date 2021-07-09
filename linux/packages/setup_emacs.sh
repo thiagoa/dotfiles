@@ -9,5 +9,5 @@ if [[ ! -d "$dir" ]]; then
   export JOBS=4
 
   ./autogen.sh && ./configure --with-native-compilation --with-mailutils
-  make -j ${JOBS} && make install
+  make -j ${JOBS} && sudo make install
 fi
