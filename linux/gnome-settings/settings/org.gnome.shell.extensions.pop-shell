@@ -1,5 +1,4 @@
 [/]
-activate-launcher=['<Super>space']
 active-hint=false
 focus-down=['<Super>Down', '<Super>n']
 focus-left=['<Super>Left', '<Super>b']
