@@ -40,8 +40,6 @@ elif [[ "$1" = "laptop4k" ]]; then
     echo 'WARNING: Failed to restore ulauncher'
   fi
 
-  #gsettings reset org.gnome.desktop.interface text-scaling-factor
-  normal_scale=1.0
   gsettings set org.gnome.desktop.interface text-scaling-factor 1.2
 elif [[ "$1" = "4k" ]]; then
   echo "Changing to 4k scale..."
