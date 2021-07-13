@@ -119,6 +119,7 @@ sudo apt-get build-dep -y emacs
 flatpak install flathub com.spotify.Client
 flatpak install flathub org.gabmus.hydrapaper
 flatpak install flathub uk.co.ibboard.cawbird
+flatpak install flathub com.discordapp.Discord
 
 # TODO improve this mess
 default_release="$(lsb_release -cs)"
