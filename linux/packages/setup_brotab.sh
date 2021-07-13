@@ -1,4 +1,4 @@
 #!/bin/bash
 
 pip3 install --user brotab
-bt install
+#$(python3 -c 'import site; print(site.USER_BASE)')/bin/bt install
