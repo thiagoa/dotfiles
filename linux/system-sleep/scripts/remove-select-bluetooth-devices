@@ -13,7 +13,7 @@ case $1 in
     while IFS= read -r device
     do
       logger "system-sleep script disconnecting $device"
-      bt-device -d "$device"
+      timeout 30 bt-device -d "$device"
     done < "$input"
     ;;
   post)
