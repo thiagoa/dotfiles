@@ -1,5 +1,7 @@
 [/]
 click-method='fingers'
+edge-scrolling-enabled=false
 natural-scroll=true
 send-events='enabled'
+speed=0.24264705882352944
 two-finger-scrolling-enabled=true
