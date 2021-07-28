@@ -53,7 +53,8 @@ sudo apt install \
      inotify-tools \
      gnome-clocks \
      pdfarranger \
-     zathura
+     zathura \
+     snapd
 
 # Standalone app dependencies (Crow translate, etc)
 
@@ -120,6 +121,11 @@ flatpak install flathub com.spotify.Client
 flatpak install flathub org.gabmus.hydrapaper
 flatpak install flathub uk.co.ibboard.cawbird
 flatpak install flathub com.discordapp.Discord
+
+# Install snaps (hopefully flatpak will have them soon)
+
+sudo snap install --classic heroku
+sudo snap install authy
 
 # TODO improve this mess
 default_release="$(lsb_release -cs)"
