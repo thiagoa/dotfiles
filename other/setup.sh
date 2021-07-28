@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Git templates
+ln -sf $HOME/.dotfiles/git_template $HOME/.git_template
+
+# Zathura config
 source_dir="$HOME/.dotfiles/other"
 zathura_dir="$HOME/.config/zathura"
 
