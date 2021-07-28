@@ -92,6 +92,7 @@ function install_asdf_plugins {
   add_plugin ruby asdf-vm/asdf-ruby.git
   add_plugin java halcyon/asdf-java.git
   add_plugin lein miorimmax/asdf-lein.git
+  add_plugin yarn twuni/asdf-yarn.git
 }
 
 function setup_ssh {
