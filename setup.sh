@@ -114,6 +114,10 @@ function setup_ssh {
   if [[ -f $HOME/Dropbox/Config/ssh_config ]]; then
     ln -sfn $HOME/Dropbox/Config/ssh_config $HOME/.ssh/config
   fi
+
+  if [[ -f $HOME/Dropbox/Config/indicator-stickynotes ]]; then
+    ln -sfn $HOME/Dropbox/Config/indicator-stickynotes $HOME/.config/indicator-stickynotes
+  fi
 }
 
 function setup_secrets {
