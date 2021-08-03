@@ -25,3 +25,4 @@ __last_version__
 linux/aptik/logs/*
 .dir-locals.el
 bin/experiments
+secrets.txt
