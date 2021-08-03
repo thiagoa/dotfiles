@@ -3,9 +3,9 @@
 x_count=0
 y_count=0
 
-x_offset=4060
+x_offset=4160
 y_offset=200
-x_spacing=800
+x_spacing=1000
 y_spacing=700
 
 if [[ "$1" = "--delay" ]]; then
