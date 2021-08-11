@@ -42,8 +42,8 @@ command='bash -c "$HOME/bin/connect-headphones"'
 name='Connect headphones'
 
 [custom-keybindings/custom2]
-binding='<Primary><Super>q'
-command='linux-quit-x-application'
+binding='<Primary><Alt><Super>q'
+command='bash -c "/home/thiago/bin/linux-quit-x-app"'
 name='Quit application'
 
 [custom-keybindings/custom3]
