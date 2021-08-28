@@ -31,8 +31,19 @@ function launch {
   show
 }
 
+is_paste_selection="$([[ "$1" == "--paste-selection" ]] && echo "true")"
+
 if ! is_running; then
   launch
 elif ! hide; then
+  if [[ -n "$is_paste_selection" ]]; then
+    sleep 0.4; xdotool getactivewindow key ctrl+c
+  fi
+
   show
+
+  if [[ -n "$is_paste_selection" ]]; then
+    sleep 0.25; xdotool getactivewindow key ctrl+a
+    xdotool getactivewindow key ctrl+v
+  fi
 fi
