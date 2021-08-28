@@ -25,5 +25,5 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-bindkey '^X^T' fzf-file-widget
+bindkey '^X^F' fzf-file-widget
 bindkey '^T' transpose-chars
