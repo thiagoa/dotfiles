@@ -19,7 +19,7 @@ name='Nautilus set recursive search'
 [custom-keybindings/custom1]
 binding='<Super>t'
 command='toggle-crow-translate'
-name='Crow Translate'
+name='Toggle Crow Translate'
 
 [custom-keybindings/custom10]
 binding='<Alt><Super>l'
