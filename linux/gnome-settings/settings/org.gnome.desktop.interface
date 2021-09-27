@@ -1,4 +1,5 @@
 [/]
+enable-hot-corners=false
 gtk-im-module='gtk-im-context-simple'
 gtk-theme='Pop-dark'
 locate-pointer=false
