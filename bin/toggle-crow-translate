@@ -32,6 +32,7 @@ function launch {
 }
 
 is_paste_selection="$([[ "$1" == "--paste-selection" ]] && echo "true")"
+is_clean_text="$([[ "$1" == "--clean-text" ]] && echo "true")"
 
 if ! is_running; then
   launch
@@ -39,11 +40,17 @@ elif ! hide; then
   if [[ -n "$is_paste_selection" ]]; then
     sleep 0.4; xdotool getactivewindow key ctrl+c
   fi
-
+  
   show
 
   if [[ -n "$is_paste_selection" ]]; then
     sleep 0.25; xdotool getactivewindow key ctrl+a
     xdotool getactivewindow key ctrl+v
+  fi
+
+  if [[ -n "$is_clean_text" ]]; then
+    sleep 0.25
+    xdotool getactivewindow key ctrl+a
+    xdotool getactivewindow key 0xff08
   fi
 fi
