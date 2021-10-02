@@ -20,7 +20,7 @@ use-popup=false
 use-scrollbar=true
 use-trayicon=true
 window-halignment=0
-window-height=65
+window-height=61
 window-losefocus=false
 window-ontop=false
 window-refocus=false
@@ -32,7 +32,7 @@ show-focus='<Super>bracketright'
 show-hide='<Super>bracketleft'
 
 [style/background]
-transparency=80
+transparency=98
 
 [style/font]
 allow-bold=true
