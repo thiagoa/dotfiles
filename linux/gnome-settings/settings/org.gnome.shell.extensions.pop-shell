@@ -7,6 +7,7 @@ focus-right=['<Super>Right', '<Super>f']
 focus-up=['<Super>Up', '<Super>p']
 gap-inner=uint32 0
 gap-outer=uint32 0
+show-skip-taskbar=false
 smart-gaps=false
 snap-to-grid=true
 tile-by-default=true
