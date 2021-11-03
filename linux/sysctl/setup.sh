@@ -1,6 +1,6 @@
 #!/bin/bash
 
-config_file="/etc/sysctl.conf"
+config_file="/etc/sysctl.d/99-sysctl.conf"
 
 first_line="vm.dirty_bytes=50331648"
 second_line="vm.dirty_background_bytes=16777216"
