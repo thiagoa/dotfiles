@@ -1,2 +1,2 @@
 #!/bin/sh
-flatpak run com.spotify.Client --force-device-scale-factor=$(gsettings get org.gnome.desktop.interface text-scaling-factor) $@
+/usr/bin/spotify --force-device-scale-factor=$(gsettings get org.gnome.desktop.interface text-scaling-factor) $@
