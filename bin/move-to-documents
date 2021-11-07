@@ -1,0 +1,8 @@
+#!/bin/bash
+
+target="$HOME/OneDrive/@Documentos"
+
+mv ~/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]\ *.* $target 2> /dev/null
+mv ~/Dropbox/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]\ *.* $target 2> /dev/null
+
+exit 0
