@@ -49,6 +49,14 @@ alias nvim="vim"
 alias z="fasd_cd -d"
 alias ag="ag --path-to-ignore ~/.agignore"
 
+# Heroku: deploy to main on remote
+function hdep() {
+  local remote="${1:-staging}"
+  local current_branch="$(git rev-parse --abbrev-ref HEAD)"
+
+  git push -f $remote ${current_branch}:main
+}
+
 if [[ "$(uname -s)" == "Linux" ]]; then
   function apt-purge {
     sudo apt purge `dpkg --list | grep '^rc' | awk '{ print $2; }'`
@@ -67,4 +75,6 @@ if [[ "$(uname -s)" == "Linux" ]]; then
   alias restart-dev-services="sudo systemctl restart ${services}"
   alias odf="open-desktop-file"
   alias odd="open-desktop-directory"
+  alias i="sudo apt install"
+  alias a="sudo apt"
 fi
