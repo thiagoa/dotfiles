@@ -23,7 +23,10 @@ for win_id in $(echo $windows); do
   y="$(($y_offset + $y_count * $y_spacing))"
 
   wmctrl -i -r "$win_id" -e 0,$x,$y,-1,-1
-  wmctrl -i -r "$win_id" -b add,sticky
+
+  if [[ "$1" == "--pin" ]]; then
+      wmctrl -i -r "$win_id" -b add,sticky
+  fi
 
   x_count="$(($x_count + 1))"
 
