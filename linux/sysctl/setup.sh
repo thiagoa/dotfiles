@@ -2,8 +2,8 @@
 
 config_file="/etc/sysctl.d/99-sysctl.conf"
 
-first_line="vm.dirty_bytes=50331648"
-second_line="vm.dirty_background_bytes=16777216"
+first_line="vm.dirty_bytes=62914560"
+second_line="vm.dirty_background_bytes=60777216"
 
 function setting_exists {
   cat "$config_file" | grep "$1" &> /dev/null
