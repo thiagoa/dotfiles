@@ -8,3 +8,4 @@ Terminal=false
 Type=Application
 Icon=autokey
 Categories=GNOME;GTK;Utility;
+X-GNOME-Autostart-enabled=true
