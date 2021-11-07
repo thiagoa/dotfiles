@@ -36,11 +36,14 @@
 [auto]
   crlf = input
 [init]
+  defaultBranch = main
   templatedir = ~/.git_template
 [help]
   autocorrect = 1
 [pull]
   rebase = true
+[rebase]
+  autosquash = true
 [alias]
   pr = pull-request
   aa = add .
