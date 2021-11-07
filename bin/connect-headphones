@@ -1,0 +1,25 @@
+#!/bin/bash
+
+killall bt-device 2> /dev/null
+
+MAC=${MAC:-"AC:12:2F:50:6F:A4"}
+
+function notify {
+  notify-desktop 'Headphones' "$1"
+}
+
+if bluetoothctl paired-devices | grep "Soundcore Life Q30" > /dev/null 2> /dev/null; then
+  if bt-device -r $MAC; then
+    notify 'Headphones disconnected'
+  else
+    notify 'Error disconnecting headphones!'
+  fi
+else
+  hcitool scan
+
+  if bluetoothctl pair $MAC && bluetoothctl connect $MAC; then
+    notify 'Headphones connected!'
+  else
+    notify 'Error connecting headphones. Maybe turn it on?'
+  fi
+fi
