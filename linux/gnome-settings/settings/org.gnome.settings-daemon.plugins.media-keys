@@ -8,6 +8,7 @@ rotate-video-lock-static=@as []
 screencast=['<Primary><Shift><Super>r']
 screenreader=@as []
 screensaver=['<Super>Escape']
+screenshot=@as []
 terminal=@as []
 www=@as []
 
