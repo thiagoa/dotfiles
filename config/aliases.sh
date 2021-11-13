@@ -73,7 +73,6 @@ if [[ "$(uname -s)" == "Linux" ]]; then
   alias start-dev-services="sudo systemctl start ${services}"
   alias stop-dev-services="sudo systemctl stop ${services}"
   alias restart-dev-services="sudo systemctl restart ${services}"
-  alias restart-sysctl="sudo service procps restart"
   alias view-bytes-config="cat /proc/sys/vm/dirty_bytes /proc/sys/vm/dirty_background_bytes"
   alias odf="open-desktop-file"
   alias odd="open-desktop-directory"
