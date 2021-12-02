@@ -62,8 +62,12 @@ function install_asdf {
 
   echo "Installing asdf...\n"
 
-  # Still need to figure out how to get the most up-to-date version...
-  git clone -q https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.8.1 > /dev/null
+  if is_mac; then
+    brew install asdf
+  else
+    # Still need to figure out how to get the most up-to-date version...
+    git clone -q https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.8.1 > /dev/null
+  fi
 }
 
 function has_asdf_plugin {
@@ -135,7 +139,7 @@ function install_zprezto {
 
   setopt EXTENDED_GLOB
   for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-    ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+    ln -sf "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
   done
 
   echo 'Please, log in with zsh and run this script again'
@@ -188,7 +192,7 @@ function install_emacsfiles {
         echo "Backing up current .emacs.d to ~/.emacs.d.backup..."
 
         rm -rf $HOME/.emacs.d.backup
-        mv $HOME~/.emacs.d $HOME~/.emacs.d.backup
+        mv $HOME/.emacs.d $HOME/.emacs.d.backup
       fi
   fi
 
@@ -260,8 +264,16 @@ function install_linux_config {
   fi
 }
 
-function install_mac_config {
+function is_mac {
   if [[ "$(uname)" == "Darwin" ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+function install_mac_config {
+  if is_mac; then
     rm -rf ~/.config/karabiner
     ln -s $INSTALL_DIR/mac/karabiner ~/.config/karabiner
   fi
@@ -277,6 +289,7 @@ function setup_mac {
   if [[ ! -x "$(which brew)" ]]; then
       echo "Installing homebrew..."
       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+      eval "$(/opt/homebrew/bin/brew shellenv)"
   fi
 
   if [[ ! -x "$(which pip3)" ]]; then
@@ -307,22 +320,32 @@ function setup_mac {
       echo "Installing ag..."
       brew install ag
   fi
-}
 
-if [[ "$(uname -s)" == "Darwin" ]]; then
-    setup_mac
-fi
+  if [[ ! -x "$(which python3)" ]]; then
+    python3 -m pip install --user --upgrade pynvim
+  fi
+
+  if [[ -f /Applications/Xcode.app/Contents/Developer/usr/bin/python3 ]]; then
+    /Applications/Xcode.app/Contents/Developer/usr/bin/python3 -m pip install --upgrade pip
+  fi
+}
 
 display_prerequisites
 create_directories
+
 set_defaults
 install_zprezto
 install_binfiles
-install_asdf
-install_asdf_plugins
 setup_ssh
 setup_secrets
 install_dotfiles
+
+if is_mac; then
+  setup_mac
+fi
+
+install_asdf
+install_asdf_plugins
 install_fzf
 install_vimfiles
 install_emacsfiles
