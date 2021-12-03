@@ -15,10 +15,16 @@ if [[ -f /opt/homebrew/bin/brew ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+. $(brew --prefix asdf)/libexec/asdf.sh
+
 if [[ -f $HOME/.asdf/asdf.sh ]]; then
   source $HOME/.asdf/asdf.sh
-elif [[ -f /opt/homebrew/lib/asdf.sh ]]; then
-  source /opt/homebrew/lib/asdf.sh
+elif [[ -x $(which brew) ]]; then
+  asdf_config_path=$(brew --prefix asdf)/libexec/asdf.sh
+
+  if [[ -f $asdf_config_path ]]; then
+    source $asdf_config_path
+  fi
 fi
 
 if [[ -f /opt/homebrew/etc/bash_completion.d ]]; then

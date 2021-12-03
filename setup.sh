@@ -309,6 +309,7 @@ function setup_mac {
   if ! $(brew list neovim > /dev/null 2>&1); then
       echo "Installing neovim..."
       brew install neovim
+      pip3 install neovim
   fi
 
   if ! $(brew list rg > /dev/null 2>&1); then
@@ -319,6 +320,25 @@ function setup_mac {
   if ! $(brew list ag > /dev/null 2>&1); then
       echo "Installing ag..."
       brew install ag
+  fi
+
+  # Needed to install nodejs with asdf, for example
+  if ! $(brew list gnupg > /dev/null 2>&1); then
+      echo "Installing gnupg..."
+      brew install gnupg
+  fi
+
+  # Needed primarily to work with ruby, but useful all around
+  if ! $(brew list imagemagick > /dev/null 2>&1); then
+      echo "Installing imagemagick..."
+      brew install imagemagick
+  fi
+
+  # Needed primarily to make Alfred GitHub plugin work,
+  # but php is useful all around
+  if ! $(brew list php > /dev/null 2>&1); then
+      echo "Installing php..."
+      brew install php
   fi
 
   if [[ ! -x "$(which python3)" ]]; then

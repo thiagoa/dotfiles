@@ -59,7 +59,11 @@ if [[ $0 = *zsh ]]; then
 fi
 
 if [[ ! -o interactive ]]; then
-    source $HOME/.asdf/asdf.sh
+    if [[ -f $HOME/.asdf/asdf.sh ]]; then
+      source $HOME/.asdf/asdf.sh
+    elif [[ -f /opt/homebrew/lib/asdf.sh ]]; then
+      source /opt/homebrew/lib/asdf.sh
+    fi
 fi
 
 [[ -f $HOME/.secrets ]] && source $HOME/.secrets
