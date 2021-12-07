@@ -36,6 +36,26 @@ function display_prerequisites {
   fi
 }
 
+function is_linux {
+  if [[ "$(uname)" == "Linux" ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+function is_mac {
+  if [[ "$(uname)" == "Darwin" ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+function is_wsl {
+  uname -r | grep microsoft > /dev/null
+}
+
 function create_directories {
   echo "Creating $HOME/Code directory...\n"
 
@@ -116,11 +136,12 @@ function setup_ssh {
   fi
 
   if [[ -f $HOME/Dropbox/Config/ssh_config ]]; then
-    ln -sfn $HOME/Dropbox/Config/ssh_config $HOME/.ssh/config
-  fi
-
-  if [[ -f $HOME/Dropbox/Config/indicator-stickynotes ]]; then
-    ln -sfn $HOME/Dropbox/Config/indicator-stickynotes $HOME/.config/indicator-stickynotes
+    if is_wsl; then 
+      cp -f $HOME/Dropbox/Config/ssh_config $HOME/.ssh/config
+      chmod 600 $HOME/.ssh/config
+    else
+      ln -sfn $HOME/Dropbox/Config/ssh_config $HOME/.ssh/config
+    fi
   fi
 }
 
@@ -238,37 +259,37 @@ function set_defaults {
 }
 
 function install_linux_config {
-  if [[ "$(uname)" == "Linux" ]]; then
+  if is_linux; then
     echo "Installing Linux-specific config..."
 
-    $INSTALL_DIR/linux/packages/setup.sh
-    $INSTALL_DIR/linux/packages/setup_emacs.sh
-    $INSTALL_DIR/linux/packages/setup_gnome_sushi.sh
-    $INSTALL_DIR/linux/packages/setup_brotab.sh
-    $INSTALL_DIR/linux/amdgpu/setup.sh
-    $INSTALL_DIR/linux/sudoers/setup.sh
-    $INSTALL_DIR/linux/udev/setup.sh
-    $INSTALL_DIR/linux/autokey/setup.sh
-    $INSTALL_DIR/linux/gnome-shortcuts/setup.sh
-    $INSTALL_DIR/linux/gnome-settings/install-crontab
-    $INSTALL_DIR/linux/gnome-autostart/setup.sh
-    $INSTALL_DIR/linux/veracrypt/setup.sh
-    $INSTALL_DIR/linux/ulauncher/setup.sh
-    $INSTALL_DIR/linux/xkeysnail/setup.sh
-    $INSTALL_DIR/linux/devilspie2/setup.sh
-    $INSTALL_DIR/linux/system-sleep/setup.sh
-    $INSTALL_DIR/linux/clipboard-indicator/setup.sh
-    $INSTALL_DIR/linux/fix-cedilla/setup.sh
-    $INSTALL_DIR/linux/sysctl/setup.sh
-    $INSTALL_DIR/linux/nautilus/setup.sh
-  fi
-}
+    $INSTALL_DIR/linux/packages/setup_terminal_packages.sh
 
-function is_mac {
-  if [[ "$(uname)" == "Darwin" ]]; then
-    return 0
-  else
-    return 1
+    if ! is_wsl; then
+      if [[ -f $HOME/Dropbox/Config/indicator-stickynotes ]]; then
+        ln -sfn $HOME/Dropbox/Config/indicator-stickynotes $HOME/.config/indicator-stickynotes
+      fi
+
+      $INSTALL_DIR/linux/packages/setup_emacs.sh
+      $INSTALL_DIR/linux/packages/setup_graphical_packages.sh
+      $INSTALL_DIR/linux/packages/setup_gnome_sushi.sh
+      $INSTALL_DIR/linux/packages/setup_brotab.sh
+      $INSTALL_DIR/linux/amdgpu/setup.sh
+      $INSTALL_DIR/linux/sudoers/setup.sh
+      $INSTALL_DIR/linux/udev/setup.sh
+      $INSTALL_DIR/linux/autokey/setup.sh
+      $INSTALL_DIR/linux/gnome-shortcuts/setup.sh
+      $INSTALL_DIR/linux/gnome-settings/install-crontab
+      $INSTALL_DIR/linux/gnome-autostart/setup.sh
+      $INSTALL_DIR/linux/veracrypt/setup.sh
+      $INSTALL_DIR/linux/ulauncher/setup.sh
+      $INSTALL_DIR/linux/xkeysnail/setup.sh
+      $INSTALL_DIR/linux/devilspie2/setup.sh
+      $INSTALL_DIR/linux/system-sleep/setup.sh
+      $INSTALL_DIR/linux/clipboard-indicator/setup.sh
+      $INSTALL_DIR/linux/fix-cedilla/setup.sh
+      $INSTALL_DIR/linux/sysctl/setup.sh
+      $INSTALL_DIR/linux/nautilus/setup.sh
+    fi
   fi
 }
 
@@ -286,6 +307,10 @@ function set_git_remotes_as_authenticated {
 
 # TODO: Refactor later
 function setup_mac {
+  if ! is_mac; then
+	  return 0
+	fi
+
   if [[ ! -x "$(which brew)" ]]; then
       echo "Installing homebrew..."
       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -352,26 +377,21 @@ function setup_mac {
 
 display_prerequisites
 create_directories
-
 set_defaults
 install_zprezto
 install_binfiles
 setup_ssh
 setup_secrets
 install_dotfiles
-
-if is_mac; then
-  setup_mac
-fi
-
+install_linux_config
+setup_mac
+install_mac_config
 install_asdf
 install_asdf_plugins
 install_fzf
 install_vimfiles
 install_emacsfiles
 install_base16
-install_linux_config
-install_mac_config
 set_git_remotes_as_authenticated
 
 echo ""

@@ -9,32 +9,24 @@ sudo apt update > /dev/null 2> /dev/null
 # libwxbase3.0-0v5 and libwxgtk3.0-gtk3-0v5 -> Veracrypt deps
 sudo apt install \
      xdotool \
-     silversearcher-ag \
      timeshift \
      deja-dup \
-     redis \
-     nginx \
      grub2-common \
      grub-efi \
      grub-customizer \
      guake \
      cheese \
-     neovim \
-     rlwrap \
      lm-sensors \
-     zsh \
      gnome-tweaks \
      ulauncher \
      qt5-style-plugins \
      zeal \
-     tmux \
      flameshot \
      network-manager-openvpn \
      network-manager-openvpn-gnome \
      libnotify-bin \
      libwxbase3.0-0v5 \
      libwxgtk3.0-gtk3-0v5 \
-     awscli \
      bluez-tools \
      autokey-gtk \
      xbindkeys \
@@ -42,7 +34,6 @@ sudo apt install \
      solaar \
      libjansson4 \
      libjansson-dev \
-     git \
      texinfo \
      dconf-editor \
      xvkbd \
@@ -84,14 +75,6 @@ sudo apt install \
      libgirepository1.0-dev \
      ninja-build
 
-
-# Ruby dependencies
-
-sudo apt install \
-     libsecret-1-dev \
-     libssl-dev \
-     libreadline-dev
-
 # Docker
 
 sudo apt-get install \
@@ -106,14 +89,6 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 # Indicator sticky notes
 
 sudo add-apt-repository ppa:umang/indicator-stickynotes -y && sudo apt-get update && sudo apt-get install indicator-stickynotes -y
-
-# Dependencies to compile emacs
-
-sudo add-apt-repository ppa:ubuntu-toolchain-r/ppa \
-        && sudo apt-get update -y \
-        && sudo apt-get install -y gcc-10 libgccjit0 libgccjit-10-dev
-
-sudo apt-get build-dep -y emacs
 
 # Install flatpaks
 
