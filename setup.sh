@@ -52,6 +52,18 @@ function is_mac {
   fi
 }
 
+function should_install_linux_graphical_setup {
+  if is_wsl; then
+    return 1
+  fi
+
+  if uname -r | grep arm64 > /dev/null; then
+    return 1
+  else
+    return 0
+  fi
+}
+
 function is_wsl {
   uname -r | grep microsoft > /dev/null
 }
@@ -264,7 +276,7 @@ function install_linux_config {
 
     $INSTALL_DIR/linux/packages/setup_terminal_packages.sh
 
-    if ! is_wsl; then
+    if should_install_linux_graphical_setup; then
       if [[ -f $HOME/Dropbox/Config/indicator-stickynotes ]]; then
         ln -sfn $HOME/Dropbox/Config/indicator-stickynotes $HOME/.config/indicator-stickynotes
       fi

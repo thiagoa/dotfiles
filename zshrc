@@ -15,7 +15,9 @@ if [[ -f /opt/homebrew/bin/brew ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-asdf_file="$(brew --prefix asdf)/libexec/asdf.sh"
+if [[ -x $(which brew) ]]; then
+  asdf_file="$(brew --prefix asdf)/libexec/asdf.sh"
+fi
 
 if [[ -f $asfd_file ]]; then
   source $asdf_file
