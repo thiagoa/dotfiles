@@ -1,7 +1,7 @@
 [/]
 experimental-features=@as []
 overlay-key=''
-workspaces-only-on-primary=false
+workspaces-only-on-primary=true
 
 [keybindings]
 switch-monitor=['<Super>e', 'XF86Display']
