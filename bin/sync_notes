@@ -1,0 +1,92 @@
+#!/usr/bin/env ruby
+
+require "json"
+require "pathname"
+require "fileutils"
+require "time"
+require "securerandom"
+
+UUID_FORMAT = /^.{8}-.{4}-.{4}-.{4}-.{12}$/
+
+dropbox = Pathname(ENV["HOME"]) / "Dropbox"
+unclutter_dir = dropbox / "Aplicativos" / "Unclutter" / "Notes"
+stickies_file = dropbox / "Config" / "indicator-stickynotes"
+
+sticky_db = JSON.parse(stickies_file.read)
+sticky_notes = sticky_db.fetch("notes")
+sticky_ids = sticky_notes.map { |n| n.fetch("uuid") }
+unclutter_files = Pathname.glob("#{unclutter_dir}/*.txt")
+
+find_sticky_note = lambda do |sticky_id|
+  sticky_notes.find { |n| n["uuid"] == sticky_id }
+end
+
+create_sticky_note = lambda do |sticky_id, body|
+  sticky_db["notes"] << {
+    "uuid" => sticky_id,
+    "body" => body,
+    "last_modified" => Time.now.iso8601,
+    "properties" => {
+      "position" => [],
+      "size" => [],
+      "locked" => false
+    },
+    "cat" => ""
+  }
+end
+
+update_sticky_note = lambda do |sticky_id, new_body|
+  sticky_note = find_sticky_note.call(sticky_id)
+  sticky_note["body"] = new_body
+end
+
+persist_sticky_notes = lambda do
+  stickies_file.write(JSON.dump(sticky_db))
+end
+
+sticky_ids.each do |sticky_id|
+  unclutter_note_path = unclutter_dir / "#{sticky_id}.txt"
+  sticky_note = find_sticky_note.call(sticky_id)
+  sticky_body = sticky_note.fetch("body")
+
+  if unclutter_note_path.exist?
+    unclutter_mod = File.mtime(unclutter_note_path)
+    unclutter_body = unclutter_note_path.read
+    sticky_mod = Time.parse(sticky_note.fetch("last_modified"))
+
+    if unclutter_mod > sticky_mod
+      if sticky_body != unclutter_body
+        puts "File #{sticky_id}: Unclutter is newer, updating sticky note..."
+        update_sticky_note.call(sticky_id, unclutter_body)
+      else
+        puts "File #{sticky_id}: is still the same"
+      end
+    else
+      puts "File #{sticky_id}: Stickies is newer"
+      unclutter_note_path.write(sticky_body)
+    end
+  else
+    puts "File #{sticky_id}: creating Unclutter note..."
+    unclutter_note_path.write(sticky_body)
+  end
+end
+
+unclutter_files.each do |file|
+  basename = File.basename(file, ".txt")
+
+  unless basename.match?(UUID_FORMAT)
+    puts "File #{basename}: renaming to UUID..."
+
+    basename = SecureRandom.uuid.to_s
+    new_file = file.dirname.join("#{basename}.txt")
+    file.rename(new_file)
+    file = new_file
+  end
+
+  unless sticky_ids.include?(basename)
+    puts "File #{basename}: saving new sticky note..."
+    create_sticky_note.call(basename, file.read)
+  end
+end
+
+persist_sticky_notes.call
