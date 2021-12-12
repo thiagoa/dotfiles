@@ -22,35 +22,53 @@ bindkey '^Z' fancy-ctrl-z
 bindkey '^]' kill-line
 bindkey '^ ' set-mark-command
 
-copy-to-xclip() {
+if [[ "$(uname)" == "Darwin" ]]; then
+    sys-copy-to-clipboard() {
+        pbcopy
+    }
+
+    sys-paste-from-clipboard() {
+        pbpaste
+    }
+else
+    sys-copy-to-clipboard() {
+        xclip -selection clipboard -i
+    }
+
+    sys-paste-from-clipboard() {
+        xclip -selection clipboard -o
+    }
+fi
+
+copy-to-clipboard() {
     [[ "$REGION_ACTIVE" -ne 0 ]] && zle copy-region-as-kill
-    print -rn -- $CUTBUFFER | xclip -selection clipboard -i
+    print -rn -- $CUTBUFFER | sys-copy-to-clipboard
 }
 
-kill-region-to-xclip() {
+kill-region-to-clipboard() {
     [[ "$REGION_ACTIVE" -ne 0 ]] && zle kill-region
-    print -rn -- $CUTBUFFER | xclip -selection clipboard -i
+    print -rn -- $CUTBUFFER | sys-copy-to-clipboard
 }
 
-kill-line-to-xclip() {
+kill-line-to-clipboard() {
     zle kill-line
-    print -rn -- $CUTBUFFER | xclip -selection clipboard -i
+    print -rn -- $CUTBUFFER | sys-copy-to-clipboard
 }
 
-zle -N copy-to-xclip
-zle -N kill-region-to-xclip
+zle -N copy-to-clipboard
+zle -N kill-region-to-clipboard
 
-bindkey "^[w" copy-to-xclip
-bindkey "^w" kill-region-to-xclip
+bindkey "^[w" copy-to-clipboard
+bindkey "^w" kill-region-to-clipboard
 
-zle -N kill-line-to-xclip
-bindkey "^k" kill-line-to-xclip
+zle -N kill-line-to-clipboard
+bindkey "^k" kill-line-to-clipboard
 
-paste-xclip() {
+paste-clipboard() {
     killring=("$CUTBUFFER" "${(@)killring[1,-2]}")
-    CUTBUFFER=$(xclip -selection clipboard -o)
+    CUTBUFFER=$(sys-paste-from-clipboard)
     zle yank
 }
 
-zle -N paste-xclip
-bindkey "^y" paste-xclip
+zle -N paste-clipboard
+bindkey "^y" paste-clipboard
