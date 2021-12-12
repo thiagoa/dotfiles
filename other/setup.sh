@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # Git templates
-ln -sf $HOME/.dotfiles/git_template $HOME/.git_template
+if [[ ! -d $HOME/.git_template ]]; then
+  ln -sf $HOME/.dotfiles/git_template $HOME/.git_template
+fi
 
 # Zathura config
 source_dir="$HOME/.dotfiles/other"
