@@ -22,9 +22,8 @@ fi
 function display_prerequisites {
   echo "Before running this script, make sure that:"
   echo
-  echo "- Google Chrome is installed (preferrably with sync)"
-  echo "- Dropbox and insync are installed and synced"
-  echo "- You act on the GitHub ssh instructions that will be displayed"
+  echo "- Brave is installed with sync enabled"
+  echo "- Dropbox and OneDrive (on Linux, Insync) are installed and synced"
   echo
 
   if read -q "choice?Do you wish to continue (y/n): "; then
@@ -37,35 +36,25 @@ function display_prerequisites {
 }
 
 function is_linux {
-  if [[ "$(uname)" == "Linux" ]]; then
-    return 0
-  else
-    return 1
-  fi
+  [[ "$(uname)" == "Linux" ]]
 }
 
 function is_mac {
-  if [[ "$(uname)" == "Darwin" ]]; then
-    return 0
-  else
-    return 1
-  fi
+  [[ "$(uname)" == "Darwin" ]]
 }
 
-function should_install_linux_graphical_setup {
-  if is_wsl; then
-    return 1
-  fi
-
-  if uname -r | grep arm64 > /dev/null; then
-    return 1
-  else
-    return 0
-  fi
+function is_arm64 {
+  uname -r | grep arm64 > /dev/null
 }
 
 function is_wsl {
   uname -r | grep microsoft > /dev/null
+}
+
+function should_install_linux_graphical_setup {
+  if is_wsl || is_arm64; then
+    return 1
+  fi
 }
 
 function create_directories {
@@ -76,7 +65,7 @@ function create_directories {
 }
 
 function install_binfiles  {
-  echo "Installing bin directory...\n"
+  echo "Installing bin directory..."
 
   if [[ ! -L ~/bin ]] && [[ -d ~/bin ]]; then
     dest="$HOME/.bin_backup"
@@ -97,8 +86,7 @@ function install_asdf {
   if is_mac; then
     brew install asdf
   else
-    # Still need to figure out how to get the most up-to-date version...
-    git clone -q https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.8.1 > /dev/null
+    git clone -q https://github.com/asdf-vm/asdf.git $HOME/.asdf > /dev/null
   fi
 }
 
@@ -122,7 +110,7 @@ function add_plugin {
 }
 
 function install_asdf_plugins {
-  echo "Installing asdf plugins...\n"
+  echo "Installing asdf plugins..."
 
   add_plugin nodejs asdf-vm/asdf-nodejs.git
   add_plugin ruby asdf-vm/asdf-ruby.git
@@ -171,6 +159,7 @@ function install_zprezto {
   git clone -q --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto" > /dev/null 2>&1
 
   setopt EXTENDED_GLOB
+
   for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
     ln -sf "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
   done
@@ -219,14 +208,14 @@ function install_emacsfiles {
   fi
 
   if [[ -f $HOME/.emacs.d/init.el ]]; then
-      return
+    return
   else
-      if [[ -d ~/.emacs.d ]]; then
-        echo "Backing up current .emacs.d to ~/.emacs.d.backup..."
+    if [[ -d ~/.emacs.d ]]; then
+      echo "Backing up current .emacs.d to ~/.emacs.d.backup..."
 
-        rm -rf $HOME/.emacs.d.backup
-        mv $HOME/.emacs.d $HOME/.emacs.d.backup
-      fi
+      rm -rf $HOME/.emacs.d.backup
+      mv $HOME/.emacs.d $HOME/.emacs.d.backup
+    fi
   fi
 
   echo "Installing Emacs files...\n"
@@ -248,7 +237,6 @@ function install_base16 {
 function check_sudoers {
   echo "\nLet's check if your user is in sudoers...\n"
 
-
   if ! $(sudo -l 2> /dev/null); then
     echo "\nERROR: Please add your user to sudoers and run this script again"
     exit 1
@@ -257,11 +245,10 @@ function check_sudoers {
 
 function set_defaults {
   local shell_is_already_zsh=$(cat /etc/passwd | grep -q $USER | grep -q zsh)
-
   local zshpath=$(which zsh)
   local shellspath=/etc/shells
 
-  echo "\nSetting ZSH as default shell..."
+  echo "Setting ZSH as default shell..."
 
   if [[ -f $shellspath ]] && ! grep -q $zshpath $shellspath; then
     echo $zshpath | sudo tee -a $shellspath > /dev/null
@@ -317,66 +304,56 @@ function set_git_remotes_as_authenticated {
   cd $INSTALL_DIR && git remote set-url origin git@github.com:thiagoa/dotfiles.git
 }
 
-# TODO: Refactor later
-function setup_mac {
-  if ! is_mac; then
-	  return 0
-	fi
+function brew_install_package {
+  local package=$1
 
-  if [[ ! -x "$(which brew)" ]]; then
-      echo "Installing homebrew..."
-      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-      eval "$(/opt/homebrew/bin/brew shellenv)"
-  fi
+  if ! brew list $package > /dev/null 2>&1; then
+    echo "Installing $package..."
+    brew install $package
 
-  if [[ ! -x "$(which pip3)" ]]; then
-      echo "Installing Python..."
-      brew install python
-  fi
-
-  if ! $(brew list zsh > /dev/null 2>&1); then
-      echo "Installing zsh..."
-      brew install zsh
-      set_defaults
-
+    if [[ -n "$halt_script" ]]; then
       echo "Please restart your shell and run setup again"
       exit 0
+    fi
+  fi
+}
+
+function pip_install_package {
+  local package=$1
+
+  if ! pip3 show $package > /dev/null 2>&1; then
+    pip3 install $package
+  fi
+}
+
+function install_mac_homebrew {
+  if [[ ! -x "$(which brew)" ]]; then
+    echo "Installing homebrew..."
+    env bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  fi
+}
+
+function setup_mac {
+  if ! is_mac; then
+    return 0
   fi
 
-  if ! $(brew list neovim > /dev/null 2>&1); then
-      echo "Installing neovim..."
-      brew install neovim
-      pip3 install neovim
+  install_mac_homebrew
+
+  if [[ ! -x "$(which pip3)" ]]; then
+    echo "Installing Python..."
+    brew install python
   fi
 
-  if ! $(brew list rg > /dev/null 2>&1); then
-      echo "Installing rg..."
-      brew install rg
-  fi
-
-  if ! $(brew list ag > /dev/null 2>&1); then
-      echo "Installing ag..."
-      brew install ag
-  fi
-
-  # Needed to install nodejs with asdf, for example
-  if ! $(brew list gnupg > /dev/null 2>&1); then
-      echo "Installing gnupg..."
-      brew install gnupg
-  fi
-
-  # Needed primarily to work with ruby, but useful all around
-  if ! $(brew list imagemagick > /dev/null 2>&1); then
-      echo "Installing imagemagick..."
-      brew install imagemagick
-  fi
-
-  # Needed primarily to make Alfred GitHub plugin work,
-  # but php is useful all around
-  if ! $(brew list php > /dev/null 2>&1); then
-      echo "Installing php..."
-      brew install php
-  fi
+  halt_script=true brew_install_package zsh
+  brew_install_package neovim
+  pip_install_package neovim
+  brew_install_package rg
+  brew_install_package ag
+  brew_install_package gnupg
+  brew_install_package imagemagick
+  brew_install_package php
 
   if [[ ! -x "$(which python3)" ]]; then
     python3 -m pip install --user --upgrade pynvim
@@ -389,7 +366,6 @@ function setup_mac {
 
 display_prerequisites
 create_directories
-set_defaults
 install_zprezto
 install_binfiles
 setup_ssh
@@ -398,6 +374,7 @@ install_dotfiles
 install_linux_config
 setup_mac
 install_mac_config
+set_defaults
 install_asdf
 install_asdf_plugins
 install_fzf
@@ -411,13 +388,17 @@ echo "All done. You can now start ZSH."
 echo ""
 echo "Things to do manually next:"
 echo ""
-echo "- If this is a new install, log out and re-login to effect changes (inc. docker)"
-echo "- Add online accounts to Gnome"
-echo "- Add Mailspring accounts and signatures"
+
+if is_linux; then
+  echo "- If this is a new install, re-login to effect changes"
+  echo "- Add online accounts to Gnome"
+  echo "- Add Mailspring accounts and signatures"
+  echo "- Sync Gnome Shell extensions through Google Chrome (enable syncing and it will find the backup)"
+fi
+
 echo "- Install programming language stuff with 'asdf install my_language'"
 echo "- Install veracrypt GUI and console: https://www.veracrypt.fr/en/Downloads.html"
-echo "- Sync JetBrains appse (if any) settings"
-echo "- Download and install Google Chrome, 1Password for Linux, Dropbox, Veracrypt, Mailspring, VS Code, warsaw, clockify, JetBrains Mono"
-echo "- Sync Gnome Shell extensions through Google Chrome (enable syncing and it will find the backup)"
+echo "- Sync JetBrains app (if any) settings"
+echo "- Download and install Brave, 1Password, Dropbox, Veracrypt, Mailspring, VS Code, warsaw, clockify, JetBrains Mono"
 echo "- Sync VS Code settings (first install Settings sync extension)"
-echo "- Restart Chrome for brotab (and others) to work"
+echo "- Restart Brave for brotab (and others) to work"
