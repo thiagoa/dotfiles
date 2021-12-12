@@ -17,7 +17,9 @@ sudo apt install \
      tmux \
 	 neovim \
      awscli \
-     git
+     git \
+     postgresql \
+     postgresql-contrib
 
 # Ruby dependencies
 
@@ -26,7 +28,8 @@ sudo apt install \
      libssl-dev \
      libreadline-dev \
      libxslt-dev \
-     libxml2-dev
+     libxml2-dev \
+     libpq-dev
 
 # Dependencies to compile emacs
 
