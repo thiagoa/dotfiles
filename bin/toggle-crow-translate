@@ -6,18 +6,15 @@ function is_running {
   $(pgrep "^$command$" > /dev/null 2>&1)
 }
 
-function show {
+function send-command {
+  local command=$1
+
   dbus-send \
+    --print-reply \
     --type=method_call \
     --dest=io.crow_translate.CrowTranslate \
     /io/crow_translate/CrowTranslate/MainWindow \
-    io.crow_translate.CrowTranslate.MainWindow.open
-}
-
-function hide {
-  winid=$(wmctrl -l -x | awk '{print $1 " " $3}' | grep 'crow.Crow' | awk '{print $1}')
-  [[ -z "$winid" ]] && return 1
-  wmctrl -i -c $winid
+    io.crow_translate.CrowTranslate.MainWindow.$command
 }
 
 function launch {
@@ -28,29 +25,35 @@ function launch {
   done
 
   sleep 1
-  show
+  send-command open
 }
 
-is_paste_selection="$([[ "$1" == "--paste-selection" ]] && echo "true")"
+
+function hide {                                                                                                       │  -i, --stdin               Add stdin data to source text.
+  winid=$(wmctrl -l -x | awk '{print $1 " " $3}' | grep 'crow.Crow' | awk '{print $1}')
+  [[ -z "$winid" ]] && return 1
+  wmctrl -i -c $winid
+}
+
+translate_selection="$([[ "$1" == "--translate-selection" ]] && echo "true")"
 is_clean_text="$([[ "$1" == "--clean-text" ]] && echo "true")"
 
 if ! is_running; then
+  if [[ -n  "$translate_selection" ]]; then
+    sleep 0.8; xdotool getactivewindow key ctrl+c
+  fi
+
   launch
+
+  sleep 0.8; xdotool getactivewindow key ctrl+a ctrl+v
 elif ! hide; then
-  if [[ -n "$is_paste_selection" ]]; then
-    sleep 0.4; xdotool getactivewindow key ctrl+c
-  fi
-  
-  show
-
-  if [[ -n "$is_paste_selection" ]]; then
-    sleep 0.25; xdotool getactivewindow key ctrl+a
-    xdotool getactivewindow key ctrl+v
-  fi
-
-  if [[ -n "$is_clean_text" ]]; then
+  if [[ -n "$translate_selection" ]]; then
+    send-command translateSelection
+  elif [[ -n "$is_clean_text" ]]; then
+    send-command open
     sleep 0.25
-    xdotool getactivewindow key ctrl+a
-    xdotool getactivewindow key 0xff08
+    xdotool getactivewindow key ctrl+a 0xff08
+  else
+    send-command open
   fi
 fi
