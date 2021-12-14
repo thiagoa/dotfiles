@@ -44,7 +44,7 @@ name='Connect headphones'
 
 [custom-keybindings/custom14]
 binding='<Shift><Super>t'
-command='toggle-crow-translate --paste-selection'
+command='toggle-crow-translate --translate-selection'
 name='Toggle Crow Translate + paste selection'
 
 [custom-keybindings/custom15]
