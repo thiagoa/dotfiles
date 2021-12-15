@@ -1,5 +1,7 @@
 [/]
 enable-hot-corners=false
+font-antialiasing='grayscale'
+font-hinting='slight'
 gtk-im-module='gtk-im-context-simple'
 gtk-theme='Pop-dark'
 locate-pointer=false
