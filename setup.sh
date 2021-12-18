@@ -285,7 +285,7 @@ function install_linux_config {
       $INSTALL_DIR/linux/xkeysnail/setup.sh
       $INSTALL_DIR/linux/devilspie2/setup.sh
       $INSTALL_DIR/linux/system-sleep/setup.sh
-      $INSTALL_DIR/linux/clipboard-indicator/setup.sh
+      #$INSTALL_DIR/linux/clipboard-indicator/setup.sh
       $INSTALL_DIR/linux/fix-cedilla/setup.sh
       $INSTALL_DIR/linux/sysctl/setup.sh
       $INSTALL_DIR/linux/nautilus/setup.sh
@@ -392,9 +392,11 @@ echo ""
 
 if is_linux; then
   echo "- If this is a new install, re-login to effect changes"
-  echo "- Add online accounts to Gnome"
+  echo "- Add online accounts to GNOME"
   echo "- Add Mailspring accounts and signatures"
-  echo "- Sync Gnome Shell extensions through Google Chrome (enable syncing and it will find the backup)"
+  echo "- Sync GNOME Shell extensions through Google Chrome (enable syncing and it will find the backup)"
+  echo "- Install fonts: Clear Sans"
+  echo "- Setup GNOME extensions (see Linux.md on notes repo)"
 fi
 
 echo "- Install programming language stuff with 'asdf install my_language'"
@@ -402,5 +404,4 @@ echo "- Install veracrypt GUI and console: https://www.veracrypt.fr/en/Downloads
 echo "- Sync JetBrains app (if any) settings"
 echo "- Download and install Brave, 1Password, Dropbox, Veracrypt, Mailspring, VS Code, warsaw, clockify, JetBrains Mono"
 echo "- Sync VS Code settings (first install Settings sync extension)"
-echo "- Install fonts: Clear Sans"
 echo "- Restart Brave for brotab (and others) to work"
