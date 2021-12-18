@@ -32,7 +32,7 @@ show-focus='<Super>bracketright'
 show-hide='<Super>bracketleft'
 
 [style/background]
-transparency=98
+transparency=66
 
 [style/font]
 allow-bold=true
