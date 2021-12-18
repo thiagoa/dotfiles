@@ -1,0 +1,8 @@
+[/]
+disable-down-arrow=true
+display-mode=2
+history-size=200
+move-item-first=true
+strip-text=false
+toggle-menu=['<Alt><Super>semicolon']
+topbar-preview-size=10
