@@ -2,7 +2,8 @@
 
 target="$HOME/OneDrive/@Documentos"
 
-mv ~/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]\ *.* $target 2> /dev/null
-mv ~/Dropbox/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]\ *.* $target 2> /dev/null
+mv $HOME/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]\ *.* $target 2> /dev/null
+mv $HOME/Downloads/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]\ *.* $target 2> /dev/null
+mv $HOME/Dropbox/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]\ *.* $target 2> /dev/null
 
 exit 0
