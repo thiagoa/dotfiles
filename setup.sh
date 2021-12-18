@@ -289,6 +289,7 @@ function install_linux_config {
       $INSTALL_DIR/linux/fix-cedilla/setup.sh
       $INSTALL_DIR/linux/sysctl/setup.sh
       $INSTALL_DIR/linux/nautilus/setup.sh
+      $INSTALL_DIR/linux/redshift/setup.sh
     fi
   fi
 }

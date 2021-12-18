@@ -45,7 +45,8 @@ sudo apt install \
      gnome-clocks \
      pdfarranger \
      zathura \
-     snapd
+     snapd \
+     redshift-gtk
 
 # Standalone app dependencies (Crow translate, etc)
 
