@@ -402,4 +402,5 @@ echo "- Install veracrypt GUI and console: https://www.veracrypt.fr/en/Downloads
 echo "- Sync JetBrains app (if any) settings"
 echo "- Download and install Brave, 1Password, Dropbox, Veracrypt, Mailspring, VS Code, warsaw, clockify, JetBrains Mono"
 echo "- Sync VS Code settings (first install Settings sync extension)"
+echo "- Install fonts: Clear Sans"
 echo "- Restart Brave for brotab (and others) to work"
