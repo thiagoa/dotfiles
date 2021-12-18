@@ -140,16 +140,14 @@ cd $dir
 declare -a packages
 packages=(crow-translate/crow-translate kamranahmedse/pennywise)
 
+source $HOME/.dotfiles/config/functions.sh
+
 for path in "${packages[@]}"; do
   name=$(basename $path)
 
   echo "Installing or updating $name..."
 
-  url=`curl -s https://api.github.com/repos/$path/releases/latest \
-  | grep "browser_download_url.*deb" \
-  | grep amd64 \
-  | cut -d : -f 2,3 \
-  | tr -d \"`
+  url=`get-github-release-link $path "amd64.*deb"`
 
   if [[ ! -z "$url" ]]; then
     file=$(basename $url)

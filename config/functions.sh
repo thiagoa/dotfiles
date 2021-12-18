@@ -27,3 +27,14 @@ function break-pane {
 function resize-pane {
   tmux resize-pane -${1:u} $2
 }
+
+function get-github-release-link {
+  local repo=$1
+  local pattern=$2
+
+  curl -s "https://api.github.com/repos/$repo/releases/latest" |
+    grep "browser_download_url" |
+    grep "$pattern" |
+    cut -d : -f 2,3 |
+    tr -d \"
+}

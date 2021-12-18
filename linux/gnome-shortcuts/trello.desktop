@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Trello
+Exec=/home/thiago/bin/vendor/trello/Trello
+Terminal=false
+Type=Application
+Icon=/home/thiago/bin/vendor/trello/resources/app/static/Icon.png
+

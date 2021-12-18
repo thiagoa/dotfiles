@@ -7,6 +7,7 @@ sistema/app/config/config.php
 bin/vendor/datagrip
 bin/vendor/elasticsearch*
 bin/vendor/PathPicker
+bin/vendor/trello
 bin/experiments/*
 lock
 linux/packages/.*_cache
