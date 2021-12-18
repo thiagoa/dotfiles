@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Ao
+Comment=Ao is an unofficial, featureful, open source, community-driven, free Microsoft To-Do app, used by people in more than 120 countries.
+Exec="/opt/Ao/ao" %U
+Terminal=false
+Type=Application
+Icon=/usr/share/icons/hicolor/0x0/apps/ao.png
+StartupWMClass=Ao
+Categories=Office;

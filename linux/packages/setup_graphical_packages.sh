@@ -138,7 +138,7 @@ dir="$(cd "$(dirname "$0")" && pwd)"
 cd $dir
 
 declare -a packages
-packages=(crow-translate/crow-translate kamranahmedse/pennywise)
+packages=(crow-translate/crow-translate kamranahmedse/pennywise klaussinani/ao)
 
 source $HOME/.dotfiles/config/functions.sh
 
