@@ -1,2 +1,7 @@
 #!/bin/sh
-/usr/bin/spotify --force-device-scale-factor=$(gsettings get org.gnome.desktop.interface text-scaling-factor) $@
+# https://specifications.freedesktop.org/mpris-spec/2.2/Player_Interface.html
+# https://github.com/dahlo/spotify_instance_checker
+# dbus-send  --print-reply --session --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+# dbus-send  --print-reply --session --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.OpenUri "string:https://open.spotify.com/track/5iagU6Cu2OWCahju7T4iDL?si=ec58245bbfa84405"
+
+/usr/bin/spotify $@ --force-device-scale-factor=$(gsettings get org.gnome.desktop.interface text-scaling-factor)
