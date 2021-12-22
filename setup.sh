@@ -149,6 +149,10 @@ function setup_secrets {
   if [[ -f $HOME/Dropbox/Config/secrets ]]; then
     ln -sfn $HOME/Dropbox/Config/secrets $HOME/.secrets
   fi
+
+  if [[ -f $HOME/Dropbox/Config/netrc ]]; then
+    ln -sfn $HOME/Dropbox/Config/netrc $HOME/.netrc
+  fi
 }
 
 function install_zprezto {
