@@ -360,6 +360,7 @@ function setup_mac {
   brew_install_package gnupg
   brew_install_package imagemagick
   brew_install_package php
+  brew_install_package wget
 
   if [[ ! -x "$(which python3)" ]]; then
     python3 -m pip install --user --upgrade pynvim
