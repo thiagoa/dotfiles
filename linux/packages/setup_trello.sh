@@ -8,9 +8,9 @@ if [[ "$1" == "--force" ]]; then
   force="true"
 fi
 
-if [[ ! -d "$installation_dir" ]] || [[ -n "$force" ]]; then
-  installation_dir=$HOME/bin/vendor/trello
+installation_dir=$HOME/bin/vendor/trello
 
+if [[ ! -d "$installation_dir" ]] || [[ -n "$force" ]]; then
   if [[ -n "$force" ]]; then
     rm -rf $installation_dir
   fi
