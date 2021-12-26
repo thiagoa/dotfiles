@@ -117,6 +117,8 @@ function install_asdf_plugins {
   add_plugin java halcyon/asdf-java.git
   add_plugin lein miorimmax/asdf-lein.git
   add_plugin yarn twuni/asdf-yarn.git
+  add_plugin erlang asdf-vm/asdf-erlang.git
+  add_plugin elixir asdf-vm/asdf-elixir.git
 }
 
 function setup_ssh {
