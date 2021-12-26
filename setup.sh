@@ -119,6 +119,7 @@ function install_asdf_plugins {
   add_plugin yarn twuni/asdf-yarn.git
   add_plugin erlang asdf-vm/asdf-erlang.git
   add_plugin elixir asdf-vm/asdf-elixir.git
+  add_plugin go kennyp/asdf-golang.git
 }
 
 function setup_ssh {
