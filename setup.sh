@@ -9,6 +9,7 @@ set -eu
 setopt EXTENDED_GLOB
 
 INSTALL_DIR="${HOME}/.dotfiles"
+SKIP_GRAPHICAL="${SKIP_GRAPHICAL-:}"
 
 if ! $(which git > /dev/null 2>&1); then
   echo "ERROR: Yow, I need git... gimme git!"
@@ -52,7 +53,7 @@ function is_wsl {
 }
 
 function should_install_linux_graphical_setup {
-  if is_wsl || is_arm64; then
+  if is_wsl || is_arm64 || [[ -n "$SKIP_GRAPHICAL" ]]; then
     return 1
   fi
 }
@@ -267,10 +268,13 @@ function set_defaults {
 function install_linux_config {
   if is_linux; then
     echo "Installing Linux-specific config..."
+    echo "Setting up terminal packages..."
 
     $INSTALL_DIR/linux/packages/setup_terminal_packages.sh
 
     if should_install_linux_graphical_setup; then
+      echo "Setting up graphical packages..."
+
       if [[ -f $HOME/Dropbox/Config/indicator-stickynotes ]]; then
         ln -sfn $HOME/Dropbox/Config/indicator-stickynotes $HOME/.config/indicator-stickynotes
       fi
