@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=Spotify 4k
-Icon=/home/thiago/.dotfiles/linux/gnome-shortcuts/spotify.png
+Icon=spotify-client
 Exec=spotify --uri="%u"
 Comment=Music
 Categories=Music;
