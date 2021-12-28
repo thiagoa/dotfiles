@@ -27,3 +27,5 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 export QT_QPA_PLATFORMTHEME=gtk2
+
+source $HOME/.asdf/asdf.sh
