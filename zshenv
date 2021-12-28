@@ -51,6 +51,11 @@ export RIPPER_TAGS_EMACS=true
 export RIPPER_TAGS_EXTRA_FLAGS=q
 export HISTFILE # Make shell history available from within Emacs
 export QT_QPA_PLATFORMTHEME=gtk2
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 if [[ $0 = *zsh ]]; then
   if (( $#commands[(i)lesspipe(|.sh)] )); then
