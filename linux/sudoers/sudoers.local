@@ -1,0 +1,1 @@
+thiago ALL=NOPASSWD: /usr/bin/openvpn*, /home/thiago/bin/xkeysnail*, /usr/local/bin/xkeysnail*, /usr/bin/xhost, /usr/bin/apt*, /usr/bin/apt-get*, /usr/sbin/pm-suspend, /home/thiago/bin/restart-sysctl

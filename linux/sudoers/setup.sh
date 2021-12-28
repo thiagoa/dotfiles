@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
-sudoers_file="/etc/sudoers"
-perm_prefix="thiago ALL=NOPASSWD:"
-perms="$perm_prefix /usr/bin/openvpn*, /home/thiago/bin/xkeysnail*, /usr/local/bin/xkeysnail*, /usr/bin/xhost, /usr/bin/apt*, /usr/bin/apt-get*, /usr/sbin/pm-suspend, /home/thiago/bin/restart-sysctl"
+file="sudoers.local"
 
-# Remove permission line
-sudo cat "$sudoers_file" | grep -v "$perm_prefix" | sudo tee "$sudoers_file.tmp" > /dev/null
-sudo mv "$sudoers_file.tmp" "$sudoers_file"
+echo "Installing sudoers configuration..."
 
-# Reinsert the most updated permission line
-sudo echo "$perms" | sudo tee -a "$sudoers_file" > /dev/null
+if [[ -d /etc/sudoers.d ]]; then
+  sudo cp $HOME/.dotfiles/linux/sudoers/$file /etc/sudoers.d
+  sudo chmod 0440 /etc/sudoers.d/$file
+else
+  echo "FAIL: Could not find /etc/sudoers.d directory"
+  exit 1
+fi
