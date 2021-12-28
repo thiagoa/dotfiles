@@ -26,3 +26,4 @@ linux/aptik/logs/*
 .dir-locals.el
 bin/experiments
 secrets.txt
+.rbtagger-lock
