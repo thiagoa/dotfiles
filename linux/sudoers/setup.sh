@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-file="sudoers.local"
+file="local"
 
 echo "Installing sudoers configuration..."
 
