@@ -15,7 +15,7 @@ sudo apt install \
      rlwrap \
      zsh \
      tmux \
-	 neovim \
+     neovim \
      awscli \
      git \
      postgresql \
@@ -35,9 +35,28 @@ sudo apt install \
 
 echo "Installing Emacs dependencies. If this fails, uncomment the debian deb-src repository in /etc/apt/sources.list"
 
+$ sudo apt install libgccjit0 libgccjit-10-dev
+
 sudo add-apt-repository ppa:ubuntu-toolchain-r/ppa \
         && sudo apt-get update -y \
-        && sudo apt-get install -y gcc-10 libgccjit0 libgccjit-10-dev
+        && sudo apt-get install -y \
+                gcc-10 \
+                libgccjit0 \
+                libgccjit-10-dev \
+                gcc-10 \
+                g++-10 \
+                libjansson4 \
+                libjansson-dev \
+                build-essential \
+                libgtk-3-dev \
+                libgnutls28-dev \
+                libtiff5-dev \
+                libgif-dev \
+                libjpeg-dev \
+                libpng-dev \
+                libxpm-dev \
+                libncurses-dev \
+                texinfo
 
 sudo apt-get build-dep -y emacs
 
