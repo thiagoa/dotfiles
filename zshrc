@@ -53,3 +53,13 @@ fi
 
 bindkey '^X^F' fzf-file-widget
 bindkey '^T' transpose-chars
+
+# Use C-shift-D to open a new tab in the previous dir
+[[ -n "$WT_SESSION" ]] && {
+  chpwd() {
+    echo -en '\e]9;9;"'
+    wslpath -w "$PWD" | tr -d '\n'
+    echo -en '"\x07'
+  }
+}
+
