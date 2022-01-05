@@ -1,4 +1,4 @@
 [/]
 current=uint32 0
 per-window=false
-xkb-options=['lv3:ralt_alt']
+xkb-options=['lv3:ralt_alt', 'caps:ctrl_modifier']
