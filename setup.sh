@@ -113,6 +113,8 @@ function add_plugin {
 function install_asdf_plugins {
   echo "Installing asdf plugins..."
 
+  source $INSTALL_DIR/config/asdf.sh
+
   add_plugin nodejs asdf-vm/asdf-nodejs.git
   add_plugin ruby asdf-vm/asdf-ruby.git
   add_plugin java halcyon/asdf-java.git
@@ -306,6 +308,12 @@ function install_linux_config {
   fi
 }
 
+function install_wsl_specific_config {
+  if is_wsl && [[ -d /mnt/c/Users/thiag/Dropbox ]]; then
+    ln -sf /mnt/c/Users/thiag/Dropbox $HOME/Dropbox
+  fi
+}
+
 function install_mac_config {
   if is_mac; then
     rm -rf ~/.config/karabiner
@@ -384,6 +392,7 @@ create_directories
 install_zprezto
 install_binfiles
 setup_ssh
+install_wsl_specific_config # Must come before secrets
 setup_secrets
 install_dotfiles
 install_linux_config

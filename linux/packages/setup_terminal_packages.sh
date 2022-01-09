@@ -15,6 +15,7 @@ sudo apt install \
      rlwrap \
      zsh \
      tmux \
+     python3-pip \
      neovim \
      awscli \
      git \
@@ -34,8 +35,22 @@ sudo apt install \
 # Dependencies to compile emacs
 
 echo "Installing Emacs dependencies. If this fails, uncomment the debian deb-src repository in /etc/apt/sources.list"
+echo "Trying to do that automatically..."
 
-$ sudo apt install libgccjit0 libgccjit-10-dev
+apt_sources_file=/etc/apt/sources.list
+deb_src_pattern='deb-src.+universe'
+uncommented_deb_src=`egrep "^$deb_src_pattern" $apt_sources_file`
+
+if [[ -z "$uncommented_deb_src" ]]; then
+  commented_deb_src=`egrep "^# *${deb_src_pattern}" $apt_sources_file | head -1 | tr -d "\n"`
+
+  if [[ -n "$commented_deb_src" ]]; then
+    sudo sed -i "\;$commented_deb_src;s;^# *;;g" $apt_sources_file
+    sudo apt update
+  fi
+fi
+
+sudo apt install libgccjit0 libgccjit-10-dev
 
 sudo add-apt-repository ppa:ubuntu-toolchain-r/ppa \
         && sudo apt-get update -y \
@@ -72,3 +87,17 @@ if [[ "$LINUXBREW" == "true" ]] && [[ ! -d /home/linuxbrew ]]; then
   test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
   test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
+
+# WSL systemctl hack
+# User systemctl services are located in ~/.config/systemd/user. That's where
+# linuxbrew installs them. After installing this hack, you can install services
+# with "brew service start ..." as normal
+if uname -r | grep microsoft > /dev/null; then
+  systemctl_file=/usr/local/bin/systemctl
+
+  if [[ ! -f "$systemctl_file" ]]; then
+    sudo wget https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl.py -O $systemctl_file
+    sudo chmod +x $systemctl_file
+  fi
+fi
+

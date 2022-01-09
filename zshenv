@@ -63,6 +63,8 @@ if [[ $0 = *zsh ]]; then
   fi
 fi
 
+source $HOME/.dotfiles/config/asdf.sh
+
 if [[ ! -o interactive ]]; then
     if [[ -f $HOME/.asdf/asdf.sh ]]; then
       source $HOME/.asdf/asdf.sh
