@@ -281,7 +281,6 @@ function install_linux_config {
         ln -sfn $HOME/Dropbox/Config/indicator-stickynotes $HOME/.config/indicator-stickynotes
       fi
 
-      $INSTALL_DIR/linux/packages/setup_emacs.sh
       $INSTALL_DIR/linux/packages/setup_graphical_packages.sh
       $INSTALL_DIR/linux/packages/setup_gnome_sushi.sh
       $INSTALL_DIR/linux/packages/setup_brotab.sh
@@ -304,6 +303,7 @@ function install_linux_config {
       $INSTALL_DIR/linux/nautilus/setup.sh
       $INSTALL_DIR/linux/redshift/setup.sh
       $INSTALL_DIR/linux/dual-function-keys/setup.sh
+      $INSTALL_DIR/linux/packages/setup_emacs.sh
     fi
   fi
 }
