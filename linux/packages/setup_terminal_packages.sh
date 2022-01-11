@@ -18,9 +18,7 @@ sudo apt install \
      python3-pip \
      neovim \
      awscli \
-     git \
-     postgresql \
-     postgresql-contrib
+     git
 
 # Ruby dependencies
 
@@ -100,4 +98,3 @@ if uname -r | grep microsoft > /dev/null; then
     sudo chmod +x $systemctl_file
   fi
 fi
-
