@@ -9,7 +9,7 @@ set -eu
 setopt EXTENDED_GLOB
 
 INSTALL_DIR="${HOME}/.dotfiles"
-SKIP_GRAPHICAL="${SKIP_GRAPHICAL-:}"
+SKIP_GRAPHICAL="${SKIP_GRAPHICAL:-}"
 
 if ! $(which git > /dev/null 2>&1); then
   echo "ERROR: Yow, I need git... gimme git!"
