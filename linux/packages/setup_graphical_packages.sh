@@ -175,15 +175,6 @@ for path in "${packages[@]}"; do
   fi
 done
 
-echo 'Installing xkeysnail hack...'
-
-cd $dir/dummy
-
-make > /dev/null 2> /dev/null
-make install > /dev/null 2> /dev/null
-
-cd - > /dev/null
-
 datagrip_dest=$HOME/bin/vendor/datagrip
 
 if [[ ! -d $datagrip_dest ]]; then
