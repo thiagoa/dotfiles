@@ -10,4 +10,3 @@ Exec=insync start
 TryExec=insync
 Terminal=false
 X-GNOME-Autostart-Delay=3
-X-GNOME-Autostart-enabled=true
