@@ -18,6 +18,7 @@ sudo apt install \
      python3-pip \
      neovim \
      awscli \
+     tree \
      git
 
 # Ruby dependencies
