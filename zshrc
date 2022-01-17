@@ -13,6 +13,8 @@ source $HOME/.dotfiles/config/zshbindkeys.sh
 
 if [[ -f /opt/homebrew/bin/brew ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -d /home/linuxbrew ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 if [[ -x $(which brew) ]]; then
@@ -63,3 +65,4 @@ bindkey '^T' transpose-chars
   }
 }
 
+return 0
