@@ -98,3 +98,5 @@
   clean = git-lfs clean -- %f
 [github]
   user = thiagoa
+[gitlab]
+  user = thiagoa
