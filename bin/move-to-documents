@@ -6,4 +6,10 @@ mv $HOME/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]\ *.* $target 2> /dev/null
 mv $HOME/Downloads/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]\ *.* $target 2> /dev/null
 mv $HOME/Dropbox/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]\ *.* $target 2> /dev/null
 
+windows_downloads=/mnt/c/Users/thiag/Downloads
+
+if [[ -d $windows_downloads ]]; then
+  mv $windows_downloads/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]\ *.* $target 2> /dev/null
+fi
+
 exit 0
