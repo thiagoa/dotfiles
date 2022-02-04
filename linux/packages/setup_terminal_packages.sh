@@ -19,7 +19,8 @@ sudo apt install \
      neovim \
      awscli \
      tree \
-     git
+     git \
+     xdg-utils
 
 # Ruby dependencies
 
