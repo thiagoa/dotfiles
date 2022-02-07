@@ -51,11 +51,6 @@ if [[ -f $HOME/.dir_colors/dircolors ]]; then
   eval `dircolors /home/thiago/.dir_colors/dircolors`
 fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-bindkey '^X^F' fzf-file-widget
-bindkey '^T' transpose-chars
-
 # Use C-shift-D to open a new tab in the previous dir
 [[ -n "$WT_SESSION" ]] && {
   chpwd() {

@@ -8,6 +8,8 @@ function add_to_path {
     export PATH=$PATH:"${1}"
 }
 
+[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
+
 add_to_path ~/bin
 
 function maybe_add_to_path {

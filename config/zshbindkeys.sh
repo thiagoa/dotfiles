@@ -72,3 +72,6 @@ paste-clipboard() {
 
 zle -N paste-clipboard
 bindkey "^y" paste-clipboard
+
+bindkey '^X^F' fzf-file-widget
+bindkey '^T' transpose-chars
