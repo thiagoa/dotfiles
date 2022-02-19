@@ -1,6 +1,10 @@
 #!/bin/sh
 
-xinput set-prop $(xinput list --id-only 'pointer:Logitech MX Ergo') "libinput Button Scrolling Button" 3
-xinput set-prop $(xinput list --id-only 'pointer:Logitech MX Ergo') "libinput Scroll Method Enabled" 0, 0, 1
-xinput set-prop $(xinput list --id-only 'pointer:Logitech MX Ergo') 'libinput Accel Profile Enabled' 1, 0
-xinput set-prop $(xinput list --id-only 'pointer:Logitech MX Ergo') 'libinput Accel Speed' 0.091471
+for id in $(xinput list | grep "MX Ergo" | sed -E 's/.+id=([0-9]+).+/\1/'); do
+  xinput set-prop $id "libinput Button Scrolling Button" 3 > /dev/null 2>&1
+  xinput set-prop $id "libinput Scroll Method Enabled" 0, 0, 1 > /dev/null 2>&1
+  xinput set-prop $id 'libinput Accel Profile Enabled' 1, 0 > /dev/null 2>&1
+  xinput set-prop $id 'libinput Accel Speed' 0.091471 > /dev/null 2>&1
+done
+
+exit 0
