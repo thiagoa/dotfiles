@@ -8,4 +8,4 @@ gtk-theme='Pop-dark'
 icon-theme='Pop'
 locate-pointer=false
 show-battery-percentage=true
-toolkit-accessibility=false
+toolkit-accessibility=true
