@@ -3,9 +3,9 @@
 Name=AutoKey
 GenericName=Keyboard Automation
 Comment=Program keyboard shortcuts
+Keywords=macros keyboard auto key autokey ak automation shortcut bind
 Exec=autokey-gtk
 Terminal=false
 Type=Application
 Icon=autokey
 Categories=GNOME;GTK;Utility;
-X-GNOME-Autostart-enabled=true
