@@ -3,6 +3,8 @@
 echo "Installing deb packages"
 
 sudo add-apt-repository ppa:agornostal/ulauncher -y > /dev/null 2> /dev/null
+sudo add-apt-repository ppa:solaar-unifying/stable -y > /dev/null 2> /dev/null
+
 sudo apt update > /dev/null 2> /dev/null
 
 # libnotify-bin -> notify-send command
