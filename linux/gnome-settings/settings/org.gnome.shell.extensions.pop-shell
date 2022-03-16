@@ -1,6 +1,6 @@
 [/]
 activate-launcher=['<Alt>space']
-active-hint=true
+active-hint=false
 focus-down=['<Super>Down', '<Super>n']
 focus-left=['<Super>Left', '<Super>b']
 focus-right=['<Super>Right', '<Super>f']
