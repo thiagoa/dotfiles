@@ -432,6 +432,6 @@ fi
 echo "- Install programming language stuff with 'asdf install my_language'"
 echo "- Install veracrypt GUI and console: https://www.veracrypt.fr/en/Downloads.html"
 echo "- Sync JetBrains app (if any) settings"
-echo "- Download and install Dropbox, Veracrypt, clockify, JetBrains Mono"
+echo "- Download and install Dropbox, Veracrypt, Insync, clockify, JetBrains Mono"
 echo "- Sync VS Code settings (first install Settings sync extension)"
 echo "- Restart Brave for brotab (and others) to work"

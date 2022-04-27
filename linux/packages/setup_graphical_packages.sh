@@ -156,8 +156,6 @@ if [[ ! -d $datagrip_dest ]]; then
   rm -rf ./$file
 fi
 
-echo 'Reminder: Have you installed warsaw yet?'
-
 # Configure redis and make it work on Ubuntu 20.04 (upgraded from
 # 19.10)
 sudo mkdir -p /var/log/redis
