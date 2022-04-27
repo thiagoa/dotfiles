@@ -10,6 +10,7 @@ echo "Installing terminal deb packages"
 # libwxbase3.0-0v5 and libwxgtk3.0-gtk3-0v5 -> Veracrypt deps
 sudo apt install \
      silversearcher-ag \
+     ripgrep \
      redis \
      nginx \
      rlwrap \

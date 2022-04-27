@@ -303,6 +303,14 @@ function install_linux_config {
       $INSTALL_DIR/linux/redshift/setup.sh
       $INSTALL_DIR/linux/dual-function-keys/setup.sh
       $INSTALL_DIR/linux/packages/setup_emacs.sh
+      $INSTALL_DIR/linux/packages/setup_mailspring.sh
+      $INSTALL_DIR/linux/packages/setup_brave.sh
+      $INSTALL_DIR/linux/packages/setup_1password.sh
+      $INSTALL_DIR/linux/packages/setup_vs_code.sh
+      $INSTALL_DIR/linux/packages/setup_warsaw.sh
+      $INSTALL_DIR/linux/packages/setup_docker.sh
+      $INSTALL_DIR/linux/packages/setup_spotify.sh
+      $INSTALL_DIR/linux/packages/setup_indicator_sticky_notes.sh
     fi
   fi
 }
@@ -424,6 +432,6 @@ fi
 echo "- Install programming language stuff with 'asdf install my_language'"
 echo "- Install veracrypt GUI and console: https://www.veracrypt.fr/en/Downloads.html"
 echo "- Sync JetBrains app (if any) settings"
-echo "- Download and install Brave, 1Password, Dropbox, Veracrypt, Mailspring, VS Code, warsaw, clockify, JetBrains Mono"
+echo "- Download and install Dropbox, Veracrypt, clockify, JetBrains Mono"
 echo "- Sync VS Code settings (first install Settings sync extension)"
 echo "- Restart Brave for brotab (and others) to work"

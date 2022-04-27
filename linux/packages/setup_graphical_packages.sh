@@ -13,14 +13,12 @@ sudo apt install \
      xdotool \
      timeshift \
      deja-dup \
-     grub2-common \
-     grub-efi \
-     grub-customizer \
      guake \
      cheese \
+     peek \
+     ulauncher \
      lm-sensors \
      gnome-tweaks \
-     ulauncher \
      qt5-style-plugins \
      zeal \
      flameshot \
@@ -78,28 +76,6 @@ sudo apt install \
      libgirepository1.0-dev \
      ninja-build
 
-# Docker
-
-sudo apt-get install \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg-agent \
-    software-properties-common
-
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-
-# Spotify
-
-curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo apt-key add -
-echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
-
-sudo apt install spotify-client
-
-# Indicator sticky notes
-
-sudo add-apt-repository ppa:umang/indicator-stickynotes -y && sudo apt-get update && sudo apt-get install indicator-stickynotes -y
-
 # Install flatpaks
 
 flatpak install flathub org.gabmus.hydrapaper
@@ -110,24 +86,6 @@ flatpak install flathub com.discordapp.Discord
 
 sudo snap install --classic heroku
 sudo snap install authy
-
-# TODO improve this mess
-default_release="$(lsb_release -cs)"
-default_release=focal
-
-echo "WARNING! Using older focal repository for docker!"
-
-# WARNING: If this fails for some reason, the docker repo is not available for
-# the current Ubuntu version so replace lsb_release -cs with Ubuntu version's
-# codename
-sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $default_release \
-   stable"
-
-sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io
-sudo usermod -aG docker ${USER}
 
 if [[ -x "$(which pip3)" ]]; then
   # TODO: Decide whether to install brotab from pip or from source

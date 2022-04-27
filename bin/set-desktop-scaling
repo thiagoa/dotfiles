@@ -51,7 +51,7 @@ elif [[ "$1" = "4k" ]]; then
 
   $HOME/.dotfiles/linux/ulauncher/setup.sh
 
-  fourk_scale=1.5
+  fourk_scale=1.8
   gsettings set org.gnome.desktop.interface text-scaling-factor $fourk_scale
 elif [[ "$1" = "4kbig" ]]; then
   echo "Changing to 4k BIG scale..."

@@ -1,10 +1,34 @@
-#!/bin/sh
+#!/bin/bash
 
-for id in $(xinput list | grep "MX Ergo" | sed -E 's/.+id=([0-9]+).+/\1/'); do
-  xinput set-prop $id "libinput Button Scrolling Button" 3 > /dev/null 2>&1
-  xinput set-prop $id "libinput Scroll Method Enabled" 0, 0, 1 > /dev/null 2>&1
-  xinput set-prop $id 'libinput Accel Profile Enabled' 1, 0 > /dev/null 2>&1
-  xinput set-prop $id 'libinput Accel Speed' 0.091471 > /dev/null 2>&1
+# To list mouse properties:
+#
+# xinput --list-props
+
+for mouse_id in $(xinput list | grep "MX Ergo" | sed -E 's/.+id=([0-9]+).+/\1/'); do
+  xinput set-prop $mouse_id "libinput Button Scrolling Button" 3 > /dev/null 2>&1
+  xinput set-prop $mouse_id "libinput Scroll Method Enabled" 0, 0, 1 > /dev/null 2>&1
+  xinput set-prop $mouse_id 'libinput Accel Profile Enabled' 1, 0 > /dev/null 2>&1
+  xinput set-prop $mouse_id 'libinput Accel Speed' 0.091471 > /dev/null 2>&1
 done
+
+mouse_name="Kensington Expert Wireless TB Mouse"
+
+check=$(xinput | grep "$mouse_name")
+
+if [[ ! -z "$check" ]]; then
+  mouse_id=$(xinput | grep "$mouse_name" | sed 's/^.*id=\([0-9]*\)[ \t].*$/\1/')
+  # swap right and back button then swap middle and back button
+  xinput set-button-map $mouse_id 1 8 2 4 5 6 7 3 9
+  # enable better scrolling
+  xinput set-prop $mouse_id "libinput Natural Scrolling Enabled" 1
+  # disable acceliration for the ball
+  xinput set-prop $mouse_id "libinput Accel Profile Enabled" 1, 0
+
+  # allow scrolling by holding middle mouse button and using the ball to scroll ( really smooth and fast ).
+  xinput set-prop $mouse_id "libinput Scroll Method Enabled" 0, 0, 1
+  # allow the remmaped middle mouse to be used for middle mouse scroll
+  xinput set-prop $mouse_id "libinput Button Scrolling Button" 3
+  xinput set-prop $mouse_id 'libinput Accel Speed' 1
+fi
 
 exit 0
