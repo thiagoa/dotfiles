@@ -23,6 +23,15 @@ for mouse_id in $(get_mouse_ids "$mouse_name"); do
   my_xinput set-prop $mouse_id "libinput Accel Speed" 0.091471
 done
 
+# Perfect Kensington Expert setup in GNOME:
+#
+# - Run this script (see gnome-autostart)
+# - Setup input remapper (see gnome-autostart and .dotfiles/linux/input-remapper)
+# - Use the following GNOME settings:
+#     - org.gnome.desktop.peripherals.mouse speed 0.56617647058823528
+#     - org.gnome.desktop.peripherals.mouse natural-scroll true
+#     - org.gnome.desktop.peripherals.mouse accel-profile 'adaptive'
+
 mouse_name="Kensington Expert Wireless TB Mouse"
 
 for mouse_id in $(get_mouse_ids "$mouse_name"); do
