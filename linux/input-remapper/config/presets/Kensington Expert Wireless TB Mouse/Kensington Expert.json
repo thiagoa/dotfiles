@@ -3,6 +3,10 @@
         "1,274,1+1,275,1": [
             "BTN_EXTRA",
             "mouse"
+        ],
+        "1,272,1+1,273,1": [
+            "if_eq(\n    $a,\n    1,\n    event(EV_KEY, BTN_LEFT, 0).set(a, 0),\n    event(EV_KEY, BTN_LEFT, 1).set(a, 1)\n)",
+            "mouse"
         ]
     }
 }
