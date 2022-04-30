@@ -302,6 +302,7 @@ function install_linux_config {
       $INSTALL_DIR/linux/nautilus/setup.sh
       $INSTALL_DIR/linux/redshift/setup.sh
       $INSTALL_DIR/linux/dual-function-keys/setup.sh
+      $INSTALL_DIR/linux/input-remapper/setup.sh
       $INSTALL_DIR/linux/packages/setup_emacs.sh
       $INSTALL_DIR/linux/packages/setup_mailspring.sh
       $INSTALL_DIR/linux/packages/setup_morgen.sh
