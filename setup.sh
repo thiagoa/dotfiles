@@ -304,6 +304,7 @@ function install_linux_config {
       $INSTALL_DIR/linux/dual-function-keys/setup.sh
       $INSTALL_DIR/linux/packages/setup_emacs.sh
       $INSTALL_DIR/linux/packages/setup_mailspring.sh
+      $INSTALL_DIR/linux/packages/setup_morgen.sh
       $INSTALL_DIR/linux/packages/setup_brave.sh
       $INSTALL_DIR/linux/packages/setup_1password.sh
       $INSTALL_DIR/linux/packages/setup_vs_code.sh
