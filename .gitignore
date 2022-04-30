@@ -8,6 +8,7 @@ bin/vendor/datagrip
 bin/vendor/elasticsearch*
 bin/vendor/PathPicker
 bin/vendor/trello
+bin/vendor/android-studio
 bin/experiments/*
 lock
 linux/packages/.*_cache

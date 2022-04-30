@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+dir="/home/thiago/bin/vendor/android-studio"
+
+if [[ ! -d "$dir" ]]; then
+  echo "- Download Android Studio from here: https://developer.android.com/studio#downloads"
+  echo "- Install it to ${dir}"
+fi
+
+exec "${dir}/bin/studio.sh"
