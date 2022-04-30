@@ -6,5 +6,5 @@ NoDisplay=false
 X-GNOME-Autostart-enabled=true
 Name[en_US]=a - Setup trackballs
 Name=Setup MX Ergo Trackball
-Comment[en_US]=Run setup-trackballs after input-remapper
+Comment[en_US]=Run setup-trackballs before input-remapper
 Comment=Running setup-trackball before input-remapper

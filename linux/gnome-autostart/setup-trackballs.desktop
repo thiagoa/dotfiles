@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/thiago/bin/setup-trackballs
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=z - Setup trackballs
+Name=z - Setup trackballs
+Comment[en_US]=Run setup-trackballs after input-remapper
+Comment=Run setup-trackballs after input-remapper
