@@ -15,4 +15,6 @@ if [[ ! -d "$dir" ]] || [[ -n "$FORCE" ]]; then
   sudo apt install ./dist/*.deb
 fi
 
+ln -sf "$HOME/.dotfiles/linux/input-remapper/config" "$HOME/.config/input-remapper"
+
 echo
