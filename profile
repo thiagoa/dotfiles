@@ -29,3 +29,4 @@ fi
 export QT_QPA_PLATFORMTHEME=gtk2
 
 source $HOME/.dotfiles/config/asdf.sh
+source $HOME/.dotfiles/config/qt.sh

@@ -76,3 +76,5 @@ if [[ ! -o interactive ]]; then
 fi
 
 [[ -f $HOME/.secrets ]] && source $HOME/.secrets
+
+source $HOME/.dotfiles/config/qt.sh
