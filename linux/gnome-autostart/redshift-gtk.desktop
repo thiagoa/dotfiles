@@ -83,5 +83,5 @@ Type=Application
 Categories=Utility;
 StartupNotify=true
 Hidden=false
-X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-enabled=false
 
