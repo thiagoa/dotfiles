@@ -46,7 +46,9 @@ sudo apt install \
      pdfarranger \
      zathura \
      snapd \
-     redshift-gtk
+     redshift-gtk \
+     eog \
+     heif-gdk-pixbuf
 
 # Standalone app dependencies (Crow translate, etc)
 
