@@ -1,4 +1,5 @@
 [/]
+color-scheme='prefer-dark'
 cursor-theme='Adwaita'
 enable-hot-corners=false
 font-antialiasing='grayscale'
