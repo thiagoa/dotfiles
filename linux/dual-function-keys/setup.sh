@@ -3,9 +3,9 @@
 set -e
 
 source_dir=$HOME/.dotfiles/linux/dual-function-keys
-dest_dir=$HOME/Code/c/dual-function-keys
+dest_dir=$HOME/Code/linux/dual-function-keys
 
-if [[ ! -d "$dest_dir" ]] || [[ "$1" == "--force" ]]; then
+if [[ ! -d "$dest_dir" ]] || [[ "$1" == "--force" ]] || [[ -n "$FORCE" ]]; then
   if [[ -d "$dest_dir" ]]; then
     rm -rf "$dest_dir"
   fi
@@ -19,7 +19,7 @@ if [[ ! -d "$dest_dir" ]] || [[ "$1" == "--force" ]]; then
 
   mkdir $dest_dir/tools/build
   cd $dest_dir/tools/build
-  cmake ..
+  PKG_CONFIG=/usr/bin/pkg-config cmake ..
   make
   sudo make install
   cd $dest_dir/dual-function-keys
