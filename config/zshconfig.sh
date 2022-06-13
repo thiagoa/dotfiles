@@ -9,6 +9,7 @@ zstyle ':completion:history-words:*' menu yes
 zstyle ':completion:history-words:*' remove-all-dups yes
 
 setopt no_hist_verify NO_BEEP
+setopt rmstarsilent
 
 [[ $EMACS = t ]] && unsetopt zle
 [[ $EMACS != t ]] && prompt nicoulaj
