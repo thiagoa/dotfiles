@@ -81,13 +81,12 @@ sudo apt install \
 # Install flatpaks
 
 flatpak install flathub org.gabmus.hydrapaper
-flatpak install flathub uk.co.ibboard.cawbird
 flatpak install flathub com.discordapp.Discord
 
 # Install snaps (hopefully flatpak will have them soon)
 
 sudo snap install --classic heroku
-sudo snap install authy
+sudo snap install authy twinux
 
 if [[ -x "$(which pip3)" ]]; then
   # TODO: Decide whether to install brotab from pip or from source
