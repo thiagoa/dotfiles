@@ -313,7 +313,6 @@ function install_linux_config {
       $INSTALL_DIR/linux/packages/setup_docker.sh
       $INSTALL_DIR/linux/packages/setup_spotify.sh
       $INSTALL_DIR/linux/packages/setup_corectrl.sh
-      $INSTALL_DIR/linux/packages/setup_indicator_sticky_notes.sh
     fi
   fi
 }
