@@ -313,6 +313,7 @@ function install_linux_config {
       $INSTALL_DIR/linux/packages/setup_docker.sh
       $INSTALL_DIR/linux/packages/setup_spotify.sh
       $INSTALL_DIR/linux/packages/setup_corectrl.sh
+      $INSTALL_DIR/linux/packages/fix_video_playback.sh
     fi
   fi
 }
