@@ -35,11 +35,11 @@ done
 mouse_name="Kensington Expert Wireless TB Mouse"
 
 for mouse_id in $(get_mouse_ids "$mouse_name"); do
-  my_xinput set-prop $mouse_id "libinput Natural Scrolling Enabled" 1
-  #my_xinput set-prop $mouse_id "libinput Accel Profile Enabled" 1, 0
-  my_xinput set-prop $mouse_id "libinput Scroll Method Enabled" 0, 0, 1
+  #my_xinput set-prop $mouse_id "libinput Natural Scrolling Enabled" 1
+  my_xinput set-prop $mouse_id "libinput Accel Profile Enabled" 1, 0
+  #my_xinput set-prop $mouse_id "libinput Scroll Method Enabled" 0, 0, 1
   my_xinput set-prop $mouse_id "libinput Button Scrolling Button" 3
-  #my_xinput set-prop $mouse_id "libinput Accel Speed" 1
+  my_xinput set-prop $mouse_id "libinput Accel Speed" 1
 done
 
 exit 0
