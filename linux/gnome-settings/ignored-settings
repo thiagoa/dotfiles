@@ -7,3 +7,5 @@ org.gnome.desktop.peripherals.mouse.accel-profile
 org.gnome.desktop.peripherals.mouse.speed
 org.gnome.desktop.peripherals.keyboard.numlock-state
 org.gnome.desktop.input-sources.sources
+org.gnome.mutter.experimental-features
+apps.guake.style
