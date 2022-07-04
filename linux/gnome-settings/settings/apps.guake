@@ -19,10 +19,11 @@ restore-tabs-startup=true
 save-tabs-when-changed=true
 scroll-keystroke=true
 start-at-login=true
+use-audible-bell=false
 use-default-font=false
 use-popup=false
 use-scrollbar=true
-use-trayicon=true
+use-trayicon=false
 window-halignment=0
 window-height=59
 window-losefocus=false
@@ -36,7 +37,7 @@ show-focus='<Super>bracketright'
 show-hide='<Super>bracketleft'
 
 [style/background]
-transparency=70
+transparency=100
 
 [style/font]
 allow-bold=true

@@ -1,6 +1,7 @@
 [/]
 focus-active-notification=['<Super>r']
 open-application-menu=@as []
+show-screenshot-ui=['Print', '<Primary><Alt><Super>p']
 switch-to-application-1=['<Super>1']
 switch-to-application-2=['<Super>2']
 switch-to-application-3=['<Super>3']
