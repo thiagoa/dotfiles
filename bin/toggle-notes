@@ -1,0 +1,24 @@
+#!/bin/bash                                                                                                                                                                                                                                                   
+
+notes_file="$HOME/tmp/Notes.md"
+win_id="$(wmctrl -l -x | grep 'gedit.Gedit' | awk '{print $1}')"
+
+if [[ -n "$win_id" ]]; then
+  is_minimized="$(xprop -id $win_id | grep "_NET_WM_STATE_HIDDEN")"
+  is_focused="$(xdotool getwindowfocus getwindowname | grep gedit)"
+fi
+
+mkdir -p "$(dirname $notes_file)"
+[[ ! -f "$notes_file" ]] && touch "$notes_file"
+
+if [[ -z "$is_focused" ]]; then
+  gedit "$notes_file"
+  exit
+fi
+
+if [[ -z "$is_minimized" ]]; then
+  xdotool search --onlyvisible --classname --sync gedit windowminimize
+else
+  gedit "$notes_file"
+  wmctrl -i -r "$win_id" -b add,sticky
+fi
