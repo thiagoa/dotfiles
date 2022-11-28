@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+
+import re
+with open('/home/thiago/.textsnippets.txt', 'r') as f:
+    data = f.read()
+snips = re.split("---", data)
+for snip in snips:
+    s = '\n'.join(snip.split('\n')[1:-1])
+    print(repr(s.strip())[:-1][1:])
+
