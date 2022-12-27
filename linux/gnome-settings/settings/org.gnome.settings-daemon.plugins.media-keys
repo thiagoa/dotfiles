@@ -1,6 +1,6 @@
 [/]
 area-screenshot-clip=['<Primary><Shift><Alt>dollar']
-custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom9/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom10/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom11/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom12/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom13/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom14/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom15/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom16/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom10/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom11/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom12/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom13/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom14/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom15/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom16/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom17/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom18/']
 email=@as []
 help=@as []
 home=@as []
@@ -62,6 +62,16 @@ binding='Print'
 command='/usr/bin/flameshot gui'
 name='Flameshot'
 
+[custom-keybindings/custom17]
+binding='<Alt>space'
+command='ulauncher-toggle'
+name='Toggle ulauncher'
+
+[custom-keybindings/custom18]
+binding='<Alt><Super>semicolon'
+command="alacritty --command bash -c '~/bin/textexpander'"
+name='Snippets'
+
 [custom-keybindings/custom2]
 binding='<Primary><Alt><Super>q'
 command='bash -c "/home/thiago/bin/linux-quit-x-app"'
@@ -71,6 +81,11 @@ name='Quit application'
 binding='<Primary><Alt><Super>s'
 command='bash -c "nautilus $HOME/Pictures" '
 name='Pictures folder'
+
+[custom-keybindings/custom4]
+binding='<Super>bracketleft'
+command='guake-toggle'
+name='Toggle Guake'
 
 [custom-keybindings/custom5]
 binding='<Alt><Super>bracketright'
@@ -90,7 +105,3 @@ name='Downloads folder'
 [custom-keybindings/custom8]
 command='gnome-activities-overview'
 name='Gnome Activities #2'
-
-[custom-keybindings/custom9]
-command='toggle-dropdown-terminal'
-name='Toggle dropdown terminal'

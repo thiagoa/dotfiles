@@ -34,7 +34,7 @@ window-width=100
 
 [keybindings/global]
 show-focus='<Super>bracketright'
-show-hide='<Super>bracketleft'
+show-hide='<Primary><Alt><Super>bracketright'
 
 [style/background]
 transparency=100
