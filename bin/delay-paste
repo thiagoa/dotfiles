@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+sleep 0.1
+
+app=$(gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/Shell --method org.gnome.Shell.Eval "
+    global
+      .get_window_actors()
+      .map(a=>a.meta_window)
+      .find(w=>w.has_focus())
+      .get_wm_class()"   | cut -d'"' -f 2)
+
+#ydotool type "`wl-paste`"
+
+if [[ "$app" == "emacs" ]]; then
+  ydotool key 29:1 21:1 21:0 29:0
+elif [[ "$app" == "Guake" ]]; then
+  ydotool key 29:1 42:1 47:1 47:0 42:0 29:0
+else
+  ydotool key 29:1 47:1 47:0 29:0
+fi
