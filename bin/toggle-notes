@@ -1,24 +1,44 @@
 #!/bin/bash                                                                                                                                                                                                                                                   
 
-notes_file="$HOME/tmp/Notes.md"
-win_id="$(wmctrl -l -x | grep 'gedit.Gedit' | awk '{print $1}')"
+gdbus call \
+  --session \
+  --dest org.gnome.Shell \
+  --object-path /org/gnome/Shell \
+  --method org.gnome.Shell.Eval "
+const find_gedit = () => {
+  const candidates = global
+    .get_window_actors()
+    .filter(w => w.meta_window.get_wm_class() == 'gedit')
 
-if [[ -n "$win_id" ]]; then
-  is_minimized="$(xprop -id $win_id | grep "_NET_WM_STATE_HIDDEN")"
-  is_focused="$(xdotool getwindowfocus getwindowname | grep gedit)"
-fi
+  return (candidates[0] || {}).meta_window;
+}
 
-mkdir -p "$(dirname $notes_file)"
-[[ ! -f "$notes_file" ]] && touch "$notes_file"
+const gedit = find_gedit();
 
-if [[ -z "$is_focused" ]]; then
-  gedit "$notes_file"
-  exit
-fi
+if (!gedit) {
+  const wayland_client = Meta.WaylandClient.new(
+    new Gio.SubprocessLauncher({
+      flags: Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_MERGE
+    })
+  );
+  wayland_client.spawnv(global.display, ['gedit', '/home/thiago/tmp/Notes.md']);
 
-if [[ -z "$is_minimized" ]]; then
-  xdotool search --onlyvisible --classname --sync gedit windowminimize
-else
-  gedit "$notes_file"
-  wmctrl -i -r "$win_id" -b add,sticky
-fi
+  GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000, () => {
+    wayland_client.hide_from_window_list(find_gedit()); 
+    return GLib.SOURCE_REMOVE;
+  });
+}
+else if (!gedit.has_focus() && !gedit.minimized) {
+  gedit.focus(null);
+  gedit.raise();
+  gedit.make_above();
+}
+else if (gedit.has_focus()) {
+  gedit.minimize();
+}
+else if (gedit.minimized) {
+  gedit.unminimize();
+  gedit.focus(null);
+  gedit.raise();
+  gedit.make_above();
+}"
