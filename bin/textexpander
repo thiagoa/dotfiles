@@ -9,7 +9,11 @@ if echo $str | grep "<%=" > /dev/null; then
   str=$(echo $str | ruby -e "require 'erb'; puts ERB.new(STDIN.read).result(binding)")
 fi
 
-echo $str | wl-copy -n
+if [[ $XDG_SESSION_TYPE = "x11" ]]; then
+  echo $str | wl-copy -n
+else
+  echo $str | pb-copy
+fi
 
 # Failed try. Should revisit it later.
 #
