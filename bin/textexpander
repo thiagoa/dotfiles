@@ -3,16 +3,19 @@
 output=$(gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/Shell --method org.gnome.Shell.Eval "imports.ui.status.keyboard.getInputSourceManager()._mruSources[0]" | grep -o '"index":.')
 current_keyboard_layout=${output: -1}
 selected="$(python3 $HOME/bin/textexpander-snippets | fzf -i -e )"
+echo "BEFORE"
 str=$(echo -e "$selected"| sed -e 's/tags\:\.\*\$//;$d')
+
+echo "PASSED"
 
 if echo $str | grep "<%=" > /dev/null; then
   str=$(echo $str | ruby -e "require 'erb'; puts ERB.new(STDIN.read).result(binding)")
 fi
 
 if [[ $XDG_SESSION_TYPE = "x11" ]]; then
-  echo $str | wl-copy -n
-else
   echo $str | pb-copy
+else
+  echo $str | wl-copy -n
 fi
 
 # Failed try. Should revisit it later.
