@@ -2,7 +2,7 @@
 Type=Application
 Name=Spotify 4k
 Icon=spotify-client
-Exec=spotify --uri="%u"
+Exec=spotify --uri="%u" --force-device-scale-factor=1.2
 Comment=Music
 Categories=Music;
 Terminal=false

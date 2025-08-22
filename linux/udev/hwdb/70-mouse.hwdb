@@ -1,2 +1,6 @@
-mouse:*:name:Kensington Expert Wireless TB Mouse:Logitech MX Ergo:
+mouse:*:name:Kensington Expert Wireless TB Mouse:
+  ID_INPUT_TRACKBALL=1
+
+power_supply:*:name:MX Ergo Multi-Device Trackball:
+  ID_INPUT_MOUSE=1
   ID_INPUT_TRACKBALL=1

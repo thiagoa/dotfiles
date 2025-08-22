@@ -1,9 +1,9 @@
 [Desktop Entry]
 Type=Application
 Exec=/usr/bin/xbindkeys
-Hidden=false
+Hidden=true
 NoDisplay=false
-X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-enabled=false
 Name[en_US]=xbindkeys
 Name=xbindkeys
 Comment[en_US]=
