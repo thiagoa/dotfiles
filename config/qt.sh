@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [[ -x "$(which gsettings)" ]]; then
+if [[ "$OSTYPE" == "linux-gnu"* ]] && [[ -x "$(which gsettings)" ]]; then
   gnome_scaling_factor="$(gsettings get org.gnome.desktop.interface text-scaling-factor)"
 
   if [[ "${gnome_scaling_factor}" == "1.8" ]]; then
