@@ -11,6 +11,9 @@ zstyle ':completion:history-words:*' remove-all-dups yes
 setopt no_hist_verify NO_BEEP
 setopt rmstarsilent
 
+# Set the zprezto prompt (PROMPT)
 [[ $EMACS = t ]] && unsetopt zle
 [[ $EMACS != t ]] && prompt nicoulaj
 [[ -n "$EMACS" ]] && prompt cloud
+
+PROMPT='%F{yellow}[%D{%d/%m/%y %H:%M:%S}]%f '"$PROMPT"
