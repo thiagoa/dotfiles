@@ -1,0 +1,48 @@
+#!/bin/bash
+# Tracks the active xkb layout index for the MX Keys Mini and persists it,
+# so mx-keys-layout-restore can reapply it after a Bluetooth reconnect
+# (which otherwise resets the device back to layout index 0).
+#
+# Each time the keyboard (re)connects, Hyprland registers it as a fresh
+# device (new internal "address") whose first reported layout is just its
+# post-connect default, not a real user change. We skip persisting that
+# one report per new address so it can't race with / clobber the value
+# mx-keys-layout-restore is about to reapply.
+
+DEVICE="logitech-mx-keys-mini"
+STATE_DIR="$HOME/.local/state/omarchy"
+STATE_FILE="$STATE_DIR/mx-keys-mini-layout"
+SOCKET="$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock"
+
+mkdir -p "$STATE_DIR"
+
+query() {
+  hyprctl -j devices | jq -r --arg d "$DEVICE" '.keyboards[] | select(.name==$d) | "\(.address) \(.active_layout_index)"'
+}
+
+last_address=""
+
+# Seed from whatever is connected right now (e.g. watcher just (re)started
+# with the keyboard already in a good state).
+prime=$(query)
+if [[ -n "$prime" ]]; then
+  last_address="${prime%% *}"
+  idx="${prime##* }"
+  [[ "$idx" =~ ^[0-9]+$ ]] && echo "$idx" > "$STATE_FILE"
+fi
+
+socat -U - "UNIX-CONNECT:$SOCKET" | while read -r event; do
+  case "$event" in
+    activelayout\>\>"$DEVICE",*)
+      info=$(query)
+      [[ -z "$info" ]] && continue
+      address="${info%% *}"
+      index="${info##* }"
+      if [[ "$address" != "$last_address" ]]; then
+        last_address="$address"
+        continue
+      fi
+      [[ "$index" =~ ^[0-9]+$ ]] && echo "$index" > "$STATE_FILE"
+      ;;
+  esac
+done

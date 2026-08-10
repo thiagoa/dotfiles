@@ -1,0 +1,1 @@
+ACTION=="add", SUBSYSTEM=="input", ATTRS{name}=="Logitech MX Keys Mini", RUN+="/usr/bin/systemd-run --no-block --collect --unit=mx-keys-layout-restore --user --machine=thiago@.host /home/thiago/.local/bin/mx-keys-layout-restore"

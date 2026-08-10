@@ -1,0 +1,19 @@
+#!/bin/bash
+# Reapplies the last known xkb layout index for the MX Keys Mini.
+# Invoked by udev when the keyboard (re)connects over Bluetooth.
+
+DEVICE="logitech-mx-keys-mini"
+STATE_FILE="$HOME/.local/state/omarchy/mx-keys-mini-layout"
+
+[[ -f "$STATE_FILE" ]] || exit 0
+saved_index=$(<"$STATE_FILE")
+[[ "$saved_index" =~ ^[0-9]+$ ]] || exit 0
+[[ "$saved_index" == "0" ]] && exit 0
+
+# Hyprland/libinput can take a beat to register the reconnected device.
+for _ in {1..20}; do
+  hyprctl -j devices | jq -e --arg d "$DEVICE" '.keyboards[] | select(.name==$d)' >/dev/null 2>&1 && break
+  sleep 0.25
+done
+
+hyprctl switchxkblayout "$DEVICE" "$saved_index"
