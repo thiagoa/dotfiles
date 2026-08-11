@@ -52,6 +52,10 @@ function is_wsl {
   uname -r | grep microsoft > /dev/null
 }
 
+function is_omarchy {
+  command -v omarchy > /dev/null 2>&1
+}
+
 function should_install_linux_graphical_setup {
   if is_wsl || is_arm64 || [[ -n "$SKIP_GRAPHICAL" ]]; then
     return 1
@@ -325,6 +329,14 @@ function install_wsl_specific_config {
   fi
 }
 
+function install_omarchy_config {
+  if is_omarchy; then
+    echo "Setting up Omarchy-specific config..."
+
+    $INSTALL_DIR/linux/mx-keys-layout/setup.sh
+  fi
+}
+
 function install_mac_config {
   if is_mac; then
     rm -rf ~/.config/karabiner
@@ -407,6 +419,7 @@ install_wsl_specific_config # Must come before secrets
 setup_secrets
 install_dotfiles
 install_linux_config
+install_omarchy_config
 setup_mac
 install_mac_config
 set_defaults

@@ -10,7 +10,7 @@ dir="$(cd "$(dirname "$0")" && pwd)"
 bin_dir="$HOME/.local/bin"
 rules_dir="/etc/udev/rules.d"
 autostart_conf="$HOME/.config/hypr/autostart.conf"
-exec_line="exec-once = uwsm-app -- mx-keys-layout-watch"
+exec_line="exec-once = uwsm-app -- $bin_dir/mx-keys-layout-watch"
 
 echo "Installing mx-keys-layout scripts..."
 
@@ -40,4 +40,4 @@ else
 fi
 
 echo "Done. If Hyprland is already running, start the watcher now with:"
-echo "  uwsm-app -- mx-keys-layout-watch &"
+echo "  uwsm-app -- $bin_dir/mx-keys-layout-watch &"
